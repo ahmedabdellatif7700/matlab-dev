@@ -1,5 +1,12 @@
 # Python equalizer workflow
 
+The default MATLAB `main.m` now runs the isolated RF-driver research study
+through `scenario_benchmark.py`. See [the scenario guide](../matlab/README.md)
+for configuration, fair FFE/Volterra/NN comparisons, plots, and validation.
+This study has separate per-run artifacts and does not change the hardware
+training/inference workflow described below. Run `matlab/legacy_main.m` for
+the original end-to-end ONNX/Q8.8 workflow.
+
 - `equalizer.py`: main MATLAB-driven off-chip training/inference script.
 - `config.py`: single source of configuration for the unified 4–12–2 architecture, activation choice, optimizer, batch size, shuffling, and output paths.
 - `activations/`: supported activation functions.

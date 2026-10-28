@@ -1,0 +1,1103 @@
+{
+  "run_configuration": {
+    "root": "/home/ahmedabdellatif/dev/matlab-dev",
+    "profile": "study",
+    "visible": "off",
+    "output_root": "/home/ahmedabdellatif/dev/matlab-dev/datasets/scenarios/pa_single_carrier",
+    "run_id": "scenario1_validated_study",
+    "python_exe": "/home/ahmedabdellatif/miniconda3/envs/machine-learning/bin/python",
+    "mod_order": 16,
+    "rf_carrier_hz": 60000000000.0,
+    "symbol_rate_hz": 1000000000.0,
+    "samples_per_symbol": 8,
+    "rrc_rolloff": 0.25,
+    "rrc_span_symbols": 24,
+    "equalizer_taps": 2,
+    "pa_smoothness": 2,
+    "pa_phase_limit_deg": 20,
+    "backoff_db": [
+      -3,
+      0,
+      3,
+      6,
+      9,
+      12
+    ],
+    "reference_snr_db": [
+      24,
+      30,
+      36
+    ],
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "train_symbols": 12000,
+    "validation_symbols": 3000,
+    "test_symbols": 30000,
+    "nn_epochs": 250,
+    "nn_patience": 35,
+    "nn_batch_size": 512,
+    "nn_learning_rate": 0.003,
+    "nn_hidden_size": 12,
+    "ridge_grid": [
+      0,
+      1e-08,
+      1e-06,
+      0.0001,
+      0.01,
+      1
+    ],
+    "ber_target": 0.0038,
+    "constellation_backoff_db": 0,
+    "constellation_snr_db": 30,
+    "git_revision": "eebfbe666c207c575f6713981fc491af64bf2c14",
+    "git_dirty": true
+  },
+  "versions": {
+    "python": "3.10.20",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "torch": "2.13.0+cu130"
+  },
+  "conditions_completed": 60,
+  "receiver_evaluations": 420,
+  "matlab_version": "R2026a Update 2 (26.1.0.3251617)",
+  "numerical_tests": {
+    "matlab_passed": 4,
+    "python_passed": 2,
+    "matlab_code_analyzer_diagnostics": 0
+  },
+  "source_files_sha256": {
+    "python/scenario_benchmark.py": "2459d16ac2becd1a2223bcdaf90ae66c6056a62fefcf35ce8a191d7c95ace36d",
+    "matlab/main.m": "e6dcf0bdd9413b9ccfaa88c41f9ac3061243fd41151df6666318bc6082754f12",
+    "matlab/+mmw/generate_burst.m": "58570444c54ce37204514a5e299124aa740e45bb8afcddb36b6da89acf3ac91b",
+    "matlab/+mmw/make_dataset.m": "c73627285cd3c45c075cc213bf52c8c6fe53441756be203b81d79c343538e5c4",
+    "matlab/+mmw/plot_results.m": "5f3c3d310caf9840ba6eb2b3ea31f861c56e9e9e92cf6768018b263318bd0c92",
+    "matlab/+mmw/run_pa_benchmark.m": "870fc23b3a18242e59597daea084bdfc5878f128e4b33bc8a605f555a3bd2537",
+    "matlab/+mmw/scenario_config.m": "e2fdfdcb5204021f27afe1c368b5db84868d1642d58d9ff762c8c8a08d852a9b"
+  },
+  "conditions": [
+    {
+      "seed": 42,
+      "condition": "linear_awgn",
+      "dataset_sha256": "9ad1e06a3b15584919411a6fd5b05fc6080f926abe6e81be943c5b2648584396",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 242,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.004757174756377935
+      }
+    },
+    {
+      "seed": 42,
+      "condition": "linear_noiseless",
+      "dataset_sha256": "0fff26b91ffa60f2fecc8174f4ba3f8512465504972b1904c55b70e36688e538",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 3.495693817967549e-05
+      }
+    },
+    {
+      "seed": 42,
+      "condition": "pa_ibo_+00_snr_24",
+      "dataset_sha256": "b8292b6960e1389a91a0f81cec4b70858955cd8c93dc72bc567deb07b0a8c285",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 249,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.06224513053894043
+      }
+    },
+    {
+      "seed": 42,
+      "condition": "pa_ibo_+00_snr_30",
+      "dataset_sha256": "a3492754ae7cadf36653c2bdcaf41617f430f8207e1db03ae60b0da17ce7afb9",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.03720668703317642
+      }
+    },
+    {
+      "seed": 42,
+      "condition": "pa_ibo_+00_snr_36",
+      "dataset_sha256": "e2fe7d0e34b155a588859e5231edddceee415f9830b8bc712616c9af4919501d",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.030933499336242676
+      }
+    },
+    {
+      "seed": 42,
+      "condition": "pa_ibo_+03_snr_24",
+      "dataset_sha256": "4fd975e15eee66977bb5cdeba419db20bf4dbf143f197e2a666b0e0c2cf9e3fb",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 249,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.054042208939790726
+      }
+    },
+    {
+      "seed": 42,
+      "condition": "pa_ibo_+03_snr_30",
+      "dataset_sha256": "a6ffc5801023d610dc9db22d518bb59ab818adcf16fa3e500fe6c57c474aa54c",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 249,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.019506514072418213
+      }
+    },
+    {
+      "seed": 42,
+      "condition": "pa_ibo_+03_snr_36",
+      "dataset_sha256": "4b2d29620063a475fe4d96718bd75c71d4e96c8094fbb7d1f502a13ee6d6d487",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 249,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.010796657763421535
+      }
+    },
+    {
+      "seed": 42,
+      "condition": "pa_ibo_+06_snr_24",
+      "dataset_sha256": "7174994cec1426a03d38bf6dbeb5218dfb2a5815804f901d9fb29ddc111012d0",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 249,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.07989673316478729
+      }
+    },
+    {
+      "seed": 42,
+      "condition": "pa_ibo_+06_snr_30",
+      "dataset_sha256": "f049932dba232df4350f5f9beb62a5c450f06100adef5867329240b8bc0071b1",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 243,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.021565990522503853
+      }
+    },
+    {
+      "seed": 42,
+      "condition": "pa_ibo_+06_snr_36",
+      "dataset_sha256": "fef3e1ae7ca85d18d8f4da93f62058b0d0b17ca0e88d1b5a4e6716c355d8abde",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 249,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.006873013451695442
+      }
+    },
+    {
+      "seed": 42,
+      "condition": "pa_ibo_+09_snr_24",
+      "dataset_sha256": "b9c366701277941de938e8f68ab8dde34a465b270c512abc066aa001650c76d3",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 240,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.1444878876209259
+      }
+    },
+    {
+      "seed": 42,
+      "condition": "pa_ibo_+09_snr_30",
+      "dataset_sha256": "92d4ac3dab4ab3d67597de22c6da00768315b7b1eb134139d96835f4d4479d49",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 248,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.03653913363814354
+      }
+    },
+    {
+      "seed": 42,
+      "condition": "pa_ibo_+09_snr_36",
+      "dataset_sha256": "0005446f02d1d4fe58283accb61e387e6075c0f32384684720437ee1e13c2f7e",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 249,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.010021531023085117
+      }
+    },
+    {
+      "seed": 42,
+      "condition": "pa_ibo_+12_snr_24",
+      "dataset_sha256": "59cd42121f4355c54f813e20dd5814435edb233009750e0328cccbbd8f353208",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 181,
+        "epochs_completed": 216,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.26821234822273254
+      }
+    },
+    {
+      "seed": 42,
+      "condition": "pa_ibo_+12_snr_30",
+      "dataset_sha256": "87813893900cae2dc42093823ab260e0c1e5ec8fc1da406e26f8ec4983f8c51a",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 248,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.07004821300506592
+      }
+    },
+    {
+      "seed": 42,
+      "condition": "pa_ibo_+12_snr_36",
+      "dataset_sha256": "cdc72af836d62fef256bfd82b5d62a05b733d024c33f4cbebfc10f6a645e6565",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 248,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.017989790067076683
+      }
+    },
+    {
+      "seed": 42,
+      "condition": "pa_ibo_-03_snr_24",
+      "dataset_sha256": "060678d78acff61d253b7eb3e1f73c7a22e1f2a87350885605ae886a11a2c0b1",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.11662285774946213
+      }
+    },
+    {
+      "seed": 42,
+      "condition": "pa_ibo_-03_snr_30",
+      "dataset_sha256": "22615d78c571350d58ec64c4fb7e7708f89735efe57e358ae04e67aeec93325d",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.0903409868478775
+      }
+    },
+    {
+      "seed": 42,
+      "condition": "pa_ibo_-03_snr_36",
+      "dataset_sha256": "770499ed94d7ebb8d10668923e1089d4e137715b0e8ca49c64300250fa0723a3",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.08373040705919266
+      }
+    },
+    {
+      "seed": 43,
+      "condition": "linear_awgn",
+      "dataset_sha256": "1cbd46e8b0ad0de49aeefff0fbad74a39cfa4804626efed975b21b15c727f6c6",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 245,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.004933318123221397
+      }
+    },
+    {
+      "seed": 43,
+      "condition": "linear_noiseless",
+      "dataset_sha256": "797e9c21a4700f3018bd60926d26da9cad2546b28d2475c04c3d6669bd13dbcb",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.00010981008381349966
+      }
+    },
+    {
+      "seed": 43,
+      "condition": "pa_ibo_+00_snr_24",
+      "dataset_sha256": "0726f4f10ec0d7fcdd2c0e0b15dc6e29d7b36e5c32b42d8784b025039539d732",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.0520901083946228
+      }
+    },
+    {
+      "seed": 43,
+      "condition": "pa_ibo_+00_snr_30",
+      "dataset_sha256": "d94d7ee3b96c66fa704d36206747f230fa4e05d48b488643dac107081dec129c",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.0306572113186121
+      }
+    },
+    {
+      "seed": 43,
+      "condition": "pa_ibo_+00_snr_36",
+      "dataset_sha256": "bb301d91c33f253155cc2b5f33e1e3b46daa482b504c497e94179614bfc461ff",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.02571672759950161
+      }
+    },
+    {
+      "seed": 43,
+      "condition": "pa_ibo_+03_snr_24",
+      "dataset_sha256": "2a62c8da87af8fe6d5d6e99189832a2e29f29193a65b9dd2dc1c0d3a331141ba",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 249,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.053828753530979156
+      }
+    },
+    {
+      "seed": 43,
+      "condition": "pa_ibo_+03_snr_30",
+      "dataset_sha256": "f698060207eb3193b790c081cf00d3d358bf485486c5131053f43411fe946798",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.019666703417897224
+      }
+    },
+    {
+      "seed": 43,
+      "condition": "pa_ibo_+03_snr_36",
+      "dataset_sha256": "48c7c321b3e3e29c5378e89950c0c86554be3322486e4e923982214f6cb9e7e1",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.01086356583982706
+      }
+    },
+    {
+      "seed": 43,
+      "condition": "pa_ibo_+06_snr_24",
+      "dataset_sha256": "253efa6ec7824a4fb7b4764a7e8f887e44ba69b318e57065b9d7caa60b31abaf",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 249,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.08135159313678741
+      }
+    },
+    {
+      "seed": 43,
+      "condition": "pa_ibo_+06_snr_30",
+      "dataset_sha256": "c704ded75732bb75da171b0d80f6f1f759a8dc15cebfeb65118cae06eef6ca26",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.02264888398349285
+      }
+    },
+    {
+      "seed": 43,
+      "condition": "pa_ibo_+06_snr_36",
+      "dataset_sha256": "c9c88715e44e9a31606054b81b760ca441f3f83a466f67968135b08151e60a0b",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.0074188257567584515
+      }
+    },
+    {
+      "seed": 43,
+      "condition": "pa_ibo_+09_snr_24",
+      "dataset_sha256": "4af1c63d03baf95a9559fcf9e7d9fcffae8323a0692f351049df77e35d4a4c89",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 247,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.14110995829105377
+      }
+    },
+    {
+      "seed": 43,
+      "condition": "pa_ibo_+09_snr_30",
+      "dataset_sha256": "ca76da65e3cc7c1409dd56d79a5ce9317bea7baa570e79b5eefc00a58ec8a937",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 249,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.03882955387234688
+      }
+    },
+    {
+      "seed": 43,
+      "condition": "pa_ibo_+09_snr_36",
+      "dataset_sha256": "50845b1ca17bfd8096e751ce6fe7f436be3912589400b705acef0bd4e6bdb067",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.010584600269794464
+      }
+    },
+    {
+      "seed": 43,
+      "condition": "pa_ibo_+12_snr_24",
+      "dataset_sha256": "90a6f9224fda94c6c214e3451940fde7050dd685e63bf9b65954d252882856ab",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 249,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.26105451583862305
+      }
+    },
+    {
+      "seed": 43,
+      "condition": "pa_ibo_+12_snr_30",
+      "dataset_sha256": "3abd4a29834109d330454e22fcf1ac489de962b69363c2e519568145d0d7f462",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 249,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.07285388559103012
+      }
+    },
+    {
+      "seed": 43,
+      "condition": "pa_ibo_+12_snr_36",
+      "dataset_sha256": "5698e20a7640a73c33ebea0ca50f4a9ab279592ab7153eadd9b7d1fa5437e487",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 247,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.019356947392225266
+      }
+    },
+    {
+      "seed": 43,
+      "condition": "pa_ibo_-03_snr_24",
+      "dataset_sha256": "c3ab9adfc7fe47155346563a35a5b381717e34bdf4ecc12d1d99659c87d4c917",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 249,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.11708465963602066
+      }
+    },
+    {
+      "seed": 43,
+      "condition": "pa_ibo_-03_snr_30",
+      "dataset_sha256": "0bf3245f9b3c8262507ce6a5bbcda8f6e522ad2536c17b5378e72e742b18c417",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 249,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.0971580371260643
+      }
+    },
+    {
+      "seed": 43,
+      "condition": "pa_ibo_-03_snr_36",
+      "dataset_sha256": "35204afdf18ca7d547b7cc1f13965c35cabd06f9bb81c626773d221067412d01",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.0923292487859726
+      }
+    },
+    {
+      "seed": 44,
+      "condition": "linear_awgn",
+      "dataset_sha256": "6cacefd6f68d78207692a6500ba8fdafa14456c233acbbaf390335fb7b2e3112",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.00446370430290699
+      }
+    },
+    {
+      "seed": 44,
+      "condition": "linear_noiseless",
+      "dataset_sha256": "4990caf2e831593cda9bdeac308b1a9ff53b415062f7878117fe71111891fa18",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 2.6208474082523026e-05
+      }
+    },
+    {
+      "seed": 44,
+      "condition": "pa_ibo_+00_snr_24",
+      "dataset_sha256": "c82fc479889a69b031f54d3dcd3e0053667768d3ab33c332627aeb6a34ccb6ad",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.04813484475016594
+      }
+    },
+    {
+      "seed": 44,
+      "condition": "pa_ibo_+00_snr_30",
+      "dataset_sha256": "623707cab8f47f6dc725bad2e2ac47ba4613b63733cd0160e420ec881f9d3503",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.026370052248239517
+      }
+    },
+    {
+      "seed": 44,
+      "condition": "pa_ibo_+00_snr_36",
+      "dataset_sha256": "e63966a52ff64fa0ff54013582cc2bcf133ed3c772f3bfe6921ac1c5fdd0c169",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.021113866940140724
+      }
+    },
+    {
+      "seed": 44,
+      "condition": "pa_ibo_+03_snr_24",
+      "dataset_sha256": "fd28315232ebe3e4e9b131c76bf8b1f6f29fe3f8cd15ca7fd8398323280167e3",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.04621364548802376
+      }
+    },
+    {
+      "seed": 44,
+      "condition": "pa_ibo_+03_snr_30",
+      "dataset_sha256": "e8e0c82e343eca1aa8b91cc9fc9c52ca7589c2ed36604301389c763fb196453f",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.01820637471973896
+      }
+    },
+    {
+      "seed": 44,
+      "condition": "pa_ibo_+03_snr_36",
+      "dataset_sha256": "8ceed064208111ee442343450cae29afb802b194d1ba309fa59a58f2278afd63",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.010751823894679546
+      }
+    },
+    {
+      "seed": 44,
+      "condition": "pa_ibo_+06_snr_24",
+      "dataset_sha256": "63b0f7636c77481fd6af12cb5907f21c3b48dedbff4e770782cea581eb18fd49",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.07170972228050232
+      }
+    },
+    {
+      "seed": 44,
+      "condition": "pa_ibo_+06_snr_30",
+      "dataset_sha256": "56a0e5df2b55b70de62be33bedefcae3bee7607be2dd45ca74160c0aa99760de",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.020422499626874924
+      }
+    },
+    {
+      "seed": 44,
+      "condition": "pa_ibo_+06_snr_36",
+      "dataset_sha256": "72695d77f1c0e7bba75a0fbc6f869472ab9e59b1db4736be9ce35645b49e2fd9",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.006882546469569206
+      }
+    },
+    {
+      "seed": 44,
+      "condition": "pa_ibo_+09_snr_24",
+      "dataset_sha256": "6a60bc0e2b50e30d12fb82c8a4b970d31c42fe91417ed47fce72e787f2c17347",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.13481971621513367
+      }
+    },
+    {
+      "seed": 44,
+      "condition": "pa_ibo_+09_snr_30",
+      "dataset_sha256": "4b06bb7f44303a1cc202e5b9b0bdcc097757371fd9b2fa03e175157517dcde98",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 248,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.03494548052549362
+      }
+    },
+    {
+      "seed": 44,
+      "condition": "pa_ibo_+09_snr_36",
+      "dataset_sha256": "b21bcedfac7ff10d5ce5172c1f26aeb89c6693c03975d3fb7107e1db8c289b40",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.009594154544174671
+      }
+    },
+    {
+      "seed": 44,
+      "condition": "pa_ibo_+12_snr_24",
+      "dataset_sha256": "e9bfd4059089eda422a1b7ce4d5a8c7330e2435c57c404e876061590f20e5a4c",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 247,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.25360107421875
+      }
+    },
+    {
+      "seed": 44,
+      "condition": "pa_ibo_+12_snr_30",
+      "dataset_sha256": "03f453b58da214b0b8e38ea897fec255a92ac3d8d236b308d4ce3c50c2043585",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 248,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.06667546182870865
+      }
+    },
+    {
+      "seed": 44,
+      "condition": "pa_ibo_+12_snr_36",
+      "dataset_sha256": "cac17b3ce09a7d3e568de6f9d0636157b3f68e7e6fcd7206c85a24cc50f07ec9",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 247,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.017530979588627815
+      }
+    },
+    {
+      "seed": 44,
+      "condition": "pa_ibo_-03_snr_24",
+      "dataset_sha256": "f9e389d659ba93a7efee18c3508fd46ff532abe7ced4841baf3759a26e20ec09",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 247,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.1466575413942337
+      }
+    },
+    {
+      "seed": 44,
+      "condition": "pa_ibo_-03_snr_30",
+      "dataset_sha256": "0e2491cbcdc5aee2bc1ffacfa26c1fb614fada33e116be333479d302edb0d45e",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.12854310870170593
+      }
+    },
+    {
+      "seed": 44,
+      "condition": "pa_ibo_-03_snr_36",
+      "dataset_sha256": "9e4542260b6cba1d07e72613ce160d00cd4d732e85dda4c40396903d20516ad4",
+      "samples": {
+        "train": 11999,
+        "validation": 2999,
+        "test": 29999
+      },
+      "neural_fit": {
+        "best_epoch": 250,
+        "epochs_completed": 250,
+        "optimizer": "Adam",
+        "learning_rate": 0.003,
+        "best_validation_mse": 0.12398958206176758
+      }
+    }
+  ]
+}
