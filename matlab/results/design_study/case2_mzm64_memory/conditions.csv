@@ -1,0 +1,2 @@
+ID,Family,ModOrder,PA,Backoff_dB,AMPM_deg,MZM,MZM_drive,Optical,Sideband,Fiber_km,Echo_real,Echo_imag,Reference_SNR_dB,carrier_GHz,symbol_rate_Gbaud,rrc_rolloff,samples_per_symbol,tap_offsets,ber_target,target_origin
+mzm64_mu105_snr40,MZM64_memory,64,0,0,20,1,1.05,0,DSB,0,0.16180339887499,0.117557050458495,40,60.0,1.0,0.25,8,0;-1,0.0029586291962529587,validation frontier midpoint

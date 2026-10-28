@@ -1,0 +1,129 @@
+case,family,name,neural,validation_ber,multiplications,parameters,nonlinear_evaluations
+mzm64_mu090,MZM64_memory,Complex FFE,False,0.0025002500250025004,8,4,0
+mzm64_mu090,MZM64_memory,Volterra regression 1,False,0.00245024502450245,8,10,0
+mzm64_mu090,MZM64_memory,Volterra bit classifier 1,False,0.3463346334633463,24,30,0
+mzm64_mu090,MZM64_memory,Volterra regression 2,False,0.002566923359002567,38,30,0
+mzm64_mu090,MZM64_memory,Volterra bit classifier 2,False,0.15686568656865688,94,90,0
+mzm64_mu090,MZM64_memory,Volterra regression 3,False,0.0010667733440010668,98,70,0
+mzm64_mu090,MZM64_memory,Volterra bit classifier 3,False,0.15411541154115413,234,210,0
+mzm64_mu090,MZM64_memory,Volterra regression 5,False,0.0006834016735006834,371,252,0
+mzm64_mu090,MZM64_memory,Volterra bit classifier 5,False,0.0009834316765009834,871,756,0
+mzm64_mu090,MZM64_memory,Volterra regression 7,False,0.0006667333400006667,983,660,0
+mzm64_mu090,MZM64_memory,RBF kernel bit classifier 16,False,0.1816848351501817,208,166,16
+mzm64_mu090,MZM64_memory,RBF kernel bit classifier 64,False,0.12141214121412142,832,646,64
+mzm64_mu090,MZM64_memory,RBF kernel bit classifier 256,False,0.008767543421008767,3328,2566,256
+mzm64_mu090,MZM64_memory,NN tanh [4],True,0.08397506417308398,40,50,4
+mzm64_mu090,MZM64_memory,NN tanh [6],True,0.04348768210154349,60,72,6
+mzm64_mu090,MZM64_memory,NN tanh [8],True,0.0009334266760009334,80,94,8
+mzm64_mu090,MZM64_memory,NN tanh [16],True,0.00115011501150115,160,182,16
+mzm64_mu090,MZM64_memory,NN silu [24],True,0.0009000900090009,264,270,24
+mzm64_mu090,MZM64_memory,"NN tanh [16, 16]",True,0.0007334066740007334,416,454,32
+mzm64_mu090,MZM64_memory,NN softsign [16],True,0.0009834316765009834,160,182,16
+mzm64_mu090,MZM64_memory,NN multilevel [16],True,0.00105010501050105,224,182,48
+mzm64_mu090,MZM64_memory,NN learned_multilevel [16],True,0.00105010501050105,224,188,48
+mzm64_mu090,MZM64_memory,NN extended tanh [7],True,0.0224022402240224,70,83,7
+mzm64_mu090,MZM64_memory,NN extended silu [8],True,0.0009834316765009834,88,94,8
+mzm64_mu090,MZM64_memory,NN extended softsign [8],True,0.0011167783445011168,80,94,8
+mzm64_mu090,MZM64_memory,"NN extended tanh [2, 8]",True,0.026335966930026336,72,88,10
+mzm64_mu090,MZM64_memory,"NN extended tanh [3, 6]",True,0.04662132879954662,66,81,9
+mzm64_mu090,MZM64_memory,NN extended learned_multilevel [8],True,0.0015001500150015,112,100,24
+mzm64_mu105,MZM64_memory,Complex FFE,False,0.00765076507650765,8,4,0
+mzm64_mu105,MZM64_memory,Volterra regression 1,False,0.00765076507650765,8,10,0
+mzm64_mu105,MZM64_memory,Volterra bit classifier 1,False,0.34565123178984564,24,30,0
+mzm64_mu105,MZM64_memory,Volterra regression 2,False,0.0079007900790079,38,30,0
+mzm64_mu105,MZM64_memory,Volterra bit classifier 2,False,0.15558222488915557,94,90,0
+mzm64_mu105,MZM64_memory,Volterra regression 3,False,0.0038170483715038173,98,70,0
+mzm64_mu105,MZM64_memory,Volterra bit classifier 3,False,0.15588225489215587,234,210,0
+mzm64_mu105,MZM64_memory,Volterra regression 5,False,0.002916958362502917,371,252,0
+mzm64_mu105,MZM64_memory,Volterra bit classifier 5,False,0.0033836717005033836,871,756,0
+mzm64_mu105,MZM64_memory,Volterra regression 7,False,0.002616928359502617,983,660,0
+mzm64_mu105,MZM64_memory,RBF kernel bit classifier 16,False,0.19106910691069107,208,166,16
+mzm64_mu105,MZM64_memory,RBF kernel bit classifier 64,False,0.12306230623062306,832,646,64
+mzm64_mu105,MZM64_memory,RBF kernel bit classifier 256,False,0.0125012501250125,3328,2566,256
+mzm64_mu105,MZM64_memory,NN tanh [4],True,0.08532519918658532,40,50,4
+mzm64_mu105,MZM64_memory,NN tanh [6],True,0.04687135380204687,60,72,6
+mzm64_mu105,MZM64_memory,NN tanh [8],True,0.0034836817015034835,80,94,8
+mzm64_mu105,MZM64_memory,NN tanh [16],True,0.0036003600360036,160,182,16
+mzm64_mu105,MZM64_memory,NN silu [24],True,0.0034836817015034835,264,270,24
+mzm64_mu105,MZM64_memory,"NN tanh [16, 16]",True,0.0031503150315031502,416,454,32
+mzm64_mu105,MZM64_memory,NN softsign [16],True,0.0038503850385038503,160,182,16
+mzm64_mu105,MZM64_memory,NN multilevel [16],True,0.0036503650365036504,224,182,48
+mzm64_mu105,MZM64_memory,NN learned_multilevel [16],True,0.003567023369003567,224,188,48
+mzm64_mu105,MZM64_memory,NN extended tanh [7],True,0.03081974864153082,70,83,7
+mzm64_mu105,MZM64_memory,NN extended silu [8],True,0.004117078374504117,88,94,8
+mzm64_mu105,MZM64_memory,NN extended softsign [8],True,0.005517218388505518,80,94,8
+mzm64_mu105,MZM64_memory,"NN extended tanh [2, 8]",True,0.03086975364203087,72,88,10
+mzm64_mu105,MZM64_memory,"NN extended tanh [3, 6]",True,0.05187185385205187,66,81,9
+mzm64_mu105,MZM64_memory,NN extended learned_multilevel [8],True,0.023385671900523385,112,100,24
+mzm64_mu120,MZM64_memory,Complex FFE,False,0.019618628529519618,8,4,0
+mzm64_mu120,MZM64_memory,Volterra regression 1,False,0.019568623529019568,8,10,0
+mzm64_mu120,MZM64_memory,Volterra bit classifier 1,False,0.3454678801213455,24,30,0
+mzm64_mu120,MZM64_memory,Volterra regression 2,False,0.019535286862019535,38,30,0
+mzm64_mu120,MZM64_memory,Volterra bit classifier 2,False,0.15643230989765644,94,90,0
+mzm64_mu120,MZM64_memory,Volterra regression 3,False,0.009467613428009468,98,70,0
+mzm64_mu120,MZM64_memory,Volterra bit classifier 3,False,0.16131613161316133,234,210,0
+mzm64_mu120,MZM64_memory,Volterra regression 5,False,0.008484181751508484,371,252,0
+mzm64_mu120,MZM64_memory,Volterra bit classifier 5,False,0.010584391772510584,871,756,0
+mzm64_mu120,MZM64_memory,Volterra regression 7,False,0.00845084508450845,983,660,0
+mzm64_mu120,MZM64_memory,RBF kernel bit classifier 16,False,0.19575290862419575,208,166,16
+mzm64_mu120,MZM64_memory,RBF kernel bit classifier 64,False,0.12644597793112644,832,646,64
+mzm64_mu120,MZM64_memory,RBF kernel bit classifier 256,False,0.020835416875020836,3328,2566,256
+mzm64_mu120,MZM64_memory,NN tanh [4],True,0.08835883588358835,40,50,4
+mzm64_mu120,MZM64_memory,NN tanh [6],True,0.05623895722905624,60,72,6
+mzm64_mu120,MZM64_memory,NN tanh [8],True,0.010567723439010569,80,94,8
+mzm64_mu120,MZM64_memory,NN tanh [16],True,0.01025102510251025,160,182,16
+mzm64_mu120,MZM64_memory,NN silu [24],True,0.0098009800980098,264,270,24
+mzm64_mu120,MZM64_memory,"NN tanh [16, 16]",True,0.009550955095509552,416,454,32
+mzm64_mu120,MZM64_memory,NN softsign [16],True,0.0102010201020102,160,182,16
+mzm64_mu120,MZM64_memory,NN multilevel [16],True,0.010717738440510717,224,182,48
+mzm64_mu120,MZM64_memory,NN learned_multilevel [16],True,0.010317698436510318,224,188,48
+mzm64_mu120,MZM64_memory,NN extended tanh [7],True,0.03792045871253792,70,83,7
+mzm64_mu120,MZM64_memory,NN extended silu [8],True,0.011284461779511284,88,94,8
+mzm64_mu120,MZM64_memory,NN extended softsign [8],True,0.03285328532853286,80,94,8
+mzm64_mu120,MZM64_memory,"NN extended tanh [2, 8]",True,0.036103610361036105,72,88,10
+mzm64_mu120,MZM64_memory,"NN extended tanh [3, 6]",True,0.060206020602060206,66,81,9
+mzm64_mu120,MZM64_memory,NN extended learned_multilevel [8],True,0.028286161949528286,112,100,24
+mzm64_mu105_snr40,MZM64_memory,Complex FFE,False,0.006967363403006967,8,4,0
+mzm64_mu105_snr40,MZM64_memory,Volterra regression 1,False,0.00695069506950695,8,10,0
+mzm64_mu105_snr40,MZM64_memory,Volterra bit classifier 1,False,0.3456679001233457,24,30,0
+mzm64_mu105_snr40,MZM64_memory,Volterra regression 2,False,0.0070673734040070674,38,30,0
+mzm64_mu105_snr40,MZM64_memory,Volterra bit classifier 2,False,0.15583224989165584,94,90,0
+mzm64_mu105_snr40,MZM64_memory,Volterra regression 3,False,0.0031836516985031837,98,70,0
+mzm64_mu105_snr40,MZM64_memory,Volterra bit classifier 3,False,0.15548221488815547,234,210,0
+mzm64_mu105_snr40,MZM64_memory,Volterra regression 5,False,0.0027002700270027003,371,252,0
+mzm64_mu105_snr40,MZM64_memory,Volterra bit classifier 5,False,0.00265026502650265,871,756,0
+mzm64_mu105_snr40,MZM64_memory,Volterra regression 7,False,0.0022502250225022503,983,660,0
+mzm64_mu105_snr40,MZM64_memory,RBF kernel bit classifier 16,False,0.18315164849818316,208,166,16
+mzm64_mu105_snr40,MZM64_memory,RBF kernel bit classifier 64,False,0.12426242624262426,832,646,64
+mzm64_mu105_snr40,MZM64_memory,RBF kernel bit classifier 256,False,0.011801180118011801,3328,2566,256
+mzm64_mu105_snr40,MZM64_memory,NN tanh [4],True,0.08505850585058505,40,50,4
+mzm64_mu105_snr40,MZM64_memory,NN tanh [6],True,0.04542120878754542,60,72,6
+mzm64_mu105_snr40,MZM64_memory,NN tanh [8],True,0.002916958362502917,80,94,8
+mzm64_mu105_snr40,MZM64_memory,NN tanh [16],True,0.0029502950295029503,160,182,16
+mzm64_mu105_snr40,MZM64_memory,NN silu [24],True,0.0027502750275027505,264,270,24
+mzm64_mu105_snr40,MZM64_memory,"NN tanh [16, 16]",True,0.0028502850285028504,416,454,32
+mzm64_mu105_snr40,MZM64_memory,NN softsign [16],True,0.0028502850285028504,160,182,16
+mzm64_mu105_snr40,MZM64_memory,NN multilevel [16],True,0.0029336266960029336,224,182,48
+mzm64_mu105_snr40,MZM64_memory,NN learned_multilevel [16],True,0.0027336066940027337,224,188,48
+mzm64_mu120_snr40,MZM64_memory,Complex FFE,False,0.018301830183018303,8,4,0
+mzm64_mu120_snr40,MZM64_memory,Volterra regression 1,False,0.018418508517518417,8,10,0
+mzm64_mu120_snr40,MZM64_memory,Volterra bit classifier 1,False,0.3452678601193453,24,30,0
+mzm64_mu120_snr40,MZM64_memory,Volterra regression 2,False,0.01831849851651832,38,30,0
+mzm64_mu120_snr40,MZM64_memory,Volterra bit classifier 2,False,0.15593225989265594,94,90,0
+mzm64_mu120_snr40,MZM64_memory,Volterra regression 3,False,0.008717538420508717,98,70,0
+mzm64_mu120_snr40,MZM64_memory,Volterra bit classifier 3,False,0.160999433276661,234,210,0
+mzm64_mu120_snr40,MZM64_memory,Volterra regression 5,False,0.0079007900790079,371,252,0
+mzm64_mu120_snr40,MZM64_memory,Volterra bit classifier 5,False,0.00925092509250925,871,756,0
+mzm64_mu120_snr40,MZM64_memory,Volterra regression 7,False,0.007717438410507717,983,660,0
+mzm64_mu120_snr40,MZM64_memory,RBF kernel bit classifier 16,False,0.19438610527719438,208,166,16
+mzm64_mu120_snr40,MZM64_memory,RBF kernel bit classifier 64,False,0.12717938460512718,832,646,64
+mzm64_mu120_snr40,MZM64_memory,RBF kernel bit classifier 256,False,0.0195019501950195,3328,2566,256
+mzm64_mu120_snr40,MZM64_memory,NN tanh [4],True,0.08790879087908791,40,50,4
+mzm64_mu120_snr40,MZM64_memory,NN tanh [6],True,0.05467213388005467,60,72,6
+mzm64_mu120_snr40,MZM64_memory,NN tanh [8],True,0.009500950095009501,80,94,8
+mzm64_mu120_snr40,MZM64_memory,NN tanh [16],True,0.009434276761009434,160,182,16
+mzm64_mu120_snr40,MZM64_memory,NN silu [24],True,0.008834216755008834,264,270,24
+mzm64_mu120_snr40,MZM64_memory,"NN tanh [16, 16]",True,0.00885088508850885,416,454,32
+mzm64_mu120_snr40,MZM64_memory,NN softsign [16],True,0.009117578424509118,160,182,16
+mzm64_mu120_snr40,MZM64_memory,NN multilevel [16],True,0.009600960096009602,224,182,48
+mzm64_mu120_snr40,MZM64_memory,NN learned_multilevel [16],True,0.009484281761509485,224,188,48

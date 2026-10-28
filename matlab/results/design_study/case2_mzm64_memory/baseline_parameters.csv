@@ -1,0 +1,40 @@
+case,seed,method,order,ridge,centers,bandwidth,optimizer_iterations,optimizer_converged,validation_ber,multiplications,parameters
+mzm64_mu105_snr40,1201,Complex FFE,,,,,,,0.0073345557592932155,8,4
+mzm64_mu105_snr40,1201,Volterra regression 1,1,1e-05,,,,,0.007362338167472357,8,10
+mzm64_mu105_snr40,1201,Volterra bit classifier 1,1,0.01,,,8,True,0.3140523420570095,24,30
+mzm64_mu105_snr40,1201,Volterra regression 2,2,1e-05,,,,,0.007306773351114074,38,30
+mzm64_mu105_snr40,1201,Volterra bit classifier 2,2,0.01,,,10,True,0.1538034116797244,94,90
+mzm64_mu105_snr40,1201,Volterra regression 3,3,1e-05,,,,,0.0035839306551091847,98,70
+mzm64_mu105_snr40,1201,Volterra bit classifier 3,3,1e-06,,,300,False,0.15099738845363117,234,210
+mzm64_mu105_snr40,1201,Volterra regression 5,5,0,,,,,0.002611546368839251,371,252
+mzm64_mu105_snr40,1201,Volterra bit classifier 5,5,1e-06,,,300,False,0.0020836806134355724,871,756
+mzm64_mu105_snr40,1201,Volterra regression 7,7,1e-07,,,,,0.0019725509807190086,983,660
+mzm64_mu105_snr40,1201,RBF kernel bit classifier 16,,1e-06,16,0.25,300,False,0.18922598210812913,208,166
+mzm64_mu105_snr40,1201,RBF kernel bit classifier 64,,1e-06,64,4.0,300,False,0.1244374062343724,832,646
+mzm64_mu105_snr40,1201,RBF kernel bit classifier 256,,1e-06,256,4.0,300,False,0.011390787353447797,3328,2566
+mzm64_mu105_snr40,1202,Complex FFE,,,,,,,0.006778907595710396,8,4
+mzm64_mu105_snr40,1202,Volterra regression 1,1,0,,,,,0.006862254820247819,8,10
+mzm64_mu105_snr40,1202,Volterra bit classifier 1,1,1e-06,,,99,True,0.3361115741512474,24,30
+mzm64_mu105_snr40,1202,Volterra regression 2,2,0,,,,,0.00689003722842696,38,30
+mzm64_mu105_snr40,1202,Volterra bit classifier 2,2,1e-06,,,196,True,0.15694282380396732,94,90
+mzm64_mu105_snr40,1202,Volterra regression 3,3,0,,,,,0.0029727176751680835,98,70
+mzm64_mu105_snr40,1202,Volterra bit classifier 3,3,1e-06,,,300,False,0.1551647496805023,234,210
+mzm64_mu105_snr40,1202,Volterra regression 5,5,0,,,,,0.0020003333888981498,371,252
+mzm64_mu105_snr40,1202,Volterra bit classifier 5,5,1e-06,,,300,False,0.0020836806134355724,871,756
+mzm64_mu105_snr40,1202,Volterra regression 7,7,1e-05,,,,,0.001805856531644163,983,660
+mzm64_mu105_snr40,1202,RBF kernel bit classifier 16,,1e-06,16,0.25,300,False,0.16902817136189366,208,166
+mzm64_mu105_snr40,1202,RBF kernel bit classifier 64,,1e-06,64,4.0,300,False,0.1159637717397344,832,646
+mzm64_mu105_snr40,1202,RBF kernel bit classifier 256,,1e-06,256,4.0,300,False,0.013530032783241651,3328,2566
+mzm64_mu105_snr40,1203,Complex FFE,,,,,,,0.009140412290937379,8,4
+mzm64_mu105_snr40,1203,Volterra regression 1,1,0,,,,,0.009057065066399956,8,10
+mzm64_mu105_snr40,1203,Volterra bit classifier 1,1,0.0001,,,26,True,0.3296382730455076,24,30
+mzm64_mu105_snr40,1203,Volterra regression 2,2,0,,,,,0.009112629882758237,38,30
+mzm64_mu105_snr40,1203,Volterra bit classifier 2,2,1e-06,,,276,True,0.15374784686336612,94,90
+mzm64_mu105_snr40,1203,Volterra regression 3,3,0.001,,,,,0.0038061899205423127,98,70
+mzm64_mu105_snr40,1203,Volterra bit classifier 3,3,1e-06,,,300,False,0.1529143746179919,234,210
+mzm64_mu105_snr40,1203,Volterra regression 5,5,1e-07,,,,,0.002611546368839251,371,252
+mzm64_mu105_snr40,1203,Volterra bit classifier 5,5,1e-06,,,300,False,0.002278157470689559,871,756
+mzm64_mu105_snr40,1203,Volterra regression 7,7,0,,,,,0.0021114630216147135,983,660
+mzm64_mu105_snr40,1203,RBF kernel bit classifier 16,,1e-06,16,0.25,300,False,0.163777296216036,208,166
+mzm64_mu105_snr40,1203,RBF kernel bit classifier 64,,1e-06,64,4.0,300,False,0.11813079957770739,832,646
+mzm64_mu105_snr40,1203,RBF kernel bit classifier 256,,1e-06,256,4.0,300,False,0.011168528088014669,3328,2566

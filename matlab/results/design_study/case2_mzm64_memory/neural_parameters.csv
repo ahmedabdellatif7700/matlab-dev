@@ -1,0 +1,2 @@
+case,widths,activation,inputs,output_bits,parameters,multiplications,nonlinear_evaluations,loss,validation_selected_restarts,optimizer,batch_size,learning_rate,weight_decay,epochs_max,training_symbols,validation_symbols
+mzm64_mu105_snr40,[16],learned_multilevel,4,6,188,224,48,bitwise BCE,3,adamw then LBFGS,512,0.003,0.0001,600,18000,6000

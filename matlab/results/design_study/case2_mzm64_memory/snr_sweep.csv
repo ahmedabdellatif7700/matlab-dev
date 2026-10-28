@@ -1,0 +1,76 @@
+case,seed,reference_snr_db,method,receiver_model,bit_errors,bits,ber
+mzm64_mu105_snr40,1201,40.0,Selected NN,Selected NN,644,299994,0.0021467096008586837
+mzm64_mu105_snr40,1201,40.0,Complex FFE,Complex FFE,2157,299994,0.007190143802876058
+mzm64_mu105_snr40,1201,40.0,Volterra regression 3,Volterra regression 3,936,299994,0.003120062401248025
+mzm64_mu105_snr40,1201,40.0,Volterra regression 5,Volterra regression 5,665,299994,0.0022167110008866845
+mzm64_mu105_snr40,1201,40.0,Classical best (validation),Volterra regression 7,617,299994,0.002056707800822683
+mzm64_mu105_snr40,1201,43.0,Selected NN,Selected NN,612,299994,0.0020400408008160163
+mzm64_mu105_snr40,1201,43.0,Complex FFE,Complex FFE,2136,299994,0.007120142402848057
+mzm64_mu105_snr40,1201,43.0,Volterra regression 3,Volterra regression 3,914,299994,0.003046727601218691
+mzm64_mu105_snr40,1201,43.0,Volterra regression 5,Volterra regression 5,647,299994,0.002156709800862684
+mzm64_mu105_snr40,1201,43.0,Classical best (validation),Volterra regression 7,601,299994,0.0020033734008013493
+mzm64_mu105_snr40,1201,46.0,Selected NN,Selected NN,595,299994,0.0019833730007933494
+mzm64_mu105_snr40,1201,46.0,Complex FFE,Complex FFE,2112,299994,0.007040140802816056
+mzm64_mu105_snr40,1201,46.0,Volterra regression 3,Volterra regression 3,903,299994,0.003010060201204024
+mzm64_mu105_snr40,1201,46.0,Volterra regression 5,Volterra regression 5,645,299994,0.0021500430008600173
+mzm64_mu105_snr40,1201,46.0,Classical best (validation),Volterra regression 7,586,299994,0.001953372400781349
+mzm64_mu105_snr40,1201,37.0,Selected NN,Selected NN,716,299994,0.002386714400954686
+mzm64_mu105_snr40,1201,37.0,Complex FFE,Complex FFE,2206,299994,0.007353480402941392
+mzm64_mu105_snr40,1201,37.0,Volterra regression 3,Volterra regression 3,957,299994,0.0031900638012760255
+mzm64_mu105_snr40,1201,37.0,Volterra regression 5,Volterra regression 5,704,299994,0.0023467136009386854
+mzm64_mu105_snr40,1201,37.0,Classical best (validation),Volterra regression 7,658,299994,0.002193377200877351
+mzm64_mu105_snr40,1201,34.0,Selected NN,Selected NN,882,299994,0.0029400588011760237
+mzm64_mu105_snr40,1201,34.0,Complex FFE,Complex FFE,2316,299994,0.007720154403088062
+mzm64_mu105_snr40,1201,34.0,Volterra regression 3,Volterra regression 3,1019,299994,0.003396734601358694
+mzm64_mu105_snr40,1201,34.0,Volterra regression 5,Volterra regression 5,788,299994,0.002626719201050688
+mzm64_mu105_snr40,1201,34.0,Classical best (validation),Volterra regression 7,750,299994,0.00250005000100002
+mzm64_mu105_snr40,1202,40.0,Selected NN,Selected NN,711,299994,0.002370047400948019
+mzm64_mu105_snr40,1202,40.0,Complex FFE,Complex FFE,2384,299994,0.00794682560317873
+mzm64_mu105_snr40,1202,40.0,Volterra regression 3,Volterra regression 3,1033,299994,0.003443402201377361
+mzm64_mu105_snr40,1202,40.0,Volterra regression 5,Volterra regression 5,723,299994,0.0024100482009640194
+mzm64_mu105_snr40,1202,40.0,Classical best (validation),Volterra regression 7,618,299994,0.0020600412008240166
+mzm64_mu105_snr40,1202,43.0,Selected NN,Selected NN,686,299994,0.002286712400914685
+mzm64_mu105_snr40,1202,43.0,Complex FFE,Complex FFE,2348,299994,0.00782682320313073
+mzm64_mu105_snr40,1202,43.0,Volterra regression 3,Volterra regression 3,1019,299994,0.003396734601358694
+mzm64_mu105_snr40,1202,43.0,Volterra regression 5,Volterra regression 5,710,299994,0.0023667140009466857
+mzm64_mu105_snr40,1202,43.0,Classical best (validation),Volterra regression 7,604,299994,0.0020133736008053496
+mzm64_mu105_snr40,1202,46.0,Selected NN,Selected NN,663,299994,0.0022100442008840177
+mzm64_mu105_snr40,1202,46.0,Complex FFE,Complex FFE,2323,299994,0.007743488203097395
+mzm64_mu105_snr40,1202,46.0,Volterra regression 3,Volterra regression 3,1002,299994,0.0033400668013360267
+mzm64_mu105_snr40,1202,46.0,Volterra regression 5,Volterra regression 5,703,299994,0.002343380200937352
+mzm64_mu105_snr40,1202,46.0,Classical best (validation),Volterra regression 7,593,299994,0.0019767062007906826
+mzm64_mu105_snr40,1202,37.0,Selected NN,Selected NN,778,299994,0.002593385201037354
+mzm64_mu105_snr40,1202,37.0,Complex FFE,Complex FFE,2428,299994,0.008093495203237398
+mzm64_mu105_snr40,1202,37.0,Volterra regression 3,Volterra regression 3,1058,299994,0.003526737201410695
+mzm64_mu105_snr40,1202,37.0,Volterra regression 5,Volterra regression 5,758,299994,0.0025267172010106868
+mzm64_mu105_snr40,1202,37.0,Classical best (validation),Volterra regression 7,655,299994,0.0021833770008733507
+mzm64_mu105_snr40,1202,34.0,Selected NN,Selected NN,916,299994,0.003053394401221358
+mzm64_mu105_snr40,1202,34.0,Complex FFE,Complex FFE,2566,299994,0.008553504403421402
+mzm64_mu105_snr40,1202,34.0,Volterra regression 3,Volterra regression 3,1139,299994,0.003796742601518697
+mzm64_mu105_snr40,1202,34.0,Volterra regression 5,Volterra regression 5,847,299994,0.002823389801129356
+mzm64_mu105_snr40,1202,34.0,Classical best (validation),Volterra regression 7,741,299994,0.00247004940098802
+mzm64_mu105_snr40,1203,40.0,Selected NN,Selected NN,716,299994,0.002386714400954686
+mzm64_mu105_snr40,1203,40.0,Complex FFE,Complex FFE,2249,299994,0.007496816602998726
+mzm64_mu105_snr40,1203,40.0,Volterra regression 3,Volterra regression 3,1036,299994,0.003453402401381361
+mzm64_mu105_snr40,1203,40.0,Volterra regression 5,Volterra regression 5,754,299994,0.0025133836010053532
+mzm64_mu105_snr40,1203,40.0,Classical best (validation),Volterra regression 7,643,299994,0.0021433762008573505
+mzm64_mu105_snr40,1203,43.0,Selected NN,Selected NN,664,299994,0.002213377600885351
+mzm64_mu105_snr40,1203,43.0,Complex FFE,Complex FFE,2231,299994,0.007436815402974726
+mzm64_mu105_snr40,1203,43.0,Volterra regression 3,Volterra regression 3,1026,299994,0.0034200684013680274
+mzm64_mu105_snr40,1203,43.0,Volterra regression 5,Volterra regression 5,740,299994,0.0024667160009866863
+mzm64_mu105_snr40,1203,43.0,Classical best (validation),Volterra regression 7,620,299994,0.0020667080008266833
+mzm64_mu105_snr40,1203,46.0,Selected NN,Selected NN,649,299994,0.002163376600865351
+mzm64_mu105_snr40,1203,46.0,Complex FFE,Complex FFE,2228,299994,0.007426815202970726
+mzm64_mu105_snr40,1203,46.0,Volterra regression 3,Volterra regression 3,1020,299994,0.003400068001360027
+mzm64_mu105_snr40,1203,46.0,Volterra regression 5,Volterra regression 5,734,299994,0.0024467156009786864
+mzm64_mu105_snr40,1203,46.0,Classical best (validation),Volterra regression 7,621,299994,0.0020700414008280165
+mzm64_mu105_snr40,1203,37.0,Selected NN,Selected NN,793,299994,0.0026433862010573545
+mzm64_mu105_snr40,1203,37.0,Complex FFE,Complex FFE,2310,299994,0.007700154003080061
+mzm64_mu105_snr40,1203,37.0,Volterra regression 3,Volterra regression 3,1053,299994,0.003510070201404028
+mzm64_mu105_snr40,1203,37.0,Volterra regression 5,Volterra regression 5,774,299994,0.0025800516010320205
+mzm64_mu105_snr40,1203,37.0,Classical best (validation),Volterra regression 7,688,299994,0.0022933792009173517
+mzm64_mu105_snr40,1203,34.0,Selected NN,Selected NN,967,299994,0.0032233978012893593
+mzm64_mu105_snr40,1203,34.0,Complex FFE,Complex FFE,2439,299994,0.008130162603252064
+mzm64_mu105_snr40,1203,34.0,Volterra regression 3,Volterra regression 3,1128,299994,0.00376007520150403
+mzm64_mu105_snr40,1203,34.0,Volterra regression 5,Volterra regression 5,854,299994,0.0028467236011386894
+mzm64_mu105_snr40,1203,34.0,Classical best (validation),Volterra regression 7,793,299994,0.0026433862010573545

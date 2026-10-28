@@ -1,0 +1,261 @@
+{
+  "condition": {
+    "ID": "mzm64_mu105_snr40",
+    "Family": "MZM64_memory",
+    "ModOrder": "64",
+    "PA": "0",
+    "Backoff_dB": "0",
+    "AMPM_deg": "20",
+    "MZM": "1",
+    "MZM_drive": "1.05",
+    "Optical": "0",
+    "Sideband": "DSB",
+    "Fiber_km": "0",
+    "Echo_real": "0.16180339887499",
+    "Echo_imag": "0.117557050458495",
+    "Reference_SNR_dB": "40"
+  },
+  "neural": {
+    "widths": [
+      16
+    ],
+    "activation": "learned_multilevel",
+    "lr": 0.003,
+    "weight_decay": 0.0001,
+    "input_size": 4,
+    "output_bits": 6,
+    "parameters": 188,
+    "multiplications": 224,
+    "dense_multiplications": 160,
+    "activation_multiplications": 64,
+    "nonlinear_evaluations": 48,
+    "comparisons": 6,
+    "best_step": 591,
+    "validation_bce": 0.009769191034138203,
+    "epochs_completed": 600,
+    "polish_steps": 12,
+    "seed": 42,
+    "name": "NN learned_multilevel [16]",
+    "neural": true,
+    "validation_ber": 0.0027336066940027337,
+    "catalog_index": 8
+  },
+  "ber_target": 0.0029586291962529587,
+  "target_origin": "validation frontier midpoint",
+  "validation_cost_ratio": 1.65625,
+  "validation_cheaper_baseline_gap": 0.00045004500450044997,
+  "validation_frontier_gap": 0.00045004500450044997,
+  "classical": [
+    {
+      "name": "Complex FFE",
+      "spec": {
+        "name": "Complex FFE",
+        "parameters": 4,
+        "multiplications": 8,
+        "nonlinear_evaluations": 0,
+        "comparisons": 6,
+        "validation_ber": 0.006967363403006967,
+        "neural": false
+      }
+    },
+    {
+      "name": "Volterra regression 1",
+      "spec": {
+        "name": "Volterra regression 1",
+        "parameters": 10,
+        "multiplications": 8,
+        "nonlinear_evaluations": 0,
+        "comparisons": 6,
+        "validation_ber": 0.00695069506950695,
+        "order": 1,
+        "ridge": 1e-05,
+        "neural": false
+      }
+    },
+    {
+      "name": "Volterra bit classifier 1",
+      "spec": {
+        "name": "Volterra bit classifier 1",
+        "parameters": 30,
+        "multiplications": 24,
+        "nonlinear_evaluations": 0,
+        "comparisons": 6,
+        "validation_ber": 0.3456679001233457,
+        "order": 1,
+        "ridge": 1e-06,
+        "fit": {
+          "iterations": 38,
+          "converged": true
+        },
+        "neural": false
+      }
+    },
+    {
+      "name": "Volterra regression 2",
+      "spec": {
+        "name": "Volterra regression 2",
+        "parameters": 30,
+        "multiplications": 38,
+        "nonlinear_evaluations": 0,
+        "comparisons": 6,
+        "validation_ber": 0.0070673734040070674,
+        "order": 2,
+        "ridge": 1e-05,
+        "neural": false
+      }
+    },
+    {
+      "name": "Volterra bit classifier 2",
+      "spec": {
+        "name": "Volterra bit classifier 2",
+        "parameters": 90,
+        "multiplications": 94,
+        "nonlinear_evaluations": 0,
+        "comparisons": 6,
+        "validation_ber": 0.15583224989165584,
+        "order": 2,
+        "ridge": 1e-06,
+        "fit": {
+          "iterations": 266,
+          "converged": true
+        },
+        "neural": false
+      }
+    },
+    {
+      "name": "Volterra regression 3",
+      "spec": {
+        "name": "Volterra regression 3",
+        "parameters": 70,
+        "multiplications": 98,
+        "nonlinear_evaluations": 0,
+        "comparisons": 6,
+        "validation_ber": 0.0031836516985031837,
+        "order": 3,
+        "ridge": 0,
+        "neural": false
+      }
+    },
+    {
+      "name": "Volterra bit classifier 3",
+      "spec": {
+        "name": "Volterra bit classifier 3",
+        "parameters": 210,
+        "multiplications": 234,
+        "nonlinear_evaluations": 0,
+        "comparisons": 6,
+        "validation_ber": 0.15548221488815547,
+        "order": 3,
+        "ridge": 1e-06,
+        "fit": {
+          "iterations": 300,
+          "converged": false
+        },
+        "neural": false
+      }
+    },
+    {
+      "name": "Volterra regression 5",
+      "spec": {
+        "name": "Volterra regression 5",
+        "parameters": 252,
+        "multiplications": 371,
+        "nonlinear_evaluations": 0,
+        "comparisons": 6,
+        "validation_ber": 0.0027002700270027003,
+        "order": 5,
+        "ridge": 0,
+        "neural": false
+      }
+    },
+    {
+      "name": "Volterra bit classifier 5",
+      "spec": {
+        "name": "Volterra bit classifier 5",
+        "parameters": 756,
+        "multiplications": 871,
+        "nonlinear_evaluations": 0,
+        "comparisons": 6,
+        "validation_ber": 0.00265026502650265,
+        "order": 5,
+        "ridge": 1e-06,
+        "fit": {
+          "iterations": 300,
+          "converged": false
+        },
+        "neural": false
+      }
+    },
+    {
+      "name": "Volterra regression 7",
+      "spec": {
+        "name": "Volterra regression 7",
+        "parameters": 660,
+        "multiplications": 983,
+        "nonlinear_evaluations": 0,
+        "comparisons": 6,
+        "validation_ber": 0.0022502250225022503,
+        "order": 7,
+        "ridge": 1e-05,
+        "neural": false
+      }
+    },
+    {
+      "name": "RBF kernel bit classifier 16",
+      "spec": {
+        "name": "RBF kernel bit classifier 16",
+        "parameters": 166,
+        "multiplications": 208,
+        "nonlinear_evaluations": 16,
+        "comparisons": 6,
+        "validation_ber": 0.18315164849818316,
+        "centers": 16,
+        "bandwidth": 0.25,
+        "ridge": 1e-06,
+        "fit": {
+          "iterations": 300,
+          "converged": false
+        },
+        "neural": false
+      }
+    },
+    {
+      "name": "RBF kernel bit classifier 64",
+      "spec": {
+        "name": "RBF kernel bit classifier 64",
+        "parameters": 646,
+        "multiplications": 832,
+        "nonlinear_evaluations": 64,
+        "comparisons": 6,
+        "validation_ber": 0.12426242624262426,
+        "centers": 64,
+        "bandwidth": 4.0,
+        "ridge": 1e-06,
+        "fit": {
+          "iterations": 300,
+          "converged": false
+        },
+        "neural": false
+      }
+    },
+    {
+      "name": "RBF kernel bit classifier 256",
+      "spec": {
+        "name": "RBF kernel bit classifier 256",
+        "parameters": 2566,
+        "multiplications": 3328,
+        "nonlinear_evaluations": 256,
+        "comparisons": 6,
+        "validation_ber": 0.011801180118011801,
+        "centers": 256,
+        "bandwidth": 4.0,
+        "ridge": 1e-06,
+        "fit": {
+          "iterations": 300,
+          "converged": false
+        },
+        "neural": false
+      }
+    }
+  ]
+}
