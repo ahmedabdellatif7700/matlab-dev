@@ -1,5 +1,9 @@
 function data = make_suite_dataset(cfg, seed, condition)
 %MAKE_SUITE_DATASET Independent train/validation/test waveform realizations.
+if cfg.scenario == 4
+    data = mmw.make_multiuser_dataset(cfg, seed, condition);
+    return;
+end
 data = struct(); names = ["train" "validation" "test"];
 counts = [cfg.train_symbols cfg.validation_symbols cfg.test_symbols];
 for part = 1:3

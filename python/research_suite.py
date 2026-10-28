@@ -213,6 +213,51 @@ def run(path, output):
         np.savetxt(output/f'history_{kind}.csv', history, delimiter=',',
                    header='iteration,training_mse,validation_mse,alpha,phase', comments='')
         fits[name] = info
+    if users > 1:
+        feature_user = data['feature_user'].ravel().astype(int)
+        if feature_user.shape != (x.shape[1]//2,):
+            raise ValueError('Missing individual-user observation mapping')
+        individual = dict(cfg)
+        individual['nn_hidden_size'] = cfg['individual_hidden_size']
+        methods = {'Individual FFE': np.zeros_like(reference)}
+        totals = {'Individual FFE': [0, 0, 0]}
+        for degree in (3, 5):
+            methods[f'Individual Volterra {degree}'] = np.zeros(data['Y_test'].shape, dtype=float)
+            totals[f'Individual Volterra {degree}'] = [0, 0, 0]
+        for kind in dict.fromkeys(activations):
+            methods['Individual NN '+kind.replace('_', ' ')] = np.zeros_like(data['Y_test'], dtype=float)
+            totals['Individual NN '+kind.replace('_', ' ')] = [0, 0, 0]
+        for u in range(users):
+            ci = np.flatnonzero(feature_user == u+1)
+            ri = np.column_stack((2*ci, 2*ci+1)).ravel()
+            target = y[:, 2*u:2*u+2]; val_target = vy[:, 2*u:2*u+2]
+            w = np.linalg.lstsq(cx[:, ci], cy[:, u], rcond=None)[0]
+            methods['Individual FFE'][:, u] = ct[:, ci]@w
+            totals['Individual FFE'][0] += 2*w.size; totals['Individual FFE'][1] += 4*w.size
+            np.savez(output/f'individual_ffe_user{u+1}.npz', weights=w, complex_columns=ci)
+            for degree in (3, 5):
+                poly = PolynomialRegressor(degree).fit(x[:, ri], target, vx[:, ri], val_target, cfg['ridge_grid'])
+                name = f'Individual Volterra {degree}'
+                methods[name][:, 2*u:2*u+2] = poly.predict(tx[:, ri])
+                totals[name][0] += poly.parameter_count; totals[name][1] += poly.multiplications
+                poly.save(output/f'individual_volterra{degree}_user{u+1}.npz')
+            for kind in dict.fromkeys(activations):
+                net, mean, scale, history, info = fit_nn(x[:, ri], target, vx[:, ri], val_target,
+                                                       individual, seed, kind, condition['ModOrder'])
+                with torch.no_grad():
+                    predicted = net(torch.from_numpy(np.asarray((tx[:, ri]-mean)/scale, dtype=np.float32))).numpy()
+                name = 'Individual NN '+kind.replace('_', ' ')
+                methods[name][:, 2*u:2*u+2] = predicted
+                totals[name][0] += sum(p.numel() for p in net.parameters())
+                totals[name][1] += individual['nn_hidden_size']*(len(ri)+2)
+                totals[name][2] += individual['nn_hidden_size']+(2 if kind=='multilevel' else 0)
+                fits[name+f' user{u+1}'] = info
+                torch.save(dict(state_dict=net.state_dict(), mean=mean, scale=scale, info=info,
+                                input_columns=ri), output/f'individual_nn_{kind}_user{u+1}.pt')
+                np.savetxt(output/f'history_individual_user{u+1}_{kind}.csv', history, delimiter=',',
+                           header='iteration,training_mse,validation_mse,alpha,phase', comments='')
+        for name, prediction in methods.items():
+            record(name, prediction, *totals[name])
     with (output/'metrics.csv').open('w', newline='') as stream:
         writer = csv.DictWriter(stream, fieldnames=list(rows[0])); writer.writeheader(); writer.writerows(rows)
     manifest = dict(configuration=cfg, condition=condition, seed=seed, fits=fits, skipped=skipped,

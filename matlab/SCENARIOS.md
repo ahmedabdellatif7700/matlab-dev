@@ -128,3 +128,60 @@ Song et al., JLT 2024, DOI `10.1109/JLT.2024.3416046`, uses SSB to avoid
 dispersion fading; its 28 GHz / 10 km experiment is a different operating
 point. This comparison demonstrates the mechanism at the project's 60 GHz
 carrier rather than copying its optical power or BER curves.
+
+## Scenario 4: joint multiuser SC-FDMA equalization
+
+Four independent 16-QAM users use localized DFT-spread OFDM with 16-point
+DFT spreading, a 256-point IFFT and 32-sample cyclic prefix. The sample rate
+is 4 GHz. Each user occupies 250 MHz; guards of 0/4/12 bins correspond to
+0/62.5/187.5 MHz. This is a 60 GHz complex-envelope uplink aggregation study,
+not an exact replication of the paper's 66.7 Mbit/s/user waveform.
+
+Each branch has an illustrative RF PA (3/6/9/12 dB backoff by user), known
+branch drive-gain normalization before aggregation, and user-specific linear
+RF memory shorter than the cyclic prefix. A shared quadrature MZM processes
+the *sum* of the branch waveforms at drive indices 0.3/0.7/1.1/1.5. Its
+nonlinearity creates cross-user terms that cannot be modeled by adding
+independently distorted users afterward. Fiber loss is normalized; optical
+dispersion, Kerr effects and phase noise are excluded in this scenario.
+
+Receiver FFTs and subcarrier de-mapping are followed by a per-bin linear
+channel estimate fitted **only to the training partition's known payload**.
+That estimate is frozen for validation and test, then followed by inverse
+DFT spreading. This is supervised front-end calibration; its training cost
+is shared by every post-equalizer. No validation/test payload labels enter
+the channel estimate. Noise is fixed at 28 dB active-subcarrier Es/N0 at
+unit MZM drive; it is not normalized to received signal power.
+
+Every post-equalizer sees current/previous symbols within each DFT-spread
+block; windows never cross block boundaries. Joint methods observe both taps
+from all four users (16 real inputs, eight real outputs); individual methods
+observe only their own two complex taps. Individual and joint FFE, Volterra,
+and NN receivers are compared, so access to other users is not confused with
+an exclusively neural benefit. Joint multilevel NN has 32 hidden real units;
+each individual multilevel NN has 12. Hidden and output activations use the
+same four-level function as Scenario 2.
+
+The joint full cubic polynomial has 968 nonconstant features. Full joint
+fifth order would require 20,348, exceeding the predeclared 1,000-feature
+budget; it is explicitly listed as *not evaluated* in manifests, never counted
+as a failed receiver. Individual cubic and fifth-order models are evaluated.
+All computation/parameter counts are totals for recovering all users, not
+silently divided per user. Per-user and aggregate BER are saved separately.
+
+Independent bursts contain 256/64/512 SC-FDMA blocks for training/validation/
+test; each contributes 15 supervised symbols per user after windowing.
+Three replicate seeds are used. Tests verify nonoverlapping allocations,
+guard spacing, the noiseless roundtrip, unity training channel estimate,
+within-block windows and repeatability. Spectra show shared-link regrowth;
+guard bands can reduce adjacent leakage but cannot eliminate all inter-user
+cross-modulation.
+
+```sh
+matlab -batch "addpath('matlab'); c=mmw.suite_config(4); mmw.run_suite(c);"
+matlab -batch "addpath('matlab'); r=runtests('matlab/test_multiuser_scenario.m'); assertSuccess(r);"
+```
+
+Reference: Liu et al., OFC 2018, DOI `10.1364/OFC.2018.W4B.3`. The paper
+motivates joint versus individual processing; it does not justify giving
+only the neural receiver access to the interfering users.

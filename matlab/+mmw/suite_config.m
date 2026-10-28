@@ -30,6 +30,16 @@ cfg.fiber_lengths_km = [0 0.5 0.9 1.02 1.15 1.5];
 if scenario == 3
     cfg.tap_offsets = [0 1 -1]; cfg.equalizer_taps = 3;
     cfg.report_condition = "DSB_pa1_L090";
+elseif scenario == 4
+    cfg.train_symbols = 4096; cfg.validation_symbols = 1024; cfg.test_symbols = 8192;
+    cfg.nn_hidden_size = 32; cfg.individual_hidden_size = 12;
+    cfg.activations = "multilevel";
+    cfg.baseline_name = "Training LS front-end";
+    cfg.multi_users = 4; cfg.multi_dft = 16; cfg.multi_fft = 256; cfg.multi_cp = 32;
+    cfg.multi_sample_rate_hz = 4e9;
+    cfg.multi_guards = [0 4 12]; cfg.multi_drive = [0.3 0.7 1.1 1.5];
+    cfg.multi_user_backoff = [3 6 9 12];
+    cfg.report_condition = "guard4_drive110";
 elseif scenario ~= 2
     error("This scenario is not implemented yet.");
 end

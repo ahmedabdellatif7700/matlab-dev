@@ -3,7 +3,7 @@ function conditions = suite_conditions(cfg)
 template = struct("Condition", "", "Group", "", "Axis", 0, "XLabel", "", ...
     "ModOrder", 16, "Memory", false, "Drive", 1, "SNR", 30, ...
     "Enabled", true, "ActivationStudy", false, "Sideband", "DSB", ...
-    "Fiber_km", 0, "Backoff", 3);
+    "Fiber_km", 0, "Backoff", 3, "Guard", 4);
 rows = repmat(template, 0, 1);
 if cfg.scenario == 2
     for order = [16 64]
@@ -43,6 +43,20 @@ elseif cfg.scenario == 3
             end
         end
     end
+elseif cfg.scenario == 4
+    for guard = cfg.multi_guards
+        row = template; row.Guard = guard; row.SNR = 28;
+        row.Group = sprintf("SC-FDMA, guard=%d bins", guard);
+        row.XLabel = "Common MZM envelope drive index";
+        for drive = cfg.multi_drive
+            row.Drive = drive; row.Axis = drive;
+            row.Condition = sprintf("guard%d_drive%03d", guard, round(100*drive));
+            rows(end+1) = row; %#ok<AGROW>
+        end
+    end
+    row = template; row.Enabled = false; row.SNR = Inf; row.Group = "Control";
+    row.XLabel = "Linear noiseless control"; row.Condition = "linear_noiseless";
+    rows(end+1) = row;
 else
     error("Unimplemented scenario.");
 end
