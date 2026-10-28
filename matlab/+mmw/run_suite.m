@@ -22,6 +22,9 @@ mkdir(run_dir); source = fullfile(run_dir, "source"); mkdir(source);
 copyfile(fullfile(cfg.root, "matlab", "+mmw"), fullfile(source, "+mmw"));
 copyfile(fullfile(cfg.root, "python", "research_suite.py"), source);
 copyfile(fullfile(cfg.root, "python", "scenario_benchmark.py"), source);
+copyfile(fullfile(cfg.root, "python", "config.py"), source);
+copyfile(fullfile(cfg.root, "python", "activations"), fullfile(source, "activations"));
+copyfile(fullfile(cfg.root, "python", "hardware"), fullfile(source, "hardware"));
 [~, revision] = system(sprintf('git -C "%s" rev-parse HEAD', cfg.root));
 cfg.git_revision = string(strtrim(revision)); cfg.validated_before_commit = true;
 save(fullfile(run_dir, "configuration.mat"), "cfg");
@@ -38,13 +41,14 @@ for seed = cfg.seeds
         fprintf("\nScenario %d | seed %d | %s | %d/%d\n", cfg.scenario, seed, condition.Condition, c, height(conditions));
         command = sprintf(['env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 ' ...
             '"%s" -B "%s" --dataset "%s" --output "%s"'], cfg.python_exe, ...
-            fullfile(cfg.root, "python", "research_suite.py"), dataset, folder);
+            fullfile(source, "research_suite.py"), dataset, folder);
         [status, output] = system(command, "-echo");
         write_text(fullfile(folder, "console.txt"), output);
         assert(status == 0, "Receiver failed; see %s", folder);
     end
 end
 mmw.plot_suite_results(run_dir, cfg);
+if cfg.scenario == 3, mmw.plot_optical_response(cfg, run_dir); end
 write_text(fullfile(run_dir, "COMPLETE"), "All operating points and independent metric checks passed.");
 end
 

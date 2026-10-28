@@ -7,7 +7,7 @@ close all;
 
 matlab_dir = fileparts(mfilename("fullpath"));
 addpath(matlab_dir);
-scenario = 2; % 1: RF driver; 2: MZM compression and adaptive activations.
+scenario = 3; % 1: RF driver; 2: MZM; 3: combined RF/optical DSB and SSB.
 if scenario == 1
     cfg = mmw.scenario_config();
 else

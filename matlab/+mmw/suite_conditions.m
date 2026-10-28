@@ -2,7 +2,8 @@ function conditions = suite_conditions(cfg)
 %SUITE_CONDITIONS Predeclare the operating points before fitting receivers.
 template = struct("Condition", "", "Group", "", "Axis", 0, "XLabel", "", ...
     "ModOrder", 16, "Memory", false, "Drive", 1, "SNR", 30, ...
-    "Enabled", true, "ActivationStudy", false);
+    "Enabled", true, "ActivationStudy", false, "Sideband", "DSB", ...
+    "Fiber_km", 0, "Backoff", 3);
 rows = repmat(template, 0, 1);
 if cfg.scenario == 2
     for order = [16 64]
@@ -27,6 +28,20 @@ if cfg.scenario == 2
         row.Axis = snr; row.SNR = snr; row.Drive = 1;
         row.Condition = sprintf("bpsk_snr%d", snr); row.ActivationStudy = true;
         rows(end+1) = row; %#ok<AGROW>
+    end
+elseif cfg.scenario == 3
+    for sideband = ["DSB" "SSB"]
+        for pa = [false true]
+            row = template; row.Sideband = sideband; row.Enabled = pa;
+            row.Group = sprintf("%s, RF PA=%d", sideband, pa);
+            row.XLabel = "Fiber length (km)"; row.SNR = 30;
+            row.Drive = 10^(-row.Backoff/20);
+            for length_km = cfg.fiber_lengths_km
+                row.Fiber_km = length_km; row.Axis = length_km;
+                row.Condition = sprintf("%s_pa%d_L%03d", sideband, pa, round(100*length_km));
+                rows(end+1) = row; %#ok<AGROW>
+            end
+        end
     end
 else
     error("Unimplemented scenario.");

@@ -22,5 +22,15 @@ cfg.mzm_bias_over_vpi = 0.5;
 cfg.report_condition = "qam16_mem0_drive100";
 cfg.memory_coefficient = 0.2*exp(1j*pi/5);
 cfg.memory_coefficient = [real(cfg.memory_coefficient) imag(cfg.memory_coefficient)];
-assert(scenario == 2, "This scenario is not implemented yet.");
+cfg.tap_offsets = [0 -1];
+cfg.optical_wavelength_m = 1550e-9;
+cfg.dispersion_ps_nm_km = 17;
+cfg.fft_guard_samples = 4096;
+cfg.fiber_lengths_km = [0 0.5 0.9 1.02 1.15 1.5];
+if scenario == 3
+    cfg.tap_offsets = [0 1 -1]; cfg.equalizer_taps = 3;
+    cfg.report_condition = "DSB_pa1_L090";
+elseif scenario ~= 2
+    error("This scenario is not implemented yet.");
+end
 end

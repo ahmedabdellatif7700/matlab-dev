@@ -4,10 +4,12 @@ data = struct(); names = ["train" "validation" "test"];
 counts = [cfg.train_symbols cfg.validation_symbols cfg.test_symbols];
 for part = 1:3
     [rx, tx, diagnostic] = single_carrier(cfg, condition, counts(part), seed+100000*part);
-    indices = (cfg.equalizer_taps:counts(part)).';
+    if isfield(cfg, "tap_offsets"), offsets = cfg.tap_offsets;
+    else, offsets = 0:-1:1-cfg.equalizer_taps; end
+    indices = (1-min(offsets):counts(part)-max(offsets)).';
     x = zeros(numel(indices), 2*cfg.equalizer_taps, "single");
     for tap = 1:cfg.equalizer_taps
-        samples = rx(indices-tap+1);
+        samples = rx(indices+offsets(tap));
         x(:, 2*tap-1) = single(real(samples)); x(:, 2*tap) = single(imag(samples));
     end
     data.("X_"+names(part)) = x;
@@ -33,7 +35,13 @@ up(1:cfg.samples_per_symbol:end) = symbols;
 wave = conv(up, h, "full");
 ideal = qammod((0:condition.ModOrder-1).', condition.ModOrder, "gray");
 energy = mean(abs(ideal).^2); reference_power = energy/cfg.samples_per_symbol;
-if condition.Enabled
+if cfg.scenario == 3
+    wave = condition.Drive*wave;
+    if condition.Enabled
+        wave = mmw.pa_envelope(wave, reference_power, cfg.pa_smoothness, cfg.pa_phase_limit_deg);
+    end
+    wave = mmw.optical_fading(wave, cfg, condition.Sideband, condition.Fiber_km, cfg.fft_guard_samples);
+elseif condition.Enabled
     wave = mmw.mzm_envelope(wave, condition.Drive, reference_power);
 else
     wave = condition.Drive*wave;

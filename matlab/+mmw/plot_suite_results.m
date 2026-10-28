@@ -56,6 +56,7 @@ users = unique(pooled.user); display_user = min(users);
 display = pooled(pooled.user == display_user, :);
 groups = unique(display.Group, "stable"); groups(groups == "Control") = [];
 methods = unique(all.method, "stable"); colors = lines(numel(methods));
+if numel(methods) > 7, colors(8:end, :) = 0.6*colors(8:end, :); end
 folder = fullfile(run_dir, "figures"); if ~isfolder(folder), mkdir(folder); end
 for metric = ["evm_percent" "ber"]
     fig = figure("Visible", cfg.visible, "Color", "w", "Position", [50 50 1400 850]);

@@ -81,3 +81,50 @@ PTL 2017, DOI `10.1109/LPT.2017.2753174`. The ideal cosine transfer is also
 documented in the [OptiCommPy physical models](https://opticommpy.readthedocs.io/en/latest/models.html).
 These references motivate the model and experiment; device parameters are
 illustrative and experimental curves are not copied or claimed reproduced.
+
+## Scenario 3: RF nonlinearity plus DSB/SSB dispersion fading
+
+The 60 GHz link now compares small-signal optical double sideband and single
+sideband transport, with the electrical RF driver either linear or nonlinear
+(fixed 3 dB backoff). The optical modulator is deliberately linearized: the
+large-signal MZM model in Scenario 2 is **not** blindly cascaded with a
+small-signal optical transfer and presented as full nonlinear optical physics.
+
+For D=17 ps/(nm km), lambda=1550 nm and kappa=pi*D*lambda^2*L/c in SI units,
+
+```
+H_DSB(f) = cos(kappa*(fc+f)^2)
+H_SSB(f) = exp(j*kappa*f^2)
+```
+
+The SSB response removes the known carrier phase and linear group delay from
+the single optical sideband/carrier beat, leaving residual dispersive phase.
+Its magnitude is unity; DSB has power-fading nulls. The first 60 GHz carrier
+null occurs at approximately 1.019 km. Lengths 0, 0.5, 0.9, 1.02, 1.15 and
+1.5 km straddle this null. Zero-guarded FFT convolution uses 4096 samples on
+each side. Tests verify zero-length identity, unity SSB magnitude, the DSB
+null location and guard convergence on a bandlimited burst.
+
+Noise is fixed relative to the uncompressed zero-backoff link (30 dB), and
+does not decrease when DSB fading attenuates the signal. Known drive gain is
+removed after matched filtering. Fiber attenuation, EDFA noise, chirp, Kerr
+nonlinearity and phase noise are excluded to isolate fading versus RF
+compression. There is no arbitrary gain correction fitted on test targets.
+
+All receivers have three complex observations ordered current, next, previous,
+with one symbol of buffering latency. The six real inputs and 24 hidden NN
+units are research architectures, separate from the fixed hardware network.
+Full fifth-order Volterra has 461 nonconstant features within the declared
+1000-feature budget. Model selection and test isolation match Scenario 2.
+Deep DSB fading and resulting noise enhancement can limit every receiver;
+linear dispersion alone is not evidence that neural processing is necessary.
+
+```sh
+matlab -batch "addpath('matlab'); c=mmw.suite_config(3); mmw.run_suite(c);"
+matlab -batch "addpath('matlab'); r=runtests('matlab/test_optical_scenario.m'); assertSuccess(r);"
+```
+
+Song et al., JLT 2024, DOI `10.1109/JLT.2024.3416046`, uses SSB to avoid
+dispersion fading; its 28 GHz / 10 km experiment is a different operating
+point. This comparison demonstrates the mechanism at the project's 60 GHz
+carrier rather than copying its optical power or BER curves.
