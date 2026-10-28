@@ -1,4 +1,6 @@
 import csv
+import copy
+import math
 from pathlib import Path
 
 import numpy as np
@@ -40,7 +42,7 @@ from hardware.q8_8_inference_arithmetic import (
 # Shared configuration remains available as equalizer.<SETTING> for the
 # existing SGD vector exporter and any research scripts that import it.
 from config import (
-    ROOT, DATASET_PATH, ONNX_FP32_OUTPUT_PATH, SOFTWARE_Q8_8_OUTPUT_PATH, ARTIFACT_DIR, MODEL_PATH,
+    HIDDEN_SIZES, EXPORT_FIXED_POINT, ROOT, DATASET_PATH, ONNX_FP32_OUTPUT_PATH, SOFTWARE_Q8_8_OUTPUT_PATH, ARTIFACT_DIR, MODEL_PATH,
     QUANT_PATH, INFERENCE_DIR, SOFTWARE_OUTPUT_PATH, TEST_INPUTS_MEM_PATH, PARAMETERS_MEM_PATH,
     MODE, ACTIVATION, SUPPORTED_ACTIVATIONS, INPUT_SIZE, HIDDEN_SIZE, OUTPUT_SIZE,
     OPTIMIZER, LEARNING_RATE, BATCH_SIZE, SHUFFLE, EPOCHS, TRAIN_RATIO, SEED,
@@ -57,36 +59,30 @@ LEVELS = 4
 # ---------------------------------------------------------------------
 
 class RealEqualizer(nn.Module):
-
-    def __init__(self):
+    """Configurable real MLP, retaining legacy fc1/fc2 parameter names."""
+    def __init__(self, input_size=None, hidden_sizes=None, output_size=None, activation=None):
         super().__init__()
+        from activations import make_activation
+        from config import HIDDEN_SIZES
+        inputs = INPUT_SIZE if input_size is None else input_size
+        outputs = OUTPUT_SIZE if output_size is None else output_size
+        widths = tuple(HIDDEN_SIZES if hidden_sizes is None else hidden_sizes)
+        name = ACTIVATION if activation is None else activation
+        if not widths or any(w < 1 for w in widths):
+            raise ValueError("hidden_sizes must contain positive widths")
+        alpha = STABLE_ALPHA if name == 'stable_alpha' else ALPHA_INITIAL
+        self.fc1 = nn.Linear(inputs, widths[0])
+        self.activation = make_activation(name, alpha=alpha)
+        self.hidden_layers = nn.ModuleList([
+            nn.Sequential(nn.Linear(a,b),make_activation(name,alpha=alpha))
+            for a,b in zip(widths[:-1],widths[1:])])
+        self.fc2 = nn.Linear(widths[-1],outputs)
 
-        self.fc1 = nn.Linear(INPUT_SIZE, HIDDEN_SIZE)
-
-        if ACTIVATION == "variable_alpha":
-            self.activation = VariableAlphaSigmoid(
-                alpha=ALPHA_INITIAL,
-            )
-        elif ACTIVATION == "sigmoid":
-            self.activation = Sigmoid()
-        elif ACTIVATION == "stable_alpha":
-            self.activation = StableAlphaSigmoid(
-                alpha=STABLE_ALPHA,
-            )
-        else:
-            raise ValueError(
-                "unsupported activation"
-            )
-
-        self.fc2 = nn.Linear(HIDDEN_SIZE, OUTPUT_SIZE)
-
-    def forward(self, x):
-
-        x = self.fc1(x)
-        x = self.activation(x)
-        x = self.fc2(x)
-
-        return x
+    def forward(self,x):
+        x = self.activation(self.fc1(x))
+        for layer in self.hidden_layers:
+            x = layer(x)
+        return self.fc2(x)
 
 
 class ComplexLinear(nn.Module):
@@ -263,13 +259,15 @@ def split_dataset(x, y):
 
 
 def validate_configuration():
-    """Fail early for configurations not covered by the unified experiment."""
+    """Validate software choices and the optional fixed-point export contract."""
     if MODE != "real":
-        raise ValueError("Only MODE='real' is supported by the unified 4-12-2 workflow")
+        raise ValueError("Use MODE='real' for the joint I/Q software equalizer")
     if ACTIVATION not in SUPPORTED_ACTIVATIONS:
         raise ValueError(f"Unsupported activation {ACTIVATION!r}; choose from {SUPPORTED_ACTIVATIONS}")
-    if (INPUT_SIZE, HIDDEN_SIZE, OUTPUT_SIZE) != (4, 12, 2):
-        raise ValueError("The current FFE experiment requires the unified 4-12-2 architecture")
+    if EXPORT_FIXED_POINT and (INPUT_SIZE, tuple(HIDDEN_SIZES), OUTPUT_SIZE) != (4, (12,), 2):
+        raise ValueError("Fixed-point export requires 4-12-2; set EXPORT_FIXED_POINT=False for arbitrary software networks")
+    if EXPORT_FIXED_POINT and ACTIVATION not in ("sigmoid","variable_alpha","stable_alpha"):
+        raise ValueError("This activation requires EXPORT_FIXED_POINT=False")
     if OPTIMIZER not in ("sgd", "adam"):
         raise ValueError("OPTIMIZER must be 'sgd' or 'adam'")
     if LEARNING_RATE <= 0 or BATCH_SIZE < 1 or EPOCHS < 1:
@@ -283,7 +281,7 @@ def validate_configuration():
 
 
 def create_model(device):
-    """Build the configured 4-12-2 model using the selected activation."""
+    """Build the configured software model using the shared activation registry."""
     return RealEqualizer().to(device)
 
 
@@ -975,7 +973,7 @@ def save_output(
 # Main
 # ---------------------------------------------------------------------
 
-def main():
+def legacy_main():
 
     validate_configuration()
     seed_training()
@@ -1044,6 +1042,14 @@ def main():
         y_test,
     )
 
+    if not EXPORT_FIXED_POINT:
+        rx_before = x_test[:,0]+1j*x_test[:,1]
+        scipy.io.savemat(ONNX_FP32_OUTPUT_PATH,dict(
+            rx_before=rx_before, tx_reference=y_test[:,0]+1j*y_test[:,1],
+            rx_equalized_onnx_fp32=floating[:,0]+1j*floating[:,1],
+            test_start=np.array([[split]],dtype=np.int32)))
+        return
+
     parameters = quantize_model(model)
 
     quantized = quantized_inference(
@@ -1101,5 +1107,133 @@ def main():
     )
 
 
-if __name__ == "__main__":
+def train_bit_equalizer(x, bits, vx, vbits, spec, *, seed=42, epochs=600, patience=60, polish=10):
+    torch.set_num_threads(1)
+    torch.manual_seed(seed)
+    torch.use_deterministic_algorithms(True)
+    mean = x.mean(axis=0, dtype=np.float64).astype(np.float32)
+    scale = np.maximum(x.std(axis=0, dtype=np.float64), 1e-6).astype(np.float32)
+    xt = torch.from_numpy(np.asarray((x-mean)/scale, dtype=np.float32))
+    vt = torch.from_numpy(np.asarray((vx-mean)/scale, dtype=np.float32))
+    yt = torch.from_numpy(np.asarray(bits, dtype=np.float32))
+    vy = torch.from_numpy(np.asarray(vbits, dtype=np.float32))
+    net = RealEqualizer(x.shape[1], spec['widths'], bits.shape[1], spec['activation'])
+    optimizer_name=spec.get('optimizer','adamw')
+    optimizers=dict(adamw=torch.optim.AdamW,adam=torch.optim.Adam,sgd=torch.optim.SGD)
+    if optimizer_name not in optimizers:
+        raise ValueError(f'Unsupported research optimizer: {optimizer_name}')
+    optimizer=optimizers[optimizer_name](net.parameters(),lr=spec['lr'],weight_decay=spec['weight_decay'])
+    best, state, best_step, history = math.inf, None, 0, []
+
+    def capture(step, loss, phase):
+        nonlocal best, state, best_step
+        with torch.no_grad():
+            logits = net(vt)
+            val = nn.functional.binary_cross_entropy_with_logits(logits, vy).item()
+            ber = (logits.ge(0) != vy.bool()).float().mean().item()
+        history.append([step, loss, val, ber, phase])
+        if val < best:
+            best, state, best_step = val, copy.deepcopy(net.state_dict()), step
+
+    for epoch in range(1, epochs+1):
+        total = 0.
+        for batch in torch.randperm(len(xt)).split(spec.get('batch_size',512)):
+            optimizer.zero_grad(set_to_none=True)
+            loss = nn.functional.binary_cross_entropy_with_logits(net(xt[batch]), yt[batch])
+            loss.backward(); optimizer.step()
+            total += loss.item()*len(batch)
+        capture(epoch, total/len(xt), 0)
+        if epoch-best_step >= patience:
+            break
+    adam_steps = len(history)
+    net.load_state_dict(state)
+    lbfgs = torch.optim.LBFGS(net.parameters(), lr=.5, max_iter=10, line_search_fn='strong_wolfe')
+    for step in range(polish):
+        def closure():
+            lbfgs.zero_grad(set_to_none=True)
+            loss = nn.functional.binary_cross_entropy_with_logits(net(xt), yt)
+            loss.backward()
+            return loss
+        loss = lbfgs.step(closure)
+        capture(adam_steps+step+1, loss.item(), 1)
+    net.load_state_dict(state); net.eval()
+    dims = [x.shape[1], *spec['widths'], bits.shape[1]]
+    hidden = sum(spec['widths'])
+    nonlinear = hidden*(3 if 'multilevel' in spec['activation'] else 1)
+    dense = sum(a*b for a,b in zip(dims[:-1], dims[1:]))
+    extra = 4*hidden if 'multilevel' in spec['activation'] else hidden if spec['activation']=='silu' else 0
+    info = dict(**spec, input_size=x.shape[1], output_bits=bits.shape[1],
+                parameters=sum(p.numel() for p in net.parameters()),
+                multiplications=dense+extra, dense_multiplications=dense,
+                activation_multiplications=extra,
+                nonlinear_evaluations=nonlinear, comparisons=bits.shape[1],
+                best_step=best_step, validation_bce=best, epochs_completed=adam_steps,
+                polish_steps=polish, seed=seed)
+    return dict(net=net, mean=mean, scale=scale, info=info, history=np.asarray(history))
+
+
+def predict_bits(model, x):
+    with torch.no_grad():
+        value = torch.from_numpy(np.asarray((x-model['mean'])/model['scale'], dtype=np.float32))
+        return model['net'](value).numpy()
+
+
+def save_checkpoint(model, path):
+    torch.save(dict(state_dict=model['net'].state_dict(), mean=torch.from_numpy(model['mean']),
+                    scale=torch.from_numpy(model['scale']), info=model['info']), path)
+
+
+def load_checkpoint(path):
+    """Restore a locally generated float checkpoint for frozen inference."""
+    torch.set_num_threads(1)
+    saved=torch.load(path,map_location='cpu',weights_only=True)
+    info=saved['info']
+    net=RealEqualizer(info['input_size'],info['widths'],info['output_bits'],info['activation'])
+    state=saved['state_dict']
+    if any(key.startswith('layers.') for key in state):
+        converted={}
+        for key,value in state.items():
+            _,number,suffix=key.split('.',2); index=int(number); block=index//2
+            if block==len(info['widths']): prefix='fc2'
+            elif block==0: prefix='fc1' if index%2==0 else 'activation'
+            else: prefix=f'hidden_layers.{block-1}.{index%2}'
+            converted[prefix+'.'+suffix]=value
+        state=converted
+    net.load_state_dict(state); net.eval()
+    return dict(net=net,mean=saved['mean'].numpy(),scale=saved['scale'].numpy(),info=info)
+
+
+def main():
+    """Preserve no-argument legacy launch; research uses this same entry point."""
+    import argparse
+    from config import WORKFLOW, RESEARCH_RUN_DIR, RESEARCH_PHASE
+    parser=argparse.ArgumentParser(description="MATLAB/Python neural equalizer")
+    parser.add_argument('--workflow',choices=['legacy','research'],default=WORKFLOW)
+    parser.add_argument('--run',type=Path,default=RESEARCH_RUN_DIR)
+    parser.add_argument('--phase',choices=['discovery','extended-search','confirmation','report','snr-sweep'],default=RESEARCH_PHASE)
+    parser.add_argument('--only',nargs='+')
+    args=parser.parse_args()
+    if args.workflow=='legacy' and args.run is None:
+        legacy_main()
+        return
+    if args.run is None:
+        parser.error('Set RESEARCH_RUN_DIR in config.py or pass --run')
+    if args.phase=='discovery':
+        from tuning.pipeline import design
+        design(args.run,args.only)
+    elif args.phase=='extended-search':
+        from tuning.extended_search import search
+        search(args.run)
+    elif args.phase=='confirmation':
+        from tuning.confirmation import confirm
+        confirm(args.run)
+    elif args.phase=='snr-sweep':
+        from tuning.snr_sweep import evaluate
+        evaluate(args.run)
+    else:
+        from tuning.report import report
+        report(args.run,args.run/'report')
+
+
+if __name__ == '__main__':
     main()

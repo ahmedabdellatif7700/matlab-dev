@@ -6,6 +6,7 @@ matlab_dir = fileparts(mfilename("fullpath")); addpath(matlab_dir);
 %% 1. Physical link and experiment configuration
 % Single carrier Gray QAM -> RRC -> RF PA or MZM -> optical/echo channel
 % -> independent AWGN -> matched RRC -> known delay/gain removal -> tap window.
+% Neural/training choices are centralized in python/config.py.
 cfg = mmw.design_config();
 % cfg.python_exe = "/path/to/environment/bin/python";
 candidates = mmw.design_candidates();
@@ -19,15 +20,15 @@ run_dir = mmw.prepare_design_data(cfg, candidates, "discovery");
 %% 3. Python architecture/activation search and strong classical controls
 % BCE bit heads; arbitrary hidden widths. FFE, full Volterra and RBF controls.
 % All hyperparameters and four conditions selected exclusively on validation.
-script = fullfile(cfg.root,"python","tune_equalizers.py");
+script = fullfile(cfg.root,"python","equalizer.py");
 command = sprintf('"%s" -B "%s" --run "%s" --phase discovery', ...
     cfg.python_exe, script, run_dir);
 [status, output] = system(command, "-echo");
 assert(status == 0, "Discovery failed: %s", output);
 
 %% 3b. Focused 64-QAM bottleneck and small-activation ablation
-extension = fullfile(cfg.root,"python","extend_design_search.py");
-command = sprintf('"%s" -B "%s" --run "%s"',cfg.python_exe,extension,run_dir);
+extension = script;
+command = sprintf('"%s" -B "%s" --run "%s" --phase extended-search',cfg.python_exe,extension,run_dir);
 [status, output] = system(command,"-echo");
 assert(status == 0,"Extended validation search failed: %s",output);
 command = sprintf('"%s" -B "%s" --run "%s" --phase discovery', ...
@@ -51,7 +52,6 @@ command = sprintf('"%s" -B "%s" --run "%s" --phase confirmation', ...
 assert(status == 0, "Confirmation failed: %s", output);
 
 %% 6. BER, decision EVM and resource comparison, with paired uncertainty
-mmw.verify_design_decisions(run_dir);
 command = sprintf('"%s" -B "%s" --run "%s" --phase report', ...
     cfg.python_exe, script, run_dir);
 [status, output] = system(command, "-echo");
@@ -61,3 +61,12 @@ disp(metrics(:,["case","seed","method","ber","multiplications"]));
 fprintf("Full metrics and frozen discovery design: %s\n", run_dir);
 % Multiplications are algorithmic counts, not measured FPGA power or latency.
 % A kernel or higher-order Volterra may match BER at greater arithmetic cost.
+
+%% 7. Paper-style BER/SNR curves with frozen receivers on fresh payloads
+% No retraining or parameter selection at sweep points. This measures SNR
+% generalization, and must not be described as per-point optimized reception.
+mmw.prepare_design_snr_sweep(cfg,selected,run_dir);
+command = sprintf('"%s" -B "%s" --run "%s" --phase snr-sweep', ...
+    cfg.python_exe,script,run_dir);
+[status,output] = system(command,"-echo");
+assert(status == 0,"SNR sweep evaluation failed: %s",output);

@@ -71,6 +71,8 @@ MATLAB's `test_inputs.mem`.
 
 ## Flexible bitwise equalizer design
 
-`../matlab/main.m` now orchestrates discovery and independent confirmation through `tune_equalizers.py` and `tuning/`. Network widths and activations are unrestricted by the legacy FPGA 4–12–2 topology. The search catalog includes tanh, SiLU, softsign and fixed/learned smooth multilevel activations. No scikit-learn dependency is needed.
+`../matlab/main.m` now orchestrates discovery and independent confirmation through the existing `equalizer.py` entry point, with experiment orchestration in `tuning/`. Network widths and activations are unrestricted by the legacy FPGA 4–12–2 topology. The search catalog includes tanh, SiLU, softsign and fixed/learned smooth multilevel activations. No scikit-learn dependency is needed.
 
-Run `python -B tune_equalizers.py --run <generated-run-directory> --phase discovery`, then `--phase confirmation` only after MATLAB creates fresh confirmation data, followed by `--phase report`. Discovery can resume completed candidates. Read `../matlab/DESIGN_STUDY.md` for target locking, conventional controls, resource accounting and limitations. Legacy quantized inference is a separate implementation; the new arbitrary bit networks are floating point and have not been exported to FPGA.
+Run `python -B equalizer.py --run <generated-run-directory> --phase discovery`, then `--phase confirmation` only after MATLAB creates fresh confirmation data, followed by `--phase report`. Discovery can resume completed candidates. Read `../matlab/DESIGN_STUDY.md` for target locking, conventional controls, resource accounting and limitations. Legacy quantized inference is a separate implementation; the new arbitrary bit networks are floating point and have not been exported to FPGA.
+
+Set widths and activation candidates in `config.py`; the shared model is `RealEqualizer` in `equalizer.py`, and activation implementations are in `activations/`. The no-argument legacy MATLAB launch and its parameter names are preserved. Research data uses MAT `X`/`Y` arrays plus split counts. No separate verification entry point is required.

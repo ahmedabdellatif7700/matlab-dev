@@ -5,9 +5,11 @@ if nargin < 4
     assert(~isfolder(run_dir), "Refusing to overwrite %s", run_dir);
     mkdir(run_dir); mkdir(fullfile(run_dir, "source"));
     copyfile(fullfile(cfg.root, "python", "tuning"), fullfile(run_dir, "source", "tuning"));
-    copyfile(fullfile(cfg.root, "python", "tune_equalizers.py"), fullfile(run_dir, "source"));
+    copyfile(fullfile(cfg.root, "python", "equalizer.py"), fullfile(run_dir, "source"));
     copyfile(fullfile(cfg.root, "matlab", "+mmw"), fullfile(run_dir, "source", "+mmw"));
-    copyfile(fullfile(cfg.root, "python", "extend_design_search.py"), fullfile(run_dir, "source"));
+    copyfile(fullfile(cfg.root,"python","config.py"),fullfile(run_dir,"source"));
+    copyfile(fullfile(cfg.root,"python","activations"),fullfile(run_dir,"source","activations"));
+    copyfile(fullfile(cfg.root,"python","hardware"),fullfile(run_dir,"source","hardware"));
     copyfile(fullfile(cfg.root, "matlab", "main.m"), fullfile(run_dir, "source"));
     writetable(cases, fullfile(run_dir, "candidates.csv"));
     save(fullfile(run_dir, "configuration.mat"), "cfg");
@@ -22,7 +24,8 @@ else
 end
 for seed = seeds
     for c = 1:height(cases)
-        condition = table2struct(cases(c, :)); data = struct();
+        condition = table2struct(cases(c, :));
+        data = struct("X",[],"Y",[],"split_counts",zeros(1,numel(names)));
         for p = 1:numel(names)
             [rx, tx] = mmw.design_burst(cfg, condition, counts(p), seed+100000*p);
             offsets = cfg.tap_offsets;
@@ -32,8 +35,9 @@ for seed = seeds
                 value = rx(keep+offsets(tap));
                 x(:, 2*tap-1) = single(real(value)); x(:, 2*tap) = single(imag(value));
             end
-            data.("X_"+names(p)) = x;
-            data.("Y_"+names(p)) = single([real(tx(keep)) imag(tx(keep))]);
+            data.X = [data.X; x];
+            data.Y = [data.Y; single([real(tx(keep)) imag(tx(keep))])];
+            data.split_counts(p) = numel(keep);
         end
         data.ideal_symbols = qammod((0:condition.ModOrder-1).', condition.ModOrder, "gray");
         data.ideal_bits = de2bi((0:condition.ModOrder-1).', log2(condition.ModOrder), "left-msb");

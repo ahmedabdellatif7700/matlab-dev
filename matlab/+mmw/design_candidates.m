@@ -42,5 +42,11 @@ for length_km = [0.3 0.5]
     c.Optical = true; c.Fiber_km = length_km; c.Reference_SNR_dB = 44;
     rows(end+1) = c; %#ok<AGROW>
 end
+for backoff = [3 6]
+    c = row; c.ID = sprintf("pa64_DSB_ibo%d_snr44",backoff);
+    c.Family = "RFPA64_DSB"; c.ModOrder = 64; c.PA = true; c.AMPM_deg = 40;
+    c.Backoff_dB = backoff; c.Optical = true; c.Fiber_km = 0.3;
+    c.Reference_SNR_dB = 44; rows(end+1) = c; %#ok<AGROW>
+end
 cases = struct2table(rows);
 end

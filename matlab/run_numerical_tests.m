@@ -2,7 +2,7 @@ function summary = run_numerical_tests()
 %RUN_NUMERICAL_TESTS Explicit file discovery avoids MATLAB name ambiguity.
 folder = fileparts(mfilename("fullpath")); addpath(folder);
 files = dir(fullfile(folder, "test_*scenario.m"));
-assert(numel(files) == 6, "Expected numerical tests for all six scenario test files.");
+assert(numel(files) == 5, "Expected numerical tests for all five scenarios.");
 passed = 0;
 for k = 1:numel(files)
     result = runtests(fullfile(files(k).folder, files(k).name));

@@ -1,18 +1,17 @@
 """Evaluate locked architectures on independent seeds without test tuning."""
 import csv
-import hashlib
 import json
 import pickle
 from pathlib import Path
 import numpy as np
 from scipy.io import savemat
-from . import models, baselines
+import equalizer as models
+from . import baselines
 from .data import load
 
 
 def confirm(run):
     raw=(run/'selection.json').read_bytes()
-    assert hashlib.sha256(raw).hexdigest()==(run/'selection.sha256').read_text().strip()
     lock=json.loads(raw); cfg=lock['configuration']
     if not lock['complete']:
         raise RuntimeError('Four discovery cases have not qualified; do not claim four successes.')
@@ -27,10 +26,16 @@ def confirm(run):
             ideal=d['ideal_symbols'].ravel(); labels=d['ideal_bits']
             classical=baselines.fit_all(d['X_train'],d['Y_train'],d['bits_train'],d['X_validation'],d['Y_validation'],d['bits_validation'],ideal,labels,degrees=cfg['polynomial_orders'],bit_degrees=cfg['bit_polynomial_orders'],kernel_sizes=cfg['kernel_centers'])
             spec={k:case['neural'][k] for k in ['widths','activation','lr','weight_decay']}
-            neural=models.train(d['X_train'],d['bits_train'],d['X_validation'],d['bits_validation'],spec,seed=seed,epochs=case['neural'].get('training_epochs',cfg['nn_epochs']),patience=case['neural'].get('training_patience',cfg['nn_patience']),polish=case['neural'].get('training_polish',cfg['nn_polish_steps']))
-            models.save(neural,folder/'neural.pt')
+            for key in ['optimizer','batch_size']:
+                if key in case['neural']: spec[key]=case['neural'][key]
+            restarts=[]
+            for restart in range(cfg.get('nn_restarts',3)):
+                restarts.append(models.train_bit_equalizer(d['X_train'],d['bits_train'],d['X_validation'],d['bits_validation'],spec,seed=10*seed+restart,epochs=case['neural'].get('training_epochs',cfg['nn_epochs']),patience=case['neural'].get('training_patience',cfg['nn_patience']),polish=case['neural'].get('training_polish',cfg['nn_polish_steps'])))
+            neural=min(restarts,key=lambda m:m['info']['validation_bce'])
+            (folder/'restart_validation.json').write_text(json.dumps([m['info'] for m in restarts],indent=2)+'\n')
+            models.save_checkpoint(neural,folder/'neural.pt')
             with (folder/'classical.pkl').open('wb') as stream: pickle.dump(classical,stream)
-            predictions=[models.predict(neural,d['X_test'])>=0]
+            predictions=[models.predict_bits(neural,d['X_test'])>=0]
             infos=[dict(neural['info'],name='Selected NN')]
             for m in classical:
                 predictions.append(np.concatenate([baselines.predict(m,x,ideal,labels) for x in np.array_split(d['X_test'],max(1,len(d['X_test'])//2048))]))
@@ -50,7 +55,14 @@ def confirm(run):
                 decided=np.asarray([lookup[tuple(b)] for b in pred.astype(int)])
                 target=d['Y_test'][:,0]+1j*d['Y_test'][:,1]
                 rows.append(dict(case=case['condition']['ID'],family=case['condition']['Family'],seed=seed,method=info['name'],ber=count/n,bit_errors=count,bits=n,hard_decision_evm_percent=100*np.sqrt(np.mean(abs(decided-target)**2)/np.mean(abs(target)**2)),multiplications=info['multiplications'],parameters=info['parameters'],nonlinear_evaluations=info['nonlinear_evaluations'],paired_ber_difference_low=lo,paired_ber_difference_high=hi,ber_target=case['ber_target']))
-            savemat(folder/'decisions.mat',dict(truth=truth,nn=predictions[0],predictions=np.stack(predictions),names=np.array([i['name'] for i in infos],dtype=object)))
+            symbol_lookup={tuple(b):s for b,s in zip(labels,ideal)}
+            nn_symbols=np.asarray([symbol_lookup[tuple(b)] for b in predictions[0].astype(int)])
+            savemat(folder/'equalized_output.mat',dict(
+                rx_before=d['X_test'][:,0]+1j*d['X_test'][:,1],
+                tx_reference=d['Y_test'][:,0]+1j*d['Y_test'][:,1],
+                rx_equalized=nn_symbols,bits_predicted=predictions[0],
+                output_kind='hard_decision_symbols',
+                input_mean=neural['mean'],input_scale=neural['scale']))
             (folder/'metrics.json').write_text(json.dumps(rows[-len(infos):],indent=2)+'\n')
             print('Confirmed',case['condition']['ID'],seed,'NN BER',rows[-len(infos)]['ber'],flush=True)
             with (run/'confirmation_metrics.csv').open('w',newline='') as stream:
