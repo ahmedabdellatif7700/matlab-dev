@@ -27,3 +27,7 @@ This screen found **0 NN-only candidates** across the listed condition/user comb
 - OFDM compares pilot estimates with a known-linear-shape diagnostic. Global nonlinear ICI is not generally recoverable from only three neighboring carriers. Failure of this small post-equalizer is not a limitation of all neural OFDM receivers.
 
 See [equations, controls, caveats and reproduction commands](../SCENARIOS.md). No experimental paper curve or optical-power calibration is claimed reproduced.
+
+## Four-case flexible bitwise equalizer study
+
+The newer [four-case study](design_study/README.md) uses variable neural architectures and validation-selected activations, with 12 independent confirmation runs plus frozen-receiver SNR curves. All four cases meet the locked BER and multiplication-count criterion. This concerns resource-constrained performance, not NN-only necessity across unrestricted conventional receivers; it does not change the historical five-scenario screen above. Conditions, neural tuning parameters, baseline choices and full BER/EVM tables are included.

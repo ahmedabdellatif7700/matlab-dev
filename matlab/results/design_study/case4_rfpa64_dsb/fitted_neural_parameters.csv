@@ -1,0 +1,4 @@
+case,data_seed,selected_initialization_seed,best_step,adam_epochs,validation_bce,parameters,activation_coefficients
+pa64_DSB_ibo3_snr44,1201,12012,513,583,0.0025439998134970665,454,{}
+pa64_DSB_ibo3_snr44,1202,12022,610,600,0.002370197791606188,454,{}
+pa64_DSB_ibo3_snr44,1203,12032,610,600,0.0031380741856992245,454,{}

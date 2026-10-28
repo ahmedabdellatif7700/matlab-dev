@@ -1,0 +1,231 @@
+{
+  "root": "/home/ahmedabdellatif/dev/matlab-dev",
+  "profile": "study",
+  "visible": "off",
+  "output_root": "/home/ahmedabdellatif/dev/matlab-dev/datasets/design_study",
+  "run_id": "four_case_design_round1",
+  "python_exe": "/home/ahmedabdellatif/miniconda3/envs/machine-learning/bin/python",
+  "mod_order": 16,
+  "rf_carrier_hz": 60000000000.0,
+  "symbol_rate_hz": 1000000000.0,
+  "samples_per_symbol": 8,
+  "rrc_rolloff": 0.25,
+  "rrc_span_symbols": 24,
+  "equalizer_taps": 2,
+  "pa_smoothness": 2,
+  "pa_phase_limit_deg": 20,
+  "backoff_db": [
+    -3,
+    0,
+    3,
+    6,
+    9,
+    12
+  ],
+  "reference_snr_db": [
+    24,
+    30,
+    36
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "train_symbols": 6000,
+  "validation_symbols": 1800,
+  "test_symbols": 15000,
+  "nn_epochs": 600,
+  "nn_patience": 70,
+  "nn_batch_size": 512,
+  "nn_learning_rate": 0.003,
+  "nn_hidden_size": 24,
+  "ridge_grid": [
+    0,
+    1e-08,
+    1e-06,
+    0.0001,
+    0.01,
+    1
+  ],
+  "ber_target": 0.0038,
+  "constellation_backoff_db": 0,
+  "constellation_snr_db": 30,
+  "scenario": 2,
+  "nn_lbfgs_steps": 15,
+  "alpha_learning_rate": 0.001,
+  "polynomial_orders": [
+    1,
+    2,
+    3,
+    5,
+    7
+  ],
+  "max_polynomial_features": 2048,
+  "activations": [
+    "sigmoid",
+    "multilevel"
+  ],
+  "baseline_name": "Before EQ",
+  "mzm_drive": [
+    0.2,
+    0.6,
+    1,
+    1.4,
+    1.8
+  ],
+  "mzm_snr_db": 30,
+  "mzm_vpi": 4.4,
+  "mzm_bias_over_vpi": 0.5,
+  "report_condition": "qam16_mem0_drive100",
+  "memory_coefficient": [
+    0.1618033988749895,
+    0.11755705045849463
+  ],
+  "tap_offsets": [
+    0,
+    -1
+  ],
+  "optical_wavelength_m": 1.55e-06,
+  "dispersion_ps_nm_km": 17,
+  "fft_guard_samples": 4096,
+  "fiber_lengths_km": [
+    0,
+    0.5,
+    0.9,
+    1.02,
+    1.15,
+    1.5
+  ],
+  "discovery_seed": 501,
+  "confirmation_seeds": [
+    1201,
+    1202,
+    1203
+  ],
+  "discovery_counts": [
+    10000,
+    10000
+  ],
+  "confirmation_counts": [
+    18000,
+    6000,
+    50000
+  ],
+  "nn_polish_steps": 12,
+  "ber_targets": [
+    0.0001,
+    0.0005,
+    0.001,
+    0.0038,
+    0.01
+  ],
+  "required_cost_ratio": 1.5,
+  "bit_polynomial_orders": [
+    1,
+    2,
+    3,
+    5
+  ],
+  "kernel_centers": [
+    16,
+    64,
+    256
+  ],
+  "nn_restarts": 3,
+  "max_nn_validation_ber": 0.0038,
+  "network_catalog": [
+    {
+      "widths": [
+        4
+      ],
+      "activation": "tanh",
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "batch_size": 512,
+      "optimizer": "adamw"
+    },
+    {
+      "widths": [
+        6
+      ],
+      "activation": "tanh",
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "batch_size": 512,
+      "optimizer": "adamw"
+    },
+    {
+      "widths": [
+        8
+      ],
+      "activation": "tanh",
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "batch_size": 512,
+      "optimizer": "adamw"
+    },
+    {
+      "widths": [
+        16
+      ],
+      "activation": "tanh",
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "batch_size": 512,
+      "optimizer": "adamw"
+    },
+    {
+      "widths": [
+        24
+      ],
+      "activation": "silu",
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "batch_size": 512,
+      "optimizer": "adamw"
+    },
+    {
+      "widths": [
+        16,
+        16
+      ],
+      "activation": "tanh",
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "batch_size": 512,
+      "optimizer": "adamw"
+    },
+    {
+      "widths": [
+        16
+      ],
+      "activation": "softsign",
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "batch_size": 512,
+      "optimizer": "adamw"
+    },
+    {
+      "widths": [
+        16
+      ],
+      "activation": "multilevel",
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "batch_size": 512,
+      "optimizer": "adamw"
+    },
+    {
+      "widths": [
+        16
+      ],
+      "activation": "learned_multilevel",
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "batch_size": 512,
+      "optimizer": "adamw"
+    }
+  ],
+  "min_validation_frontier_gap": 0.0001
+}

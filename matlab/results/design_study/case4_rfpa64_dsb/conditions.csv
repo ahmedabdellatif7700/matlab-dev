@@ -1,0 +1,2 @@
+ID,Family,ModOrder,PA,Backoff_dB,AMPM_deg,MZM,MZM_drive,Optical,Sideband,Fiber_km,Echo_real,Echo_imag,Reference_SNR_dB,carrier_GHz,symbol_rate_Gbaud,rrc_rolloff,samples_per_symbol,tap_offsets,ber_target,target_origin
+pa64_DSB_ibo3_snr44,RFPA64_DSB,64,1,3,40,0,1,1,DSB,0.3,0,0,44,60.0,1.0,0.25,8,0;-1,0.001091775844251092,validation frontier midpoint

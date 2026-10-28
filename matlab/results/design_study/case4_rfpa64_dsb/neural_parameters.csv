@@ -1,0 +1,2 @@
+case,widths,activation,inputs,output_bits,parameters,multiplications,nonlinear_evaluations,loss,validation_selected_restarts,optimizer,batch_size,learning_rate,weight_decay,epochs_max,training_symbols,validation_symbols
+pa64_DSB_ibo3_snr44,"[16, 16]",tanh,4,6,454,416,32,bitwise BCE,3,adamw then LBFGS,512,0.003,0.0001,600,18000,6000
