@@ -1,0 +1,2 @@
+ID,Family,ModOrder,PA,Backoff_dB,AMPM_deg,MZM,MZM_drive,Optical,Sideband,Fiber_km,Echo_real,Echo_imag,Reference_SNR_dB,carrier_GHz,symbol_rate_Gbaud,rrc_rolloff,samples_per_symbol,tap_offsets,ber_target,target_origin
+pa16_ibo-03,RFPA16_memory,16,1,-3,40,0,1,0,DSB,0,0.176776695296637,0.176776695296637,32,60.0,1.0,0.25,8,0;-1,0.0014876487648764875,validation frontier midpoint

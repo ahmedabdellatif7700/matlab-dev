@@ -1,0 +1,76 @@
+case,seed,reference_snr_db,method,receiver_model,bit_errors,bits,ber
+pa16_ibo-03,1201,32.0,Selected NN,Selected NN,139,199996,0.0006950139002780055
+pa16_ibo-03,1201,32.0,Complex FFE,Complex FFE,1177,199996,0.005885117702354047
+pa16_ibo-03,1201,32.0,Volterra regression 3,Volterra regression 3,520,199996,0.0026000520010400208
+pa16_ibo-03,1201,32.0,Volterra regression 5,Volterra regression 5,254,199996,0.0012700254005080102
+pa16_ibo-03,1201,32.0,Classical best (validation),Volterra regression 7,200,199996,0.001000020000400008
+pa16_ibo-03,1201,35.0,Selected NN,Selected NN,111,199996,0.0005550111002220044
+pa16_ibo-03,1201,35.0,Complex FFE,Complex FFE,1102,199996,0.005510110202204044
+pa16_ibo-03,1201,35.0,Volterra regression 3,Volterra regression 3,480,199996,0.002400048000960019
+pa16_ibo-03,1201,35.0,Volterra regression 5,Volterra regression 5,212,199996,0.0010600212004240085
+pa16_ibo-03,1201,35.0,Classical best (validation),Volterra regression 7,182,199996,0.0009100182003640072
+pa16_ibo-03,1201,38.0,Selected NN,Selected NN,102,199996,0.0005100102002040041
+pa16_ibo-03,1201,38.0,Complex FFE,Complex FFE,1062,199996,0.0053101062021240425
+pa16_ibo-03,1201,38.0,Volterra regression 3,Volterra regression 3,467,199996,0.0023350467009340186
+pa16_ibo-03,1201,38.0,Volterra regression 5,Volterra regression 5,199,199996,0.0009950199003980079
+pa16_ibo-03,1201,38.0,Classical best (validation),Volterra regression 7,173,199996,0.0008650173003460069
+pa16_ibo-03,1201,29.0,Selected NN,Selected NN,189,199996,0.0009450189003780076
+pa16_ibo-03,1201,29.0,Complex FFE,Complex FFE,1338,199996,0.006690133802676053
+pa16_ibo-03,1201,29.0,Volterra regression 3,Volterra regression 3,635,199996,0.0031750635012700256
+pa16_ibo-03,1201,29.0,Volterra regression 5,Volterra regression 5,330,199996,0.0016500330006600132
+pa16_ibo-03,1201,29.0,Classical best (validation),Volterra regression 7,263,199996,0.0013150263005260105
+pa16_ibo-03,1201,26.0,Selected NN,Selected NN,363,199996,0.0018150363007260145
+pa16_ibo-03,1201,26.0,Complex FFE,Complex FFE,1625,199996,0.008125162503250065
+pa16_ibo-03,1201,26.0,Volterra regression 3,Volterra regression 3,859,199996,0.004295085901718034
+pa16_ibo-03,1201,26.0,Volterra regression 5,Volterra regression 5,469,199996,0.0023450469009380186
+pa16_ibo-03,1201,26.0,Classical best (validation),Volterra regression 7,447,199996,0.002235044700894018
+pa16_ibo-03,1202,32.0,Selected NN,Selected NN,132,199996,0.0006600132002640052
+pa16_ibo-03,1202,32.0,Complex FFE,Complex FFE,1158,199996,0.005790115802316046
+pa16_ibo-03,1202,32.0,Volterra regression 3,Volterra regression 3,458,199996,0.0022900458009160185
+pa16_ibo-03,1202,32.0,Volterra regression 5,Volterra regression 5,210,199996,0.0010500210004200084
+pa16_ibo-03,1202,32.0,Classical best (validation),Volterra regression 7,170,199996,0.0008500170003400068
+pa16_ibo-03,1202,35.0,Selected NN,Selected NN,105,199996,0.0005250105002100042
+pa16_ibo-03,1202,35.0,Complex FFE,Complex FFE,1093,199996,0.005465109302186044
+pa16_ibo-03,1202,35.0,Volterra regression 3,Volterra regression 3,415,199996,0.0020750415008300165
+pa16_ibo-03,1202,35.0,Volterra regression 5,Volterra regression 5,190,199996,0.0009500190003800076
+pa16_ibo-03,1202,35.0,Classical best (validation),Volterra regression 7,148,199996,0.0007400148002960059
+pa16_ibo-03,1202,38.0,Selected NN,Selected NN,90,199996,0.0004500090001800036
+pa16_ibo-03,1202,38.0,Complex FFE,Complex FFE,1025,199996,0.005125102502050041
+pa16_ibo-03,1202,38.0,Volterra regression 3,Volterra regression 3,402,199996,0.002010040200804016
+pa16_ibo-03,1202,38.0,Volterra regression 5,Volterra regression 5,182,199996,0.0009100182003640072
+pa16_ibo-03,1202,38.0,Classical best (validation),Volterra regression 7,141,199996,0.0007050141002820057
+pa16_ibo-03,1202,29.0,Selected NN,Selected NN,195,199996,0.0009750195003900078
+pa16_ibo-03,1202,29.0,Complex FFE,Complex FFE,1285,199996,0.006425128502570051
+pa16_ibo-03,1202,29.0,Volterra regression 3,Volterra regression 3,544,199996,0.0027200544010880217
+pa16_ibo-03,1202,29.0,Volterra regression 5,Volterra regression 5,282,199996,0.0014100282005640114
+pa16_ibo-03,1202,29.0,Classical best (validation),Volterra regression 7,232,199996,0.0011600232004640094
+pa16_ibo-03,1202,26.0,Selected NN,Selected NN,365,199996,0.0018250365007300147
+pa16_ibo-03,1202,26.0,Complex FFE,Complex FFE,1604,199996,0.008020160403208064
+pa16_ibo-03,1202,26.0,Volterra regression 3,Volterra regression 3,722,199996,0.0036100722014440288
+pa16_ibo-03,1202,26.0,Volterra regression 5,Volterra regression 5,460,199996,0.0023000460009200184
+pa16_ibo-03,1202,26.0,Classical best (validation),Volterra regression 7,394,199996,0.001970039400788016
+pa16_ibo-03,1203,32.0,Selected NN,Selected NN,149,199996,0.000745014900298006
+pa16_ibo-03,1203,32.0,Complex FFE,Complex FFE,1168,199996,0.005840116802336047
+pa16_ibo-03,1203,32.0,Volterra regression 3,Volterra regression 3,513,199996,0.0025650513010260206
+pa16_ibo-03,1203,32.0,Volterra regression 5,Volterra regression 5,216,199996,0.0010800216004320086
+pa16_ibo-03,1203,32.0,Classical best (validation),Volterra regression 7,167,199996,0.0008350167003340067
+pa16_ibo-03,1203,35.0,Selected NN,Selected NN,122,199996,0.0006100122002440049
+pa16_ibo-03,1203,35.0,Complex FFE,Complex FFE,1087,199996,0.005435108702174044
+pa16_ibo-03,1203,35.0,Volterra regression 3,Volterra regression 3,477,199996,0.002385047700954019
+pa16_ibo-03,1203,35.0,Volterra regression 5,Volterra regression 5,189,199996,0.0009450189003780076
+pa16_ibo-03,1203,35.0,Classical best (validation),Volterra regression 7,151,199996,0.000755015100302006
+pa16_ibo-03,1203,38.0,Selected NN,Selected NN,103,199996,0.0005150103002060041
+pa16_ibo-03,1203,38.0,Complex FFE,Complex FFE,1049,199996,0.005245104902098042
+pa16_ibo-03,1203,38.0,Volterra regression 3,Volterra regression 3,447,199996,0.002235044700894018
+pa16_ibo-03,1203,38.0,Volterra regression 5,Volterra regression 5,175,199996,0.000875017500350007
+pa16_ibo-03,1203,38.0,Classical best (validation),Volterra regression 7,136,199996,0.0006800136002720054
+pa16_ibo-03,1203,29.0,Selected NN,Selected NN,214,199996,0.0010700214004280085
+pa16_ibo-03,1203,29.0,Complex FFE,Complex FFE,1317,199996,0.006585131702634053
+pa16_ibo-03,1203,29.0,Volterra regression 3,Volterra regression 3,607,199996,0.0030350607012140244
+pa16_ibo-03,1203,29.0,Volterra regression 5,Volterra regression 5,278,199996,0.001390027800556011
+pa16_ibo-03,1203,29.0,Classical best (validation),Volterra regression 7,226,199996,0.0011300226004520091
+pa16_ibo-03,1203,26.0,Selected NN,Selected NN,379,199996,0.001895037900758015
+pa16_ibo-03,1203,26.0,Complex FFE,Complex FFE,1601,199996,0.008005160103202064
+pa16_ibo-03,1203,26.0,Volterra regression 3,Volterra regression 3,844,199996,0.004220084401688033
+pa16_ibo-03,1203,26.0,Volterra regression 5,Volterra regression 5,439,199996,0.0021950439008780174
+pa16_ibo-03,1203,26.0,Classical best (validation),Volterra regression 7,402,199996,0.002010040200804016

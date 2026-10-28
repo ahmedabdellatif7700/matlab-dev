@@ -1,0 +1,40 @@
+case,seed,method,order,ridge,centers,bandwidth,optimizer_iterations,optimizer_converged,validation_ber,multiplications,parameters
+pa16_ibo-03,1201,Complex FFE,,,,,,,0.006042673778963161,8,4
+pa16_ibo-03,1201,Volterra regression 1,1,0.001,,,,,0.006042673778963161,8,10
+pa16_ibo-03,1201,Volterra bit classifier 1,1,0.01,,,8,True,0.24812468744790797,16,20
+pa16_ibo-03,1201,Volterra regression 2,2,0.001,,,,,0.006084347391231872,38,30
+pa16_ibo-03,1201,Volterra bit classifier 2,2,1e-06,,,43,True,0.002375395899316553,66,60
+pa16_ibo-03,1201,Volterra regression 3,3,1e-05,,,,,0.002042007001166861,98,70
+pa16_ibo-03,1201,Volterra bit classifier 3,3,1e-06,,,123,True,0.002375395899316553,166,140
+pa16_ibo-03,1201,Volterra regression 5,5,1e-05,,,,,0.0008751458576429405,371,252
+pa16_ibo-03,1201,Volterra bit classifier 5,5,1e-06,,,216,True,0.001208534755792632,621,504
+pa16_ibo-03,1201,Volterra regression 7,7,1e-05,,,,,0.0005417569594932489,983,660
+pa16_ibo-03,1201,RBF kernel bit classifier 16,,1e-06,16,0.25,300,False,0.037172862143690616,176,132
+pa16_ibo-03,1201,RBF kernel bit classifier 64,,1e-06,64,1.0,300,False,0.0028338056342723785,704,516
+pa16_ibo-03,1201,RBF kernel bit classifier 256,,1e-06,256,4.0,300,False,0.0010001666944490749,2816,2052
+pa16_ibo-03,1202,Complex FFE,,,,,,,0.005209201533588932,8,4
+pa16_ibo-03,1202,Volterra regression 1,1,0.001,,,,,0.005250875145857643,8,10
+pa16_ibo-03,1202,Volterra bit classifier 1,1,0.01,,,9,True,0.24716619436572762,16,20
+pa16_ibo-03,1202,Volterra regression 2,2,0,,,,,0.005250875145857643,38,30
+pa16_ibo-03,1202,Volterra bit classifier 2,2,1e-06,,,43,True,0.0022087014502417067,66,60
+pa16_ibo-03,1202,Volterra regression 3,3,1e-05,,,,,0.0020836806134355724,98,70
+pa16_ibo-03,1202,Volterra bit classifier 3,3,1e-06,,,147,True,0.0024587431238539755,166,140
+pa16_ibo-03,1202,Volterra regression 5,5,0,,,,,0.0009168194699116519,371,252
+pa16_ibo-03,1202,Volterra bit classifier 5,5,1e-06,,,187,True,0.0009584930821803634,621,504
+pa16_ibo-03,1202,Volterra regression 7,7,1e-07,,,,,0.0007501250208368062,983,660
+pa16_ibo-03,1202,RBF kernel bit classifier 16,,1e-06,16,0.25,300,False,0.035755959326554426,176,132
+pa16_ibo-03,1202,RBF kernel bit classifier 64,,1e-06,64,1.0,300,False,0.0024587431238539755,704,516
+pa16_ibo-03,1202,RBF kernel bit classifier 256,,1e-06,256,4.0,300,False,0.0010418403067177862,2816,2052
+pa16_ibo-03,1203,Complex FFE,,,,,,,0.006126021003500583,8,4
+pa16_ibo-03,1203,Volterra regression 1,1,0.001,,,,,0.006251041840306718,8,10
+pa16_ibo-03,1203,Volterra bit classifier 1,1,1e-06,,,47,True,0.2655859309884981,16,20
+pa16_ibo-03,1203,Volterra regression 2,2,0.001,,,,,0.006209368228038007,38,30
+pa16_ibo-03,1203,Volterra bit classifier 2,2,1e-06,,,50,True,0.001958659776629438,66,60
+pa16_ibo-03,1203,Volterra regression 3,3,1e-05,,,,,0.0021670278379729954,98,70
+pa16_ibo-03,1203,Volterra bit classifier 3,3,1e-06,,,133,True,0.002125354225704284,166,140
+pa16_ibo-03,1203,Volterra regression 5,5,1e-05,,,,,0.0007501250208368062,371,252
+pa16_ibo-03,1203,Volterra bit classifier 5,5,1e-06,,,196,True,0.0007501250208368062,621,504
+pa16_ibo-03,1203,Volterra regression 7,7,1e-07,,,,,0.0007084514085680946,983,660
+pa16_ibo-03,1203,RBF kernel bit classifier 16,,1e-06,16,0.25,300,False,0.01633605600933489,176,132
+pa16_ibo-03,1203,RBF kernel bit classifier 64,,1e-06,64,1.0,300,False,0.002333722287047841,704,516
+pa16_ibo-03,1203,RBF kernel bit classifier 256,,1e-06,256,4.0,300,False,0.0009584930821803634,2816,2052

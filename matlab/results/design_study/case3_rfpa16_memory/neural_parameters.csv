@@ -1,0 +1,2 @@
+case,widths,activation,inputs,output_bits,parameters,multiplications,nonlinear_evaluations,loss,validation_selected_restarts,optimizer,batch_size,learning_rate,weight_decay,epochs_max,training_symbols,validation_symbols
+pa16_ibo-03,[16],tanh,4,4,148,128,16,bitwise BCE,3,adamw then LBFGS,512,0.003,0.0001,600,18000,6000

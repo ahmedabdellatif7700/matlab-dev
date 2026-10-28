@@ -1,0 +1,67 @@
+case,family,name,neural,validation_ber,multiplications,parameters,nonlinear_evaluations
+pa16_ibo-03,RFPA16_memory,Complex FFE,False,0.0056005600560056,8,4,0
+pa16_ibo-03,RFPA16_memory,Volterra regression 1,False,0.005675567556755676,8,10,0
+pa16_ibo-03,RFPA16_memory,Volterra bit classifier 1,False,0.27462746274627464,16,20,0
+pa16_ibo-03,RFPA16_memory,Volterra regression 2,False,0.005725572557255726,38,30,0
+pa16_ibo-03,RFPA16_memory,Volterra bit classifier 2,False,0.0025252525252525255,66,60,0
+pa16_ibo-03,RFPA16_memory,Volterra regression 3,False,0.002325232523252325,98,70,0
+pa16_ibo-03,RFPA16_memory,Volterra bit classifier 3,False,0.0025752575257525752,166,140,0
+pa16_ibo-03,RFPA16_memory,Volterra regression 5,False,0.0012501250125012502,371,252,0
+pa16_ibo-03,RFPA16_memory,Volterra bit classifier 5,False,0.0013501350135013501,621,504,0
+pa16_ibo-03,RFPA16_memory,Volterra regression 7,False,0.0011001100110011,983,660,0
+pa16_ibo-03,RFPA16_memory,RBF kernel bit classifier 16,False,0.016951695169516952,176,132,16
+pa16_ibo-03,RFPA16_memory,RBF kernel bit classifier 64,False,0.0027502750275027505,704,516,64
+pa16_ibo-03,RFPA16_memory,RBF kernel bit classifier 256,False,0.0017001700170017002,2816,2052,256
+pa16_ibo-03,RFPA16_memory,NN tanh [4],True,0.004550455045504551,32,40,4
+pa16_ibo-03,RFPA16_memory,NN tanh [6],True,0.0015501550155015502,48,58,6
+pa16_ibo-03,RFPA16_memory,NN tanh [8],True,0.0011751175117511751,64,76,8
+pa16_ibo-03,RFPA16_memory,NN tanh [16],True,0.0006500650065006501,128,148,16
+pa16_ibo-03,RFPA16_memory,NN silu [24],True,0.0009000900090009,216,220,24
+pa16_ibo-03,RFPA16_memory,"NN tanh [16, 16]",True,0.000575057505750575,384,420,32
+pa16_ibo-03,RFPA16_memory,NN softsign [16],True,0.0009500950095009501,128,148,16
+pa16_ibo-03,RFPA16_memory,NN multilevel [16],True,0.0009500950095009501,192,148,48
+pa16_ibo-03,RFPA16_memory,NN learned_multilevel [16],True,0.00075007500750075,192,154,48
+pa16_ibo+00,RFPA16_memory,Complex FFE,False,0.000725072507250725,8,4,0
+pa16_ibo+00,RFPA16_memory,Volterra regression 1,False,0.0007750775077507751,8,10,0
+pa16_ibo+00,RFPA16_memory,Volterra bit classifier 1,False,0.27765276527652766,16,20,0
+pa16_ibo+00,RFPA16_memory,Volterra regression 2,False,0.0007750775077507751,38,30,0
+pa16_ibo+00,RFPA16_memory,Volterra bit classifier 2,False,0.000225022502250225,66,60,0
+pa16_ibo+00,RFPA16_memory,Volterra regression 3,False,0.00045004500450045,98,70,0
+pa16_ibo+00,RFPA16_memory,Volterra bit classifier 3,False,0.000275027502750275,166,140,0
+pa16_ibo+00,RFPA16_memory,Volterra regression 5,False,5.000500050005001e-05,371,252,0
+pa16_ibo+00,RFPA16_memory,Volterra bit classifier 5,False,0.000125012501250125,621,504,0
+pa16_ibo+00,RFPA16_memory,Volterra regression 7,False,5.000500050005001e-05,983,660,0
+pa16_ibo+00,RFPA16_memory,RBF kernel bit classifier 16,False,0.007325732573257326,176,132,16
+pa16_ibo+00,RFPA16_memory,RBF kernel bit classifier 64,False,0.000275027502750275,704,516,64
+pa16_ibo+00,RFPA16_memory,RBF kernel bit classifier 256,False,0.00015001500150015003,2816,2052,256
+pa16_ibo+00,RFPA16_memory,NN tanh [4],True,0.00020002000200020003,32,40,4
+pa16_ibo+00,RFPA16_memory,NN tanh [6],True,0.00020002000200020003,48,58,6
+pa16_ibo+00,RFPA16_memory,NN tanh [8],True,7.500750075007501e-05,64,76,8
+pa16_ibo+00,RFPA16_memory,NN tanh [16],True,0.00010001000100010001,128,148,16
+pa16_ibo+00,RFPA16_memory,NN silu [24],True,0.00015001500150015003,216,220,24
+pa16_ibo+00,RFPA16_memory,"NN tanh [16, 16]",True,7.500750075007501e-05,384,420,32
+pa16_ibo+00,RFPA16_memory,NN softsign [16],True,0.00015001500150015003,128,148,16
+pa16_ibo+00,RFPA16_memory,NN multilevel [16],True,0.00010001000100010001,192,148,48
+pa16_ibo+00,RFPA16_memory,NN learned_multilevel [16],True,0.00015001500150015003,192,154,48
+pa16_ibo+03,RFPA16_memory,Complex FFE,False,0.00010001000100010001,8,4,0
+pa16_ibo+03,RFPA16_memory,Volterra regression 1,False,0.00010001000100010001,8,10,0
+pa16_ibo+03,RFPA16_memory,Volterra bit classifier 1,False,0.27975297529752974,16,20,0
+pa16_ibo+03,RFPA16_memory,Volterra regression 2,False,0.00010001000100010001,38,30,0
+pa16_ibo+03,RFPA16_memory,Volterra bit classifier 2,False,0.0,66,60,0
+pa16_ibo+03,RFPA16_memory,Volterra regression 3,False,2.5002500250025003e-05,98,70,0
+pa16_ibo+03,RFPA16_memory,Volterra bit classifier 3,False,0.0,166,140,0
+pa16_ibo+03,RFPA16_memory,Volterra regression 5,False,0.0,371,252,0
+pa16_ibo+03,RFPA16_memory,Volterra bit classifier 5,False,0.0,621,504,0
+pa16_ibo+03,RFPA16_memory,Volterra regression 7,False,0.0,983,660,0
+pa16_ibo+03,RFPA16_memory,RBF kernel bit classifier 16,False,0.0019501950195019502,176,132,16
+pa16_ibo+03,RFPA16_memory,RBF kernel bit classifier 64,False,0.0,704,516,64
+pa16_ibo+03,RFPA16_memory,RBF kernel bit classifier 256,False,0.0,2816,2052,256
+pa16_ibo+03,RFPA16_memory,NN tanh [4],True,0.0,32,40,4
+pa16_ibo+03,RFPA16_memory,NN tanh [6],True,0.0,48,58,6
+pa16_ibo+03,RFPA16_memory,NN tanh [8],True,0.0,64,76,8
+pa16_ibo+03,RFPA16_memory,NN tanh [16],True,0.0,128,148,16
+pa16_ibo+03,RFPA16_memory,NN silu [24],True,0.0,216,220,24
+pa16_ibo+03,RFPA16_memory,"NN tanh [16, 16]",True,0.0,384,420,32
+pa16_ibo+03,RFPA16_memory,NN softsign [16],True,0.0,128,148,16
+pa16_ibo+03,RFPA16_memory,NN multilevel [16],True,0.0,192,148,48
+pa16_ibo+03,RFPA16_memory,NN learned_multilevel [16],True,0.0,192,154,48

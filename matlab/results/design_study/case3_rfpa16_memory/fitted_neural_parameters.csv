@@ -1,0 +1,4 @@
+case,data_seed,selected_initialization_seed,best_step,adam_epochs,validation_bce,parameters,activation_coefficients
+pa16_ibo-03,1201,12011,596,600,0.0016642999835312366,148,{}
+pa16_ibo-03,1202,12021,605,600,0.0009590371046215296,148,{}
+pa16_ibo-03,1203,12031,603,600,0.001324896584264934,148,{}
