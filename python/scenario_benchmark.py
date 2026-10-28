@@ -128,13 +128,13 @@ class PolynomialRegressor:
 
     @property
     def parameter_count(self):
-        return 2 * (len(self.terms) + 1)
+        return self.weights.shape[1] * (len(self.terms) + 1)
 
     @property
     def multiplications(self):
         # Direct monomial construction plus the two output dot products.
         # Excludes affine normalization, which can be folded into coefficients.
-        return sum(len(term) - 1 for term in self.terms) + 2 * len(self.terms)
+        return sum(len(term) - 1 for term in self.terms) + self.weights.shape[1] * len(self.terms)
 
 
 def train_nn(x, y, validation_x, validation_y, cfg, seed):

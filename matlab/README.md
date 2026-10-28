@@ -1,5 +1,9 @@
 # Millimeter-wave impairment scenarios
 
+Select a scenario number in `main.m`. Scenario 2 and later research studies
+are described in [SCENARIOS.md](SCENARIOS.md). The remainder of this page
+documents Scenario 1 and its independently preserved results.
+
 `main.m` runs Scenario 1: a 60 GHz, 1 Gbaud, single-carrier 16-QAM
 complex-envelope link with an isolated nonlinear RF driver. `legacy_main.m`
 preserves the previous MATLAB/Python/ONNX/Q8.8 workflow. Scenario 1 writes
