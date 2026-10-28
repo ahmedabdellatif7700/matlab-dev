@@ -1,0 +1,61 @@
+# Python equalizer workflow
+
+- `equalizer.py`: main MATLAB-driven off-chip training/inference script.
+- `config.py`: single source of configuration for the unified 4–12–2 architecture, activation choice, optimizer, batch size, shuffling, and output paths.
+- `activations/`: supported activation functions.
+- `hardware/q8_8_inference_arithmetic.py`: fixed-point inference calculations.
+- `hardware/q8_24_training_arithmetic.py`: proposed fixed-point SGD calculations (training RTL remains under development).
+- `software/software_inference.py`: reads exported Q8.8 memories and regenerates `software_outputs.csv`; optionally compares a hardware CSV. **Does not read MATLAB `.mat` files.**
+- `software/software_training.py`: checks existing FP32 SGD training artifacts. It does not train the network.
+
+## Generated artifacts
+
+`artifacts/models/`: `equalizer.onnx`, `equalizer_q8_8.npz`
+
+`artifacts/inference/`: MATLAB-generated `test_inputs.mem`, Python-generated `parameters.mem` and `software_outputs.csv`
+
+`artifacts/training/`: reserved for on-chip training reference/export outputs; to be finalized separately.
+
+MATLAB writes `../datasets/training_data.mat` and `artifacts/inference/test_inputs.mem`. Python exports `../datasets/equalized_output_onnx_fp32.mat` and `../datasets/equalized_output_software_q8_8.mat`, while C++ exports `../datasets/equalized_output_fpga.mat`. `equalizer.py` consumes the canonical MATLAB input words and writes `parameters.mem` and `software_outputs.csv`. The `software_inference.py` utility reads `parameters.mem` and `test_inputs.mem` to regenerate the CSV; the combined parameter memory contains 86 words of weights/biases followed by 42 zero-filled reserved words. The legacy individual weight/bias `.mem` files are no longer exported.
+
+Run the main pipeline using `make run` (requires the configured Conda environment, ONNX, and ONNX Runtime). Run the independent software inference check using `make software-inference`. Use `make software-training` only after training artifacts exist.
+
+### Console log
+
+`make run` displays the console output and writes the same output, including errors, to `python/output.txt` regardless of the shell working directory. The log is overwritten on each run.
+
+## Unified training configuration
+
+Configure the experiment in `config.py`. The default is `MODE="real"`, `ACTIVATION="sigmoid"`, `HIDDEN_SIZE=12`, `OPTIMIZER="sgd"`, `BATCH_SIZE=1`, `SHUFFLE=False`, and `LEARNING_RATE=0.001`. This is **online-style SGD in Python**, not proof of real-time FPGA training. The three current activations are `sigmoid`, `variable_alpha`, and `stable_alpha`; each uses the same 4–12–2 network and optimizer. The variable-alpha parameter is trainable and participates in the same optimizer updates.
+
+Every training run overwrites the Python outputs in `artifacts/models/` and
+`artifacts/inference/` regardless of the activation. The Python exports are
+`equalizer.onnx`, `equalizer_q8_8.npz`, `parameters.mem`, and
+`software_outputs.csv`; MATLAB independently exports `test_inputs.mem`. There are no activation-specific suffixes. To
+compare experiments, copy the generated files and console log elsewhere
+before running the next configuration.
+
+The packed 128-word `parameters.mem` stores the 86 weights and biases of the
+4–12–2 network (plus 42 zero-filled reserved words). For alpha-scaled
+activations, the additional Q8.8 alpha coefficient is stored in
+`equalizer_q8_8.npz`, not in the packed memory image. Q8.8 software inference
+uses the custom Python activation plus Q8.8-rounded MAC operations; the
+current RTL still supports **standard sigmoid only**, so non-sigmoid CSVs
+must **not** be treated as bit-exact FPGA predictions. The independent
+`software/software_inference.py` reads the saved alpha from the NPZ for those
+experiments and regenerates the same software CSV.
+
+Switching from Adam/minibatches to SGD/one sample changes learned weights and may change convergence. Previous saved artifact files in this ZIP represent the **old Adam baseline** until `make run` regenerates them; do not interpret these existing artifacts as new SGD results.
+
+
+### Canonical Q8.8 inference inputs
+
+MATLAB `main.m` writes `artifacts/inference/test_inputs.mem` from the final
+20% of `X` before starting Python training. This file contains 4 hexadecimal
+16-bit Q8.8 words per sample, in `[I[n], Q[n], I[n-1], Q[n-1]]` order.
+Python ONNX FP32 inference still reads the original `training_data.mat` data.
+Python Q8.8 inference reads MATLAB's `test_inputs.mem` and Python's
+`parameters.mem` **without re-quantizing the inference inputs**. The latter
+contains 86 signed Q8.8 parameters and 42 zero-reserved words. MATLAB must
+be run first to create the dataset and memory file. `make clean` preserves
+MATLAB's `test_inputs.mem`.
