@@ -36,3 +36,5 @@ The original ONNX/Q8.8 hardware-oriented workflow remains available in
 python -B -m unittest discover -s python/tests -v
 matlab -batch "addpath('matlab'); run_numerical_tests();"
 ```
+
+The staged 60 GHz design study is now the `matlab/main.m` entry point: physical link → discovery-only tuning → locked four-family selection → fresh confirmation → BER/resource tables. Read [the design protocol](matlab/DESIGN_STUDY.md) before interpreting NN efficiency claims. The existing five-scenario study and its historical results remain available.

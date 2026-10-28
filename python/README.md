@@ -68,3 +68,9 @@ Python Q8.8 inference reads MATLAB's `test_inputs.mem` and Python's
 contains 86 signed Q8.8 parameters and 42 zero-reserved words. MATLAB must
 be run first to create the dataset and memory file. `make clean` preserves
 MATLAB's `test_inputs.mem`.
+
+## Flexible bitwise equalizer design
+
+`../matlab/main.m` now orchestrates discovery and independent confirmation through `tune_equalizers.py` and `tuning/`. Network widths and activations are unrestricted by the legacy FPGA 4–12–2 topology. The search catalog includes tanh, SiLU, softsign and fixed/learned smooth multilevel activations. No scikit-learn dependency is needed.
+
+Run `python -B tune_equalizers.py --run <generated-run-directory> --phase discovery`, then `--phase confirmation` only after MATLAB creates fresh confirmation data, followed by `--phase report`. Discovery can resume completed candidates. Read `../matlab/DESIGN_STUDY.md` for target locking, conventional controls, resource accounting and limitations. Legacy quantized inference is a separate implementation; the new arbitrary bit networks are floating point and have not been exported to FPGA.
