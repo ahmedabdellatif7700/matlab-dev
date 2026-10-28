@@ -3,7 +3,7 @@ function data = make_multiuser_dataset(cfg, seed, condition)
 names = ["train" "validation" "test"];
 counts = [cfg.train_symbols cfg.validation_symbols cfg.test_symbols];
 [allocation, ~] = mmw.multiuser_bins(cfg, condition.Guard);
-data = struct(); channel = [];
+data = struct(); channel = zeros(cfg.multi_dft, cfg.multi_users);
 for part = 1:3
     stream = RandStream("mt19937ar", "Seed", seed+100000*part);
     frames = floor(counts(part)/cfg.multi_dft);
@@ -12,8 +12,8 @@ for part = 1:3
     spread = fft(symbols, [], 1)/sqrt(cfg.multi_dft);
     grid = zeros(cfg.multi_fft, frames, cfg.multi_users);
     for u = 1:cfg.multi_users, grid(allocation(:, u), :, u) = spread(:, :, u); end
-    wave = ifft(grid, [], 1)*sqrt(cfg.multi_fft);
-    wave = [wave(end-cfg.multi_cp+1:end, :, :); wave];
+    payload_wave = ifft(grid, [], 1)*sqrt(cfg.multi_fft);
+    wave = [payload_wave(end-cfg.multi_cp+1:end, :, :); payload_wave];
     energy = mean(abs(qammod((0:condition.ModOrder-1).', condition.ModOrder, "gray")).^2);
     for u = 1:cfg.multi_users
         if condition.Enabled
@@ -41,7 +41,6 @@ for part = 1:3
     end
     received = fft(aggregate(cfg.multi_cp+1:end, :)/condition.Drive, [], 1)/sqrt(cfg.multi_fft);
     recovered = zeros(size(symbols));
-    if part == 1, channel = zeros(cfg.multi_dft, cfg.multi_users); end
     for u = 1:cfg.multi_users
         observed = received(allocation(:, u), :);
         if part == 1

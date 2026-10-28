@@ -3,6 +3,9 @@ function data = make_suite_dataset(cfg, seed, condition)
 if cfg.scenario == 4
     data = mmw.make_multiuser_dataset(cfg, seed, condition);
     return;
+elseif cfg.scenario == 5
+    data = mmw.make_ofdm_dataset(cfg, seed, condition);
+    return;
 end
 data = struct(); names = ["train" "validation" "test"];
 counts = [cfg.train_symbols cfg.validation_symbols cfg.test_symbols];

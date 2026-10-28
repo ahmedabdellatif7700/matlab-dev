@@ -1,0 +1,155 @@
+scenario,condition,user,status,neural_meets,non_neural_meets,bit_count
+1,linear_awgn,1,non-neural receiver meets reference,NN 4-12-2,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,359988
+1,linear_noiseless,1,non-neural receiver meets reference,NN 4-12-2,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,359988
+1,pa_ibo_+00_snr_24,1,non-neural receiver meets reference,NN 4-12-2,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,359988
+1,pa_ibo_+00_snr_30,1,non-neural receiver meets reference,NN 4-12-2,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,359988
+1,pa_ibo_+00_snr_36,1,non-neural receiver meets reference,NN 4-12-2,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,359988
+1,pa_ibo_+03_snr_24,1,non-neural receiver meets reference,NN 4-12-2,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,359988
+1,pa_ibo_+03_snr_30,1,non-neural receiver meets reference,NN 4-12-2,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,359988
+1,pa_ibo_+03_snr_36,1,non-neural receiver meets reference,NN 4-12-2,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,359988
+1,pa_ibo_+06_snr_24,1,non-neural receiver meets reference,NN 4-12-2,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,359988
+1,pa_ibo_+06_snr_30,1,non-neural receiver meets reference,NN 4-12-2,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,359988
+1,pa_ibo_+06_snr_36,1,non-neural receiver meets reference,NN 4-12-2,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,359988
+1,pa_ibo_+09_snr_24,1,all tested receivers above reference,,,359988
+1,pa_ibo_+09_snr_30,1,non-neural receiver meets reference,NN 4-12-2,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,359988
+1,pa_ibo_+09_snr_36,1,non-neural receiver meets reference,NN 4-12-2,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,359988
+1,pa_ibo_+12_snr_24,1,all tested receivers above reference,,,359988
+1,pa_ibo_+12_snr_30,1,non-neural receiver meets reference,NN 4-12-2,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,359988
+1,pa_ibo_+12_snr_36,1,non-neural receiver meets reference,NN 4-12-2,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,359988
+1,pa_ibo_-03_snr_24,1,non-neural receiver meets reference,NN 4-12-2,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,359988
+1,pa_ibo_-03_snr_30,1,non-neural receiver meets reference,NN 4-12-2,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,359988
+1,pa_ibo_-03_snr_36,1,non-neural receiver meets reference,NN 4-12-2,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,359988
+2,bpsk_snr12,1,non-neural receiver meets reference,NN adaptive alpha; NN fixed alpha; NN multilevel; NN sigmoid,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,44997
+2,bpsk_snr18,1,non-neural receiver meets reference,NN adaptive alpha; NN fixed alpha; NN multilevel; NN sigmoid,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,44997
+2,linear_noiseless,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179988
+2,qam16_mem0_drive020,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179988
+2,qam16_mem0_drive060,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179988
+2,qam16_mem0_drive100,1,non-neural receiver meets reference,NN adaptive alpha; NN fixed alpha; NN multilevel; NN sigmoid,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179988
+2,qam16_mem0_drive140,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179988
+2,qam16_mem0_drive180,1,all tested receivers above reference,,,179988
+2,qam16_mem1_drive020,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179988
+2,qam16_mem1_drive060,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179988
+2,qam16_mem1_drive100,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179988
+2,qam16_mem1_drive140,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179988
+2,qam16_mem1_drive180,1,all tested receivers above reference,,,179988
+2,qam64_mem0_drive020,1,all tested receivers above reference,,,269982
+2,qam64_mem0_drive060,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,269982
+2,qam64_mem0_drive100,1,non-neural receiver meets reference,NN adaptive alpha; NN fixed alpha; NN multilevel; NN sigmoid,Volterra 3; Volterra 5,269982
+2,qam64_mem0_drive140,1,all tested receivers above reference,,,269982
+2,qam64_mem0_drive180,1,all tested receivers above reference,,,269982
+2,qam64_mem1_drive020,1,all tested receivers above reference,,,269982
+2,qam64_mem1_drive060,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,269982
+2,qam64_mem1_drive100,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Volterra 5,269982
+2,qam64_mem1_drive140,1,all tested receivers above reference,,,269982
+2,qam64_mem1_drive180,1,all tested receivers above reference,,,269982
+3,DSB_pa0_L000,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179976
+3,DSB_pa0_L050,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179976
+3,DSB_pa0_L090,1,all tested receivers above reference,,,179976
+3,DSB_pa0_L102,1,all tested receivers above reference,,,179976
+3,DSB_pa0_L115,1,all tested receivers above reference,,,179976
+3,DSB_pa0_L150,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179976
+3,DSB_pa1_L000,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179976
+3,DSB_pa1_L050,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179976
+3,DSB_pa1_L090,1,all tested receivers above reference,,,179976
+3,DSB_pa1_L102,1,all tested receivers above reference,,,179976
+3,DSB_pa1_L115,1,all tested receivers above reference,,,179976
+3,DSB_pa1_L150,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179976
+3,SSB_pa0_L000,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179976
+3,SSB_pa0_L050,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179976
+3,SSB_pa0_L090,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179976
+3,SSB_pa0_L102,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179976
+3,SSB_pa0_L115,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179976
+3,SSB_pa0_L150,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Before EQ; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179976
+3,SSB_pa1_L000,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179976
+3,SSB_pa1_L050,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179976
+3,SSB_pa1_L090,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179976
+3,SSB_pa1_L102,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179976
+3,SSB_pa1_L115,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179976
+3,SSB_pa1_L150,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,179976
+4,guard0_drive030,0,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Linear I/Q; Training LS front-end,368640
+4,guard0_drive030,1,inconclusive at current bit count,,,92160
+4,guard0_drive030,2,non-neural receiver meets reference,Individual NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Linear I/Q; Training LS front-end,92160
+4,guard0_drive030,3,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard0_drive030,4,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard0_drive070,0,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,368640
+4,guard0_drive070,1,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard0_drive070,2,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard0_drive070,3,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard0_drive070,4,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard0_drive110,0,non-neural receiver meets reference,Individual NN multilevel,Individual Volterra 3; Individual Volterra 5; Joint Volterra 3,368640
+4,guard0_drive110,1,inconclusive at current bit count,,,92160
+4,guard0_drive110,2,inconclusive at current bit count,,,92160
+4,guard0_drive110,3,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual Volterra 3; Individual Volterra 5; Joint Volterra 3,92160
+4,guard0_drive110,4,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard0_drive150,0,all tested receivers above reference,,,368640
+4,guard0_drive150,1,all tested receivers above reference,,,92160
+4,guard0_drive150,2,all tested receivers above reference,,,92160
+4,guard0_drive150,3,all tested receivers above reference,,,92160
+4,guard0_drive150,4,all tested receivers above reference,,,92160
+4,guard12_drive030,0,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Linear I/Q; Training LS front-end,368640
+4,guard12_drive030,1,inconclusive at current bit count,,,92160
+4,guard12_drive030,2,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Linear I/Q; Training LS front-end,92160
+4,guard12_drive030,3,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard12_drive030,4,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard12_drive070,0,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,368640
+4,guard12_drive070,1,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard12_drive070,2,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard12_drive070,3,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard12_drive070,4,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard12_drive110,0,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,368640
+4,guard12_drive110,1,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard12_drive110,2,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard12_drive110,3,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard12_drive110,4,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard12_drive150,0,all tested receivers above reference,,,368640
+4,guard12_drive150,1,all tested receivers above reference,,,92160
+4,guard12_drive150,2,all tested receivers above reference,,,92160
+4,guard12_drive150,3,all tested receivers above reference,,,92160
+4,guard12_drive150,4,all tested receivers above reference,,,92160
+4,guard4_drive030,0,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Linear I/Q; Training LS front-end,368640
+4,guard4_drive030,1,inconclusive at current bit count,,,92160
+4,guard4_drive030,2,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Linear I/Q; Training LS front-end,92160
+4,guard4_drive030,3,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard4_drive030,4,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard4_drive070,0,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,368640
+4,guard4_drive070,1,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard4_drive070,2,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard4_drive070,3,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard4_drive070,4,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard4_drive110,0,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,368640
+4,guard4_drive110,1,non-neural receiver meets reference,Individual NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard4_drive110,2,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual Volterra 3; Individual Volterra 5; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard4_drive110,3,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard4_drive110,4,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,guard4_drive150,0,all tested receivers above reference,,,368640
+4,guard4_drive150,1,all tested receivers above reference,,,92160
+4,guard4_drive150,2,all tested receivers above reference,,,92160
+4,guard4_drive150,3,all tested receivers above reference,,,92160
+4,guard4_drive150,4,all tested receivers above reference,,,92160
+4,linear_noiseless,0,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,368640
+4,linear_noiseless,1,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,linear_noiseless,2,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,linear_noiseless,3,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+4,linear_noiseless,4,non-neural receiver meets reference,Individual NN multilevel; Joint NN multilevel,Individual FFE; Individual Volterra 3; Individual Volterra 5; Joint FFE; Joint Volterra 2; Joint Volterra 3; Linear I/Q; Training LS front-end,92160
+5,qam16_LS_ibo+00,1,all tested receivers above reference,,,172800
+5,qam16_LS_ibo+03,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Common linear front-end; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,172800
+5,qam16_LS_ibo+06,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Common linear front-end; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,172800
+5,qam16_LS_ibo+09,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Common linear front-end; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,172800
+5,qam16_LS_ibo-03,1,all tested receivers above reference,,,172800
+5,qam16_known_ibo+00,1,all tested receivers above reference,,,172800
+5,qam16_known_ibo+03,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Common linear front-end; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,172800
+5,qam16_known_ibo+06,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Common linear front-end; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,172800
+5,qam16_known_ibo+09,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Common linear front-end; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,172800
+5,qam16_known_ibo-03,1,all tested receivers above reference,,,172800
+5,qam16_linear_noiseless,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Common linear front-end; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,172800
+5,qam64_LS_ibo+00,1,all tested receivers above reference,,,259200
+5,qam64_LS_ibo+03,1,all tested receivers above reference,,,259200
+5,qam64_LS_ibo+06,1,all tested receivers above reference,,,259200
+5,qam64_LS_ibo+09,1,all tested receivers above reference,,,259200
+5,qam64_LS_ibo-03,1,all tested receivers above reference,,,259200
+5,qam64_known_ibo+00,1,all tested receivers above reference,,,259200
+5,qam64_known_ibo+03,1,all tested receivers above reference,,,259200
+5,qam64_known_ibo+06,1,all tested receivers above reference,,,259200
+5,qam64_known_ibo+09,1,all tested receivers above reference,,,259200
+5,qam64_known_ibo-03,1,all tested receivers above reference,,,259200
+5,qam64_linear_noiseless,1,non-neural receiver meets reference,NN multilevel; NN sigmoid,Common linear front-end; Complex FFE; Linear I/Q; Volterra 2; Volterra 3; Volterra 5,259200

@@ -40,6 +40,18 @@ elseif scenario == 4
     cfg.multi_guards = [0 4 12]; cfg.multi_drive = [0.3 0.7 1.1 1.5];
     cfg.multi_user_backoff = [3 6 9 12];
     cfg.report_condition = "guard4_drive110";
+elseif scenario == 5
+    cfg.rf_carrier_hz = 28e9;
+    cfg.symbol_rate_hz = 0.8e9; % Single-carrier reference has the same 1 GHz occupied bandwidth.
+    cfg.ofdm_fft = 64; cfg.ofdm_active = 52; cfg.ofdm_cp = 16;
+    cfg.ofdm_oversampling = 4; cfg.ofdm_pilots = 8;
+    cfg.ofdm_spacing_hz = 1e9/cfg.ofdm_active;
+    cfg.ofdm_sample_rate_hz = cfg.ofdm_fft*cfg.ofdm_oversampling*cfg.ofdm_spacing_hz;
+    cfg.ofdm_backoff_db = [-3 0 3 6 9];
+    cfg.ofdm_payload_seed_offset = 0;
+    cfg.equalizer_taps = 3; cfg.tap_offsets = [0 -1 1];
+    cfg.baseline_name = "Common linear front-end";
+    cfg.report_condition = "qam64_LS_ibo+00";
 elseif scenario ~= 2
     error("This scenario is not implemented yet.");
 end

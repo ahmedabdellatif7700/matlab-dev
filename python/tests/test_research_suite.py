@@ -6,9 +6,19 @@ import torch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from research_suite import ResearchNet, StableMultilevel, fit_nn
 from activations.activation import MultilevelSigmoid
+from scenario_benchmark import PolynomialRegressor
 
 
 class ResearchSuiteTests(unittest.TestCase):
+    def test_multiuser_polynomial_outputs_and_cost(self):
+        rng = np.random.default_rng(11)
+        x = rng.normal(size=(500, 4))
+        y = np.column_stack([x[:, k%4]+.05*(k+1)*x[:, 0]*x[:, 1] for k in range(8)])
+        model = PolynomialRegressor(2).fit(x[:300], y[:300], x[300:400], y[300:400], [0])
+        np.testing.assert_allclose(model.predict(x[400:]), y[400:], atol=1e-12)
+        self.assertEqual(model.parameter_count, 120)
+        self.assertEqual(model.multiplications, 122)
+
     def test_stable_multilevel_value_and_extreme_gradient(self):
         x = torch.linspace(-8, 8, 1001)
         torch.testing.assert_close(StableMultilevel(levels=8)(x), MultilevelSigmoid(levels=8)(x))

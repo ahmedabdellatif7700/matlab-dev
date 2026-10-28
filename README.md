@@ -1,0 +1,38 @@
+# Millimeter-wave neural equalizer studies
+
+MATLAB waveform/channel models and matched FFE, Volterra and neural-network
+receiver comparisons. Development is on `codex/development`; the runners
+refuse other branches and never commit, switch branches or merge themselves.
+
+| Scenario | Experiment |
+|---|---|
+| 1 | 60 GHz single-carrier RF amplifier compression and AM/PM |
+| 2 | MZM drive, 16/64-QAM, memory, multilevel and adaptive-alpha activations |
+| 3 | Combined RF distortion and DSB/SSB optical dispersion fading |
+| 4 | Four-user SC-FDMA with individual versus joint receivers |
+| 5 | 28 GHz wideband OFDM, pilot channel estimation and nonlinear ICI |
+
+Select a number in [matlab/main.m](matlab/main.m), or run every study:
+
+```sh
+matlab -batch "addpath('matlab'); run_all_scenarios('study','off');"
+```
+
+Replace `study` with `smoke` for a short execution check. MATLAB needs the
+Communications and Signal Processing toolboxes; Python dependencies are in
+`python/requirements.txt`. Set `MMW_PYTHON` to select the Python interpreter.
+
+[Physical equations, assumptions and scenario commands](matlab/SCENARIOS.md)
+explain observation/training budgets, independent data partitions, fixed
+noise references, pilot use and numerical checks. [Results](matlab/results/README.md)
+contain EVM/BER curves, matched constellations, diagnostics and provenance.
+NN superiority is tested rather than assumed; severe information loss can
+limit every receiver. A literature BER line does not imply FEC decoding.
+
+The original ONNX/Q8.8 hardware-oriented workflow remains available in
+`matlab/legacy_main.m`; the research suite does not overwrite its artifacts.
+
+```sh
+python -B -m unittest discover -s python/tests -v
+matlab -batch "addpath('matlab'); run_numerical_tests();"
+```

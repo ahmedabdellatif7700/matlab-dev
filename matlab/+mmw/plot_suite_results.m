@@ -116,7 +116,7 @@ for k = 1:numel(histories)
     semilogy(ax, h(:, 1), h(:, 3), "DisplayName", replace(label, "_", " "));
 end
 set(ax, "YScale", "log"); grid(ax, "on"); legend(ax, "Location", "best");
-xlabel(ax, "Optimization iteration (Adam epoch / L-BFGS step)"); ylabel(ax, "Validation MSE");
+xlabel(ax, "Adam epoch / L-BFGS step"); ylabel(ax, "Validation MSE");
 title(ax, "Checkpoint selection uses validation only");
 ax = nexttile(tiles); hold(ax, "on");
 for k = 1:numel(histories)
@@ -144,7 +144,8 @@ if max(users) > 1
         title(ax, sprintf("User %d", u));
         xlabel(ax, pooled.XLabel(find(pooled.Group == selected_group, 1))); ylabel(ax, "BER");
     end
-    legend(ax, "Location", "eastoutside"); export(fig, folder, "per_user_ber");
+    legend(ax, "Location", "eastoutside"); title(tiles, "Per-user BER: " + selected_group);
+    export(fig, folder, "per_user_ber");
 end
 fprintf("All %d Python metric rows independently verified in MATLAB.\n", height(all));
 end

@@ -2,6 +2,19 @@ function tests = test_mzm_scenario
 tests = functiontests(localfunctions);
 end
 
+function testStrongDriveOversampling(testCase)
+cfg = mmw.suite_config(2); cfg.train_symbols = 400;
+cfg.validation_symbols = 200; cfg.test_symbols = 3000;
+conditions = mmw.suite_conditions(cfg);
+row = table2struct(conditions(conditions.Condition == "qam64_mem1_drive180", :));
+row.SNR = Inf;
+a = mmw.make_suite_dataset(cfg, 42, row);
+cfg.samples_per_symbol = 16;
+b = mmw.make_suite_dataset(cfg, 42, row);
+verifyEqual(testCase, a.Y_test, b.Y_test);
+verifyLessThan(testCase, norm(a.baseline_test-b.baseline_test)/norm(b.baseline_test), 0.005);
+end
+
 function testFundamentalAgainstDirectIntensity(testCase)
 theta = (0:32767).'*2*pi/32768;
 for amplitude = [0 0.1 0.7 1.5 2.5]

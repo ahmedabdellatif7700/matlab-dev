@@ -50,6 +50,7 @@ end
 mmw.plot_suite_results(run_dir, cfg);
 if cfg.scenario == 3, mmw.plot_optical_response(cfg, run_dir); end
 if cfg.scenario == 4, mmw.plot_multiuser_spectrum(cfg, run_dir); end
+if cfg.scenario == 5 && cfg.profile == "study", mmw.plot_ofdm_diagnostics(cfg, run_dir); end
 write_text(fullfile(run_dir, "COMPLETE"), "All operating points and independent metric checks passed.");
 end
 

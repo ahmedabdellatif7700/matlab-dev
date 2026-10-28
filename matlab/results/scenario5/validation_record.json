@@ -1,0 +1,4795 @@
+{
+  "configuration": {
+    "root": "/home/ahmedabdellatif/dev/matlab-dev",
+    "profile": "study",
+    "visible": "off",
+    "output_root": "/home/ahmedabdellatif/dev/matlab-dev/datasets/scenarios/scenario5",
+    "run_id": "scenario5_validated_study",
+    "python_exe": "/home/ahmedabdellatif/miniconda3/envs/machine-learning/bin/python",
+    "mod_order": 16,
+    "rf_carrier_hz": 28000000000.0,
+    "symbol_rate_hz": 800000000.0,
+    "samples_per_symbol": 8,
+    "rrc_rolloff": 0.25,
+    "rrc_span_symbols": 24,
+    "equalizer_taps": 3,
+    "pa_smoothness": 2,
+    "pa_phase_limit_deg": 20,
+    "backoff_db": [
+      -3,
+      0,
+      3,
+      6,
+      9,
+      12
+    ],
+    "reference_snr_db": [
+      24,
+      30,
+      36
+    ],
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "train_symbols": 6000,
+    "validation_symbols": 1800,
+    "test_symbols": 15000,
+    "nn_epochs": 400,
+    "nn_patience": 50,
+    "nn_batch_size": 512,
+    "nn_learning_rate": 0.003,
+    "nn_hidden_size": 24,
+    "ridge_grid": [
+      0,
+      1e-08,
+      1e-06,
+      0.0001,
+      0.01,
+      1
+    ],
+    "ber_target": 0.0038,
+    "constellation_backoff_db": 0,
+    "constellation_snr_db": 30,
+    "scenario": 5,
+    "nn_lbfgs_steps": 15,
+    "alpha_learning_rate": 0.001,
+    "polynomial_orders": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "max_polynomial_features": 1000,
+    "activations": [
+      "sigmoid",
+      "multilevel"
+    ],
+    "baseline_name": "Common linear front-end",
+    "mzm_drive": [
+      0.2,
+      0.6,
+      1,
+      1.4,
+      1.8
+    ],
+    "mzm_snr_db": 30,
+    "mzm_vpi": 4.4,
+    "mzm_bias_over_vpi": 0.5,
+    "report_condition": "qam64_LS_ibo+00",
+    "memory_coefficient": [
+      0.1618033988749895,
+      0.11755705045849463
+    ],
+    "tap_offsets": [
+      0,
+      -1,
+      1
+    ],
+    "optical_wavelength_m": 1.55e-06,
+    "dispersion_ps_nm_km": 17,
+    "fft_guard_samples": 4096,
+    "fiber_lengths_km": [
+      0,
+      0.5,
+      0.9,
+      1.02,
+      1.15,
+      1.5
+    ],
+    "ofdm_fft": 64,
+    "ofdm_active": 52,
+    "ofdm_cp": 16,
+    "ofdm_oversampling": 4,
+    "ofdm_pilots": 8,
+    "ofdm_spacing_hz": 19230769.230769232,
+    "ofdm_sample_rate_hz": 4923076923.076923,
+    "ofdm_backoff_db": [
+      -3,
+      0,
+      3,
+      6,
+      9
+    ],
+    "ofdm_payload_seed_offset": 0,
+    "git_revision": "5e53b49f78003e6e184d111e0069a6caa62f1a1c",
+    "validated_before_commit": true
+  },
+  "conditions_completed": 66,
+  "receiver_metric_rows": 528,
+  "versions": {
+    "python": "3.10.20",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "torch": "2.13.0+cu130"
+  },
+  "source_snapshot_sha256": {
+    "scenario_benchmark.py": "34396768e953d8199cff2b2c2fb3599f175f0ce0ca48df9255f95de031e65614",
+    "research_suite.py": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+    "config.py": "397de7266545c548fbf114fd2d1c0e89420ad08dd259ef9f1dafdb9ac7e65fbc",
+    "activations/activation.py": "e5cb40d739ecd807daeda93d8d4fd92429c3a4d00a6c3623779286863de6206a",
+    "activations/__init__.py": "85bd46e4ef4fb734d31721ab7314cf5efbfb62d6984abc39ed5d2e119dbab6cc",
+    "activations/sigmoid.py": "3b0690b237883bc0e78f0e4cf805908350ee56a18998a1862adb91a2bfca8eb3",
+    "activations/variable_alpha_sigmoid.py": "75f4451bc5527087b63c16287fad378858c9b95ba77822d98581ccd77b9af9ba",
+    "activations/stable_alpha_sigmoid.py": "fee8548eddc3f859eb6236ba2abadb3d555b4e1730158835a2581ebf31b49f1c",
+    "activations/__pycache__/sigmoid.cpython-310.pyc": "ddae04fef9003b20990d30634e61af791a7056c95a70e011a051080d5443be9e",
+    "activations/__pycache__/activation.cpython-310.pyc": "b39b4f502187de3272559992f7f7c8e313e336ec2fb2e7f265b7fe967c2c8795",
+    "activations/__pycache__/variable_alpha_sigmoid.cpython-310.pyc": "42956a03899c1eb2f9d3d046cc001b1ceb286b8abad146ac3507d64b3b573867",
+    "activations/__pycache__/stable_alpha_sigmoid.cpython-310.pyc": "33dc02a27a29895c2a11915f0a894bf6281d5c47a232b5a38436e1c2265146d0",
+    "activations/__pycache__/__init__.cpython-310.pyc": "56d170927807cc44c419b1eefa2090a04a5b4714d78645fce8de0b79db2b7bee",
+    "hardware/q8_24_training_arithmetic.py": "b408446a8f290609113913b15198d000046e5d1a7cde1916bad788e2dcefc811",
+    "hardware/__init__.py": "f3860747538369c6f3dc372415e4f38d15b5ae0da5891c5ee29028b66ebe40c2",
+    "hardware/q8_8_inference_arithmetic.py": "162ec54ade7a3de3f4ae9f14a9066f010c430a5b77195ad4049fe391ad37e0a1",
+    "hardware/__pycache__/q8_8_inference_arithmetic.cpython-310.pyc": "e0bfa5ea584d61fdce7eb6b1d5ff4a847149f16890458a01e2753cfc6a1e7163",
+    "hardware/__pycache__/__init__.cpython-310.pyc": "d4dd75bff09008cd6341910d2c693d5d7825b384822a1d9a1013aacac14f8aca",
+    "+mmw/mzm_envelope.m": "bba7ef79b889658c29a1d2cab59ced1d3e36c3b71b0757464c1441384b6f6958",
+    "+mmw/scenario_config.m": "e2fdfdcb5204021f27afe1c368b5db84868d1642d58d9ff762c8c8a08d852a9b",
+    "+mmw/plot_ofdm_diagnostics.m": "1ec69f6f16dd8208e11ce70407d0c5dc3acf30a2212725025ac7f1314e392836",
+    "+mmw/make_suite_dataset.m": "be7b8991256b2acdc0d041ccc927c5d0b54ecbcadbf58ec82ed3657887916646",
+    "+mmw/plot_optical_response.m": "bab5da5fec251a03623cf5f2b610e5e511995789ede9e88e9b03d01a7b1ad5e1",
+    "+mmw/run_pa_benchmark.m": "870fc23b3a18242e59597daea084bdfc5878f128e4b33bc8a605f555a3bd2537",
+    "+mmw/plot_results.m": "5f3c3d310caf9840ba6eb2b3ea31f861c56e9e9e92cf6768018b263318bd0c92",
+    "+mmw/run_suite.m": "b77d331be56c76faafa1a56db24359f503b6d5815f893c79e9d3ea9688d07a8f",
+    "+mmw/suite_conditions.m": "ed08fcb58786c10a81b7d56e606cb8a5ac0f5b98ef55c1280f59d6731d69eac4",
+    "+mmw/plot_multiuser_spectrum.m": "c9e5b829c3f37b79cd05cb26b22126bd708040e8c4662809c36c578791db496d",
+    "+mmw/pa_envelope.m": "c4c33c59e965cd2f1f01aae9d5c111e5fa75eea395d9aa1eb3f19b4879340653",
+    "+mmw/make_multiuser_dataset.m": "56d29a9ebbf9c0709be7b90ea249b8c20f964021932d683065e3a62d04dfd895",
+    "+mmw/make_dataset.m": "c73627285cd3c45c075cc213bf52c8c6fe53441756be203b81d79c343538e5c4",
+    "+mmw/multiuser_bins.m": "c813c7ba2eddc17f0853482b16e46c1ea79d1f20bd7c47d3cad581d137c59dc0",
+    "+mmw/optical_fading.m": "022a22c2f56286cfe56ea189576213e1255b3ade8c4c6266fe9c5b1ff3aabe5c",
+    "+mmw/make_ofdm_dataset.m": "820dffcc6655e473fc9f7c774d41fb5bbf0df8ffc4440634a87a88c80b1768ec",
+    "+mmw/plot_suite_results.m": "41ee11509b1981ea5855c3a284f37a5172d28c25946c3fc00a3f4a0f31091fc4",
+    "+mmw/suite_config.m": "cd2a5ecc0bd19b9afc6eded1dc4c34bfeaccad5e2851e512b22659c14cc8d9d0",
+    "+mmw/generate_burst.m": "58570444c54ce37204514a5e299124aa740e45bb8afcddb36b6da89acf3ac91b"
+  },
+  "conditions": [
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam16_LS_ibo+00",
+        "Group": "16-QAM OFDM, LS H",
+        "Axis": 0,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 1,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 0,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 301,
+          "best_validation_mse": 0.14945942163467407,
+          "adam_epochs": 286,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 181,
+          "best_validation_mse": 0.06211615353822708,
+          "adam_epochs": 231,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "edce3d12aa1425db7f5567c1bed550186112e9735de97dd118c7535b4a903b20",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam16_LS_ibo+03",
+        "Group": "16-QAM OFDM, LS H",
+        "Axis": 3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 0.7079457843841379,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 3,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 287,
+          "best_validation_mse": 0.08993996679782867,
+          "adam_epochs": 275,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 328,
+          "best_validation_mse": 0.007214904297143221,
+          "adam_epochs": 313,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "9b2284d243ae95aa74ac6c1bcbe32eabfb586fdf6b6d3ab97fdf3f8be7165870",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam16_LS_ibo+06",
+        "Group": "16-QAM OFDM, LS H",
+        "Axis": 6,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 0.5011872336272722,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 6,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 413,
+          "best_validation_mse": 0.061953410506248474,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 272,
+          "best_validation_mse": 0.005854809656739235,
+          "adam_epochs": 267,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "5fc745dfa4218fa3fc3d38d8296b67d42c4147619cc8ad41988b57dac1277d84",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam16_LS_ibo+09",
+        "Group": "16-QAM OFDM, LS H",
+        "Axis": 9,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 0.3548133892335754,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 9,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.07860340923070908,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 339,
+          "best_validation_mse": 0.010524381883442402,
+          "adam_epochs": 326,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "813d9e8d500ab14ec8e6f12121fcacabc5f609d2c1d4d3f569646bf031dad7c8",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam16_LS_ibo-03",
+        "Group": "16-QAM OFDM, LS H",
+        "Axis": -3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 1.4125375446227544,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": -3,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 301,
+          "best_validation_mse": 0.2541663348674774,
+          "adam_epochs": 286,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 136,
+          "best_validation_mse": 0.19252890348434448,
+          "adam_epochs": 186,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "af592710802bebea2170e04c1b8897584d622a97ad91a7753fc2df2fdf156303",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam16_known_ibo+00",
+        "Group": "16-QAM OFDM, known H",
+        "Axis": 0,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 1,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 0,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 214,
+          "best_validation_mse": 0.1529129594564438,
+          "adam_epochs": 264,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 403,
+          "best_validation_mse": 0.05073326453566551,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "d234713fdaa87e314210c9d16a806a00624dc597831af37d4071477091e2a2c9",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam16_known_ibo+03",
+        "Group": "16-QAM OFDM, known H",
+        "Axis": 3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 0.7079457843841379,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 3,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 281,
+          "best_validation_mse": 0.08124187588691711,
+          "adam_epochs": 269,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 289,
+          "best_validation_mse": 0.00479079456999898,
+          "adam_epochs": 275,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "231e282b586a840401e7fe4bc6c025fe57711d67e92a94bbc927d08f56e9e247",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam16_known_ibo+06",
+        "Group": "16-QAM OFDM, known H",
+        "Axis": 6,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 0.5011872336272722,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 6,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 413,
+          "best_validation_mse": 0.054041389375925064,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 407,
+          "best_validation_mse": 0.001321689342148602,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "df8b7fc628e068c3d0d5f08fca00efa3a339175148178af2e796d089cb148730",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam16_known_ibo+09",
+        "Group": "16-QAM OFDM, known H",
+        "Axis": 9,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 0.3548133892335754,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 9,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 407,
+          "best_validation_mse": 0.06831470876932144,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 298,
+          "best_validation_mse": 0.004956718999892473,
+          "adam_epochs": 283,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "96e877a7ee194cbc34c852a9020a83c48b137544abc131925dfd527751a56358",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam16_known_ibo-03",
+        "Group": "16-QAM OFDM, known H",
+        "Axis": -3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 1.4125375446227544,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": -3,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 1e-06,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 301,
+          "best_validation_mse": 0.2497946172952652,
+          "adam_epochs": 286,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 180,
+          "best_validation_mse": 0.16796480119228363,
+          "adam_epochs": 230,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "d08fbb26e3eb3438f4d942a145d8c8f675f1030458be0ea9f7cbc8a90e632d41",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam16_linear_noiseless",
+        "Group": "Control",
+        "Axis": 0,
+        "XLabel": "Linear noiseless control",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 1,
+        "SNR": null,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0,
+          "rank": 419,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 4.276255640434101e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 414,
+          "best_validation_mse": 2.7883411135576353e-09,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "134c48ecb34d2e3c6031f16b26a6a77ae7544a39d0341732a1f6089139d63e9d",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam64_LS_ibo+00",
+        "Group": "64-QAM OFDM, LS H",
+        "Axis": 0,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 1,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 0,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.7545759081840515,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 243,
+          "best_validation_mse": 0.8002147078514099,
+          "adam_epochs": 293,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "e931410dde287b408b22738c48e17240cda3c48ac41d4cd35e406e3875528b67",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam64_LS_ibo+03",
+        "Group": "64-QAM OFDM, LS H",
+        "Axis": 3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 0.7079457843841379,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 3,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.3827575743198395,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 203,
+          "best_validation_mse": 0.3250007927417755,
+          "adam_epochs": 253,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "605ad983f21c81881efe3c1576394afb822d01cc41cd209faf548a0df193dd56",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam64_LS_ibo+06",
+        "Group": "64-QAM OFDM, LS H",
+        "Axis": 6,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 0.5011872336272722,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 6,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 1e-06,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.24733252823352814,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 369,
+          "best_validation_mse": 0.15881872177124023,
+          "adam_epochs": 362,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "87b3a8c31ec4d2fb4aefaf118d6618c2e6a360011303b411f454ddca4d6979b4",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam64_LS_ibo+09",
+        "Group": "64-QAM OFDM, LS H",
+        "Axis": 9,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 0.3548133892335754,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 9,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 414,
+          "best_validation_mse": 0.3168570399284363,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 343,
+          "best_validation_mse": 0.2494213879108429,
+          "adam_epochs": 337,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "63e7d23c587cd7bf2c047d66474f66eab9e1b9faa66070e018e2932fb9adb937",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam64_LS_ibo-03",
+        "Group": "64-QAM OFDM, LS H",
+        "Axis": -3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 1.4125375446227544,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": -3,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 414,
+          "best_validation_mse": 1.260151982307434,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 319,
+          "best_validation_mse": 1.4039173126220703,
+          "adam_epochs": 369,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "9ca7c7c730a81dc3daa6e9c3272c0c73ba989bd58c0cc402967f63272d148ac9",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam64_known_ibo+00",
+        "Group": "64-QAM OFDM, known H",
+        "Axis": 0,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 1,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 0,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 414,
+          "best_validation_mse": 0.6800217032432556,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 202,
+          "best_validation_mse": 0.7348545789718628,
+          "adam_epochs": 252,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "92bebaf5be510ab01e280f2cf7ab85e9d0e7f66fe2b3c69eb5cdd9018eeec89c",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam64_known_ibo+03",
+        "Group": "64-QAM OFDM, known H",
+        "Axis": 3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 0.7079457843841379,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 3,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.34681421518325806,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 258,
+          "best_validation_mse": 0.27631279826164246,
+          "adam_epochs": 308,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "e8e46e6e5f3be63e82b09cc9d30fd4cb739cf685c7306d96b68520313dbbd666",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam64_known_ibo+06",
+        "Group": "64-QAM OFDM, known H",
+        "Axis": 6,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 0.5011872336272722,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 6,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.2225523144006729,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 296,
+          "best_validation_mse": 0.1295185536146164,
+          "adam_epochs": 286,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "e182f160db94cc3c07e311fbee8377af485be774b7261779923e98a85be2ca97",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam64_known_ibo+09",
+        "Group": "64-QAM OFDM, known H",
+        "Axis": 9,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 0.3548133892335754,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 9,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.2839270830154419,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 402,
+          "best_validation_mse": 0.207697793841362,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "866e579b552427c8d49620f27657115bdfdcb215768b3324bd106d05dce84e0e",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam64_known_ibo-03",
+        "Group": "64-QAM OFDM, known H",
+        "Axis": -3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 1.4125375446227544,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": -3,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 414,
+          "best_validation_mse": 1.136282205581665,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 288,
+          "best_validation_mse": 1.2387548685073853,
+          "adam_epochs": 338,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "94f18dfd7bb0c5b61316899d35a1a9e972efbe9d6ad685c74beee59426068f6e",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "qam64_linear_noiseless",
+        "Group": "Control",
+        "Axis": 0,
+        "XLabel": "Linear noiseless control",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 1,
+        "SNR": null,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 1.2735007658193354e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 1.7204500579737214e-07,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "03217b3b12782fbeb2fd2ef52b662aad4fa6518fc5bce3b1f70a9fc1c69a1218",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam16_LS_ibo+00",
+        "Group": "16-QAM OFDM, LS H",
+        "Axis": 0,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 1,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 0,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 255,
+          "best_validation_mse": 0.16973914206027985,
+          "adam_epochs": 240,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 179,
+          "best_validation_mse": 0.08037801086902618,
+          "adam_epochs": 229,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "73a192de3ae2999059e4ebcba75d6ac8620c8c9390588966f66463a52e529fa3",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam16_LS_ibo+03",
+        "Group": "16-QAM OFDM, LS H",
+        "Axis": 3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 0.7079457843841379,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 3,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.08834349364042282,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 377,
+          "best_validation_mse": 0.011160429567098618,
+          "adam_epochs": 370,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "77b8e9e0dda1c629bb5d3c583c87d91c62d06db9ed7ad50a56f1becc2b58a1f1",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam16_LS_ibo+06",
+        "Group": "16-QAM OFDM, LS H",
+        "Axis": 6,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 0.5011872336272722,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 6,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.05777576193213463,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.0018747998401522636,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "7ccb58e26f8124d941876ab21835d10cb34f22bd9d49f865541e0fcd7bc5f4db",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam16_LS_ibo+09",
+        "Group": "16-QAM OFDM, LS H",
+        "Axis": 9,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 0.3548133892335754,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 9,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 408,
+          "best_validation_mse": 0.0720401331782341,
+          "adam_epochs": 393,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 408,
+          "best_validation_mse": 0.007867320440709591,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "ba0508f0e3224d0759fd2abcf50fbbc370bf13bd6220b4436bd6b311f1236d2a",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam16_LS_ibo-03",
+        "Group": "16-QAM OFDM, LS H",
+        "Axis": -3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 1.4125375446227544,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": -3,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 255,
+          "best_validation_mse": 0.27567383646965027,
+          "adam_epochs": 240,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 127,
+          "best_validation_mse": 0.2221851646900177,
+          "adam_epochs": 177,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "e4d6289f49a9497b32a10c85e076573fe6ab05efd40ebc9339dc99f0166999d6",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam16_known_ibo+00",
+        "Group": "16-QAM OFDM, known H",
+        "Axis": 0,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 1,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 0,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 336,
+          "best_validation_mse": 0.14802353084087372,
+          "adam_epochs": 321,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 86,
+          "best_validation_mse": 0.05833412706851959,
+          "adam_epochs": 136,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "62a86321402d6dca601ac5247ebda7a7feabd7fd9ef8baa5f551dc3c72387a81",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam16_known_ibo+03",
+        "Group": "16-QAM OFDM, known H",
+        "Axis": 3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 0.7079457843841379,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 3,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.08570782840251923,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 322,
+          "best_validation_mse": 0.0042338077910244465,
+          "adam_epochs": 313,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "270bea69314ab9943d812809fe63036894900f67b13d4d5ad04ef9b95306423a",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam16_known_ibo+06",
+        "Group": "16-QAM OFDM, known H",
+        "Axis": 6,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 0.5011872336272722,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 6,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 403,
+          "best_validation_mse": 0.05443214252591133,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.0005224075284786522,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "b0d16aef1dd6ffc740fdc2aa76542de7b6aaa2cdd68bee92d240d1618826c946",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam16_known_ibo+09",
+        "Group": "16-QAM OFDM, known H",
+        "Axis": 9,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 0.3548133892335754,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 9,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 410,
+          "best_validation_mse": 0.06615914404392242,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 280,
+          "best_validation_mse": 0.006931432988494635,
+          "adam_epochs": 267,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "8ce96247d1a8e34e5375c82ea3bc132fe425dad769922efc3459fd18fcd78f6f",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam16_known_ibo-03",
+        "Group": "16-QAM OFDM, known H",
+        "Axis": -3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 1.4125375446227544,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": -3,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 246,
+          "best_validation_mse": 0.26440608501434326,
+          "adam_epochs": 240,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 83,
+          "best_validation_mse": 0.17474210262298584,
+          "adam_epochs": 133,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "0f6eda46df18b3366d91a39e3d47e4900c115adafd47ac09951fa6b544fd0731",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam16_linear_noiseless",
+        "Group": "Control",
+        "Axis": 0,
+        "XLabel": "Linear noiseless control",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 1,
+        "SNR": null,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0,
+          "rank": 419,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 2.7090538878837833e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 8.771271708951645e-09,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "fb7b16764567c21da3486b47f3d7538fd447fff946240b42d08d3eb4d440e598",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam64_LS_ibo+00",
+        "Group": "64-QAM OFDM, LS H",
+        "Axis": 0,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 1,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 0,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.7332212924957275,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 142,
+          "best_validation_mse": 0.7819520235061646,
+          "adam_epochs": 192,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "4f8d2452506a007573474bea57f4c808c515b41401a79c1e67e912cca8fc26e4",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam64_LS_ibo+03",
+        "Group": "64-QAM OFDM, LS H",
+        "Axis": 3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 0.7079457843841379,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 3,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 1e-06,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.3748711347579956,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 169,
+          "best_validation_mse": 0.32463812828063965,
+          "adam_epochs": 219,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "1b9d488b6b5c6b240878ac018d5cae4cd8beb67ab9d29b0b2ddcaa6d40653b1e",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam64_LS_ibo+06",
+        "Group": "64-QAM OFDM, LS H",
+        "Axis": 6,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 0.5011872336272722,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 6,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 410,
+          "best_validation_mse": 0.2519763112068176,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 184,
+          "best_validation_mse": 0.15601857006549835,
+          "adam_epochs": 234,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "de1c9a99394c0c4559fdc60da0fc75f23d98bc237b42fd4c7e8c45a88d947a88",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam64_LS_ibo+09",
+        "Group": "64-QAM OFDM, LS H",
+        "Axis": 9,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 0.3548133892335754,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 9,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.31340739130973816,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 279,
+          "best_validation_mse": 0.24975262582302094,
+          "adam_epochs": 329,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "5934087a50f8fa5136dc382dbbbc31f2fa1f91fa7183de95be1390f2015e4de0",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam64_LS_ibo-03",
+        "Group": "64-QAM OFDM, LS H",
+        "Axis": -3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 1.4125375446227544,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": -3,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 390,
+          "best_validation_mse": 1.230415940284729,
+          "adam_epochs": 375,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 184,
+          "best_validation_mse": 1.3665844202041626,
+          "adam_epochs": 234,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "b9c6066429c9557ab4e66f4b7c04f59acceafed72b17e3abfe03635eaee63a89",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam64_known_ibo+00",
+        "Group": "64-QAM OFDM, known H",
+        "Axis": 0,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 1,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 0,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 414,
+          "best_validation_mse": 0.653310239315033,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 161,
+          "best_validation_mse": 0.6917240619659424,
+          "adam_epochs": 211,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "6fadbbfdfdb20798b4623792db5800aa36c13838b978fcf1a1c119eb7dc328ad",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam64_known_ibo+03",
+        "Group": "64-QAM OFDM, known H",
+        "Axis": 3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 0.7079457843841379,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 3,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.33389949798583984,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 252,
+          "best_validation_mse": 0.274955689907074,
+          "adam_epochs": 249,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "1de5834658e1c57a0606b82274c483e94fe5f947778d78e50c8a5b3e7e9bb227",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam64_known_ibo+06",
+        "Group": "64-QAM OFDM, known H",
+        "Axis": 6,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 0.5011872336272722,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 6,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 411,
+          "best_validation_mse": 0.22114764153957367,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 207,
+          "best_validation_mse": 0.12750501930713654,
+          "adam_epochs": 257,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "5e307c20df8c86b153e31f8f819b185bf4bfaae0e4a79a05aefbffd974574279",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam64_known_ibo+09",
+        "Group": "64-QAM OFDM, known H",
+        "Axis": 9,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 0.3548133892335754,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 9,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.27924442291259766,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 361,
+          "best_validation_mse": 0.20002534985542297,
+          "adam_epochs": 348,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "b19bff45d847a4bfa16c800af32ffe789693f102ae1804b670a6aa0472c06882",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam64_known_ibo-03",
+        "Group": "64-QAM OFDM, known H",
+        "Axis": -3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 1.4125375446227544,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": -3,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 413,
+          "best_validation_mse": 1.103223204612732,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 262,
+          "best_validation_mse": 1.2170310020446777,
+          "adam_epochs": 312,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "123f961ff9c631b73f78065d5e8b02f978166f278a0092c86de2c88587229a1a",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "qam64_linear_noiseless",
+        "Group": "Control",
+        "Axis": 0,
+        "XLabel": "Linear noiseless control",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 1,
+        "SNR": null,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 1.4431580893869977e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 5.24685162872629e-07,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "9f8821fc7de9b7ca6cfab1744eeb36dbdd7e20d0a1a6d4ca93184f9c360d7842",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam16_LS_ibo+00",
+        "Group": "16-QAM OFDM, LS H",
+        "Axis": 0,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 1,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 0,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 396,
+          "best_validation_mse": 0.18852441012859344,
+          "adam_epochs": 381,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 153,
+          "best_validation_mse": 0.08789119124412537,
+          "adam_epochs": 203,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "0b8b79e82e4aba520eba8f29b79ba8a0f4413f23ced9fc5df1c19254361073fb",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam16_LS_ibo+03",
+        "Group": "16-QAM OFDM, LS H",
+        "Axis": 3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 0.7079457843841379,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 3,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 306,
+          "best_validation_mse": 0.10322650521993637,
+          "adam_epochs": 356,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 389,
+          "best_validation_mse": 0.017018966376781464,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "5d586d6546140ba612bee230c29ebf3f243ff0333cd179cd9bcaa06abdd86a20",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam16_LS_ibo+06",
+        "Group": "16-QAM OFDM, LS H",
+        "Axis": 6,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 0.5011872336272722,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 6,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 359,
+          "best_validation_mse": 0.06621871143579483,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 414,
+          "best_validation_mse": 0.005977077409625053,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "06f7428e4e77682f1e03cc5dbf5f9bc0b09442a1479fa066b18b4d7564201b44",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam16_LS_ibo+09",
+        "Group": "16-QAM OFDM, LS H",
+        "Axis": 9,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 0.3548133892335754,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 9,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 365,
+          "best_validation_mse": 0.07789455354213715,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 309,
+          "best_validation_mse": 0.012388763017952442,
+          "adam_epochs": 301,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "56cdaea8513f266a1eab16989cf0c557ec5a4df46096d9d5faa6fe757af758c4",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam16_LS_ibo-03",
+        "Group": "16-QAM OFDM, LS H",
+        "Axis": -3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 1.4125375446227544,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": -3,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 396,
+          "best_validation_mse": 0.2685840129852295,
+          "adam_epochs": 381,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 98,
+          "best_validation_mse": 0.23209626972675323,
+          "adam_epochs": 148,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "b503fd33917335f5faa0dca7d997f69c02dfc0afbac702bb61d0304dcad0ff3f",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam16_known_ibo+00",
+        "Group": "16-QAM OFDM, known H",
+        "Axis": 0,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 1,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 0,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 217,
+          "best_validation_mse": 0.1749511957168579,
+          "adam_epochs": 267,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 219,
+          "best_validation_mse": 0.0767044797539711,
+          "adam_epochs": 269,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "0d298a347b5e9dc327a3083f1a4013ba900adb54c199ab80929462cbde735050",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam16_known_ibo+03",
+        "Group": "16-QAM OFDM, known H",
+        "Axis": 3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 0.7079457843841379,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 3,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 357,
+          "best_validation_mse": 0.09442535042762756,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 405,
+          "best_validation_mse": 0.013396712020039558,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "1bff324b3a0534f0d04a8bc6cb3e9b0af97de4db51350565bc85d55ff64cea26",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam16_known_ibo+06",
+        "Group": "16-QAM OFDM, known H",
+        "Axis": 6,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 0.5011872336272722,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 6,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 410,
+          "best_validation_mse": 0.05965087562799454,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 405,
+          "best_validation_mse": 0.004827677272260189,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "44878f54acb33103d231bdf502ec2023040bddbd970e73c82adb382e795f7fe9",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam16_known_ibo+09",
+        "Group": "16-QAM OFDM, known H",
+        "Axis": 9,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 0.3548133892335754,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 9,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 405,
+          "best_validation_mse": 0.0699218362569809,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 260,
+          "best_validation_mse": 0.009640111587941647,
+          "adam_epochs": 245,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "eb1ed35105e9ca6938b8264e20c42f8eb12e16b6409b842e2866b84aba4fabc1",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam16_known_ibo-03",
+        "Group": "16-QAM OFDM, known H",
+        "Axis": -3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 1.4125375446227544,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": -3,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.01,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 331,
+          "best_validation_mse": 0.2792354226112366,
+          "adam_epochs": 381,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 108,
+          "best_validation_mse": 0.20734618604183197,
+          "adam_epochs": 158,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "199a1c32d5fe7b3385e8aafeafc16eeb8fd3f240cdc273ca6d412177fe81dcbe",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam16_linear_noiseless",
+        "Group": "Control",
+        "Axis": 0,
+        "XLabel": "Linear noiseless control",
+        "ModOrder": 16,
+        "Memory": true,
+        "Drive": 1,
+        "SNR": null,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0,
+          "rank": 419,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 2.18875447899336e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 409,
+          "best_validation_mse": 7.717830818876337e-09,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "791e7164831ebb24e79122b40fe10cc8599212026573a89175dde088ea085301",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam64_LS_ibo+00",
+        "Group": "64-QAM OFDM, LS H",
+        "Axis": 0,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 1,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 0,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.7573660612106323,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 191,
+          "best_validation_mse": 0.8183943629264832,
+          "adam_epochs": 241,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "0f510028b71f0d97bc18ce75e0f2ebdf11806197a614b56b6aa961f89a9d1848",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam64_LS_ibo+03",
+        "Group": "64-QAM OFDM, LS H",
+        "Axis": 3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 0.7079457843841379,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 3,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.40028631687164307,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 224,
+          "best_validation_mse": 0.35697680711746216,
+          "adam_epochs": 274,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "a317f69996f1953efbd1c9fb1546f197c12e46c07ac81463855888f5e6ccb83f",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam64_LS_ibo+06",
+        "Group": "64-QAM OFDM, LS H",
+        "Axis": 6,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 0.5011872336272722,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 6,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 414,
+          "best_validation_mse": 0.26196250319480896,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 258,
+          "best_validation_mse": 0.17351603507995605,
+          "adam_epochs": 308,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "d7232c87d342098624400a0c7e5c849ec1dca53e464a1bff08209ae2e2f4e6aa",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam64_LS_ibo+09",
+        "Group": "64-QAM OFDM, LS H",
+        "Axis": 9,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 0.3548133892335754,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 9,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 406,
+          "best_validation_mse": 0.3296796381473541,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 313,
+          "best_validation_mse": 0.26705148816108704,
+          "adam_epochs": 309,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "a23ed6f5f405ad3724de0698aa5c9e5a6b825225312a945372f2b37e9eb88a1c",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam64_LS_ibo-03",
+        "Group": "64-QAM OFDM, LS H",
+        "Axis": -3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 1.4125375446227544,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": -3,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 1.2590605020523071,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 308,
+          "best_validation_mse": 1.353873610496521,
+          "adam_epochs": 358,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "eb8a2e37125a6ed52ee116a7b2cdce947f8fc100bb8268ced9f4210a2bb2e077",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam64_known_ibo+00",
+        "Group": "64-QAM OFDM, known H",
+        "Axis": 0,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 1,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 0,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.7074006199836731,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 228,
+          "best_validation_mse": 0.7558730244636536,
+          "adam_epochs": 225,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "93fdcb1016b592e674cf7b372189340619723048d4d4cab83080d49e94669c53",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam64_known_ibo+03",
+        "Group": "64-QAM OFDM, known H",
+        "Axis": 3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 0.7079457843841379,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 3,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 412,
+          "best_validation_mse": 0.37826719880104065,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 233,
+          "best_validation_mse": 0.334930419921875,
+          "adam_epochs": 283,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "b3fcf26430bcb2a70db3c9b5726e944e3cedfd3954d28668307ca9e67e9ca420",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam64_known_ibo+06",
+        "Group": "64-QAM OFDM, known H",
+        "Axis": 6,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 0.5011872336272722,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 6,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.2456573098897934,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 254,
+          "best_validation_mse": 0.15284781157970428,
+          "adam_epochs": 304,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "549051d1e1f73301ea2c85cb1c7279a67c532089d7b577c0369f4aa896cb2648",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam64_known_ibo+09",
+        "Group": "64-QAM OFDM, known H",
+        "Axis": 9,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 0.3548133892335754,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": 9,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 403,
+          "best_validation_mse": 0.30604612827301025,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 246,
+          "best_validation_mse": 0.22909890115261078,
+          "adam_epochs": 296,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "19e3d54139bd896c311aa4a362397506093575c35ad39bfc65febb2faba3e5a9",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam64_known_ibo-03",
+        "Group": "64-QAM OFDM, known H",
+        "Axis": -3,
+        "XLabel": "RF driver input backoff (dB)",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 1.4125375446227544,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 10,
+        "Backoff": -3,
+        "Guard": 4,
+        "EstimateMode": "known"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 412,
+          "best_validation_mse": 1.1589739322662354,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 279,
+          "best_validation_mse": 1.2422339916229248,
+          "adam_epochs": 267,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "ecfab85130589d57cff285d163c7a81f7a9ca066f98d627202f675fc2dee08da",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "qam64_linear_noiseless",
+        "Group": "Control",
+        "Axis": 0,
+        "XLabel": "Linear noiseless control",
+        "ModOrder": 64,
+        "Memory": true,
+        "Drive": 1,
+        "SNR": null,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 4,
+        "EstimateMode": "LS"
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 2.1756390196969733e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 1.0605975120370204e-07,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "b5be60195048d58809c7fa440fcf2dfabcfccb280cf6f493cd5b53f813560a39",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 5750,
+        "validation": 1700,
+        "test": 14400
+      }
+    }
+  ],
+  "rendering_sources_sha256": {
+    "plot_ofdm_diagnostics.m": "77a786ab38435502851aad11c016be7da08c99b645962acd017a99e71777dc05",
+    "plot_optical_response.m": "bab5da5fec251a03623cf5f2b610e5e511995789ede9e88e9b03d01a7b1ad5e1",
+    "plot_results.m": "5f3c3d310caf9840ba6eb2b3ea31f861c56e9e9e92cf6768018b263318bd0c92",
+    "plot_multiuser_spectrum.m": "c9e5b829c3f37b79cd05cb26b22126bd708040e8c4662809c36c578791db496d",
+    "plot_suite_results.m": "055827b0bd3ea1063fd93b4c3788fe32abc8ea5b04144cf381b70b7608afea3f"
+  }
+}

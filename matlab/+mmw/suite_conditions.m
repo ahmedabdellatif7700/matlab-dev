@@ -3,7 +3,7 @@ function conditions = suite_conditions(cfg)
 template = struct("Condition", "", "Group", "", "Axis", 0, "XLabel", "", ...
     "ModOrder", 16, "Memory", false, "Drive", 1, "SNR", 30, ...
     "Enabled", true, "ActivationStudy", false, "Sideband", "DSB", ...
-    "Fiber_km", 0, "Backoff", 3, "Guard", 4);
+    "Fiber_km", 0, "Backoff", 3, "Guard", 4, "EstimateMode", "LS");
 rows = repmat(template, 0, 1);
 if cfg.scenario == 2
     for order = [16 64]
@@ -57,6 +57,25 @@ elseif cfg.scenario == 4
     row = template; row.Enabled = false; row.SNR = Inf; row.Group = "Control";
     row.XLabel = "Linear noiseless control"; row.Condition = "linear_noiseless";
     rows(end+1) = row;
+elseif cfg.scenario == 5
+    for order = [16 64]
+        for estimator = ["LS" "known"]
+            row = template; row.ModOrder = order; row.EstimateMode = estimator;
+            row.Memory = true; row.SNR = 28; row.Sideband = "SSB"; row.Fiber_km = 10;
+            row.Group = sprintf("%d-QAM OFDM, %s H", order, estimator);
+            row.XLabel = "RF driver input backoff (dB)";
+            for backoff = cfg.ofdm_backoff_db
+                row.Backoff = backoff; row.Axis = backoff; row.Drive = 10^(-backoff/20);
+                row.Condition = sprintf("qam%d_%s_ibo%+03d", order, estimator, backoff);
+                rows(end+1) = row; %#ok<AGROW>
+            end
+        end
+        row = template; row.ModOrder = order; row.Enabled = false;
+        row.Memory = true; row.SNR = Inf; row.Sideband = "SSB";
+        row.Group = "Control"; row.XLabel = "Linear noiseless control";
+        row.Condition = sprintf("qam%d_linear_noiseless", order);
+        rows(end+1) = row; %#ok<AGROW>
+    end
 else
     error("Unimplemented scenario.");
 end

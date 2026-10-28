@@ -1,0 +1,4077 @@
+{
+  "configuration": {
+    "root": "/home/ahmedabdellatif/dev/matlab-dev",
+    "profile": "study",
+    "visible": "off",
+    "output_root": "/home/ahmedabdellatif/dev/matlab-dev/datasets/scenarios/scenario4",
+    "run_id": "scenario4_validated_study",
+    "python_exe": "/home/ahmedabdellatif/miniconda3/envs/machine-learning/bin/python",
+    "mod_order": 16,
+    "rf_carrier_hz": 60000000000.0,
+    "symbol_rate_hz": 1000000000.0,
+    "samples_per_symbol": 8,
+    "rrc_rolloff": 0.25,
+    "rrc_span_symbols": 24,
+    "equalizer_taps": 2,
+    "pa_smoothness": 2,
+    "pa_phase_limit_deg": 20,
+    "backoff_db": [
+      -3,
+      0,
+      3,
+      6,
+      9,
+      12
+    ],
+    "reference_snr_db": [
+      24,
+      30,
+      36
+    ],
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "train_symbols": 4096,
+    "validation_symbols": 1024,
+    "test_symbols": 8192,
+    "nn_epochs": 400,
+    "nn_patience": 50,
+    "nn_batch_size": 512,
+    "nn_learning_rate": 0.003,
+    "nn_hidden_size": 32,
+    "ridge_grid": [
+      0,
+      1e-08,
+      1e-06,
+      0.0001,
+      0.01,
+      1
+    ],
+    "ber_target": 0.0038,
+    "constellation_backoff_db": 0,
+    "constellation_snr_db": 30,
+    "scenario": 4,
+    "nn_lbfgs_steps": 15,
+    "alpha_learning_rate": 0.001,
+    "polynomial_orders": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "max_polynomial_features": 1000,
+    "activations": "multilevel",
+    "baseline_name": "Training LS front-end",
+    "mzm_drive": [
+      0.2,
+      0.6,
+      1,
+      1.4,
+      1.8
+    ],
+    "mzm_snr_db": 30,
+    "mzm_vpi": 4.4,
+    "mzm_bias_over_vpi": 0.5,
+    "report_condition": "guard4_drive110",
+    "memory_coefficient": [
+      0.1618033988749895,
+      0.11755705045849463
+    ],
+    "tap_offsets": [
+      0,
+      -1
+    ],
+    "optical_wavelength_m": 1.55e-06,
+    "dispersion_ps_nm_km": 17,
+    "fft_guard_samples": 4096,
+    "fiber_lengths_km": [
+      0,
+      0.5,
+      0.9,
+      1.02,
+      1.15,
+      1.5
+    ],
+    "individual_hidden_size": 12,
+    "multi_users": 4,
+    "multi_dft": 16,
+    "multi_fft": 256,
+    "multi_cp": 32,
+    "multi_sample_rate_hz": 4000000000.0,
+    "multi_guards": [
+      0,
+      4,
+      12
+    ],
+    "multi_drive": [
+      0.3,
+      0.7,
+      1.1,
+      1.5
+    ],
+    "multi_user_backoff": [
+      3,
+      6,
+      9,
+      12
+    ],
+    "git_revision": "5e53b49f78003e6e184d111e0069a6caa62f1a1c",
+    "validated_before_commit": true
+  },
+  "conditions_completed": 39,
+  "receiver_metric_rows": 1950,
+  "versions": {
+    "python": "3.10.20",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "torch": "2.13.0+cu130"
+  },
+  "source_snapshot_sha256": {
+    "scenario_benchmark.py": "34396768e953d8199cff2b2c2fb3599f175f0ce0ca48df9255f95de031e65614",
+    "research_suite.py": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+    "config.py": "397de7266545c548fbf114fd2d1c0e89420ad08dd259ef9f1dafdb9ac7e65fbc",
+    "activations/activation.py": "e5cb40d739ecd807daeda93d8d4fd92429c3a4d00a6c3623779286863de6206a",
+    "activations/__init__.py": "85bd46e4ef4fb734d31721ab7314cf5efbfb62d6984abc39ed5d2e119dbab6cc",
+    "activations/sigmoid.py": "3b0690b237883bc0e78f0e4cf805908350ee56a18998a1862adb91a2bfca8eb3",
+    "activations/variable_alpha_sigmoid.py": "75f4451bc5527087b63c16287fad378858c9b95ba77822d98581ccd77b9af9ba",
+    "activations/stable_alpha_sigmoid.py": "fee8548eddc3f859eb6236ba2abadb3d555b4e1730158835a2581ebf31b49f1c",
+    "activations/__pycache__/sigmoid.cpython-310.pyc": "ddae04fef9003b20990d30634e61af791a7056c95a70e011a051080d5443be9e",
+    "activations/__pycache__/activation.cpython-310.pyc": "b39b4f502187de3272559992f7f7c8e313e336ec2fb2e7f265b7fe967c2c8795",
+    "activations/__pycache__/variable_alpha_sigmoid.cpython-310.pyc": "42956a03899c1eb2f9d3d046cc001b1ceb286b8abad146ac3507d64b3b573867",
+    "activations/__pycache__/stable_alpha_sigmoid.cpython-310.pyc": "33dc02a27a29895c2a11915f0a894bf6281d5c47a232b5a38436e1c2265146d0",
+    "activations/__pycache__/__init__.cpython-310.pyc": "56d170927807cc44c419b1eefa2090a04a5b4714d78645fce8de0b79db2b7bee",
+    "hardware/q8_24_training_arithmetic.py": "b408446a8f290609113913b15198d000046e5d1a7cde1916bad788e2dcefc811",
+    "hardware/__init__.py": "f3860747538369c6f3dc372415e4f38d15b5ae0da5891c5ee29028b66ebe40c2",
+    "hardware/q8_8_inference_arithmetic.py": "162ec54ade7a3de3f4ae9f14a9066f010c430a5b77195ad4049fe391ad37e0a1",
+    "hardware/__pycache__/q8_8_inference_arithmetic.cpython-310.pyc": "e0bfa5ea584d61fdce7eb6b1d5ff4a847149f16890458a01e2753cfc6a1e7163",
+    "hardware/__pycache__/__init__.cpython-310.pyc": "d4dd75bff09008cd6341910d2c693d5d7825b384822a1d9a1013aacac14f8aca",
+    "+mmw/mzm_envelope.m": "bba7ef79b889658c29a1d2cab59ced1d3e36c3b71b0757464c1441384b6f6958",
+    "+mmw/scenario_config.m": "e2fdfdcb5204021f27afe1c368b5db84868d1642d58d9ff762c8c8a08d852a9b",
+    "+mmw/make_suite_dataset.m": "8227e65d67ea84da0a03f3b49be203a6f45e9422c0c29a307d0ec38eb22141c3",
+    "+mmw/plot_optical_response.m": "bab5da5fec251a03623cf5f2b610e5e511995789ede9e88e9b03d01a7b1ad5e1",
+    "+mmw/run_pa_benchmark.m": "870fc23b3a18242e59597daea084bdfc5878f128e4b33bc8a605f555a3bd2537",
+    "+mmw/plot_results.m": "5f3c3d310caf9840ba6eb2b3ea31f861c56e9e9e92cf6768018b263318bd0c92",
+    "+mmw/run_suite.m": "7061c72dc8711bd2281c132a54cbca25735854fa3e856ac1346511bb5c4db7a8",
+    "+mmw/suite_conditions.m": "1d2b28ae40baaab26c99a5e60d86ee0694ca5797e1c78d7ee619182509bb6c74",
+    "+mmw/plot_multiuser_spectrum.m": "c9e5b829c3f37b79cd05cb26b22126bd708040e8c4662809c36c578791db496d",
+    "+mmw/pa_envelope.m": "c4c33c59e965cd2f1f01aae9d5c111e5fa75eea395d9aa1eb3f19b4879340653",
+    "+mmw/make_multiuser_dataset.m": "56d29a9ebbf9c0709be7b90ea249b8c20f964021932d683065e3a62d04dfd895",
+    "+mmw/make_dataset.m": "c73627285cd3c45c075cc213bf52c8c6fe53441756be203b81d79c343538e5c4",
+    "+mmw/multiuser_bins.m": "c813c7ba2eddc17f0853482b16e46c1ea79d1f20bd7c47d3cad581d137c59dc0",
+    "+mmw/optical_fading.m": "022a22c2f56286cfe56ea189576213e1255b3ade8c4c6266fe9c5b1ff3aabe5c",
+    "+mmw/plot_suite_results.m": "41ee11509b1981ea5855c3a284f37a5172d28c25946c3fc00a3f4a0f31091fc4",
+    "+mmw/suite_config.m": "9cd24e6fd15df13edf913d133cd9f7ca8e5252ba4a5e1032e6e7e315d48e9f52",
+    "+mmw/generate_burst.m": "58570444c54ce37204514a5e299124aa740e45bb8afcddb36b6da89acf3ac91b"
+  },
+  "conditions": [
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "guard0_drive030",
+        "Group": "SC-FDMA, guard=0 bins",
+        "Axis": 0.3,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.3,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 0
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 0.026312200352549553,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 404,
+          "best_validation_mse": 0.020421048626303673,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 408,
+          "best_validation_mse": 0.01676790788769722,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 413,
+          "best_validation_mse": 0.012022246606647968,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 414,
+          "best_validation_mse": 0.003825873602181673,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "4b06dba122d7635b7c33b6a7334e20884c36378eaf0b765f5d144e2cbb07f27f",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "guard0_drive070",
+        "Group": "SC-FDMA, guard=0 bins",
+        "Axis": 0.7,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 0
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 0.002934596734121442,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 409,
+          "best_validation_mse": 0.00030148643418215215,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 0.000189789934665896,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 409,
+          "best_validation_mse": 0.0007391858962364495,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 410,
+          "best_validation_mse": 1.2673336641455535e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "5dcc0c37e5fdfbacc38389f7eeac314264b0c2fb27059eca376572bb4d065355",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "guard0_drive110",
+        "Group": "SC-FDMA, guard=0 bins",
+        "Axis": 1.1,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 1.1,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 0
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 1e-06,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 413,
+          "best_validation_mse": 0.027709487825632095,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 408,
+          "best_validation_mse": 0.025281213223934174,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 391,
+          "best_validation_mse": 0.034842606633901596,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 408,
+          "best_validation_mse": 0.015889035537838936,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 0.013251543045043945,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "ac175c8d2d869833e0c85bb24fd606307c36dcd145040c2687de936c80126ed8",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "guard0_drive150",
+        "Group": "SC-FDMA, guard=0 bins",
+        "Axis": 1.5,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 1.5,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 0
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 414,
+          "best_validation_mse": 0.22085441648960114,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 377,
+          "best_validation_mse": 0.2315179854631424,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 339,
+          "best_validation_mse": 0.2585678994655609,
+          "adam_epochs": 389,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 403,
+          "best_validation_mse": 0.19617943465709686,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 381,
+          "best_validation_mse": 0.1458732634782791,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "e1162a4198dea862c4bf655403d74931794c4b1e8953ca8f73fd6d65b007091c",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "guard12_drive030",
+        "Group": "SC-FDMA, guard=12 bins",
+        "Axis": 0.3,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.3,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 12
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 1e-06,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 0.02314716950058937,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 407,
+          "best_validation_mse": 0.02059996873140335,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 414,
+          "best_validation_mse": 0.011051386594772339,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 0.004829251207411289,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 413,
+          "best_validation_mse": 0.0032931051682680845,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "d9f4f0f220a80686771e186e67813668e8777dd609b251b9c0b6cf2a65782083",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "guard12_drive070",
+        "Group": "SC-FDMA, guard=12 bins",
+        "Axis": 0.7,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 12
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 0.0015236767940223217,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 412,
+          "best_validation_mse": 0.0004609707393683493,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 414,
+          "best_validation_mse": 8.27641906653298e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 8.529648766852915e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 412,
+          "best_validation_mse": 6.990209840296302e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "60917a9e4f28e8efa70eb32e6acf0e94ffdf8ec8cdd4d50ee12f87738f87e7e7",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "guard12_drive110",
+        "Group": "SC-FDMA, guard=12 bins",
+        "Axis": 1.1,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 1.1,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 12
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 408,
+          "best_validation_mse": 0.011869505047798157,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 410,
+          "best_validation_mse": 0.013606194406747818,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 404,
+          "best_validation_mse": 0.01633380725979805,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 0.004351290874183178,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 408,
+          "best_validation_mse": 0.0008927571470849216,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "792e6f10cafae5ec3d16d7410b02f2b7452c89440aa3795bb27fd133b746ea24",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "guard12_drive150",
+        "Group": "SC-FDMA, guard=12 bins",
+        "Axis": 1.5,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 1.5,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 12
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 359,
+          "best_validation_mse": 0.11815865337848663,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 410,
+          "best_validation_mse": 0.13402242958545685,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 245,
+          "best_validation_mse": 0.17753717303276062,
+          "adam_epochs": 295,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 406,
+          "best_validation_mse": 0.1358124315738678,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 402,
+          "best_validation_mse": 0.04564123600721359,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "8c98fe8d48fd9b263bf5e9a20e6617fcdbf9a76a796a7710aea52f8c7cca4f2e",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "guard4_drive030",
+        "Group": "SC-FDMA, guard=4 bins",
+        "Axis": 0.3,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.3,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 4
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 0.022988097742199898,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 403,
+          "best_validation_mse": 0.0230286605656147,
+          "adam_epochs": 395,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 406,
+          "best_validation_mse": 0.013131984509527683,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 0.004179001785814762,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 413,
+          "best_validation_mse": 0.002963429084047675,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "0677aea584289d585589822cdb223df579d639617ea2bdcd4dea8873eb091a83",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "guard4_drive070",
+        "Group": "SC-FDMA, guard=4 bins",
+        "Axis": 0.7,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 4
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 1e-06,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 414,
+          "best_validation_mse": 0.0028937316965311766,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 410,
+          "best_validation_mse": 0.001975183142349124,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 6.028475036146119e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 3.887934781232616e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 6.5301087488478515e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "fbea5946994fc6376171e68a79cef0911cb21187341e35725e970c3c04b137f8",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "guard4_drive110",
+        "Group": "SC-FDMA, guard=4 bins",
+        "Axis": 1.1,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 1.1,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 4
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 0.022511553019285202,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 0.018298806622624397,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 403,
+          "best_validation_mse": 0.02043202333152294,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 407,
+          "best_validation_mse": 0.01650482416152954,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 413,
+          "best_validation_mse": 0.005748537369072437,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "28e098df59031814eb273c41fd72f9527a71907832b8f169ce285b24811e5cb6",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "guard4_drive150",
+        "Group": "SC-FDMA, guard=4 bins",
+        "Axis": 1.5,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 1.5,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 4
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 408,
+          "best_validation_mse": 0.1558646410703659,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 393,
+          "best_validation_mse": 0.1644531935453415,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 288,
+          "best_validation_mse": 0.19730181992053986,
+          "adam_epochs": 338,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 242,
+          "best_validation_mse": 0.17227397859096527,
+          "adam_epochs": 237,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 376,
+          "best_validation_mse": 0.0921497493982315,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "0c06ad670605a077229832e382b1bd78d65668e158b341ac0934ec0521b173be",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "linear_noiseless",
+        "Group": "Control",
+        "Axis": 0,
+        "XLabel": "Linear noiseless control",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 1,
+        "SNR": null,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 4
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 5.944909844401991e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 4.708370582306998e-09,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 409,
+          "best_validation_mse": 4.8494936955023604e-09,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 414,
+          "best_validation_mse": 5.950355319583878e-09,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 1.0871771927156715e-08,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "79ac1266875003c94da3f10a12ab6ba6c6b8c124995face7d1a6a3e1796d2ce8",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "guard0_drive030",
+        "Group": "SC-FDMA, guard=0 bins",
+        "Axis": 0.3,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.3,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 0
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 0.023376433178782463,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 410,
+          "best_validation_mse": 0.019438602030277252,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 408,
+          "best_validation_mse": 0.010241497308015823,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 408,
+          "best_validation_mse": 0.005247959401458502,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 410,
+          "best_validation_mse": 0.005104411859065294,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "4a1b552a6706598b4ac1ce6e77366507c4b93ecdfa1909a1937741b1d5fd4a7a",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "guard0_drive070",
+        "Group": "SC-FDMA, guard=0 bins",
+        "Axis": 0.7,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 0
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 0.004358006175607443,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 407,
+          "best_validation_mse": 0.0032780333422124386,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 409,
+          "best_validation_mse": 0.00042608866351656616,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 7.942992851894815e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 3.325324939851271e-07,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "1ea40078aaa4f347e3a3e9bee283fbc71f71f249aea8a4932e14ac4d7cd49755",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "guard0_drive110",
+        "Group": "SC-FDMA, guard=0 bins",
+        "Axis": 1.1,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 1.1,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 0
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 0.02764156274497509,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 290,
+          "best_validation_mse": 0.03194210305809975,
+          "adam_epochs": 285,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 344,
+          "best_validation_mse": 0.028237050399184227,
+          "adam_epochs": 343,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 400,
+          "best_validation_mse": 0.024253610521554947,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 356,
+          "best_validation_mse": 0.00812569074332714,
+          "adam_epochs": 346,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "e0a915bdf7a09ff67cfd97c7a8567843eb7562968980e15d2abf24405aa7fa93",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "guard0_drive150",
+        "Group": "SC-FDMA, guard=0 bins",
+        "Axis": 1.5,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 1.5,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 0
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.01,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 410,
+          "best_validation_mse": 0.20798970758914948,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 146,
+          "best_validation_mse": 0.21275310218334198,
+          "adam_epochs": 135,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 193,
+          "best_validation_mse": 0.2315940111875534,
+          "adam_epochs": 243,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 243,
+          "best_validation_mse": 0.2153892070055008,
+          "adam_epochs": 293,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 153,
+          "best_validation_mse": 0.1481190025806427,
+          "adam_epochs": 203,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "6242f3333166dc53534c09e3ddcc01b9419b60633edcdae64e7ec35eaa733824",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "guard12_drive030",
+        "Group": "SC-FDMA, guard=12 bins",
+        "Axis": 0.3,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.3,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 12
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 0.028732186183333397,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 397,
+          "best_validation_mse": 0.028867783024907112,
+          "adam_epochs": 391,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 411,
+          "best_validation_mse": 0.007883558981120586,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 0.00024268367269542068,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 0.0015309107257053256,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "69e9c5294764db930022bdbe9f4dd54af6dc45002ccd762abd57f21f884a7bee",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "guard12_drive070",
+        "Group": "SC-FDMA, guard=12 bins",
+        "Axis": 0.7,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 12
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 413,
+          "best_validation_mse": 0.0021724712569266558,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 411,
+          "best_validation_mse": 0.0006779895629733801,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 1.0935388672805857e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 5.488079182214278e-07,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 4.933367108606035e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "948e91e5f1c77e68498cfc0e179832341f941254b58db4bbf9142552bbbec135",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "guard12_drive110",
+        "Group": "SC-FDMA, guard=12 bins",
+        "Axis": 1.1,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 1.1,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 12
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 413,
+          "best_validation_mse": 0.00994154904037714,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 412,
+          "best_validation_mse": 0.005209073890000582,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 407,
+          "best_validation_mse": 0.007094162981957197,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 319,
+          "best_validation_mse": 0.008386712521314621,
+          "adam_epochs": 309,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 409,
+          "best_validation_mse": 0.0013374199625104666,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "3ee2474f14ee0c07e3bf2fbbc77b2c23b68c55d25aecd3d6494d6db8e41c90a2",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "guard12_drive150",
+        "Group": "SC-FDMA, guard=12 bins",
+        "Axis": 1.5,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 1.5,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 12
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.01,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 414,
+          "best_validation_mse": 0.11070307344198227,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 265,
+          "best_validation_mse": 0.12728208303451538,
+          "adam_epochs": 250,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 246,
+          "best_validation_mse": 0.15487991273403168,
+          "adam_epochs": 296,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 241,
+          "best_validation_mse": 0.13976803421974182,
+          "adam_epochs": 291,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 206,
+          "best_validation_mse": 0.04845043271780014,
+          "adam_epochs": 256,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "f9dad875e42e0d41fdfadca6fcae80e3f2384ba9f59822919c6c023260cd1c2b",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "guard4_drive030",
+        "Group": "SC-FDMA, guard=4 bins",
+        "Axis": 0.3,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.3,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 4
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.01,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 0.023527108132839203,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 409,
+          "best_validation_mse": 0.018768126145005226,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 414,
+          "best_validation_mse": 0.006014963611960411,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 317,
+          "best_validation_mse": 0.006483663804829121,
+          "adam_epochs": 307,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 412,
+          "best_validation_mse": 0.002033994533121586,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "dfba2623ceacc8eccc03a0f420addfafa6bfee5e89e70033461242fb89f364b3",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "guard4_drive070",
+        "Group": "SC-FDMA, guard=4 bins",
+        "Axis": 0.7,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 4
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 0.0031990213319659233,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 409,
+          "best_validation_mse": 0.0007733047823421657,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 9.711699021863751e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 407,
+          "best_validation_mse": 0.00020212650997564197,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 413,
+          "best_validation_mse": 6.492321972473292e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "c76ebc3eed0edd151602eb2645966b1e5aac9a69fb6b23b5f01f2d885858e5ee",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "guard4_drive110",
+        "Group": "SC-FDMA, guard=4 bins",
+        "Axis": 1.1,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 1.1,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 4
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 410,
+          "best_validation_mse": 0.01729073002934456,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 403,
+          "best_validation_mse": 0.014672186225652695,
+          "adam_epochs": 395,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 409,
+          "best_validation_mse": 0.010542456060647964,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 403,
+          "best_validation_mse": 0.009385925717651844,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 410,
+          "best_validation_mse": 0.0009146410739049315,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "cb4af2597e9e99c6582a0740fdd9ad5776cb059b1b64f5c3a03fec932bcfa492",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "guard4_drive150",
+        "Group": "SC-FDMA, guard=4 bins",
+        "Axis": 1.5,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 1.5,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 4
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.01,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 412,
+          "best_validation_mse": 0.1335388869047165,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 212,
+          "best_validation_mse": 0.13032381236553192,
+          "adam_epochs": 262,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 233,
+          "best_validation_mse": 0.18105557560920715,
+          "adam_epochs": 283,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 198,
+          "best_validation_mse": 0.1578781008720398,
+          "adam_epochs": 248,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 294,
+          "best_validation_mse": 0.07810650765895844,
+          "adam_epochs": 344,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "5ca3c2bd323d5f037bf72ee880ef6bb1c306e52f6f974a393249ee6e2a87526a",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "linear_noiseless",
+        "Group": "Control",
+        "Axis": 0,
+        "XLabel": "Linear noiseless control",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 1,
+        "SNR": null,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 4
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 4.213631109450944e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 407,
+          "best_validation_mse": 3.0634581538180328e-09,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 412,
+          "best_validation_mse": 2.028697876355068e-09,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 411,
+          "best_validation_mse": 2.931208165080079e-09,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 411,
+          "best_validation_mse": 4.634745032205956e-09,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "5dc11ecbba1bf5c8c36e6134b0caf1dfb2de6674e549778566b082f39212062e",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "guard0_drive030",
+        "Group": "SC-FDMA, guard=0 bins",
+        "Axis": 0.3,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.3,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 0
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 0.024552447721362114,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 409,
+          "best_validation_mse": 0.0242308396846056,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 0.008958593010902405,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 414,
+          "best_validation_mse": 0.002320617903023958,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 408,
+          "best_validation_mse": 0.0010768274078145623,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "690e28f71eaca89d20ad3263610f1fded71bcd85c31eba9f0d1a0d6f2df4108e",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "guard0_drive070",
+        "Group": "SC-FDMA, guard=0 bins",
+        "Axis": 0.7,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 0
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 0.003716027596965432,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 410,
+          "best_validation_mse": 0.002007132861763239,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 8.189853542717174e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 0.00016043827054090798,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 1.808158958738204e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "f69569d126a1a746f921e6d62b065305f30a7eca505fa4570f87131026651a0b",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "guard0_drive110",
+        "Group": "SC-FDMA, guard=0 bins",
+        "Axis": 1.1,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 1.1,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 0
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 413,
+          "best_validation_mse": 0.026165146380662918,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 398,
+          "best_validation_mse": 0.031260933727025986,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 390,
+          "best_validation_mse": 0.02443113923072815,
+          "adam_epochs": 375,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 0.020732056349515915,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 0.006980114616453648,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "aca90b210e4efc0e15442f5720a8894289b51d122e89e903d86ce2e760a90ae5",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "guard0_drive150",
+        "Group": "SC-FDMA, guard=0 bins",
+        "Axis": 1.5,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 1.5,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 0
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 407,
+          "best_validation_mse": 0.20033769309520721,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 399,
+          "best_validation_mse": 0.21047207713127136,
+          "adam_epochs": 384,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 406,
+          "best_validation_mse": 0.22080263495445251,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 182,
+          "best_validation_mse": 0.21377436816692352,
+          "adam_epochs": 232,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 354,
+          "best_validation_mse": 0.1473987102508545,
+          "adam_epochs": 350,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "86418dc2292af89d6b1b8327c704cc0b2b4a1a2f6a7f5f58ff052a68e4078f9c",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "guard12_drive030",
+        "Group": "SC-FDMA, guard=12 bins",
+        "Axis": 0.3,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.3,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 12
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 0.023498309776186943,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 0.031264595687389374,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 405,
+          "best_validation_mse": 0.003270496381446719,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 414,
+          "best_validation_mse": 0.0019578970968723297,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 0.00035735510755330324,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "b68e90e17b8b1b088fbcb7fff182dd30e518758483348e3381b5233933222646",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "guard12_drive070",
+        "Group": "SC-FDMA, guard=12 bins",
+        "Axis": 0.7,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 12
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 0.0021568387746810913,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 408,
+          "best_validation_mse": 0.002049859380349517,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 1.0733052704381407e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 414,
+          "best_validation_mse": 3.539130193530582e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 414,
+          "best_validation_mse": 1.2041820809827186e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "f632d8b7621f7b107348507cfd4b68402664ac6d3d417283da780f7f47a6c28a",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "guard12_drive110",
+        "Group": "SC-FDMA, guard=12 bins",
+        "Axis": 1.1,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 1.1,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 12
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 0.010283497162163258,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 412,
+          "best_validation_mse": 0.012856261804699898,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 393,
+          "best_validation_mse": 0.007076348643749952,
+          "adam_epochs": 382,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 413,
+          "best_validation_mse": 0.006020221393555403,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 412,
+          "best_validation_mse": 0.0009730528690852225,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "bf1a807a065485dc9163411dc6f2063f72139b005629156682b42d43f977f286",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "guard12_drive150",
+        "Group": "SC-FDMA, guard=12 bins",
+        "Axis": 1.5,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 1.5,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 12
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 406,
+          "best_validation_mse": 0.1029854267835617,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 318,
+          "best_validation_mse": 0.12899425625801086,
+          "adam_epochs": 368,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 398,
+          "best_validation_mse": 0.14551353454589844,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 402,
+          "best_validation_mse": 0.1260347068309784,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 376,
+          "best_validation_mse": 0.035420097410678864,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "186058a75f095c6569260c693d3b9ad9bb6d62303dd2040c974d117a9353e5af",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "guard4_drive030",
+        "Group": "SC-FDMA, guard=4 bins",
+        "Axis": 0.3,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.3,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 4
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 1e-06,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 413,
+          "best_validation_mse": 0.023400062695145607,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 401,
+          "best_validation_mse": 0.02451791614294052,
+          "adam_epochs": 386,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 410,
+          "best_validation_mse": 0.009802245534956455,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 412,
+          "best_validation_mse": 0.005081176292151213,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 408,
+          "best_validation_mse": 0.0021759115625172853,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "b2254bc49a09469889a9a06cd3eb2b856e6b71c4f74fdedf5e3c74ad19dd5f8c",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "guard4_drive070",
+        "Group": "SC-FDMA, guard=4 bins",
+        "Axis": 0.7,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 4
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 0.0019616291392594576,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 0.0004286978510208428,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 1.3305751053849235e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 1.223334220412653e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 7.286671916517662e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "46ee09409109fb1002c4613ed3069dc045d5b174f5f747523dc2dadc16609a91",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "guard4_drive110",
+        "Group": "SC-FDMA, guard=4 bins",
+        "Axis": 1.1,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 1.1,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 4
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 0.014605986885726452,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 414,
+          "best_validation_mse": 0.015187831595540047,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 411,
+          "best_validation_mse": 0.011229700408875942,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 409,
+          "best_validation_mse": 0.00996665470302105,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 414,
+          "best_validation_mse": 8.381190855288878e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "0281ff94b4b3bc31461c35075693e57d68181257e6b86e1d43b7c0b11745592d",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "guard4_drive150",
+        "Group": "SC-FDMA, guard=4 bins",
+        "Axis": 1.5,
+        "XLabel": "Common MZM envelope drive index",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 1.5,
+        "SNR": 28,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 4
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 361,
+          "best_validation_mse": 0.13908503949642181,
+          "adam_epochs": 356,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 295,
+          "best_validation_mse": 0.15665984153747559,
+          "adam_epochs": 345,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 225,
+          "best_validation_mse": 0.18926042318344116,
+          "adam_epochs": 275,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 295,
+          "best_validation_mse": 0.14886555075645447,
+          "adam_epochs": 345,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 306,
+          "best_validation_mse": 0.07548419386148453,
+          "adam_epochs": 305,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "b0aff913340389eb9b364730c41ba534e1aed8134b497668b913497ce57aa531",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "linear_noiseless",
+        "Group": "Control",
+        "Axis": 0,
+        "XLabel": "Linear noiseless control",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 1,
+        "SNR": null,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3,
+        "Guard": 4
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 16,
+          "features": 16
+        },
+        "Joint Volterra 2": {
+          "ridge": 0.0,
+          "rank": 152,
+          "features": 152
+        },
+        "Joint Volterra 3": {
+          "ridge": 0.0,
+          "rank": 968,
+          "features": 968
+        },
+        "Joint NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 32,
+          "best_iteration": 415,
+          "best_validation_mse": 5.923036042077001e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user1": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 7.596524298492113e-09,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user2": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 413,
+          "best_validation_mse": 8.959385233708872e-09,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user3": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 414,
+          "best_validation_mse": 1.4177732765574547e-08,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        },
+        "Individual NN multilevel user4": {
+          "activation": "multilevel",
+          "hidden_size": 12,
+          "best_iteration": 415,
+          "best_validation_mse": 6.638015026538824e-09,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [
+        {
+          "model": "Volterra 5",
+          "features": 20348,
+          "reason": "Predeclared polynomial feature budget"
+        }
+      ],
+      "dataset_sha256": "92327fd168fc2b4c4ccc345754a38f8ad6a4b52308e6ac04f1fc974e331707ec",
+      "source_sha256": "218727a5af79291f1dd21aadec9a4d331bd13addca2abbae9c33dc4c5ecb7074",
+      "samples": {
+        "train": 3840,
+        "validation": 960,
+        "test": 7680
+      }
+    }
+  ],
+  "rendering_sources_sha256": {
+    "plot_ofdm_diagnostics.m": "77a786ab38435502851aad11c016be7da08c99b645962acd017a99e71777dc05",
+    "plot_optical_response.m": "bab5da5fec251a03623cf5f2b610e5e511995789ede9e88e9b03d01a7b1ad5e1",
+    "plot_results.m": "5f3c3d310caf9840ba6eb2b3ea31f861c56e9e9e92cf6768018b263318bd0c92",
+    "plot_multiuser_spectrum.m": "c9e5b829c3f37b79cd05cb26b22126bd708040e8c4662809c36c578791db496d",
+    "plot_suite_results.m": "055827b0bd3ea1063fd93b4c3788fe32abc8ea5b04144cf381b70b7608afea3f"
+  }
+}

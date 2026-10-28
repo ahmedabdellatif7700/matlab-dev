@@ -1,0 +1,24 @@
+Condition,Group,Axis,XLabel,ModOrder,Memory,Drive,SNR,Enabled,ActivationStudy
+qam16_mem0_drive020,"16-QAM, memory=0",0.2,MZM envelope drive index (rad RMS reference),16,0,0.2,30,1,0
+qam16_mem0_drive060,"16-QAM, memory=0",0.6,MZM envelope drive index (rad RMS reference),16,0,0.6,30,1,0
+qam16_mem0_drive100,"16-QAM, memory=0",1,MZM envelope drive index (rad RMS reference),16,0,1,30,1,1
+qam16_mem0_drive140,"16-QAM, memory=0",1.4,MZM envelope drive index (rad RMS reference),16,0,1.4,30,1,0
+qam16_mem0_drive180,"16-QAM, memory=0",1.8,MZM envelope drive index (rad RMS reference),16,0,1.8,30,1,0
+qam16_mem1_drive020,"16-QAM, memory=1",0.2,MZM envelope drive index (rad RMS reference),16,1,0.2,30,1,0
+qam16_mem1_drive060,"16-QAM, memory=1",0.6,MZM envelope drive index (rad RMS reference),16,1,0.6,30,1,0
+qam16_mem1_drive100,"16-QAM, memory=1",1,MZM envelope drive index (rad RMS reference),16,1,1,30,1,0
+qam16_mem1_drive140,"16-QAM, memory=1",1.4,MZM envelope drive index (rad RMS reference),16,1,1.4,30,1,0
+qam16_mem1_drive180,"16-QAM, memory=1",1.8,MZM envelope drive index (rad RMS reference),16,1,1.8,30,1,0
+qam64_mem0_drive020,"64-QAM, memory=0",0.2,MZM envelope drive index (rad RMS reference),64,0,0.2,30,1,0
+qam64_mem0_drive060,"64-QAM, memory=0",0.6,MZM envelope drive index (rad RMS reference),64,0,0.6,30,1,0
+qam64_mem0_drive100,"64-QAM, memory=0",1,MZM envelope drive index (rad RMS reference),64,0,1,30,1,1
+qam64_mem0_drive140,"64-QAM, memory=0",1.4,MZM envelope drive index (rad RMS reference),64,0,1.4,30,1,0
+qam64_mem0_drive180,"64-QAM, memory=0",1.8,MZM envelope drive index (rad RMS reference),64,0,1.8,30,1,0
+qam64_mem1_drive020,"64-QAM, memory=1",0.2,MZM envelope drive index (rad RMS reference),64,1,0.2,30,1,0
+qam64_mem1_drive060,"64-QAM, memory=1",0.6,MZM envelope drive index (rad RMS reference),64,1,0.6,30,1,0
+qam64_mem1_drive100,"64-QAM, memory=1",1,MZM envelope drive index (rad RMS reference),64,1,1,30,1,0
+qam64_mem1_drive140,"64-QAM, memory=1",1.4,MZM envelope drive index (rad RMS reference),64,1,1.4,30,1,0
+qam64_mem1_drive180,"64-QAM, memory=1",1.8,MZM envelope drive index (rad RMS reference),64,1,1.8,30,1,0
+linear_noiseless,"Control",0,Control,16,0,1,Inf,0,0
+bpsk_snr12,"BPSK adaptive activation",12,Reference SNR (dB),2,1,1,12,1,1
+bpsk_snr18,"BPSK adaptive activation",18,Reference SNR (dB),2,1,1,18,1,1

@@ -185,3 +185,92 @@ matlab -batch "addpath('matlab'); r=runtests('matlab/test_multiuser_scenario.m')
 Reference: Liu et al., OFC 2018, DOI `10.1364/OFC.2018.W4B.3`. The paper
 motivates joint versus individual processing; it does not justify giving
 only the neural receiver access to the interfering users.
+
+## Scenario 5: 28 GHz wideband OFDM and channel-estimation limits
+
+Single-band 16/64-QAM OFDM occupies 52 active carriers (bins -26:-1 and
+1:26) in a 64-point base FFT with a 16-sample base cyclic prefix. Fourfold
+oversampling uses a 256-point IFFT and 64-sample CP. Subcarrier spacing is
+1 GHz/52, so the sample rate is approximately 4.923 GHz. The occupied
+bandwidth is 1 GHz, rather than calling the sampling rate the bandwidth.
+
+The RF PA is the same illustrative Rapp/AM-PM model, now swept at -3, 0,
+3, 6 and 9 dB backoff. A fixed linear echo channel has delays of two and four
+base samples, with coefficients -0.35*exp(j*0.4) and 0.15*exp(-j*0.6), both
+shorter than the cyclic prefix. An ideal small-signal SSB optical link spans
+10 km at 1550 nm; known bulk phase/delay is removed as in Scenario 3. There
+is no DSB fading imposed on an SSB link. Fiber attenuation and optical noise
+remain normalized/excluded; this is not calibrated optical-power sensitivity.
+
+Each independently generated train/validation/test burst contains eight
+known random pilot OFDM symbols before its payload, plus unused burst-edge
+guard symbols. Pilot generation has a random stream independent of payload
+generation. A test verifies that changing payload symbols cannot change the
+noiseless pilot channel estimate. LS estimates are obtained only from those
+known pilots, never from validation or test payload labels.
+
+Two front ends are compared under otherwise identical waveforms:
+
+- `LS`: the per-subcarrier estimate from eight noisy pilot symbols.
+- `known`: a diagnostic with the known linear channel *shape* and a common
+  complex gain fitted from the same pilots. This removes per-bin estimation
+  error without giving the receiver payload labels. It is not an oracle for
+  nonlinear distortion and is not assumed deployable with an unknown channel.
+
+Noise variance is Es/10^(28/10) in the unitary-FFT convention, so reference
+SNR is active-subcarrier Es/N0 at zero backoff. Its level is fixed as drive
+changes; ideal linear-link Es/N0 becomes 28-backoff dB. Gain removal, pilots
+and channel corrections are shared by every post-equalizer at an operating
+point. Pilot shape-NMSE removes a common gain for diagnosis only; raw NMSE
+including nonlinear compression bias is also saved.
+
+Post-equalizers observe current, previous and next *frequency* carrier within
+one OFDM payload symbol. Edge carriers without neighbors are excluded. No
+feature window crosses an OFDM-symbol boundary. All methods therefore use
+six real observations, with 24 real hidden NN units or the same full
+Volterra feature budgets as Scenario 3. Nonlinear ICI can depend on the whole
+OFDM block: a three-carrier feed-forward NN need not succeed, and failure
+does not establish a limitation of all neural OFDM receivers.
+
+At the study burst sizes, there are 115/34/288 payload OFDM symbols for
+training/validation/test and 50 supervised carrier positions per symbol.
+Pilots, cyclic prefix, inactive carriers and excluded edge positions are
+not counted as payload test bits. No claim of a paper's bit rate is made.
+
+Additional figures compare pilot shape mismatch with backoff and transmitter
+PAPR for OFDM versus RRC single-carrier signals of the same occupied
+bandwidth over approximately equal-duration 52 ns intervals. PAPR is measured
+before the PA. The single-carrier curves are transmitter diagnostics, not BER
+curves from a mismatched channel. Tests check noiseless 16/64-QAM recovery,
+the cyclic prefix/known channel, payload-independent pilots and convergence
+between fourfold and eightfold oversampling under strong nonlinear drive.
+
+```sh
+matlab -batch "addpath('matlab'); c=mmw.suite_config(5); mmw.run_suite(c);"
+matlab -batch "addpath('matlab'); r=runtests('matlab/test_ofdm_scenario.m'); assertSuccess(r);"
+```
+
+Reference: Song et al., JLT 2024, DOI `10.1109/JLT.2024.3416046`. The paper's
+NN improvements and OFDM 64-QAM limitations motivate this comparison, but
+the experimental device responses and received optical power are not known.
+
+## Running and reviewing the complete suite
+
+```sh
+matlab -batch "addpath('matlab'); run_all_scenarios('study','off');"
+```
+
+For a short end-to-end check replace `study` with `smoke`. Smoke settings
+are not convergence or low-BER evidence. New run IDs prevent overwriting
+previous results. Receivers execute from frozen source copies inside each
+run directory, so later scenario development cannot change a running fit.
+Compact full-study figures, CSVs and provenance are retained in
+`matlab/results/scenario2` through `scenario5`; large datasets/checkpoints and
+editable/vector figures remain in the ignored per-run dataset directories.
+
+These studies use illustrative models and explicitly bounded observation,
+model-order and training budgets. Report BER alongside EVM: multilevel output
+can pull estimates toward discrete constellation points and sharply lower
+EVM even when decision errors change little. An NN-only operational region
+must be demonstrated against tuned baselines at a specified target/budget;
+it is never assumed from the presence of nonlinearity alone.

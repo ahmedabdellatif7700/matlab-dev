@@ -1,0 +1,5051 @@
+{
+  "configuration": {
+    "root": "/home/ahmedabdellatif/dev/matlab-dev",
+    "profile": "study",
+    "visible": "off",
+    "output_root": "/home/ahmedabdellatif/dev/matlab-dev/datasets/scenarios/scenario3",
+    "run_id": "scenario3_validated_study",
+    "python_exe": "/home/ahmedabdellatif/miniconda3/envs/machine-learning/bin/python",
+    "mod_order": 16,
+    "rf_carrier_hz": 60000000000.0,
+    "symbol_rate_hz": 1000000000.0,
+    "samples_per_symbol": 8,
+    "rrc_rolloff": 0.25,
+    "rrc_span_symbols": 24,
+    "equalizer_taps": 3,
+    "pa_smoothness": 2,
+    "pa_phase_limit_deg": 20,
+    "backoff_db": [
+      -3,
+      0,
+      3,
+      6,
+      9,
+      12
+    ],
+    "reference_snr_db": [
+      24,
+      30,
+      36
+    ],
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "train_symbols": 6000,
+    "validation_symbols": 1800,
+    "test_symbols": 15000,
+    "nn_epochs": 400,
+    "nn_patience": 50,
+    "nn_batch_size": 512,
+    "nn_learning_rate": 0.003,
+    "nn_hidden_size": 24,
+    "ridge_grid": [
+      0,
+      1e-08,
+      1e-06,
+      0.0001,
+      0.01,
+      1
+    ],
+    "ber_target": 0.0038,
+    "constellation_backoff_db": 0,
+    "constellation_snr_db": 30,
+    "scenario": 3,
+    "nn_lbfgs_steps": 15,
+    "alpha_learning_rate": 0.001,
+    "polynomial_orders": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "max_polynomial_features": 1000,
+    "activations": [
+      "sigmoid",
+      "multilevel"
+    ],
+    "baseline_name": "Before EQ",
+    "mzm_drive": [
+      0.2,
+      0.6,
+      1,
+      1.4,
+      1.8
+    ],
+    "mzm_snr_db": 30,
+    "mzm_vpi": 4.4,
+    "mzm_bias_over_vpi": 0.5,
+    "report_condition": "DSB_pa1_L090",
+    "memory_coefficient": [
+      0.1618033988749895,
+      0.11755705045849463
+    ],
+    "tap_offsets": [
+      0,
+      1,
+      -1
+    ],
+    "optical_wavelength_m": 1.55e-06,
+    "dispersion_ps_nm_km": 17,
+    "fft_guard_samples": 4096,
+    "fiber_lengths_km": [
+      0,
+      0.5,
+      0.9,
+      1.02,
+      1.15,
+      1.5
+    ],
+    "git_revision": "2f17f7483091a424bb7a368415f529e778fa8e86",
+    "validated_before_commit": true
+  },
+  "conditions_completed": 72,
+  "receiver_metric_rows": 576,
+  "versions": {
+    "python": "3.10.20",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "torch": "2.13.0+cu130"
+  },
+  "source_snapshot_sha256": {
+    "scenario_benchmark.py": "34396768e953d8199cff2b2c2fb3599f175f0ce0ca48df9255f95de031e65614",
+    "research_suite.py": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+    "config.py": "397de7266545c548fbf114fd2d1c0e89420ad08dd259ef9f1dafdb9ac7e65fbc",
+    "activations/activation.py": "e5cb40d739ecd807daeda93d8d4fd92429c3a4d00a6c3623779286863de6206a",
+    "activations/__init__.py": "85bd46e4ef4fb734d31721ab7314cf5efbfb62d6984abc39ed5d2e119dbab6cc",
+    "activations/sigmoid.py": "3b0690b237883bc0e78f0e4cf805908350ee56a18998a1862adb91a2bfca8eb3",
+    "activations/variable_alpha_sigmoid.py": "75f4451bc5527087b63c16287fad378858c9b95ba77822d98581ccd77b9af9ba",
+    "activations/stable_alpha_sigmoid.py": "fee8548eddc3f859eb6236ba2abadb3d555b4e1730158835a2581ebf31b49f1c",
+    "activations/__pycache__/sigmoid.cpython-310.pyc": "ddae04fef9003b20990d30634e61af791a7056c95a70e011a051080d5443be9e",
+    "activations/__pycache__/activation.cpython-310.pyc": "b39b4f502187de3272559992f7f7c8e313e336ec2fb2e7f265b7fe967c2c8795",
+    "activations/__pycache__/variable_alpha_sigmoid.cpython-310.pyc": "42956a03899c1eb2f9d3d046cc001b1ceb286b8abad146ac3507d64b3b573867",
+    "activations/__pycache__/stable_alpha_sigmoid.cpython-310.pyc": "33dc02a27a29895c2a11915f0a894bf6281d5c47a232b5a38436e1c2265146d0",
+    "activations/__pycache__/__init__.cpython-310.pyc": "56d170927807cc44c419b1eefa2090a04a5b4714d78645fce8de0b79db2b7bee",
+    "hardware/q8_24_training_arithmetic.py": "b408446a8f290609113913b15198d000046e5d1a7cde1916bad788e2dcefc811",
+    "hardware/__init__.py": "f3860747538369c6f3dc372415e4f38d15b5ae0da5891c5ee29028b66ebe40c2",
+    "hardware/q8_8_inference_arithmetic.py": "162ec54ade7a3de3f4ae9f14a9066f010c430a5b77195ad4049fe391ad37e0a1",
+    "hardware/__pycache__/q8_8_inference_arithmetic.cpython-310.pyc": "e0bfa5ea584d61fdce7eb6b1d5ff4a847149f16890458a01e2753cfc6a1e7163",
+    "hardware/__pycache__/__init__.cpython-310.pyc": "d4dd75bff09008cd6341910d2c693d5d7825b384822a1d9a1013aacac14f8aca",
+    "+mmw/mzm_envelope.m": "bba7ef79b889658c29a1d2cab59ced1d3e36c3b71b0757464c1441384b6f6958",
+    "+mmw/scenario_config.m": "e2fdfdcb5204021f27afe1c368b5db84868d1642d58d9ff762c8c8a08d852a9b",
+    "+mmw/make_suite_dataset.m": "f7d728f930f9fdbcafbc1b139a7c9af88e07c6080f83173facbed5142dad812a",
+    "+mmw/plot_optical_response.m": "bab5da5fec251a03623cf5f2b610e5e511995789ede9e88e9b03d01a7b1ad5e1",
+    "+mmw/run_pa_benchmark.m": "870fc23b3a18242e59597daea084bdfc5878f128e4b33bc8a605f555a3bd2537",
+    "+mmw/plot_results.m": "5f3c3d310caf9840ba6eb2b3ea31f861c56e9e9e92cf6768018b263318bd0c92",
+    "+mmw/run_suite.m": "13042fa7cd18afb2c002b3382aaba3f3b6b0c79d21b30d003a2c5d532b54e2c6",
+    "+mmw/suite_conditions.m": "b1a2dfa8e0ddfd01eefb9d42562e474752aa4e6d8f5aa0278f2a5cff798356d7",
+    "+mmw/pa_envelope.m": "c4c33c59e965cd2f1f01aae9d5c111e5fa75eea395d9aa1eb3f19b4879340653",
+    "+mmw/make_dataset.m": "c73627285cd3c45c075cc213bf52c8c6fe53441756be203b81d79c343538e5c4",
+    "+mmw/optical_fading.m": "022a22c2f56286cfe56ea189576213e1255b3ade8c4c6266fe9c5b1ff3aabe5c",
+    "+mmw/plot_suite_results.m": "41ee11509b1981ea5855c3a284f37a5172d28c25946c3fc00a3f4a0f31091fc4",
+    "+mmw/suite_config.m": "2e5a5c4ce67a4bbd7bbed5b5439b0378b7e131852a74d9c30d2693cbd04bd986",
+    "+mmw/generate_burst.m": "58570444c54ce37204514a5e299124aa740e45bb8afcddb36b6da89acf3ac91b"
+  },
+  "conditions": [
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "DSB_pa0_L000",
+        "Group": "DSB, RF PA=0",
+        "Axis": 0,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 411,
+          "best_validation_mse": 0.009963140822947025,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 2.371520167798735e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "22ecf246838479f82fb4e2dfb84a86c91334e46c6d87ff7c78f2bb19804278b3",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "DSB_pa0_L050",
+        "Group": "DSB, RF PA=0",
+        "Axis": 0.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.019102519378066063,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 2.5006265786942095e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "96f3e2ae1696d1c62d5a765f9e9ed16a7413c0d58bf9cce3dfe7c318ffe1a914",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "DSB_pa0_L090",
+        "Group": "DSB, RF PA=0",
+        "Axis": 0.9,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0.9,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 387,
+          "best_validation_mse": 0.25117477774620056,
+          "adam_epochs": 372,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 133,
+          "best_validation_mse": 0.17442677915096283,
+          "adam_epochs": 183,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "384d4ad77a2d32989b55d3b261fc7832bbe588a45b207307619ab502295466d4",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "DSB_pa0_L102",
+        "Group": "DSB, RF PA=0",
+        "Axis": 1.02,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 1.02,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 1.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 66,
+          "best_validation_mse": 4.7337846755981445,
+          "adam_epochs": 116,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 18,
+          "best_validation_mse": 4.755958557128906,
+          "adam_epochs": 68,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "2b0aec6819e60aa8b1814a9f12f63158e39e23c0036eeb06408d61b83c7dfebd",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "DSB_pa0_L115",
+        "Group": "DSB, RF PA=0",
+        "Axis": 1.15,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 1.15,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 327,
+          "best_validation_mse": 0.20806686580181122,
+          "adam_epochs": 312,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 118,
+          "best_validation_mse": 0.12301275879144669,
+          "adam_epochs": 168,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "3a72503892945e34ac478cd2f3d7fcfb3f113c37f8d173cdbd8a07e528e786f8",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "DSB_pa0_L150",
+        "Group": "DSB, RF PA=0",
+        "Axis": 1.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 1.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.021185031160712242,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 6.208280410646694e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "50ad8893eadc50924b679450b05b70e7cf53b1addc8ac297d1b45ca634619d58",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "DSB_pa1_L000",
+        "Group": "DSB, RF PA=1",
+        "Axis": 0,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.01803804375231266,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 9.534046512271743e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "d0ca9561b2b9138e4c108304e34bcb0103c9c8398aa2acc59044cdf2bb9c414a",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "DSB_pa1_L050",
+        "Group": "DSB, RF PA=1",
+        "Axis": 0.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.030751880258321762,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 1.3523042071028613e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "cacf9a7dc3ebc52acc56a27e57241365feeef1b7b14470a48d93c7055061be85",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "DSB_pa1_L090",
+        "Group": "DSB, RF PA=1",
+        "Axis": 0.9,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0.9,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.01,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 238,
+          "best_validation_mse": 0.3329245150089264,
+          "adam_epochs": 288,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 86,
+          "best_validation_mse": 0.2708682715892792,
+          "adam_epochs": 136,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "72c56e126daf05a11a8607bcc41ac8e673f41ccbf5931e906b07e4b1f845e4d5",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "DSB_pa1_L102",
+        "Group": "DSB, RF PA=1",
+        "Axis": 1.02,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 1.02,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 1.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 66,
+          "best_validation_mse": 4.784791469573975,
+          "adam_epochs": 116,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 18,
+          "best_validation_mse": 4.799961566925049,
+          "adam_epochs": 68,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "f592ae4ebb50f6062faeb7ed9bf01ac3018a35dd214c8e579d5e95738635b8ab",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "DSB_pa1_L115",
+        "Group": "DSB, RF PA=1",
+        "Axis": 1.15,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 1.15,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 1e-06,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.01,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.26838627457618713,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 113,
+          "best_validation_mse": 0.20678310096263885,
+          "adam_epochs": 163,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "15ccc213deb0dd067a2c61aedefe37569db23c6d77dbbadcc566a4e579722f45",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "DSB_pa1_L150",
+        "Group": "DSB, RF PA=1",
+        "Axis": 1.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 1.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.02923365868628025,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 411,
+          "best_validation_mse": 8.995367352326866e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "1ce793711f1eef24ca276aad8cdfc7b204e5c5911d89ff82f21d2536a3ef6232",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "SSB_pa0_L000",
+        "Group": "SSB, RF PA=0",
+        "Axis": 0,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 411,
+          "best_validation_mse": 0.009963140822947025,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 2.371520167798735e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "6db7baee16652dc431f1301dc48b7befbab3472d6996385b9d39476e9dd5bf3f",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "SSB_pa0_L050",
+        "Group": "SSB, RF PA=0",
+        "Axis": 0.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.009953651577234268,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 2.462141310388688e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "2e133239c3ffcec11bd8a28ccffb131bc08d289d39b2bb2211ee51107ffb8c62",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "SSB_pa0_L090",
+        "Group": "SSB, RF PA=0",
+        "Axis": 0.9,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0.9,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 412,
+          "best_validation_mse": 0.009964968077838421,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 2.4589862732682377e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "526991794b1281b2a128fb834c560298029491620b888ecec8d1f51e0000ca13",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "SSB_pa0_L102",
+        "Group": "SSB, RF PA=0",
+        "Axis": 1.02,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 1.02,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 412,
+          "best_validation_mse": 0.009967360645532608,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 2.5142603590211365e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "647016992bb9646c418189f6b84be4c735abf2cb9116dba482998414090618fa",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "SSB_pa0_L115",
+        "Group": "SSB, RF PA=0",
+        "Axis": 1.15,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 1.15,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 412,
+          "best_validation_mse": 0.009966804645955563,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 2.494374029993196e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "f0d021d20cddb6d1b02e8a46930b369938d83e1b814e20f27771f3592079192c",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "SSB_pa0_L150",
+        "Group": "SSB, RF PA=0",
+        "Axis": 1.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 1.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 412,
+          "best_validation_mse": 0.009968842379748821,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 2.317258577022585e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "252bbf61ad5eed2242fdd050d65cd4a836731f10a09ce47d56a9ea0470c776c7",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "SSB_pa1_L000",
+        "Group": "SSB, RF PA=1",
+        "Axis": 0,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.01803804375231266,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 9.534046512271743e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "12e1be1f5dc48575b01dc4f87e45224df4846ffa7561687dd2dbdf4f1d763770",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "SSB_pa1_L050",
+        "Group": "SSB, RF PA=1",
+        "Axis": 0.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.018012095242738724,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 9.642484656069428e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "8f8fd97164770f8e08ad0fa428960a46a380a39f94814ef8a3a82e5770f6ce95",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "SSB_pa1_L090",
+        "Group": "SSB, RF PA=1",
+        "Axis": 0.9,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0.9,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.01797531545162201,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 9.736554602568503e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "eee33bb15233a604a8c8fca20cfd06c30e3b73ec98142a338c32a82e715c31e2",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "SSB_pa1_L102",
+        "Group": "SSB, RF PA=1",
+        "Axis": 1.02,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 1.02,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.018043048679828644,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 9.588373359292746e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "56aa093f38e9973f60319736597b00fcaaf3e213e6b66b3b5965f635239d4f42",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "SSB_pa1_L115",
+        "Group": "SSB, RF PA=1",
+        "Axis": 1.15,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 1.15,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.018047833815217018,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 9.4995002655196e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "85dca848d982447f6f59ca9b7051fa66824e83e07763401115fed0d6c53c3f16",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 42,
+      "condition": {
+        "Condition": "SSB_pa1_L150",
+        "Group": "SSB, RF PA=1",
+        "Axis": 1.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 1.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.017975034192204475,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 9.550198228680529e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "d967ef95a3ca46cb250c4c2f80ea8528c6a3337cfc828d59a4bad80d3210e638",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "DSB_pa0_L000",
+        "Group": "DSB, RF PA=0",
+        "Axis": 0,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 1e-06,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.009247485548257828,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 3.5377186122786952e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "b38c0fbbd2c683ca623f1bd7c639f2ca20dcd7c810c80a4e9a65c369a640911e",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "DSB_pa0_L050",
+        "Group": "DSB, RF PA=0",
+        "Axis": 0.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 1e-06,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.01749751716852188,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 2.0307534214225598e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "78dda85c3a97528d4106c6218d26dcf0c839c5c159a348bcd4621cda7835a974",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "DSB_pa0_L090",
+        "Group": "DSB, RF PA=0",
+        "Axis": 0.9,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0.9,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 344,
+          "best_validation_mse": 0.22648289799690247,
+          "adam_epochs": 329,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 155,
+          "best_validation_mse": 0.15118356049060822,
+          "adam_epochs": 205,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "2d442e4f4a7db989646ebda248180afa30851eab6052466e1cf95d9ccaf4aafa",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "DSB_pa0_L102",
+        "Group": "DSB, RF PA=0",
+        "Axis": 1.02,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 1.02,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 1.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 17,
+          "best_validation_mse": 4.780982971191406,
+          "adam_epochs": 67,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 17,
+          "best_validation_mse": 4.815730094909668,
+          "adam_epochs": 67,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "630dcdd2dd87c4e17bd8e9b58b73e1abde499db9b9e0e7008698cf05bb09a499",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "DSB_pa0_L115",
+        "Group": "DSB, RF PA=0",
+        "Axis": 1.15,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 1.15,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 382,
+          "best_validation_mse": 0.22023887932300568,
+          "adam_epochs": 373,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 86,
+          "best_validation_mse": 0.12596480548381805,
+          "adam_epochs": 136,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "e94b9ea8359b9bc1e42df6e9d8887e1f4704ae101e1163320217b9bff207ea12",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "DSB_pa0_L150",
+        "Group": "DSB, RF PA=0",
+        "Axis": 1.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 1.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 408,
+          "best_validation_mse": 0.021844174712896347,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 4.859015825786628e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "70447f22cfa953324dc16ddc80514c1fffec9dc72da063b1568ce78b273b620c",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "DSB_pa1_L000",
+        "Group": "DSB, RF PA=1",
+        "Axis": 0,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.018331410363316536,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 9.510085874353535e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "fbde8907861a12510f4d4497c92feeb0e4844ebcbcf150f408cd9e76224ba3af",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "DSB_pa1_L050",
+        "Group": "DSB, RF PA=1",
+        "Axis": 0.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.029178814962506294,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 1.0171117537538521e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "6600334df4e639096a050e465c2d1bda8948ce8b53dc3b804d6fbb334a5097bb",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "DSB_pa1_L090",
+        "Group": "DSB, RF PA=1",
+        "Axis": 0.9,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0.9,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.3044654130935669,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 68,
+          "best_validation_mse": 0.24569764733314514,
+          "adam_epochs": 118,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "30b63357b7469d11e0c90d0493c2c36f3331a88aec85b3b83570ddda1e0e012b",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "DSB_pa1_L102",
+        "Group": "DSB, RF PA=1",
+        "Axis": 1.02,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 1.02,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.01,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.01,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 1.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 17,
+          "best_validation_mse": 4.829440116882324,
+          "adam_epochs": 67,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 17,
+          "best_validation_mse": 4.858489513397217,
+          "adam_epochs": 67,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "f207a710960aca269151ebdba54511453044649125a0cebade0e16e0fa144aba",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "DSB_pa1_L115",
+        "Group": "DSB, RF PA=1",
+        "Axis": 1.15,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 1.15,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 388,
+          "best_validation_mse": 0.27685558795928955,
+          "adam_epochs": 373,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 128,
+          "best_validation_mse": 0.2123248279094696,
+          "adam_epochs": 127,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "137aea9e1a64356482472bd280b1461cbfb844eeafe154461da646d60c3a1bce",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "DSB_pa1_L150",
+        "Group": "DSB, RF PA=1",
+        "Axis": 1.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 1.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.03787395730614662,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 7.694252417422831e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "ab06f0a11d3e9844a68dc6725c4ce92d4bf8699c6a99802224ef71482c13daee",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "SSB_pa0_L000",
+        "Group": "SSB, RF PA=0",
+        "Axis": 0,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 1e-06,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.009247485548257828,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 3.5377186122786952e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "210c9caee6d22f740c949827a3e16c2402c8659f00757ed7a51ba236fb3ebc71",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "SSB_pa0_L050",
+        "Group": "SSB, RF PA=0",
+        "Axis": 0.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 1e-06,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.00892107468098402,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 3.7742904623883078e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "9616778931faf6860b4bebf425ded08e69fe0c021eadffaa27725d07012e34fb",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "SSB_pa0_L090",
+        "Group": "SSB, RF PA=0",
+        "Axis": 0.9,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0.9,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 1e-06,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.008980562910437584,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 3.6422779885469936e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "4279754b1afe22b4afa4a66de62d9dc8bbe781b4dbcef2ed45b018d1091124b1",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "SSB_pa0_L102",
+        "Group": "SSB, RF PA=0",
+        "Axis": 1.02,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 1.02,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 1e-06,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.009030859917402267,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 3.4356619380560005e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "5f8d84ae25622b6413980561bea8b4d71c54fe8b6f1e8c4b3f91b7bd30d0c30d",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "SSB_pa0_L115",
+        "Group": "SSB, RF PA=0",
+        "Axis": 1.15,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 1.15,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 1e-06,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.009171473793685436,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 3.5010887131647905e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "7c22e574b1d0ef9ebe4b250c4d79ccd2bb2b4d8f65c3ca21535bef0eb9e24edf",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "SSB_pa0_L150",
+        "Group": "SSB, RF PA=0",
+        "Axis": 1.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 1.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 1e-06,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.009304452687501907,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 3.494370275802794e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "2c80315c7f43026598879e85b75879735e4f40936174ac97081621af5ac6dc3b",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "SSB_pa1_L000",
+        "Group": "SSB, RF PA=1",
+        "Axis": 0,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.018331410363316536,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 9.510085874353535e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "1f29e8c883eb83a5a239acc81c0b976920ae78b894cd045557b54145d9580413",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "SSB_pa1_L050",
+        "Group": "SSB, RF PA=1",
+        "Axis": 0.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.01833982951939106,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 9.274942385673057e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "5b8f2c6859123989914d07519c989e1d66d1ef807b60e2ba0ad7afc071b73c5f",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "SSB_pa1_L090",
+        "Group": "SSB, RF PA=1",
+        "Axis": 0.9,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0.9,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.018289292231202126,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 8.964234439190477e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "67a3d3508b8b34fdc0b0e5db51d55b7487bd8007e3c41f810f2612fb30692031",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "SSB_pa1_L102",
+        "Group": "SSB, RF PA=1",
+        "Axis": 1.02,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 1.02,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.018306924030184746,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 9.257934834749904e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "377853e08c9f699dd4f8f25871162f65cb405921a8c7f651bf7fbed4a81540de",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "SSB_pa1_L115",
+        "Group": "SSB, RF PA=1",
+        "Axis": 1.15,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 1.15,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.018329212442040443,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 9.488494470133446e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "5d436312380fc5b2fc9b8dfcd0d605237461f963aa46c138a6adb3104c835864",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 43,
+      "condition": {
+        "Condition": "SSB_pa1_L150",
+        "Group": "SSB, RF PA=1",
+        "Axis": 1.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 1.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.018315652385354042,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 9.304760169470683e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "7abf890efbbc6b26f3aef2486eb1df691d86333a5895ac7cea043e6964a22894",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "DSB_pa0_L000",
+        "Group": "DSB, RF PA=0",
+        "Axis": 0,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 411,
+          "best_validation_mse": 0.00950966402888298,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 6.063011369406013e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "89b63d5d96160eaca1faa2928a7894b43d04ff2ce1c871cff4979774c2ba688f",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "DSB_pa0_L050",
+        "Group": "DSB, RF PA=0",
+        "Axis": 0.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 410,
+          "best_validation_mse": 0.018234141170978546,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 6.417340500775026e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "d22c2476615908c769d05d1c6a4d134d3cd05c5d2ed4dafe9de90f266ea50cda",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "DSB_pa0_L090",
+        "Group": "DSB, RF PA=0",
+        "Axis": 0.9,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0.9,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 408,
+          "best_validation_mse": 0.24112996459007263,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 107,
+          "best_validation_mse": 0.14979957044124603,
+          "adam_epochs": 157,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "9a9f82098ba340e5798e6d07609e0e6965eadf62641ae8a6011ca3ff3a650c57",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "DSB_pa0_L102",
+        "Group": "DSB, RF PA=0",
+        "Axis": 1.02,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 1.02,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.01,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 30,
+          "best_validation_mse": 4.798617362976074,
+          "adam_epochs": 80,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 11,
+          "best_validation_mse": 4.839925289154053,
+          "adam_epochs": 61,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "1f57c99f0023dbbe4efe1dd7bb8a1f36d4d9ed04246cca9b5aa86126143f5523",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "DSB_pa0_L115",
+        "Group": "DSB, RF PA=0",
+        "Axis": 1.15,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 1.15,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 379,
+          "best_validation_mse": 0.19207394123077393,
+          "adam_epochs": 364,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 149,
+          "best_validation_mse": 0.10759405791759491,
+          "adam_epochs": 199,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "5b33974ae92434a557fb9369e466228b0d59c8ac622c47ecad4ae092af18b0c6",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "DSB_pa0_L150",
+        "Group": "DSB, RF PA=0",
+        "Axis": 1.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 1.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0001,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0001,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.020836293697357178,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 6.315797804745671e-07,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "9bb1fb2eca72f8f31b458e9e0ccfc2b46b7d4ffb032e90f14442af62b606c6b9",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "DSB_pa1_L000",
+        "Group": "DSB, RF PA=1",
+        "Axis": 0,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.022148525342345238,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 413,
+          "best_validation_mse": 9.522775144432671e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "88a066639e8466891af6f6589b7651d9149714311acc3b514037f3ccafcabe1c",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "DSB_pa1_L050",
+        "Group": "DSB, RF PA=1",
+        "Axis": 0.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.03380783647298813,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 405,
+          "best_validation_mse": 0.00014596045366488397,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "ffa22b24c0ee150bae33edd3801093ed5d0362a154223a943817985b37452921",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "DSB_pa1_L090",
+        "Group": "DSB, RF PA=1",
+        "Axis": 0.9,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 0.9,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.01,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.29847320914268494,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 87,
+          "best_validation_mse": 0.24724332988262177,
+          "adam_epochs": 137,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "16dd5d033e2c64390dd71a6f1329a1d1290270e1ef9ec508af6b3cbb30f2a0dc",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "DSB_pa1_L102",
+        "Group": "DSB, RF PA=1",
+        "Axis": 1.02,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 1.02,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 1.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 30,
+          "best_validation_mse": 4.856969833374023,
+          "adam_epochs": 80,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 11,
+          "best_validation_mse": 4.894703388214111,
+          "adam_epochs": 61,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "5dd37528e671158ab6acdddb80894733561914a451d7193c558940311f141096",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "DSB_pa1_L115",
+        "Group": "DSB, RF PA=1",
+        "Axis": 1.15,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 1.15,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0001,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 370,
+          "best_validation_mse": 0.2732080817222595,
+          "adam_epochs": 364,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 126,
+          "best_validation_mse": 0.18865074217319489,
+          "adam_epochs": 176,
+          "adam_budget_reached": false,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "28eaf5ed578031f2249af600ea8935d77e932e6492484e5b7f2557501879878c",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "DSB_pa1_L150",
+        "Group": "DSB, RF PA=1",
+        "Axis": 1.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "DSB",
+        "Fiber_km": 1.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.037675343453884125,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 7.314691629289882e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "51d04e73dbfb9f667ae9d15f42fef54d7197f85cbeb820ba2c09b5a5173602d9",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "SSB_pa0_L000",
+        "Group": "SSB, RF PA=0",
+        "Axis": 0,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 411,
+          "best_validation_mse": 0.00950966402888298,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 6.063011369406013e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "eee3a47f7a55d77faebe5fd13a29397e8b4e4b33e0bd02644053966e24dd2419",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "SSB_pa0_L050",
+        "Group": "SSB, RF PA=0",
+        "Axis": 0.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 412,
+          "best_validation_mse": 0.00951413530856371,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 6.285694780672202e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "f9928d657695c27014a8776483d35bcd6ca507dd894e7a5d864f44b92ba9f0cb",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "SSB_pa0_L090",
+        "Group": "SSB, RF PA=0",
+        "Axis": 0.9,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0.9,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 412,
+          "best_validation_mse": 0.009512503631412983,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 5.1583233471319545e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "5c86c25796301ff13f2dac08d1d3a1da950ff25467149be1e1c95d2181dec000",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "SSB_pa0_L102",
+        "Group": "SSB, RF PA=0",
+        "Axis": 1.02,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 1.02,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 410,
+          "best_validation_mse": 0.009512904100120068,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 6.336037131404737e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "2d8869c14fb73650d7fdbcb0559c0529235102a042269bc019318f7878595a7b",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "SSB_pa0_L115",
+        "Group": "SSB, RF PA=0",
+        "Axis": 1.15,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 1.15,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 412,
+          "best_validation_mse": 0.009514769539237022,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 6.056867277948186e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "31b1a3a437c3d20d2cac64f9a5641825edda8e1d6c5f57caa29ade9565d24129",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "SSB_pa0_L150",
+        "Group": "SSB, RF PA=0",
+        "Axis": 1.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": false,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 1.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 1e-06,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 411,
+          "best_validation_mse": 0.009511871263384819,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 6.190284693730064e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "0652a2a24258ffe1fc9f9a9c5c24d82ec1a866b4803edaef5283532808244ea7",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "SSB_pa1_L000",
+        "Group": "SSB, RF PA=1",
+        "Axis": 0,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.022148525342345238,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 413,
+          "best_validation_mse": 9.522775144432671e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "d8e0ce5c92b4c69af3532261fe85fe5fe207fdeb0ff72b51ed2a7ae375ed30fc",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "SSB_pa1_L050",
+        "Group": "SSB, RF PA=1",
+        "Axis": 0.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.022035691887140274,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 414,
+          "best_validation_mse": 6.717879841744434e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "e6afcece2fce03e49860dd36064c81e8ab798681364310684763921c33fe0346",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "SSB_pa1_L090",
+        "Group": "SSB, RF PA=1",
+        "Axis": 0.9,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 0.9,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.02213585376739502,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 1.6231168046942912e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "e86716ea7c94026d4b43f766508d7987583712e19739a27c00087951d1d8ddff",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "SSB_pa1_L102",
+        "Group": "SSB, RF PA=1",
+        "Axis": 1.02,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 1.02,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.022175675258040428,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 414,
+          "best_validation_mse": 1.352492836304009e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "00f72402d0fec01954c3122150104a58a37fb9d0d0e9b533cc117a91b5013634",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "SSB_pa1_L115",
+        "Group": "SSB, RF PA=1",
+        "Axis": 1.15,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 1.15,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.02210458554327488,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 413,
+          "best_validation_mse": 1.1974240806011949e-05,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "60f41ae8e984e7531a7af0e13ede027665aa27fb42f13260a22581c6be2fddb4",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    },
+    {
+      "seed": 44,
+      "condition": {
+        "Condition": "SSB_pa1_L150",
+        "Group": "SSB, RF PA=1",
+        "Axis": 1.5,
+        "XLabel": "Fiber length (km)",
+        "ModOrder": 16,
+        "Memory": false,
+        "Drive": 0.7079457843841379,
+        "SNR": 30,
+        "Enabled": true,
+        "ActivationStudy": false,
+        "Sideband": "SSB",
+        "Fiber_km": 1.5,
+        "Backoff": 3
+      },
+      "fits": {
+        "Linear I/Q": {
+          "ridge": 0.0,
+          "rank": 6,
+          "features": 6
+        },
+        "Volterra 2": {
+          "ridge": 0.0,
+          "rank": 27,
+          "features": 27
+        },
+        "Volterra 3": {
+          "ridge": 0.0001,
+          "rank": 83,
+          "features": 83
+        },
+        "Volterra 5": {
+          "ridge": 0.0,
+          "rank": 461,
+          "features": 461
+        },
+        "NN sigmoid": {
+          "activation": "sigmoid",
+          "hidden_size": 24,
+          "best_iteration": 415,
+          "best_validation_mse": 0.022065069526433945,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": 1.0
+        },
+        "NN multilevel": {
+          "activation": "multilevel",
+          "hidden_size": 24,
+          "best_iteration": 413,
+          "best_validation_mse": 8.52633729664376e-06,
+          "adam_epochs": 400,
+          "adam_budget_reached": true,
+          "lbfgs_steps": 15,
+          "alpha": null
+        }
+      },
+      "skipped": [],
+      "dataset_sha256": "3d468a239725e3356641fb264838b0e5b7fc7660a6e26c3fefe23bbcc363dc4b",
+      "source_sha256": "4c8c8f2a7b4e78f461cf9ee8acc190277296b53a74d17033bf06d10505378c40",
+      "samples": {
+        "train": 5998,
+        "validation": 1798,
+        "test": 14998
+      }
+    }
+  ],
+  "rendering_sources_sha256": {
+    "plot_ofdm_diagnostics.m": "77a786ab38435502851aad11c016be7da08c99b645962acd017a99e71777dc05",
+    "plot_optical_response.m": "bab5da5fec251a03623cf5f2b610e5e511995789ede9e88e9b03d01a7b1ad5e1",
+    "plot_results.m": "5f3c3d310caf9840ba6eb2b3ea31f861c56e9e9e92cf6768018b263318bd0c92",
+    "plot_multiuser_spectrum.m": "c9e5b829c3f37b79cd05cb26b22126bd708040e8c4662809c36c578791db496d",
+    "plot_suite_results.m": "055827b0bd3ea1063fd93b4c3788fe32abc8ea5b04144cf381b70b7608afea3f"
+  }
+}

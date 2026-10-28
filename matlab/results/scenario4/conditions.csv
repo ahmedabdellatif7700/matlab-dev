@@ -1,0 +1,14 @@
+Condition,Group,Axis,XLabel,ModOrder,Memory,Drive,SNR,Enabled,ActivationStudy,Sideband,Fiber_km,Backoff,Guard
+guard0_drive030,"SC-FDMA, guard=0 bins",0.3,Common MZM envelope drive index,16,0,0.3,28,1,0,DSB,0,3,0
+guard0_drive070,"SC-FDMA, guard=0 bins",0.7,Common MZM envelope drive index,16,0,0.7,28,1,0,DSB,0,3,0
+guard0_drive110,"SC-FDMA, guard=0 bins",1.1,Common MZM envelope drive index,16,0,1.1,28,1,0,DSB,0,3,0
+guard0_drive150,"SC-FDMA, guard=0 bins",1.5,Common MZM envelope drive index,16,0,1.5,28,1,0,DSB,0,3,0
+guard4_drive030,"SC-FDMA, guard=4 bins",0.3,Common MZM envelope drive index,16,0,0.3,28,1,0,DSB,0,3,4
+guard4_drive070,"SC-FDMA, guard=4 bins",0.7,Common MZM envelope drive index,16,0,0.7,28,1,0,DSB,0,3,4
+guard4_drive110,"SC-FDMA, guard=4 bins",1.1,Common MZM envelope drive index,16,0,1.1,28,1,0,DSB,0,3,4
+guard4_drive150,"SC-FDMA, guard=4 bins",1.5,Common MZM envelope drive index,16,0,1.5,28,1,0,DSB,0,3,4
+guard12_drive030,"SC-FDMA, guard=12 bins",0.3,Common MZM envelope drive index,16,0,0.3,28,1,0,DSB,0,3,12
+guard12_drive070,"SC-FDMA, guard=12 bins",0.7,Common MZM envelope drive index,16,0,0.7,28,1,0,DSB,0,3,12
+guard12_drive110,"SC-FDMA, guard=12 bins",1.1,Common MZM envelope drive index,16,0,1.1,28,1,0,DSB,0,3,12
+guard12_drive150,"SC-FDMA, guard=12 bins",1.5,Common MZM envelope drive index,16,0,1.5,28,1,0,DSB,0,3,12
+linear_noiseless,"Control",0,Linear noiseless control,16,0,1,Inf,0,0,DSB,0,3,4

@@ -1,0 +1,23 @@
+Condition,Group,Axis,XLabel,ModOrder,Memory,Drive,SNR,Enabled,ActivationStudy,Sideband,Fiber_km,Backoff,Guard,EstimateMode
+qam16_LS_ibo-03,"16-QAM OFDM, LS H",-3,RF driver input backoff (dB),16,1,1.41253754462275,28,1,0,SSB,10,-3,4,LS
+qam16_LS_ibo+00,"16-QAM OFDM, LS H",0,RF driver input backoff (dB),16,1,1,28,1,0,SSB,10,0,4,LS
+qam16_LS_ibo+03,"16-QAM OFDM, LS H",3,RF driver input backoff (dB),16,1,0.707945784384138,28,1,0,SSB,10,3,4,LS
+qam16_LS_ibo+06,"16-QAM OFDM, LS H",6,RF driver input backoff (dB),16,1,0.501187233627272,28,1,0,SSB,10,6,4,LS
+qam16_LS_ibo+09,"16-QAM OFDM, LS H",9,RF driver input backoff (dB),16,1,0.354813389233575,28,1,0,SSB,10,9,4,LS
+qam16_known_ibo-03,"16-QAM OFDM, known H",-3,RF driver input backoff (dB),16,1,1.41253754462275,28,1,0,SSB,10,-3,4,known
+qam16_known_ibo+00,"16-QAM OFDM, known H",0,RF driver input backoff (dB),16,1,1,28,1,0,SSB,10,0,4,known
+qam16_known_ibo+03,"16-QAM OFDM, known H",3,RF driver input backoff (dB),16,1,0.707945784384138,28,1,0,SSB,10,3,4,known
+qam16_known_ibo+06,"16-QAM OFDM, known H",6,RF driver input backoff (dB),16,1,0.501187233627272,28,1,0,SSB,10,6,4,known
+qam16_known_ibo+09,"16-QAM OFDM, known H",9,RF driver input backoff (dB),16,1,0.354813389233575,28,1,0,SSB,10,9,4,known
+qam16_linear_noiseless,"Control",0,Linear noiseless control,16,1,1,Inf,0,0,SSB,0,3,4,LS
+qam64_LS_ibo-03,"64-QAM OFDM, LS H",-3,RF driver input backoff (dB),64,1,1.41253754462275,28,1,0,SSB,10,-3,4,LS
+qam64_LS_ibo+00,"64-QAM OFDM, LS H",0,RF driver input backoff (dB),64,1,1,28,1,0,SSB,10,0,4,LS
+qam64_LS_ibo+03,"64-QAM OFDM, LS H",3,RF driver input backoff (dB),64,1,0.707945784384138,28,1,0,SSB,10,3,4,LS
+qam64_LS_ibo+06,"64-QAM OFDM, LS H",6,RF driver input backoff (dB),64,1,0.501187233627272,28,1,0,SSB,10,6,4,LS
+qam64_LS_ibo+09,"64-QAM OFDM, LS H",9,RF driver input backoff (dB),64,1,0.354813389233575,28,1,0,SSB,10,9,4,LS
+qam64_known_ibo-03,"64-QAM OFDM, known H",-3,RF driver input backoff (dB),64,1,1.41253754462275,28,1,0,SSB,10,-3,4,known
+qam64_known_ibo+00,"64-QAM OFDM, known H",0,RF driver input backoff (dB),64,1,1,28,1,0,SSB,10,0,4,known
+qam64_known_ibo+03,"64-QAM OFDM, known H",3,RF driver input backoff (dB),64,1,0.707945784384138,28,1,0,SSB,10,3,4,known
+qam64_known_ibo+06,"64-QAM OFDM, known H",6,RF driver input backoff (dB),64,1,0.501187233627272,28,1,0,SSB,10,6,4,known
+qam64_known_ibo+09,"64-QAM OFDM, known H",9,RF driver input backoff (dB),64,1,0.354813389233575,28,1,0,SSB,10,9,4,known
+qam64_linear_noiseless,"Control",0,Linear noiseless control,64,1,1,Inf,0,0,SSB,0,3,4,LS

@@ -31,6 +31,9 @@ def archive(run, destination):
                   source_snapshot_sha256={str(p.relative_to(run/'source')):hashlib.sha256(p.read_bytes()).hexdigest()
                                           for p in (run/'source').rglob('*') if p.is_file()},
                   conditions=conditions)
+    plotting = Path(__file__).resolve().parents[1]/'matlab'/'+mmw'
+    record['rendering_sources_sha256'] = {
+        p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in plotting.glob('plot*.m')}
     (destination/'validation_record.json').write_text(json.dumps(record, indent=2)+'\n')
     pooled = list(csv.DictReader((run/'pooled_metrics.csv').open()))
     selected = cfg.get('report_condition', conditions[0]['condition']['Condition'])
@@ -44,7 +47,7 @@ def archive(run, destination):
         ber = f"{float(row['ber']):.5g}" if int(row['bit_errors']) else f"0 observed; upper95={float(row['ber_upper_95']):.3g}"
         table.append(f"| {row['method']} | {float(row['evm_percent']):.3f} | {row['bit_errors']} | {row['bit_count']} | {ber} |")
     text = (f"# Scenario {cfg['scenario']}: validated results\n\n"
-            f"Completed {len(conditions)} independent-seed operating-point runs and "
+            f"Completed {len(conditions)} operating-point runs across independent replicate seeds and "
             f"{len(rows)} MATLAB-verified receiver/user metric evaluations.\n\n"
             f"Representative condition: `{selected}`.\n\n" + '\n'.join(table) + '\n\n'
             'All fits use training data, checkpoint/ridge selection uses validation data, and test targets are used only for evaluation. '
@@ -56,6 +59,8 @@ def archive(run, destination):
     for p in sorted(destination.glob('*.png')):
         text += f'![{p.stem.replace("_", " ")}]({p.name})\n\n'
     text += 'See [scenario equations and limitations](../../SCENARIOS.md).\n'
+    if (destination/'INTERPRETATION.md').is_file():
+        text += '\n[Measured findings and limitations](INTERPRETATION.md).\n'
     (destination/'README.md').write_text(text)
     print(f'Archived {len(conditions)} runs in {destination}')
 
