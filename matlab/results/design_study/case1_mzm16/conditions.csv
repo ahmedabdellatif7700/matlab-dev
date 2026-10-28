@@ -1,0 +1,2 @@
+ID,Family,ModOrder,PA,Backoff_dB,AMPM_deg,MZM,MZM_drive,Optical,Sideband,Fiber_km,Echo_real,Echo_imag,Reference_SNR_dB,carrier_GHz,symbol_rate_Gbaud,rrc_rolloff,samples_per_symbol,tap_offsets,ber_target,target_origin
+mzm16_mu150,MZM16,16,0,0,20,1,1.5,0,DSB,0,0,0,30,60.0,1.0,0.25,8,0;-1,0.0038,reference grid

@@ -268,6 +268,8 @@ def validate_configuration():
         raise ValueError("Fixed-point export requires 4-12-2; set EXPORT_FIXED_POINT=False for arbitrary software networks")
     if EXPORT_FIXED_POINT and ACTIVATION not in ("sigmoid","variable_alpha","stable_alpha"):
         raise ValueError("This activation requires EXPORT_FIXED_POINT=False")
+    if OUTPUT_SIZE != 2:
+        raise ValueError("The legacy MAT interface has I/Q outputs; use research stages for Gray-bit heads")
     if OPTIMIZER not in ("sgd", "adam"):
         raise ValueError("OPTIMIZER must be 'sgd' or 'adam'")
     if LEARNING_RATE <= 0 or BATCH_SIZE < 1 or EPOCHS < 1:
@@ -981,7 +983,7 @@ def legacy_main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"device: {device}")
     print(f"mode: {MODE}")
-    print(f"network: {INPUT_SIZE}R -> {HIDDEN_SIZE}R -> {OUTPUT_SIZE}R")
+    print(f"network: {[INPUT_SIZE,*HIDDEN_SIZES,OUTPUT_SIZE]}")
     print(f"activation: {ACTIVATION}")
     print(f"optimizer: {OPTIMIZER.upper()}, learning_rate={LEARNING_RATE}")
     print(f"batch_size: {BATCH_SIZE}, shuffle={SHUFFLE}, epochs={EPOCHS}")
@@ -1226,7 +1228,7 @@ def main():
         search(args.run)
     elif args.phase=='confirmation':
         from tuning.confirmation import confirm
-        confirm(args.run)
+        confirm(args.run,args.only)
     elif args.phase=='snr-sweep':
         from tuning.snr_sweep import evaluate
         evaluate(args.run)

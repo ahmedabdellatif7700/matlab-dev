@@ -10,13 +10,14 @@ from . import baselines
 from .data import load
 
 
-def confirm(run):
+def confirm(run, only=None):
     raw=(run/'selection.json').read_bytes()
     lock=json.loads(raw); cfg=lock['configuration']
     if not lock['complete']:
         raise RuntimeError('Four discovery cases have not qualified; do not claim four successes.')
     rows=[]
     for case in lock['selected']:
+        if only and case['condition']['ID'] not in only: continue
         for seed in cfg['confirmation_seeds']:
             folder=run/'confirmation'/f'seed_{seed}'/case['condition']['ID']
             if (folder/'metrics.json').exists():
@@ -65,8 +66,7 @@ def confirm(run):
                 input_mean=neural['mean'],input_scale=neural['scale']))
             (folder/'metrics.json').write_text(json.dumps(rows[-len(infos):],indent=2)+'\n')
             print('Confirmed',case['condition']['ID'],seed,'NN BER',rows[-len(infos)]['ber'],flush=True)
-            with (run/'confirmation_metrics.csv').open('w',newline='') as stream:
-                writer=csv.DictWriter(stream,fieldnames=list(rows[0])); writer.writeheader(); writer.writerows(rows)
 
-    with (run/'confirmation_metrics.csv').open('w',newline='') as stream:
-        writer=csv.DictWriter(stream,fieldnames=list(rows[0])); writer.writeheader(); writer.writerows(rows)
+    if not only:
+        with (run/'confirmation_metrics.csv').open('w',newline='') as stream:
+            writer=csv.DictWriter(stream,fieldnames=list(rows[0])); writer.writeheader(); writer.writerows(rows)

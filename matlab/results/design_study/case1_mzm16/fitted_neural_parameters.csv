@@ -1,0 +1,4 @@
+case,data_seed,selected_initialization_seed,best_step,adam_epochs,validation_bce,parameters,activation_coefficients
+mzm16_mu150,1201,12010,585,600,0.0037819400895386934,40,{}
+mzm16_mu150,1202,12022,608,600,0.0034478844609111547,40,{}
+mzm16_mu150,1203,12031,611,600,0.001926800119690597,40,{}

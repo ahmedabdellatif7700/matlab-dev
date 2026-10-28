@@ -21,15 +21,15 @@ def evaluate(run):
             ideal=ideal_data['ideal_symbols'].ravel(); labels=ideal_data['ideal_bits']
             chosen=[m for m in classical if m['info']['name'] in ['Complex FFE','Volterra regression 3','Volterra regression 5']]
             best=min(classical,key=lambda m:m['info']['validation_ber'])
-            if all(best is not m for m in chosen): chosen.append(best)
+            chosen=[(m['info']['name'],m) for m in chosen]+[('Classical best (validation)',best)]
             for file in sorted((run/'snr_sweep'/f'seed_{seed}'/cid).glob('offset_*.mat')):
                 d=loadmat(file,variable_names=['X','Y','reference_snr_db']); truth=target_bits(d['Y'],ideal,labels)
                 decisions=[('Selected NN',models.predict_bits(neural,d['X'])>=0)]
-                for m in chosen:
+                for display_name,m in chosen:
                     pred=np.concatenate([baselines.predict(m,x,ideal,labels) for x in np.array_split(d['X'],max(1,len(d['X'])//2048))])
-                    decisions.append((m['info']['name'],pred))
+                    decisions.append((display_name,pred))
                 for name,pred in decisions:
-                    rows.append(dict(case=cid,seed=seed,reference_snr_db=float(d['reference_snr_db'].item()),method=name,bit_errors=int(np.sum(pred!=truth)),bits=truth.size,ber=float(np.mean(pred!=truth))))
+                    rows.append(dict(case=cid,seed=seed,reference_snr_db=float(d['reference_snr_db'].item()),method=name,receiver_model=best['info']['name'] if name=='Classical best (validation)' else name,bit_errors=int(np.sum(pred!=truth)),bits=truth.size,ber=float(np.mean(pred!=truth))))
             print('Frozen SNR sweep',cid,seed,flush=True)
     table(run/'report'/'snr_sweep.csv',rows)
     fig,axes=plt.subplots(2,2,figsize=(11,8),layout='constrained')
@@ -46,3 +46,8 @@ def evaluate(run):
         ax.set(title=cid,xlabel='Reference receiver SNR (dB)',ylabel='BER'); ax.grid(alpha=.25); ax.legend(fontsize=6)
     fig.suptitle('Frozen receivers: SNR generalization on fresh payloads')
     fig.savefig(run/'report'/'ber_vs_snr.png',dpi=180); plt.close(fig)
+    with (run/'report'/'README.md').open('a') as stream:
+        stream.write('\nBER/SNR curves: ber_vs_snr.png and snr_sweep.csv. Receivers are frozen at the locked training SNR. The best classical curve is chosen by validation BER, not sweep test BER. Sweep payloads are independent of confirmation payloads. Zero-error points are plotted at 0.5/tested bits; raw error counts remain in the CSV.\n')
+
+    from .report import case_reports
+    case_reports(run)
