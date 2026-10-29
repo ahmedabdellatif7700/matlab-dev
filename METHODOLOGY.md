@@ -1,242 +1,52 @@
-# Methodology: neural equalization of a 60 GHz link
+# Single-link A-RoF equalization methodology
 
-## Agreed research direction — 29 October 2026
+## Agreed scope
 
-This section records the user's current decisions and takes precedence over the historical experiment description below. Sections 1–13 document the earlier completed benchmark; its bit-output/BCE/AdamW and multiplication-budget choices are not the agreed requirements for the next implementation.
+Develop one modular 60 GHz analog radio-over-fiber link based on the optical-beating, multilevel-QAM experiment in Liu et al., JLT 2017, DOI [10.1109/JLT.2017.2717778](https://doi.org/10.1109/JLT.2017.2717778). Establish its physical baseline before drawing conclusions about equalizers. Start with 16-QAM; 64-QAM is a later configuration of the same link.
 
-### Research part 1: communication performance
+The communication objective is a supported BER or continuous-output EVM advantage for a candidate NN over well-tuned FFE and Volterra equalizers. There is no matched-multiplication-budget requirement. There are no four scenario families in the new study. Earlier bitwise experiments remain historical results, not evidence validating this new physical model.
 
-- Identify physically justified millimeter-wave impairment conditions in which candidate NNs demonstrate a clear BER or EVM advantage over reasonable, well-tuned FFE and Volterra baselines.
-- Use FFE, Volterra and NN as the receiver families. Polynomial bit classifiers and RBF classifiers are not required in the new experiment.
-- Do not make a matched multiplication budget the main objective or success criterion. Report complexity as supporting information.
-- BER or EVM may be primary, according to the experiment. Continuous I/Q predictions support both symbol-domain EVM and constellation-based BER evaluation.
-- MATLAB generates the impaired link waveforms and exports the data used by Python for training, validation, testing and inference. Preserve the familiar MAT-file interface.
-- Candidate NNs must train successfully using sequential, sample-by-sample online SGD, matching the intended on-chip training process. Good performance under AdamW or LBFGS alone does not qualify a candidate for the hardware study.
-- The supplied reference dataset is 4-QAM. Extending MATLAB data generation and evaluation to 16-QAM and 64-QAM is permitted. BER must use constellation decisions and Gray-bit demapping, not sign decisions alone.
-- NN gains must be supported by results. A condition in which a baseline wins cannot be represented as an NN success.
+The physical parameters, assumptions and missing specifications are in [PHYSICAL_LINK.md](matlab/PHYSICAL_LINK.md).
 
-### Research part 2: on-chip training and live adaptation
+## Implementation sequence and simple commits
 
-- Target platform: AMD Kria KV260.
-- The intended operating mode is live supervised adaptation using known transmitted training symbols, rather than only repeated offline training on stored datasets.
-- Hardware changes are allowed, including network dimensions/depth, RAM layout/capacity, activation functions and activation-parameter support. The existing 4–12–2 design is a reference, not a mandatory topology.
-- Use the supplied Python integer model as the reference for arithmetic order, quantization, rounding, saturation and pre-update-weight backpropagation. Q8.24 and the existing sigmoid implementation are the starting reference; alternative precision/activation choices must be evaluated explicitly.
-- Evaluate communication performance and training convergence alongside FPGA resources, training/inference throughput and latency, tool-estimated power, and measured board power where feasible.
-- Distinguish measured board-level power from tool-estimated FPGA power, including their different boundaries and operating conditions.
-- The supplied model's word-for-word RTL agreement is reported by its accompanying documentation; it has not been independently re-established in this project review.
-
-### Implementation boundary and open decisions
-
-Record these decisions now; do not treat them as approval to implement a new training pipeline. Agree on the implementation scope before changing model, dataset, or RTL behavior.
-
-Still to decide:
-
-1. Required streaming rate: full communication symbol rate, or a controlled-rate live FPGA demonstrator. Existing engine throughput must not be assumed to support a 1 Gbaud stream.
-2. Training-symbol framing: initial acquisition sequence, periodic training bursts/pilots, and behavior between training intervals.
-3. Time variation used to test adaptation: which channel/nonlinearity parameters change, their trajectories, and the rate of change.
-4. Final clock target, power measurement boundary and equipment, and how inference/training activity is controlled for power comparisons.
-
-A proposed next implementation is a continuous-I/Q MSE receiver trained with online SGD, compared with FFE and Volterra, followed by an explicitly matched fixed-point replay and training-symbol-based adaptation experiments. This proposal remains to be approved; the previous bitwise benchmark remains historical evidence.
-
----
-
-
-## 1. What we are studying
-
-We are studying whether a compact neural receiver can compensate nonlinear millimeter-wave link impairments more effectively than the tested conventional receivers within a limited inference budget.
-
-The practical question is:
-
-> At a specified channel condition and BER target, how much receiver complexity is needed, and does a neural receiver provide a useful advantage?
-
-We compare BER, hard-decision EVM, parameter count, explicit real multiplications and activation evaluations. We retain higher-cost conventional receivers in the comparison, even when they match or outperform the NN.
-
-The present results support a **bounded arithmetic/performance advantage**. They do not establish that these impairments can only be solved by neural networks, or that fewer multiplications automatically mean lower hardware power or latency.
-
-## 2. Why these impairments and cases
-
-The supplied Liu and Song papers motivate studying modulator nonlinearity, RF amplifier distortion, channel memory and optical dispersion. We use controlled simulation models to separate these effects and study their combinations. The model equations and controls are documented further in [SCENARIOS.md](matlab/SCENARIOS.md).
-
-We are not reproducing the papers' experimental apparatus, optical-power calibration or measured curves. Our cases use a 60 GHz complex-envelope carrier and single-carrier QAM.
-
-| Case | Conditions selected for confirmation | Why we study it |
+| Step | Work | Commit |
 |---|---|---|
-| 1 | 16-QAM; MZM drive 1.5; reference SNR 30 dB | Test nonlinear amplitude distortion without adding an explicit echo or optical dispersion stage. |
-| 2 | 64-QAM; MZM drive 1.05; one-symbol echo of magnitude 0.2 and phase 36°; reference SNR 40 dB | Test nonlinear distortion together with channel memory and more closely spaced constellation levels. |
-| 3 | 16-QAM; PA input backoff −3 dB; AM/PM limit 40°; one-symbol echo of magnitude 0.25 and phase 45°; reference SNR 32 dB | Test simultaneous amplitude compression, amplitude-dependent phase rotation and memory. |
-| 4 | 64-QAM; PA input backoff 3 dB; AM/PM limit 40°; 0.3 km small-signal DSB fiber model; reference SNR 44 dB | Test RF nonlinearity together with frequency-dependent optical transport. |
+| 1 | Establish the physical specification; distinguish paper values, modeling assumptions and unavailable measurements. | `01: define physical link` |
+| 2 | Build modular MATLAB waveform, IF, optical modulation, fiber, photodetection, wireless/receiver and recovery stages. | `02: build physical link` |
+| 3 | Establish low-drive controls, spectra, alignment, BER/EVM and stage checks without equalization. | `03: establish baseline` |
+| 4 | Export independent training, validation and test datasets from MATLAB with continuous I/Q targets and explicit boundaries. | `04: export datasets` |
+| 5 | Tune and compare FFE and Volterra baselines. | `05: compare conventional equalizers` |
+| 6 | Develop the supplied `nn_training_model/` package for the selected NN configurations. | `06: integrate NN training` |
+| 7 | Compare activations with matched architectures, initialization, data and training budgets. | `07: compare activations` |
+| 8 | Freeze choices and report independent confirmation, figures and the 64-QAM extension. | `08: report comparison` |
 
-MZM drive is a dimensionless modulation-depth setting in the implemented RF-fundamental model. The AM/PM setting is an asymptotic phase limit, not a constant rotation applied to every sample. Reference SNR is defined relative to the ideal, undistorted link; it is not the measured SNR after every impairment.
+Review the physical baseline after step 3 before proceeding to dataset export and receiver-performance claims. Development and pushes remain on `codex/development`; `main` is not modified.
 
-## 3. Step 1 — Generate the transmitted waveform in MATLAB
+## MATLAB and Python responsibilities
 
-Generate independent random symbol sequences and map them to Gray-coded 16-QAM or 64-QAM. Use:
+MATLAB owns physical signal generation, channel modeling and dataset export. Python consumes MAT arrays `X` and `Y` for training, validation, testing and inference. `Y` contains transmitted I/Q, not bit logits. BER uses QAM slicing and Gray-bit demapping; EVM uses continuous I/Q estimates. Normalization, timing and gain calibration must be explicit and shared across receiver comparisons.
 
-- Symbol rate: 1 Gbaud.
-- Waveform sampling: eight samples per symbol.
-- Transmit and receive root-raised-cosine filters: rolloff 0.25, span 24 symbols.
-- A 60 GHz carrier represented through its complex envelope and its role in the optical response; we do not sample the RF carrier directly.
+Use FFE, Volterra and NN only in the new comparison. Tune each receiver using training and validation data, without imposing equal tap counts or multiplication counts. Preserve final test independence. Report useful operating points supported by the physical link, rather than increasing arbitrary impairment parameters until an NN wins.
 
-Pulse shaping comes before the nonlinear stage. This matters because even a discrete constellation with a small number of amplitude levels produces a continuously varying waveform envelope after pulse shaping.
+## Authoritative NN development base
 
-The source is currently random QAM, not a coded transmission with an implemented FEC decoder.
+Use the user-supplied `nn_training_model.zip` directory as the development base, with the accompanying user-supplied methodology. Do not substitute a separately written integer engine. Import and extend that directory in step 6, preserving its stages:
 
-## 4. Step 2 — Apply the impairment stages
+1. Load the sample and known target.
+2. Forward propagation.
+3. MSE loss/output delta.
+4. Backward propagation using pre-update weights.
+5. Immediate sample-by-sample SGD update.
 
-The implemented signal flow is:
+All stored NN values use Q8.24: samples, targets, parameters, activations, gradients, deltas, learning rate and outputs. Preserve the reference rounding and saturation boundaries, including one rounding per accumulated dot product. Full-width products and wide accumulators are intermediate arithmetic, not mixed stored precision. Do not use the supplied package's optional Q8.8 publishing path in the new workflow.
 
-```text
-Random symbols → Gray QAM → transmit RRC
-    → MZM fundamental OR RF PA
-    → optional optical DSB response
-    → optional one-symbol echo
-    → receiver AWGN
-    → receive RRC → known delay/gain removal → symbol sampling
-```
+Network dimensions, memory and activations may be extended, with matching forward/derivative implementations. Establish exact agreement with the supplied reference's existing golden outputs before qualifying extensions. Floating-point computations may serve as diagnostic references only; they do not replace Q8.24 candidate training/inference results.
 
-**MZM:** use the fundamental RF-band response of an ideal quadrature-biased intensity modulator. Its envelope scaling contains the Bessel-function factor `2 J1(m)/m`, with modulation depth `m` proportional to waveform amplitude. The model rejects the RF harmonic bands and uses a narrowband envelope approximation. It is not a full large-signal optical-field simulation.
+## Later hardware phase
 
-**RF PA:** use Rapp amplitude compression and a bounded amplitude-dependent phase rotation. Lower input backoff drives the PA more strongly. Applying this model to the pulse-shaped waveform allows nonlinear distortion to interact with the transmit and receive filters.
+Target KV260 at the 100 MHz reference point, initially at a controlled sample rate. The existing sequential engine is approximately 85 k training samples/s and 285 k inference samples/s; these rates do not automatically apply to extended networks. Overload drops complete samples and increments counters. Full-rate processing of the communication waveform is a later architecture project.
 
-**Optical DSB transport:** use the small-signal carrier/sideband-beating dispersion response. This produces frequency-dependent RF fading. The PA/optical cascade is a phenomenological model, not a calibrated transmitter model. The large-signal MZM approximation is not cascaded with this small-signal optical approximation in the selected cases.
+Live supervised adaptation uses initial known training, payload inference and periodic training bursts with current weights. Register-controlled mode switching exists; stream-aligned training requires flags carried with frames. Training can stop after exactly N accepted training samples. Time-varying-channel adaptation experiments and RTL/power comparisons are outside the immediate physical-baseline checkpoint. Later report both tool-estimated and measured board power where feasible, with measurement boundaries stated.
 
-**Echo:** add a delayed, scaled complex copy of the waveform at a delay of one symbol. This is a controlled memory impairment, not a measured multipath channel.
-
-**Noise:** add complex Gaussian receiver noise with variance referenced to the undistorted symbol energy. Do not renormalize noise to the distorted signal power; that would conceal attenuation or compression penalties.
-
-At the receiver, remove the known filter delay and configured drive gain, and trim burst edges. Timing, carrier recovery and channel-parameter estimation are therefore idealized. Their acquisition costs and errors are outside this study.
-
-## 5. Step 3 — Give each receiver the same observations
-
-Each receiver uses the current and previous received complex samples:
-
-`x[n] = [I[n], Q[n], I[n−1], Q[n−1]]`.
-
-This gives four real inputs. All receivers have the same observation window; the NN does not receive extra neighboring symbols or hidden channel information.
-
-The target symbol and its Gray-bit label come from the transmitted sequence. Any input standardization is fitted using training data only. Validation and test data use those fitted statistics.
-
-The conclusions apply to this two-complex-sample window. A longer conventional filter, a different nonlinear model or a different receiver structure may change the comparison.
-
-## 6. Step 4 — Establish conventional receiver controls
-
-| Receiver | Purpose |
-|---|---|
-| Complex FFE | Establish what a linear receiver can recover. |
-| Full real polynomial/Volterra regression, orders 1, 2, 3, 5 and 7 | Test increasingly expressive nonlinear symbol reconstruction, including cross-products between I/Q and temporal inputs. |
-| Polynomial bit classifiers, orders 1, 2, 3 and 5 | Control for the benefit of directly optimizing bit decisions rather than reconstructing I/Q by squared error. |
-| Gaussian RBF bit classifiers, 16, 64 and 256 centers | Include a non-neural nonlinear decision-boundary model outside the polynomial family. |
-
-Regression receivers reconstruct I/Q and use Cartesian constellation slicing. Bit classifiers predict bit decisions. Ridge regularization and kernel bandwidth are selected using validation data. Baseline parameter tables report optimizer convergence where applicable.
-
-These controls matter because an improvement over FFE alone would not establish an advantage over nonlinear conventional receivers. Likewise, a bitwise NN should not be compared only against squared-error regression without bitwise controls.
-
-## 7. Step 5 — Tune neural architecture and activation in Python
-
-Use the shared `RealEqualizer` in [equalizer.py](python/equalizer.py), with choices centralized in [config.py](python/config.py). Hidden width and depth are configurable; the research receiver is not restricted to the legacy 4–12–2 topology.
-
-The main search includes shallow and deeper networks, tanh, SiLU, softsign, fixed smooth multilevel and learned smooth multilevel activations. A focused 64-QAM extension also tests smaller networks and narrow bottlenecks.
-
-The learned multilevel activation adjusts shared transition locations and positive slopes. It is an experimental activation candidate inspired by multilevel responses. Selecting it for a case does not, by itself, establish mathematical novelty or isolate the activation's contribution from all other tuning choices.
-
-The network outputs one logit per Gray bit: four outputs for 16-QAM and six for 64-QAM. A logit at or above zero gives bit 1. We optimize bitwise binary cross-entropy because BER is the primary performance objective.
-
-For the four selected networks, training uses AdamW with learning rate 0.003, weight decay 1e−4 and minibatches of 512, for up to 600 epochs. Validation patience is 70 epochs, followed by 12 LBFGS polishing steps. Retain the checkpoint with the lowest validation BCE. The focused discovery extension uses a separate 900-epoch budget; it is recorded in the search history.
-
-| Case | Real network dimensions | Selected activation | Trainable parameters | Real multiplications/symbol | Activation evaluations/symbol |
-|---|---|---|---:|---:|---:|
-| 1 | 4 → 4 → 4 | tanh | 40 | 32 | 4 |
-| 2 | 4 → 16 → 6 | Learned multilevel | 188 | 224 | 48 |
-| 3 | 4 → 16 → 4 | tanh | 148 | 128 | 16 |
-| 4 | 4 → 16 → 16 → 6 | tanh | 454 | 416 | 32 |
-
-The final dimensions denote bit logits, not reconstructed I/Q components.
-
-## 8. Step 6 — Separate discovery from confirmation
-
-| Stage | Data and decisions | Reason |
-|---|---|---|
-| Discovery | Seed 501; 10,000 training and 10,000 validation symbols per candidate; no test payloads generated | Explore conditions, architectures, activations and conventional hyperparameters without inspecting final tests. |
-| Design lock | Save selected conditions, architectures and BER targets in `selection.json` | Prevent the final tests from determining the design. |
-| Confirmation | Seeds 1201, 1202 and 1203; each uses 18,000 training, 6,000 validation and 50,000 test symbols | Assess the locked choices on fresh data and independent realizations. |
-
-These are generated symbol counts. Forming a two-sample window removes the first symbol from each exported segment.
-
-The discovery study began with 12 conditions and expanded to 18 using higher-SNR and moderate-backoff controls. The target-selection rule was also refined during discovery. These decisions were made before confirmation data existed; they were not all fixed before the initial discovery sweep. The [protocol history](matlab/results/design_study/protocol_history.md) records this distinction.
-
-For each confirmation seed, retrain the locked NN architecture from three initializations and select the lowest validation-BCE checkpoint. Conventional hyperparameters are also selected using that seed's training/validation data. Test BER never selects a restart or hyperparameter.
-
-If confirmation fails, report the failure. A revised design requires another discovery/confirmation round with fresh final test data.
-
-## 9. Step 7 — Define the performance/complexity criterion
-
-During discovery, require NN validation BER no greater than `3.8e−3` and a validation BER gap of at least `1e−4` relative to the best tested classical receiver below 1.5 times the NN multiplication count.
-
-A BER target may come from the configured reference grid or from the midpoint between those validation BERs. Therefore, some targets are **validation-derived design targets**, not standardized communication requirements. Their origin is recorded and the targets are frozen before confirmation.
-
-A confirmed case must satisfy all three conditions on pooled confirmation data:
-
-1. The NN meets its locked BER target.
-2. Every tested classical receiver with no more multiplications than the NN fails that target.
-3. The cheapest tested classical receiver meeting the target requires at least 1.5 times the NN's explicit real multiplications.
-
-The `3.8e−3` level is a literature reference, not a demonstrated post-FEC guarantee. No FEC decoder is implemented.
-
-Polynomial arithmetic counts assume reuse of lower-order monomials. Counts exclude additions and fusible affine normalization. Activation evaluations are reported separately because a sigmoid, tanh or division has a different cost from a multiplication.
-
-These are inference arithmetic comparisons. We have not measured implementation latency, throughput, FPGA resources, energy or power for these new networks. Classical inference uses float64 and neural inference float32; parameter counts must not be interpreted as equal-precision memory comparisons.
-
-## 10. Step 8 — Evaluate BER, EVM and uncertainty
-
-**BER** is the number of wrong Gray bits divided by the number of evaluated bits. Report raw errors and bit counts alongside BER.
-
-**Hard-decision EVM** compares the decided constellation symbols with the transmitted symbols:
-
-`EVM (%) = 100 × sqrt(mean(|s_decided − s_transmitted|²) / mean(|s_transmitted|²))`.
-
-This is a common decision-level metric for the compared receivers. It is not continuous equalizer-output EVM and does not establish that the analog waveform has been reconstructed.
-
-Report each seed separately and pool error counts across the three seeds. Include nominal Wilson BER intervals and paired contiguous-symbol-block bootstrap differences between each receiver and the NN. The bootstrap uses 128-symbol-scale blocks and 2,000 resamples per comparison.
-
-Nominal binomial intervals assume independent bits; symbol errors and temporal dependence can violate that assumption. Seed variation and paired block comparisons provide additional evidence. The intervals are not a multiple-comparison-corrected proof of universal superiority.
-
-## 11. Step 9 — Plot SNR generalization without retuning
-
-After training, freeze every receiver. Generate fresh payloads at reference-SNR offsets of −6, −3, 0, +3 and +6 dB from each selected condition.
-
-Evaluate the same fitted receivers at every point. Select the best-classical comparison using validation BER for each seed, not the SNR-sweep test results. Record the underlying selected model in the CSV.
-
-Within a seed, SNR points reuse the transmitted symbols and scale the same noise realization. This supports paired curve comparisons; the points are not independent replications. Sweep payloads are separate from the confirmation payloads.
-
-These curves measure robustness to SNR mismatch. They must not be described as receivers retrained or optimized independently at every SNR.
-
-## 12. What the completed study shows
-
-| Case | Pooled NN BER | FFE BER | Best classical BER within the NN multiplication budget | Cheapest classical/NN multiplication ratio at the locked target |
-|---|---:|---:|---:|---:|
-| 1 | 7.48e−4 | 4.30e−3 | 4.28e−3 | 2.06× |
-| 2 | 2.15e−3 | 7.54e−3 | 3.30e−3 | 1.66× |
-| 3 | 5.87e−4 | 5.95e−3 | 2.44e−3 | 2.90× |
-| 4 | 8.41e−4 | 8.60e−3 | 1.35e−3 | 2.36× |
-
-All four cases meet the locked criterion. Higher-cost classical receivers sometimes achieve lower BER than the NN. The defensible conclusion is that the selected NNs offer useful BER at a smaller explicit multiplication budget than the tested classical matches under these conditions.
-
-The [complete report](matlab/results/design_study/README.md) contains the figures, full receiver comparisons, physical conditions, network settings, fitted activation coefficients and baseline hyperparameters.
-
-## 13. Implementation responsibilities and next research steps
-
-| Location | Responsibility |
-|---|---|
-| [matlab/main.m](matlab/main.m) | Run the complete staged experiment. |
-| [matlab/+mmw/design_config.m](matlab/+mmw/design_config.m) | Physical link settings, payload counts and seeds. |
-| [matlab/+mmw/design_candidates.m](matlab/+mmw/design_candidates.m) | Candidate impairment conditions. |
-| [python/config.py](python/config.py) | Network/activation candidates, learning settings and baseline search choices. |
-| [python/equalizer.py](python/equalizer.py) | Shared neural model, training/inference and Python entry point. |
-| [python/activations/](python/activations) | Activation implementations. |
-| [python/tuning/](python/tuning) | Discovery selection, confirmation and reporting. |
-
-MATLAB and Python exchange MAT files using `X`, `Y` and explicit split counts. Research inference returns decided symbols and bit predictions. The original no-argument Python workflow and its legacy ONNX/fixed-point interface remain available.
-
-The new research results are floating point. The existing Q8.8 inference and Q8.24 training work do not establish fixed-point performance for the new architectures or activations. Quantization-aware evaluation and hardware support are subsequent steps.
-
-For a stronger research contribution, the next steps are to isolate the activation effect with matched architectures and training budgets, broaden conventional receiver/window choices, calibrate channel parameters against measured or published apparatus, and assess equal-precision implementation costs. These are future experiments, not conclusions already demonstrated by the present four cases.
+The superseded methodology is retained in [docs/HISTORICAL_METHODOLOGY.md](docs/HISTORICAL_METHODOLOGY.md) for provenance. Its four-family, AdamW/bitwise and multiplication-budget choices do not govern this work.
