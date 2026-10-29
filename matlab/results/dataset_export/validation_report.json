@@ -1,0 +1,81 @@
+{
+  "files": 9,
+  "all_checks_passed": true,
+  "source": "supplied nn_training_model.zip/hardware/training/fixedpoint.py",
+  "source_sha256": "81fdbbe3c9cf976e0b448df66fa4ffa1662462f4806271110842e4fed317002d",
+  "checks": [
+    "SciPy MAT loading",
+    "distinct split/noise seeds",
+    "causal feature alignment",
+    "continuous targets",
+    "prefix/training masks",
+    "exact supplied Q8.24 import",
+    "zero saturation",
+    "400 mVpp drive"
+  ],
+  "datasets": [
+    {
+      "file": "rop_-22.0_dbm/train.mat",
+      "samples": 32768,
+      "inputs": 10,
+      "outputs": 2,
+      "sha256": "7628900f01c6bfc9e93f7d2a059eef149062a7ccf312254bd686b823fd20bfa1"
+    },
+    {
+      "file": "rop_-22.0_dbm/validation.mat",
+      "samples": 16384,
+      "inputs": 10,
+      "outputs": 2,
+      "sha256": "8c235fdd1faf92b8bc4798160c6f0cb3c6c0dfb7517f618ba7c4d9e2862084f9"
+    },
+    {
+      "file": "rop_-22.0_dbm/test.mat",
+      "samples": 65536,
+      "inputs": 10,
+      "outputs": 2,
+      "sha256": "8df43c6c12baeffa5756008c609687afdcb14e87c2051a6e7acb86d1d23c4b5f"
+    },
+    {
+      "file": "rop_-20.0_dbm/train.mat",
+      "samples": 32768,
+      "inputs": 10,
+      "outputs": 2,
+      "sha256": "b3654255208840106f3120deb71ceb50eada727ea0eb85a0f05035bad15525d5"
+    },
+    {
+      "file": "rop_-20.0_dbm/validation.mat",
+      "samples": 16384,
+      "inputs": 10,
+      "outputs": 2,
+      "sha256": "221803462bb699b7982886df139ccaf02aadcfc9713a95fe6a7cdc2b0cbc0eb8"
+    },
+    {
+      "file": "rop_-20.0_dbm/test.mat",
+      "samples": 65536,
+      "inputs": 10,
+      "outputs": 2,
+      "sha256": "b4a25fb6bf161fe760cc855fa039f07e2540ffc2fd69ef3fda7a3d1c66748f73"
+    },
+    {
+      "file": "rop_-17.5_dbm/train.mat",
+      "samples": 32768,
+      "inputs": 10,
+      "outputs": 2,
+      "sha256": "c62b99dbb64c1a3ce028b842d68ebac060a61675cf9bc8edade220596c3ae04c"
+    },
+    {
+      "file": "rop_-17.5_dbm/validation.mat",
+      "samples": 16384,
+      "inputs": 10,
+      "outputs": 2,
+      "sha256": "4469e5c530970b11367adf70adf87172120fdecbdc91a8ed92ad129e3a12231b"
+    },
+    {
+      "file": "rop_-17.5_dbm/test.mat",
+      "samples": 65536,
+      "inputs": 10,
+      "outputs": 2,
+      "sha256": "9a4ee2244316491d43e7a712dd3630d937b8e184836231f48a53817bb87d8eb2"
+    }
+  ]
+}

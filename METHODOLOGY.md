@@ -21,7 +21,7 @@ The physical parameters, assumptions and missing specifications are in [PHYSICAL
 | 7 | Compare activations with matched architectures, initialization, data and training budgets. | `07: compare activations` |
 | 8 | Freeze choices and report independent confirmation, figures and the 64-QAM extension. | `08: report comparison` |
 
-Review the physical baseline after step 3 before proceeding to dataset export and receiver-performance claims. Development and pushes remain on `codex/development`; `main` is not modified.
+Review the physical baseline after step 3 before proceeding to dataset export and receiver-performance claims. The physical baseline is retained on `codex/development`. Step 4 and the next research steps use `codex/dataset-export`, branched from `a2b9c6f`; `main` is not modified.
 
 ## MATLAB and Python responsibilities
 
@@ -78,3 +78,7 @@ The Figure 13(c) and Figures 9/11 fits are alternative effective parameterizatio
 Scale both optical fields by the square root of the requested optical-power ratio. Their beat current then scales with optical watts, giving a noise-to-signal power ratio proportional to optical power to the minus second power for fixed receiver noise. Effective responsivity is set to 1 A/W as a reference convention; unmeasured RF gains and noise are absorbed into the aggregate PSD. Report the inferred parameters, raw bit counts, nominal intervals and remaining differences in the [received-power report](matlab/results/received_power/README.md). Review this physical-baseline result before beginning equalization.
 
 The completed five-seed sweep uses 1,310,720 bits per power. Both calibration endpoints and 5/8 intermediate powers fall within the declared +/-0.08 log10(BER) read-off allowance. Simulated BER at -17.5 dBm is 5.2490e-4 versus approximately 5.7544e-4. The largest absolute discrepancy is 0.1357 log10(BER) at -19.5 dBm (simulation 1.8379e-3 versus approximately 2.5119e-3). The trend and several points agree, but this remains a partial quantitative match. Existing physical controls, exact optical-power/beat scaling and noiseless power invariance pass; the fitted-condition 20/40 GSa/s short-record difference is 8.8147e-4 normalized RMS, below the existing 1e-3 numerical threshold. These checks establish implementation consistency, not independent experimental validation.
+
+## Step 4: dataset export
+
+`matlab/export_datasets.m` generates separate training, validation and test MAT files at -22, -20 and -17.5 dBm using the unchanged physical stages. `matlab/dataset_configuration.m` defines disjoint seeds, lengths and causal tap offsets. Normalization uses the known constellation RMS; receiver timing/gain use only the known prefix. Prefix symbols are excluded from exported targets. X/Y are decoded Q8.24, with authoritative int32 words also supplied; import rounding matches the user-supplied training model. No equalizer training or Python engine replacement is part of this step. [Export schema and commands](matlab/DATASETS.md).

@@ -15,3 +15,5 @@ The physical model and assumptions are documented in [matlab/PHYSICAL_LINK.md](m
 Older MATLAB scenario suites, archived implementations and their runners have been removed from the working tree. Their source remains in Git history. Existing reference data and result records are retained for provenance; they are not dependencies of the current runner.
 
 NN development will use the supplied `nn_training_model/` package in the later research phase, preserving its training stages and Q8.24 arithmetic. No new equalizer comparison is included in this physical-link baseline.
+
+Dataset export for the next research phase is available on `codex/dataset-export`: run `export_datasets(link_configuration(), dataset_configuration())` after adding `matlab` to the MATLAB path. Training, validation and test sequences are independent. See [the dataset contract](matlab/DATASETS.md).
