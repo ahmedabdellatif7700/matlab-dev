@@ -1,3 +1,5 @@
+The current single-link physical baseline is [here](physical_baseline/README.md). It establishes unequalized signal recovery and numerical consistency, not equalizer or NN performance. The studies below use earlier models and remain historical results.
+
 # Validated millimeter-wave equalizer studies
 
 Five completed studies contain **306 seeded operating-point runs** and **4050 receiver/user metric rows**. Each condition uses three independent replicate seeds; operating points share random draws within a seed for paired comparisons. Multiuser aggregate rows are not additional independent experiments.

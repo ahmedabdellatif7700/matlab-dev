@@ -44,6 +44,7 @@ The paper reports approximately 200 mV peak-to-peak before the driver correspond
 - Use low electrical drive, specified in RMS volts, as a linear-limit diagnostic. Report actual waveform Vpp as well. It is not claimed to reproduce the paper's nonlinear optimum near 5 Vpp.
 - Reconstruct the 4 GSa/s AWG waveform on an internal 20 GSa/s numerical grid before optical modulation. This is an ideal DAC/reconstruction assumption, not the paper's oscilloscope model; sampling convergence must be checked.
 - RRC truncation, IF extraction bandwidth and burst guards are numerical design choices; validate their effect separately from physical distortion.
+- The RF envelope detector uses an ideal amplitude law `abs(rf_envelope)`. Its measured response and operating regime (including any square-law behavior) are unavailable. This is separate from optical square-law photodetection; it must be revisited before calibrated nonlinearity claims.
 - EDFA gain/noise, laser phase/frequency noise, PD saturation and driver compression remain disabled until justified parameters are supplied. Deterministic fiber attenuation may be compensated by an explicitly ideal noiseless gain for diagnostics; this is not an EDFA noise model.
 
 ## What establishes the baseline

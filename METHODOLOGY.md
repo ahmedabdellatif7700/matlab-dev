@@ -50,3 +50,7 @@ Target KV260 at the 100 MHz reference point, initially at a controlled sample ra
 Live supervised adaptation uses initial known training, payload inference and periodic training bursts with current weights. Register-controlled mode switching exists; stream-aligned training requires flags carried with frames. Training can stop after exactly N accepted training samples. Time-varying-channel adaptation experiments and RTL/power comparisons are outside the immediate physical-baseline checkpoint. Later report both tool-estimated and measured board power where feasible, with measurement boundaries stated.
 
 The superseded methodology is retained in [docs/HISTORICAL_METHODOLOGY.md](docs/HISTORICAL_METHODOLOGY.md) for provenance. Its four-family, AdamW/bitwise and multiplication-budget choices do not govern this work.
+
+## Current checkpoint
+
+Steps 1–3 establish the single physical link and its unequalized numerical baseline. [Baseline figures and diagnostics](matlab/results/physical_baseline/README.md) are the review material. The noiseless diagnostic does not reproduce experimental noise or sensitivity. Review the detector law, component-response approximations and missing calibration before proceeding to step 4. No new FFE/Volterra/NN comparison has been run for this link.

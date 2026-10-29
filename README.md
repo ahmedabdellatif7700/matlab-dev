@@ -1,6 +1,6 @@
 # Current work: one physical A-RoF link
 
-Run `matlab/main.m` to establish the modular physical baseline described in [METHODOLOGY.md](METHODOLOGY.md) and [matlab/PHYSICAL_LINK.md](matlab/PHYSICAL_LINK.md). This stage runs no equalizer. The agreed review checkpoint is the physical baseline before dataset export and comparison.
+Run `matlab/main.m` to establish the modular physical baseline described in [METHODOLOGY.md](METHODOLOGY.md) and [matlab/PHYSICAL_LINK.md](matlab/PHYSICAL_LINK.md). This stage runs no equalizer. The agreed review checkpoint is the physical baseline before dataset export and comparison. See [baseline results and assumptions](matlab/results/physical_baseline/README.md).
 
 NN development will use the supplied `nn_training_model/` package, preserving its training stages and Q8.24 arithmetic; the separate draft integer engine is not used. Import/development of that package is step 6 of the agreed sequence.
 

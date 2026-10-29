@@ -32,6 +32,7 @@ cfg.wireless_distance_m = 1;
 cfg.tx_antenna_gain_dbi = 20;
 cfg.rx_antenna_gain_dbi = 20;
 cfg.filter_guard_samples = 8192;
+cfg.envelope_detector_model = "ideal_amplitude"; % Unmeasured transfer-law assumption.
 cfg.noise_enabled = false;
 cfg.visible = "off";
 end

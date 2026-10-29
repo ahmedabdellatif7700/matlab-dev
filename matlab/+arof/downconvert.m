@@ -1,6 +1,8 @@
 function detector = downconvert(cfg,link)
 %DOWNCONVERT RF envelope detection, receiver DC rejection and IF mixing.
 assert(~cfg.noise_enabled,"Noise parameters have not been calibrated.");
+assert(cfg.envelope_detector_model == "ideal_amplitude", ...
+    "Only the declared ideal amplitude-envelope detector is implemented.");
 rf = link.rf_envelope;
 envelope = abs(rf);
 envelope_ac = envelope-mean(envelope); % Receiver DC rejection, no target use.

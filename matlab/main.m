@@ -46,8 +46,12 @@ rx_symbols = rx.sampled;
 metrics = arof.measure(cfg,optical_tx,rx);
 disp(metrics);
 
-%% 12. Physical-baseline review checkpoint
-% Baseline reporting and controls are added in step 3.
+%% 12. Physical consistency controls and baseline figures (no equalizer)
+result = struct("configuration",cfg,"tx",tx,"optical_tx",optical_tx, ...
+    "optical_rx",optical_rx,"detected",detected,"rx",rx,"metrics",metrics);
+run_dir = arof.baseline_report(result);
+
+%% 13. Physical-baseline review checkpoint
 % After review: MATLAB dataset export -> FFE/Volterra -> supplied
 % nn_training_model/ (Q8.24 MSE/online SGD) -> activation comparisons.
 % No NN is invoked while establishing the physical baseline.

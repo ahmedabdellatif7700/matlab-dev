@@ -1,0 +1,11 @@
+check,error,tolerance,passed
+MZM field/intensity identity,2.22044604925031e-16,1e-12,1
+Passive normalized MZM,0,1e-12,1
+Square-law beat identity,1.33226762955019e-15,1e-12,1
+Optical tone dispersion,1.85974991196347e-14,1e-11,1
+LO dispersion phase,0,1e-12,1
+Zero-length optical identity,7.44760245974182e-16,1e-12,1
+Ideal IF loopback EVM fraction,0.000544664392707369,0.001,1
+Ideal IF loopback BER,0,0,1
+Internal sampling convergence,1.33694157703539e-05,0.001,1
+FFT period/guard convergence,1.95498758764296e-12,1e-06,1
