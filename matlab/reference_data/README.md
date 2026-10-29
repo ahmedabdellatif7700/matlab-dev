@@ -16,6 +16,12 @@ This writes a new timestamped run under `datasets/physical_link/single_case_curv
 
 The broader readings below remain exploratory reference material; they are not the active scope.
 
+## Received optical power reference
+
+`received_power_reference.csv` records approximate manual readings of the **unequalized black-square curve in Figure 13(c)**: 16-QAM at 400 mVpp. The horizontal axis is received optical power in dBm, not pre-driver voltage. The points span -22 to -17.5 dBm in 0.5 dB steps. Values are read from the supplied PDF's ninth page (journal page 4414); the -21 dBm point is partly obscured by the legend. Assigned allowances are +/-0.08 log10(BER), with approximately +/-0.08 dB horizontal reading uncertainty. These are digitization allowances, not experimental confidence intervals or author-supplied data.
+
+Only the -22 and -17.5 dBm readings enter the separate effective gain/noise calibration. The eight intermediate powers are excluded from numerical fitting, although the figure has been inspected during model development. The old voltage-sweep calibration is preserved. ROP is assumed to be total two-tone power at the PD input; the exact experimental measurement plane and individual laser powers are not established by the supplied text. The red ANN curve is outside the current unequalized checkpoint.
+
 # Approximate unequalized reference points
 
 Source: Liu et al., JLT 2017, DOI 10.1109/JLT.2017.2717778, Figures 9, 11 and 12 (PDF pages 7 and 8; journal pages 4412–4413).

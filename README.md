@@ -1,4 +1,12 @@
-The active paper comparison is now **one unequalized 16-QAM point at 400 mVpp**, matching both approximate EVM and BER readings through explicit operating-point calibration. [Results, parameters and caveats](matlab/results/single_unequalized_case/README.md). No equalizer is used. `main.m` retains the separate low-drive physical diagnostic; its older near-zero BER is not the impaired case.
+The priority paper comparison is **unequalized 16-QAM BER versus received optical power at 400 mVpp**, using Figure 13(c). [Received-power results and assumptions](matlab/results/received_power/README.md). Two endpoint readings calibrate effective gain and receiver noise; eight intermediate powers test the frozen model. This is a separate effective fit from the earlier [single EVM/BER point](matlab/results/single_unequalized_case/README.md) and [voltage curves](matlab/results/single_case_curve/README.md), not a jointly validated apparatus reconstruction. No equalizer is used. `main.m` retains the separate low-drive physical diagnostic; its near-zero BER is not the impaired case.
+
+To run only the received-power comparison from the repository root:
+
+```matlab
+addpath('matlab');
+cfg = arof.configuration();
+folder = arof.match_received_power(cfg);
+```
 
 # Current work: one physical A-RoF link
 

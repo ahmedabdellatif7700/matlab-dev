@@ -31,6 +31,8 @@ cfg.dispersion_ps_nm_km = 17; % Nominal engineering assumption.
 cfg.attenuation_db_km = 0.2; % Nominal engineering assumption.
 cfg.ideal_edfa_gain_db = cfg.attenuation_db_km*cfg.fiber_length_km;
 cfg.pd_bandwidth_hz = 60e9;
+cfg.received_optical_power_dbm = NaN; % Optional total two-tone power at PD.
+cfg.pd_responsivity_a_w = 1; % Effective reference; not a measured device value.
 cfg.wireless_distance_m = 1;
 cfg.tx_antenna_gain_dbi = 20;
 cfg.rx_antenna_gain_dbi = 20;
@@ -43,5 +45,6 @@ cfg.paper_comparison_enabled = true;
 cfg.paper_profile = "study";
 cfg.single_case_curve_enabled = true;
 cfg.single_case_curve_mv = 380:20:500;
+cfg.received_power_comparison_enabled = true;
 cfg.visible = "off";
 end

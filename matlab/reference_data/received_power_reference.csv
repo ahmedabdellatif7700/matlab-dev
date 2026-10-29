@@ -1,0 +1,11 @@
+figure,panel,modulation,input_vpp_mv,received_power_dbm,log10_ber,ber,read_uncertainty_log10,role
+13,c,16,400,-22,-1.84,0.014454397707459272,0.08,calibration
+13,c,16,400,-21.5,-2,0.01,0.08,prediction_comparison
+13,c,16,400,-21,-2.15,0.00707945784384138,0.08,prediction_comparison
+13,c,16,400,-20.5,-2.34,0.004570881896148752,0.08,prediction_comparison
+13,c,16,400,-20,-2.44,0.003630780547701014,0.08,prediction_comparison
+13,c,16,400,-19.5,-2.6,0.0025118864315095794,0.08,prediction_comparison
+13,c,16,400,-19,-2.78,0.0016595869074375613,0.08,prediction_comparison
+13,c,16,400,-18.5,-2.99,0.0010232929922807535,0.08,prediction_comparison
+13,c,16,400,-18,-3.17,0.0006760829753919819,0.08,prediction_comparison
+13,c,16,400,-17.5,-3.24,0.0005754399373371566,0.08,calibration

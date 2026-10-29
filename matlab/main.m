@@ -29,6 +29,7 @@ optical_rx = arof.propagate(cfg,optical_tx);
 
 %% 7. Photodetection: extract the optical beat near 60 GHz
 % The optical/RF carriers are represented analytically, not undersampled.
+% Optional received_optical_power_dbm sets total two-tone power at the PD.
 detected = arof.photodetect(cfg,optical_rx);
 
 %% 8. Millimeter-wave wireless hop
@@ -65,7 +66,15 @@ if cfg.paper_comparison_enabled
     end
 end
 
-%% 14. Physical-baseline review checkpoint
+%% 14. BER versus received optical power, fixed 16-QAM / 400 mVpp
+% Separate Fig. 13(c) two-endpoint calibration; predict intermediate powers.
+% Its frozen fit does not overwrite the earlier EVM/BER voltage calibration.
+if cfg.received_power_comparison_enabled
+    power_settings = arof.received_power_settings(cfg.paper_profile);
+    power_run_dir = arof.match_received_power(cfg,power_settings);
+end
+
+%% 15. Physical-baseline review checkpoint
 % After review: MATLAB dataset export -> FFE/Volterra -> supplied
 % nn_training_model/ (Q8.24 MSE/online SGD) -> activation comparisons.
 % No NN is invoked while establishing the physical baseline.
