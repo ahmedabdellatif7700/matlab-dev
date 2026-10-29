@@ -4,7 +4,7 @@ if nargin<1, profile="study"; end
 s.profile=profile;
 s.modulation_order=16;
 s.input_vpp_mv=400;
-reference=readtable(fullfile(fileparts(fileparts(mfilename('fullpath'))), ...
+reference=readtable(fullfile(fileparts(fileparts(fileparts(mfilename('fullpath')))), ...
     'reference_data','single_case_reference.csv'),'TextType','string');
 evm=reference(reference.metric=="evm_percent",:);
 ber=reference(reference.metric=="ber",:);

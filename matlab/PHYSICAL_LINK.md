@@ -53,48 +53,32 @@ Check symbol recovery with the nonlinear stage replaced by its local linear fiel
 
 A low-drive, noiseless recovery result establishes implementation consistency only. It does not calibrate the apparatus, validate a practical noise floor or demonstrate a neural advantage. Before physical BER-versus-power claims, resolve or bound component gain/noise, optical powers, PD/RF frequency responses and synchronization assumptions.
 
-## Unequalized experimental-curve comparison
-
-The earlier exploratory helper `arof.replicate_unequalized` covers multiple published curves; it is no longer the active main path. `main.m` now calls `arof.match_unequalized_case` for only 16-QAM at 400 mVpp. This remains step 3, before any equalizer comparison. The reference points are approximate manual readings of Figures 9, 11 and 12; provenance and read-off allowances are in `reference_data/README.md`.
-
-The comparison fixes physical topology and tests unresolved device assumptions explicitly:
-
-- Linear IF driver, amplitude-envelope RF detector.
-- Bandpass-envelope Rapp driver, amplitude-envelope RF detector.
-- The same compressed driver with a square-law RF detector.
-
-Only the approximately 200 mVpp → 5 Vpp voltage anchor and Figure 9 4-QAM EVM at 100/500 mV enter numerical calibration. Small-signal gain, saturation and aggregate IF-noise PSD are inferred parameters; they are not reported device measurements. Rapp smoothness is fixed at 2. The simulation never adds arbitrary AM/PM or echoes.
-
-The real post-detector noise PSD is fixed across drive and modulation and scales correctly with simulation sample rate. It represents unresolved aggregate receiver noise in normalized detector-output units, not independently identified ASE, thermal, shot or RIN contributions. Each detector hypothesis needs a noise calibration in its own output units. Per-waveform transmitter peak scaling establishes the pre-driver Vpp axis; normalization depends on the finite waveform's PAPR.
-
-The remaining reference points are excluded from numerical fitting, but they have been inspected during exploratory modeling. They are not blind validation. Figures 9, 11 and 12 do not establish identical optical received-power/noise settings, so a shared-noise cross-figure comparison is conditional. The paper's complete EVM normalization and RF detector response are unavailable.
-
-Report overlays, raw errors/counts, nominal BER intervals, EVM seed spread and numerical discrepancies. A fitted point or qualitative trend match is not successful quantitative replication. Model qualification and equalizer work remain pending this comparison and review. `paper_comparison_enabled` and `paper_profile` in `+arof/configuration.m` control this experiment; the noiseless diagnostic configuration remains unchanged.
-
-Figure 13 also varies received power separately, with different plotted power ranges for different drive settings. It does not establish a common operating power for Figures 9, 11 and 12. Therefore mismatches in a shared-noise cross-figure prediction cannot uniquely identify a faulty component or its missing transfer curve.
-
-## Current single operating point
-
-The active targets are approximately 13.2% continuous-output EVM (Figure 9) and BER 10^(-3.09) (Figure 11), both at 16-QAM and 400 mVpp before the driver. Both metrics identify an effective operating-point driver gain and lumped real IF-noise PSD. Gain is constrained to 12.5–25, corresponding approximately to 5–10 Vpp at the MZM, rather than extrapolating an unreported full driver curve. This gain is not claimed to reproduce amplifier behavior at other inputs.
-
-A Gaussian decision-cell surrogate is used only for smooth parameter identification, using noiseless recovered sample means and prefix-only receiver gain. The complete physical model then injects actual noise with five preselected fresh seeds. Calibration and validation symbol counts match. Parameter fitting never uses those validation errors. Report raw bit counts, nominal intervals and EVM read-off tolerance; do not select favorable seeds or silently change targets.
-
-A successful result establishes a conditional calibrated single-point match. It does not establish that Figures 9 and 11 used identical received optical power, uniquely identify the missing component parameters, or independently reproduce the full experiment. Earlier 16-QAM/200 mVpp results matched EVM only and do not provide a published same-point BER target.
-
-## Frozen-parameter voltage curve
-
-`arof.sweep_single_case` extends the 400 mVpp calibration to 380–500 mVpp in 20 mV steps. Driver gain, noise PSD and all component settings remain fixed. It performs complete physical-link simulations at the other voltages, reusing the five preselected seeds and the cached 400 mVpp validation counts. `main.m` shows this explicitly after the single-point fit; `single_case_curve_enabled` and `single_case_curve_mv` control the sweep. A saved fit can be swept directly without repeating calibration.
-
-`arof.plot_single_case_curve` exports EVM/BER overlays as PNG and vector PDF, with approximate Figure 9/11 readings and their read-off allowances. EVM bars show seed standard deviation; nominal BER intervals assume independent bits. Within each seed, waveform/noise draws are paired across voltages. These bars are not an independent experimental-validation claim. A mismatch away from 400 mVpp identifies a limitation of extrapolating this effective gain/noise model, rather than grounds for silently refitting each point.
-
 ## Received optical power sweep
 
 Figure 13(c) is the priority unequalized comparison: fixed 16-QAM, 400 mVpp, received power -22 to -17.5 dBm. `photodetect` optionally normalizes the two incident optical bands to `received_optical_power_dbm`. The total average power is the sum of their individual band powers; the optical-frequency interference term averages out on a power meter. Both fields receive the same scale factor, preserving their relative powers and modulation. The reference plane is assumed to be the PD input, after fiber and amplification. Transmitter/MZM waveforms do not change across the sweep.
 
 The power setting defaults to NaN, preserving the earlier normalized-field path. `pd_responsivity_a_w=1` is an effective reference value, not a measured detector parameter. Unreported RF amplification and receiver noise remain lumped into one aggregate real post-detector white-noise PSD. This optional power scaling is not a calibration of launched laser powers, an EDFA noise figure or an absolute electrical receiver budget.
 
-`arof.match_received_power` fits effective driver gain and noise using only the -22 and -17.5 dBm endpoints. `arof.sweep_received_power` freezes that fit and generates full noisy waveforms at all ten powers with fresh seeds. Eight intermediate power points are excluded from numerical fitting. The study profile uses 16,384 calibration payload symbols and five independent validation seeds with 65,536 payload symbols each. The conditional Gaussian calibration surrogate is checked by the actual waveform/noise runs. Read-off allowances and source provenance are in `reference_data/README.md`.
+`arof.received_power.run` fits effective driver gain and noise using only the -22 and -17.5 dBm endpoints. `arof.received_power.sweep` freezes that fit and generates full noisy waveforms at all ten powers with fresh seeds. Eight intermediate power points are excluded from numerical fitting. The study profile uses 16,384 calibration payload symbols and five independent validation seeds with 65,536 payload symbols each. The conditional Gaussian calibration surrogate is checked by the actual waveform/noise runs. Read-off allowances and source provenance are in `reference_data/README.md`.
 
 This is a separate Figure 13(c) calibration: the Figures 9/11 operating-point fit is not silently repurposed or overwritten. Fixed aggregate receiver noise gives noise-to-signal power proportional to ROP^-2 because beat current is proportional to optical watts. Whether this accounts for the paper's curve is a model test. Shot noise, ASE beat noise, RIN, saturation and other unmeasured components are not claimed to be identified by two fitted endpoints.
 
-`main.m` exposes the received-power comparison as stage 14, controlled by `received_power_comparison_enabled`. To run only this experiment, call `arof.match_received_power(arof.configuration())` after adding `matlab` to the path. Figures, per-seed counts and frozen calibration are saved under `datasets/physical_link/received_power/`; curated results are in `results/received_power/`.
+`main.m` exposes the received-power comparison as stage 13, controlled by `received_power_comparison_enabled`. To run only this experiment, call `arof.received_power.run(arof.configuration())` after adding `matlab` to the path. Figures, per-seed counts and frozen calibration are saved under `datasets/physical_link/received_power/`; curated results are in `results/received_power/`.
+
+## Minimal implementation
+
+The active package has seven files:
+
+| File | Responsibility |
+|---|---|
+| `configuration.m` | Physical parameters, output paths, run profile and optional report switch. |
+| `transmitter.m` | QAM symbols, calibration prefix, transmit RRC, IF and driver. |
+| `optical_link.m` | Single-arm MZM, optical-field propagation, PD power/beat and wireless hop. |
+| `receiver.m` | Envelope detection, IF downconversion, matched RRC, prefix-only recovery and BER/EVM. |
+| `received_power.m` | Figure 13(c) settings, endpoint calibration, frozen sweep and plots. |
+| `simulate.m` | Compose the same physical functions for repeated simulations. |
+| `baseline_report.m` | Optional physical/numerical controls and diagnostic plots. |
+
+Related stage functions are grouped as static methods so `main.m` can show each physical stage explicitly without one file per function. There is no object state or additional signal-processing layer. Configuration is independent of the historical `mmw` scenario suite. Set `cfg.profile="smoke"` for a short end-to-end run; the default `"study"` retains the established symbol counts and seeds. `cfg.baseline_report_enabled=false` skips the optional diagnostic report by default.
+
+The previous implementation and voltage-matching experiments are retained under `archive/+arof_history/`. They are excluded from the normal path and are not run by `main.m`. See [archive instructions](archive/README.md). The recorded Figures 9/11 and Figure 13(c) fits remain alternative effective parameterizations, not one jointly validated device model. This refactor preserves the physical equations, noise, calibration targets and result data.

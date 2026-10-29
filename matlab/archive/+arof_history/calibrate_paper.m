@@ -10,17 +10,17 @@ for k=1:numel(s.driver_saturation_grid_v)
     c=base; c.driver_model="rapp_envelope";
     c.driver_saturation_v=s.driver_saturation_grid_v(k);
     c.driver_voltage_gain=25/(1-(2.5/c.driver_saturation_v)^4)^(1/4);
-    anchor_cfg=arof.paper_operating_point(c,4,s.calibration_seed,200);
-    anchor_tx=arof.transmit(anchor_cfg);
+    anchor_cfg=arof_history.paper_operating_point(c,4,s.calibration_seed,200);
+    anchor_tx=arof_history.transmit(anchor_cfg);
     for iteration=1:5
-        voltage=arof.driver(c,anchor_tx.if_before_driver);
-        optical=arof.modulate(c,voltage);
+        voltage=arof_history.driver(c,anchor_tx.if_before_driver);
+        optical=arof_history.modulate(c,voltage);
         vpp=max(optical.drive_voltage)-min(optical.drive_voltage);
         c.driver_voltage_gain=c.driver_voltage_gain*5/vpp;
     end
     c=identify_noise(c,s);
-    a=arof.simulate(arof.paper_operating_point(c,4,s.calibration_seed,200));
-    high=arof.simulate(arof.paper_operating_point(c,4,s.calibration_seed,500));
+    a=arof_history.simulate(arof_history.paper_operating_point(c,4,s.calibration_seed,200));
+    high=arof_history.simulate(arof_history.paper_operating_point(c,4,s.calibration_seed,500));
     es=mean(abs(high.rx.reference).^2);
     expected_evm=100*sqrt((high.metrics.evm_percent/100)^2+ ...
         4*c.if_noise_psd*c.internal_sample_rate_hz*abs(high.rx.calibration_gain)^2/es);
@@ -40,7 +40,7 @@ models={linear,compressed,square};
 end
 
 function cfg = identify_noise(cfg,s)
-low=arof.simulate(arof.paper_operating_point(cfg,4,s.calibration_seed,100));
+low=arof_history.simulate(arof_history.paper_operating_point(cfg,4,s.calibration_seed,100));
 es=mean(abs(low.rx.reference).^2);
 remaining=(s.calibration_low_evm_percent/100)^2-(low.metrics.evm_percent/100)^2;
 assert(remaining>=0,"Deterministic low-drive EVM already exceeds calibration target.");

@@ -1,7 +1,6 @@
 function cfg = configuration()
 %CONFIGURATION One physical link; measured/assumed values: PHYSICAL_LINK.md.
-paths = mmw.scenario_config();
-cfg.root = paths.root;
+cfg.root = fileparts(fileparts(fileparts(mfilename("fullpath"))));
 cfg.output_root = fullfile(cfg.root,"datasets","physical_link");
 cfg.run_id = string(datetime("now","Format","yyyyMMdd_HHmmss_SSS"));
 cfg.modulation_order = 16;
@@ -41,10 +40,8 @@ cfg.envelope_detector_model = "ideal_amplitude"; % Unmeasured transfer-law assum
 cfg.noise_enabled = false;
 cfg.if_noise_psd = 0; % Two-sided PSD in normalized detector-output units^2/Hz.
 cfg.noise_seed = 904201;
-cfg.paper_comparison_enabled = true;
-cfg.paper_profile = "study";
-cfg.single_case_curve_enabled = true;
-cfg.single_case_curve_mv = 380:20:500;
+cfg.profile = "study";
+cfg.baseline_report_enabled = false; % Optional physical/numerical controls.
 cfg.received_power_comparison_enabled = true;
 cfg.visible = "off";
 end

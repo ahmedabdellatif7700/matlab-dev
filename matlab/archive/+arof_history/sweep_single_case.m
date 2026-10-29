@@ -21,7 +21,7 @@ copyfile(reference_file,fullfile(folder,"paper_reference.csv"));
 rows=struct([]); snapshots=struct([]);
 for seed=seeds
     c=base; c.seed=seed; c.noise_seed=seed+900000;
-    unit=arof.transmit(c);
+    unit=arof_history.transmit(c);
     voltage_scale=c.drive_rms_v/(max(unit.if_before_driver)-min(unit.if_before_driver));
     indices=c.guard_symbols+c.training_symbols+(1:c.payload_symbols);
     reference_energy=sum(abs(unit.symbols(indices)).^2);
@@ -33,7 +33,7 @@ for seed=seeds
             evm=m.evm_percent; errors=m.bit_errors; bits=m.bits; mzm_vpp=m.mzm_vpp_v;
         else
             c.drive_rms_v=voltage_scale*voltage/1000;
-            r=arof.simulate(c);
+            r=arof_history.simulate(c);
             evm=r.metrics.evm_percent; errors=r.metrics.bit_errors; bits=r.metrics.bits;
             mzm_vpp=r.metrics.drive_vpp_v;
             if seed==seeds(1) && ismember(voltage,[380 440 500])
@@ -90,6 +90,6 @@ for k=1:height(summary)
 end
 writetable(struct2table(comparisons),fullfile(folder,"paper_comparison.csv"));
 save(fullfile(folder,"constellations.mat"),"snapshots","-v7");
-arof.plot_single_case_curve(folder,cfg);
+arof_history.plot_single_case_curve(folder,cfg);
 fprintf('Unequalized curve report: %s\n',folder);
 end

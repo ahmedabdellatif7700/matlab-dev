@@ -7,7 +7,7 @@ assert(height(a)==2 && isequal(a.received_power_dbm(:).',s.calibration_powers_db
 base=cfg; base.modulation_order=s.modulation_order; base.driver_model="linear";
 base.envelope_detector_model="ideal_amplitude"; base.noise_enabled=false;
 base.payload_symbols=s.calibration_payload_symbols;
-base=arof.paper_operating_point(base,s.modulation_order,s.calibration_seed,s.input_vpp_mv);
+base=arof_history.paper_operating_point(base,s.modulation_order,s.calibration_seed,s.input_vpp_mv);
 base.received_optical_power_dbm=a.received_power_dbm(1);
 trials=struct([]); bracket=[]; previous=[];
 for gain=s.gain_grid
@@ -31,11 +31,11 @@ write_json(fullfile(folder,'frozen_calibration.json'),frozen);
 
     function residual=objective(gain)
         c=base; c.driver_voltage_gain=gain;
-        r=arof.simulate(c); pre=1:c.training_symbols; ids=r.rx.payload_indices;
+        r=arof_history.simulate(c); pre=1:c.training_symbols; ids=r.rx.payload_indices;
         raw=r.rx.sampled/r.rx.calibration_gain; target=r.rx.reference;
         p=mean(abs(raw(pre)).^2); u=raw/sqrt(p);
         cross=mean(conj(u(pre)).*target(pre));
-        probability=@(x) arof.gaussian_bit_error(cross/(1+x)*u(ids), ...
+        probability=@(x) arof_history.gaussian_bit_error(cross/(1+x)*u(ids), ...
             abs(cross/(1+x))*sqrt(x/2),target(ids),s.modulation_order);
         clean=probability(0);
         if clean>=a.ber(1), residual=NaN; return; end

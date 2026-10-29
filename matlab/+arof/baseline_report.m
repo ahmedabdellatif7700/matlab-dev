@@ -9,7 +9,7 @@ check_names = strings(0,1); errors = []; tolerances = [];
 % Balanced single-arm field must reproduce its intensity transfer exactly.
 c = cfg; c.mzm_bandwidth_hz = Inf;
 v = linspace(-c.mzm_vpi_v,c.mzm_vpi_v,1001).';
-o = arof.modulate(c,v);
+o = arof.optical_link.modulate(c,v);
 expected = (1+cos(pi*(c.mzm_bias_v+v)/c.mzm_vpi_v))/2;
 add_check("MZM field/intensity identity",max(abs(abs(o.modulated_field).^2-expected)),1e-12);
 add_check("Passive normalized MZM",max(0,max(abs(o.modulated_field))-1),1e-12);
@@ -28,7 +28,7 @@ c = cfg; c.filter_guard_samples = 0; c.ideal_edfa_gain_db = 0;
 n = 4096; f = 100*cfg.internal_sample_rate_hz/n;
 tone = exp(1j*2*pi*(0:n-1).'*100/n);
 input = struct("modulated_field",tone,"lo_field",1);
-output = arof.propagate(c,input);
+output = arof.optical_link.propagate(c,input);
 beta2 = -(c.dispersion_ps_nm_km*1e-6)*c.modulated_wavelength_m^2/(2*pi*299792458);
 gain = 10^(-c.attenuation_db_km*c.fiber_length_km/20);
 expected = gain*exp(-1j*beta2*c.fiber_length_km*1000*(2*pi*f)^2/2);
@@ -36,13 +36,13 @@ add_check("Optical tone dispersion",max(abs(output.modulated_field-expected*tone
 expected_lo = gain*exp(-1j*beta2*c.fiber_length_km*1000*(2*pi*c.rf_carrier_hz)^2/2);
 add_check("LO dispersion phase",abs(output.lo_field-expected_lo),1e-12);
 c.fiber_length_km = 0;
-output = arof.propagate(c,input);
+output = arof.optical_link.propagate(c,input);
 add_check("Zero-length optical identity",max(abs(output.modulated_field-tone)),1e-12);
 
 % Ideal amplitude-modulated RF envelope isolates waveform/recovery numerics.
 rf = max(abs(result.tx.if_voltage))+1+result.tx.if_voltage;
-control_rx = arof.receive(cfg,struct("rf_envelope",rf),result.tx);
-loopback = arof.measure(cfg,result.optical_tx,control_rx);
+control_rx = arof.receiver.run(cfg,struct("rf_envelope",rf),result.tx);
+loopback = arof.receiver.measure(cfg,result.optical_tx,control_rx);
 add_check("Ideal IF loopback EVM fraction",loopback.evm_percent/100,1e-3);
 add_check("Ideal IF loopback BER",loopback.ber,0);
 

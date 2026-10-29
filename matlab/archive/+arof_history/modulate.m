@@ -3,7 +3,7 @@ function optical = modulate(cfg,voltage)
 if isinf(cfg.mzm_bandwidth_hz)
     drive = voltage;
 else
-    drive = real(arof.filter_envelope(voltage,cfg.internal_sample_rate_hz, ...
+    drive = real(arof_history.filter_envelope(voltage,cfg.internal_sample_rate_hz, ...
         cfg.filter_guard_samples,@(f) 1./(1+1j*f/cfg.mzm_bandwidth_hz)));
 end
 phase = pi*(cfg.mzm_bias_v+drive)/cfg.mzm_vpi_v;

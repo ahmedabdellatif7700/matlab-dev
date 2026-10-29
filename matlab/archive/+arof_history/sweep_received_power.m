@@ -12,16 +12,16 @@ copyfile(fullfile(point_folder,'calibration_search.csv'),fullfile(folder,'calibr
 rows=struct([]); snapshots=struct([]); seeds=s.validation_seeds(:).';
 for seed=seeds
     c=base; c.seed=seed; c.noise_seed=seed+900000;
-    c=arof.paper_operating_point(c,s.modulation_order,seed,s.input_vpp_mv);
+    c=arof_history.paper_operating_point(c,s.modulation_order,seed,s.input_vpp_mv);
     % Power varies only after the fiber/EDFA, at the PD input. Reuse identical
     % transmitted samples and optical propagation within a seed.
-    tx=arof.transmit(c); optical_tx=arof.modulate(c,tx.if_voltage);
-    optical_rx=arof.propagate(c,optical_tx);
+    tx=arof_history.transmit(c); optical_tx=arof_history.modulate(c,tx.if_voltage);
+    optical_rx=arof_history.propagate(c,optical_tx);
     for k=1:height(paper)
         c.received_optical_power_dbm=paper.received_power_dbm(k);
-        detected=arof.photodetect(c,optical_rx);
+        detected=arof_history.photodetect(c,optical_rx);
         assert(abs(detected.received_optical_power_dbm-c.received_optical_power_dbm)<1e-10);
-        rx=arof.receive(c,detected,tx); m=arof.measure(c,optical_tx,rx);
+        rx=arof_history.receive(c,detected,tx); m=arof_history.measure(c,optical_tx,rx);
         ids=rx.payload_indices; ref=rx.reference(ids); prediction=rx.sampled(ids);
         rows=[rows; struct('seed',seed,'received_power_dbm',c.received_optical_power_dbm, ...
             'actual_received_power_dbm',detected.received_optical_power_dbm, ...
@@ -56,6 +56,6 @@ for k=1:height(paper)
 end
 writetable(struct2table(summary),fullfile(folder,'curve_summary.csv'));
 save(fullfile(folder,'constellations.mat'),'snapshots','-v7');
-arof.plot_received_power(folder,cfg);
+arof_history.plot_received_power(folder,cfg);
 fprintf('Received optical power report: %s\n',folder);
 end

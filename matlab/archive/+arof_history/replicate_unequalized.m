@@ -1,13 +1,13 @@
 function run_dir = replicate_unequalized(cfg,settings)
 %REPLICATE_UNEQUALIZED Calibrated attempt, not asserted experimental replication.
-if nargin<2, settings=arof.paper_settings(); end
+if nargin<2, settings=arof_history.paper_settings(); end
 run_dir=fullfile(cfg.output_root,"paper_unequalized",cfg.run_id);
 assert(~isfolder(run_dir),"Refusing to overwrite paper comparison."); mkdir(run_dir);
 reference_path=fullfile(cfg.root,"matlab","reference_data","unequalized_points.csv");
 reference=readtable(reference_path,'TextType','string');
 copyfile(reference_path,fullfile(run_dir,"paper_points.csv"));
 copyfile(fullfile(fileparts(reference_path),"README.md"),fullfile(run_dir,"paper_points_notes.md"));
-[models,fit_table]=arof.calibrate_paper(cfg,settings);
+[models,fit_table]=arof_history.calibrate_paper(cfg,settings);
 writetable(fit_table,fullfile(run_dir,"driver_identification.csv"));
 write_text(fullfile(run_dir,"settings.json"),jsonencode(settings,"PrettyPrint",true));
 rows=struct([]); snapshots=struct([]);
@@ -17,12 +17,12 @@ for model=1:numel(models)
         for seed=settings.seeds
             base.modulation_order=modulation; base.seed=seed;
             % Peak calibration is deterministic transmitter configuration.
-            unit=arof.transmit(base);
+            unit=arof_history.transmit(base);
             unit_scale=base.drive_rms_v/(max(unit.if_before_driver)-min(unit.if_before_driver));
             for input_mv=settings.input_vpp_mv
                 c=base; c.drive_rms_v=unit_scale*input_mv/1000;
                 c.noise_enabled=true; c.noise_seed=seed+900000;
-                r=arof.simulate(c); m=r.metrics;
+                r=arof_history.simulate(c); m=r.metrics;
                 item=struct("model",settings.receiver_models(model),"modulation",modulation, ...
                     "seed",seed,"input_vpp_mv",input_mv,"mzm_vpp_v",m.drive_vpp_v, ...
                     "evm_percent",m.evm_percent,"ber",m.ber,"bit_errors",m.bit_errors, ...
@@ -90,7 +90,7 @@ for k=1:numel(models)
     write_text(fullfile(run_dir,"model_"+k+".json"),jsonencode(models{k},"PrettyPrint",true));
 end
 save(fullfile(run_dir,"constellations.mat"),"snapshots","-v7");
-arof.plot_paper_attempt(cfg,settings,summary,reference,snapshots,run_dir);
+arof_history.plot_paper_attempt(cfg,settings,summary,reference,snapshots,run_dir);
 write_text(fullfile(run_dir,"README.md"),join([ ...
     "# Unequalized paper reproduction attempt"; ""; ...
     "This is a calibrated, conditional reproduction attempt, not a verified quantitative replication."; ""; ...
@@ -104,7 +104,7 @@ write_text(fullfile(run_dir,"README.md"),join([ ...
     "![Unequalized BER comparison](ber_comparison.png)"; ""; ...
     "![Driver model assumptions](driver_mapping.png)"; ""; ...
     "Inspect paper_comparison.csv and comparison_errors.csv for discrepancies. A trend match or a fitted calibration point does not validate the physical model, establish NN necessity, or justify proceeding to equalizer claims."],newline));
-arof.review_paper_attempt(run_dir);
+arof_history.review_paper_attempt(run_dir);
 fprintf("Paper reproduction attempt: %s\n",run_dir);
 end
 

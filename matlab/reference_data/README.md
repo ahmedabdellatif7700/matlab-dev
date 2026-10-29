@@ -1,26 +1,29 @@
-## Active single case
-
-`main.m` fits `single_case_reference.csv`: 16-QAM, 400 mVpp before the driver, approximate EVM 13.2% from Figure 9 and unequalized BER 10^(-3.09) from Figure 11. Both values are calibration targets, not independent validation measurements. Their common received-power condition is an assumption. Simulation validation uses new random seeds after fitting is frozen.
-
-It then compares a frozen-parameter 380–500 mVpp sweep against `single_case_curve_reference.csv`. These are approximate visual readings of the same 16-QAM curves, with the same read-off allowances. Only 400 mVpp enters the fit. The six other voltages test extrapolation; no gain/noise refitting is performed. Five paired seeds and 65,536 payload symbols per seed give 1,310,720 bits per voltage in the study profile. The existing 400 mVpp validation samples are reused. `single_case_curve_enabled` controls this sweep independently of the point fit.
-
-To regenerate only this sweep from the saved fit, run from the repository root:
-
-```matlab
-addpath('matlab');
-cfg = arof.configuration();
-folder = arof.sweep_single_case('matlab/results/single_unequalized_case', cfg, 380:20:500);
-```
-
-This writes a new timestamped run under `datasets/physical_link/single_case_curve/`. The curated plots and CSV results are in `matlab/results/single_case_curve/`.
-
-The broader readings below remain exploratory reference material; they are not the active scope.
+# Reference data
 
 ## Received optical power reference
 
 `received_power_reference.csv` records approximate manual readings of the **unequalized black-square curve in Figure 13(c)**: 16-QAM at 400 mVpp. The horizontal axis is received optical power in dBm, not pre-driver voltage. The points span -22 to -17.5 dBm in 0.5 dB steps. Values are read from the supplied PDF's ninth page (journal page 4414); the -21 dBm point is partly obscured by the legend. Assigned allowances are +/-0.08 log10(BER), with approximately +/-0.08 dB horizontal reading uncertainty. These are digitization allowances, not experimental confidence intervals or author-supplied data.
 
 Only the -22 and -17.5 dBm readings enter the separate effective gain/noise calibration. The eight intermediate powers are excluded from numerical fitting, although the figure has been inspected during model development. The old voltage-sweep calibration is preserved. ROP is assumed to be total two-tone power at the PD input; the exact experimental measurement plane and individual laser powers are not established by the supplied text. The red ANN curve is outside the current unequalized checkpoint.
+
+## Archived voltage comparison
+
+The archived experiment fits `single_case_reference.csv`: 16-QAM, 400 mVpp before the driver, approximate EVM 13.2% from Figure 9 and unequalized BER 10^(-3.09) from Figure 11. Both values are calibration targets, not independent validation measurements. Their common received-power condition is an assumption. Simulation validation uses new random seeds after fitting is frozen.
+
+It compares a frozen-parameter 380–500 mVpp sweep against `single_case_curve_reference.csv`. These are approximate visual readings of the same 16-QAM curves, with the same read-off allowances. Only 400 mVpp enters the fit. The six other voltages test extrapolation; no gain/noise refitting is performed. Five paired seeds and 65,536 payload symbols per seed give 1,310,720 bits per voltage in the study profile. The existing 400 mVpp validation samples are reused. This experiment is excluded from the current main path.
+
+To regenerate only this sweep from the saved fit, run from the repository root:
+
+```matlab
+addpath('matlab');
+addpath('matlab/archive');
+cfg = arof_history.configuration();
+folder = arof_history.sweep_single_case('matlab/results/single_unequalized_case', cfg, 380:20:500);
+```
+
+This writes a new timestamped run under `datasets/physical_link/single_case_curve/`. The curated plots and CSV results are in `matlab/results/single_case_curve/`.
+
+The broader readings below remain exploratory reference material; they are not the active scope.
 
 # Approximate unequalized reference points
 
