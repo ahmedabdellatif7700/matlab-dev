@@ -1,11 +1,53 @@
-%% Single physical A-RoF link: establish the baseline before equalization
+%% Single-link 60 GHz analog radio-over-fiber baseline
 clear; clc; close all;
 matlab_dir = fileparts(mfilename("fullpath")); addpath(matlab_dir);
+
+%% 1. Configuration
+% Paper values and explicit assumptions: PHYSICAL_LINK.md.
 cfg = arof.configuration();
-% The reported experiment uses IF modulation and optical beating near 60 GHz.
-% Review PHYSICAL_LINK.md before interpreting these diagnostic results.
-result = arof.simulate(cfg);
-disp(result.metrics);
-% Step 3 adds baseline reporting and physical/numerical controls.
-% Dataset export and FFE/Volterra/NN comparison follow baseline review.
-% NN development will use the supplied nn_training_model/ stages unchanged.
+% cfg.modulation_order = 16;       % Start with 16-QAM.
+% cfg.drive_rms_v = 0.1;           % Low-drive, noiseless diagnostic.
+% cfg.fiber_length_km = 15;
+
+%% 2. Transmitted symbols and known calibration prefix
+symbol_data = arof.generate_symbols(cfg);
+tx_symbols = symbol_data.symbols;
+
+%% 3. Transmit pulse shaping at the AWG sample rate
+baseband_awg = arof.pulse_shape(cfg,tx_symbols);
+
+%% 4. Electrical IF modulation, driver and analog reconstruction
+% IF = 0.8 GHz; AWG = 4 GSa/s; internal numerical grid = 20 GSa/s.
+tx = arof.upconvert(cfg,symbol_data,baseband_awg);
+if_voltage = tx.if_voltage;
+
+%% 5. Single-arm MZM optical-field modulation and second laser tone
+optical_tx = arof.modulate(cfg,if_voltage);
+
+%% 6. Optical fiber propagation and explicitly ideal noiseless amplification
+optical_rx = arof.propagate(cfg,optical_tx);
+
+%% 7. Photodetection: extract the optical beat near 60 GHz
+% The optical/RF carriers are represented analytically, not undersampled.
+detected = arof.photodetect(cfg,optical_rx);
+
+%% 8. Millimeter-wave wireless hop
+wireless_link = arof.wireless(cfg,detected);
+
+%% 9. Envelope detection to IF and digital baseband conversion
+receiver_baseband = arof.downconvert(cfg,wireless_link);
+
+%% 10. Receive matched filter, timing/gain calibration and symbol sampling
+% Calibration uses only the known prefix, not the held-out payload.
+rx = arof.recover(cfg,receiver_baseband,tx);
+rx_symbols = rx.sampled;
+
+%% 11. Unequalized payload BER and continuous-output EVM
+metrics = arof.measure(cfg,optical_tx,rx);
+disp(metrics);
+
+%% 12. Physical-baseline review checkpoint
+% Baseline reporting and controls are added in step 3.
+% After review: MATLAB dataset export -> FFE/Volterra -> supplied
+% nn_training_model/ (Q8.24 MSE/online SGD) -> activation comparisons.
+% No NN is invoked while establishing the physical baseline.
