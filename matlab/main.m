@@ -12,41 +12,44 @@ cfg = arof.configuration();
 % cfg.fiber_length_km = 15;
 
 %% 2. Transmitted symbols and known calibration prefix
-symbol_data = arof.transmitter.generate_symbols(cfg);
+symbol_data = arof.generate_symbols(cfg);
 tx_symbols = symbol_data.symbols;
 
 %% 3. Transmit pulse shaping at the AWG sample rate
-baseband_awg = arof.transmitter.pulse_shape(cfg,tx_symbols);
+baseband_awg = arof.pulse_shape(cfg,tx_symbols);
 
-%% 4. Electrical IF modulation, driver and analog reconstruction
+%% 4. Electrical IF modulation and analog reconstruction
 % IF = 0.8 GHz; AWG = 4 GSa/s; internal numerical grid = 20 GSa/s.
-tx = arof.transmitter.upconvert(cfg,symbol_data,baseband_awg);
+tx = arof.upconvert(cfg,symbol_data,baseband_awg);
+
+%% 4b. Electrical driver before the MZM
+tx.if_voltage = arof.driver(cfg,tx.if_before_driver);
 if_voltage = tx.if_voltage;
 
 %% 5. Single-arm MZM optical-field modulation and second laser tone
-optical_tx = arof.optical_link.modulate(cfg,if_voltage);
+optical_tx = arof.modulate(cfg,if_voltage);
 
 %% 6. Optical fiber propagation and explicitly ideal noiseless amplification
-optical_rx = arof.optical_link.propagate(cfg,optical_tx);
+optical_rx = arof.propagate(cfg,optical_tx);
 
 %% 7. Photodetection: extract the optical beat near 60 GHz
 % The optical/RF carriers are represented analytically, not undersampled.
 % Optional received_optical_power_dbm sets total two-tone power at the PD.
-detected = arof.optical_link.photodetect(cfg,optical_rx);
+detected = arof.photodetect(cfg,optical_rx);
 
 %% 8. Millimeter-wave wireless hop
-wireless_link = arof.optical_link.wireless(cfg,detected);
+wireless_link = arof.wireless(cfg,detected);
 
 %% 9. Envelope detection to IF and digital baseband conversion
-receiver_baseband = arof.receiver.downconvert(cfg,wireless_link);
+receiver_baseband = arof.downconvert(cfg,wireless_link);
 
 %% 10. Receive matched filter, timing/gain calibration and symbol sampling
 % Calibration uses only the known prefix, not the held-out payload.
-rx = arof.receiver.recover(cfg,receiver_baseband,tx);
+rx = arof.recover(cfg,receiver_baseband,tx);
 rx_symbols = rx.sampled;
 
 %% 11. Noiseless low-drive control: unequalized payload BER and EVM
-metrics = arof.receiver.measure(cfg,optical_tx,rx);
+metrics = arof.measure(cfg,optical_tx,rx);
 fprintf("Noiseless low-drive control (not the 400 mVpp case):\n");
 disp(metrics);
 
@@ -61,8 +64,8 @@ end
 % Separate Fig. 13(c) two-endpoint calibration; predict intermediate powers.
 % Its frozen fit does not overwrite the earlier EVM/BER voltage calibration.
 if cfg.received_power_comparison_enabled
-    power_settings = arof.received_power.settings(cfg.profile);
-    power_run_dir = arof.received_power.run(cfg,power_settings);
+    power_settings = arof.received_power_settings(cfg.profile);
+    power_run_dir = arof.match_received_power(cfg,power_settings);
 end
 
 %% 14. Physical-baseline review checkpoint

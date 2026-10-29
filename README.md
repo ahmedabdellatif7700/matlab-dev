@@ -5,10 +5,10 @@ To run only the received-power comparison from the repository root:
 ```matlab
 addpath('matlab');
 cfg = arof.configuration();
-folder = arof.received_power.run(cfg);
+folder = arof.match_received_power(cfg);
 ```
 
-The active MATLAB package now has seven files: configuration, transmitter, optical/RF link, receiver, received-power study, simulation composition, and an optional baseline report. `main.m` keeps each physical stage visible. Older voltage-matching experiments are in [the archive](matlab/archive/README.md). Set `cfg.profile="smoke"` for a short run.
+The active MATLAB link uses one ordinary function per file: symbol generation, pulse shaping, IF conversion, driver, MZM, fiber, photodetection, wireless hop, downconversion, recovery and metrics. `main.m` connects each stage explicitly. The received-power study also uses separate function files. Older voltage-matching experiments are in [the archive](matlab/archive/README.md). Set `cfg.profile="smoke"` for a short run.
 
 # Current work: one physical A-RoF link
 

@@ -59,26 +59,35 @@ Figure 13(c) is the priority unequalized comparison: fixed 16-QAM, 400 mVpp, rec
 
 The power setting defaults to NaN, preserving the earlier normalized-field path. `pd_responsivity_a_w=1` is an effective reference value, not a measured detector parameter. Unreported RF amplification and receiver noise remain lumped into one aggregate real post-detector white-noise PSD. This optional power scaling is not a calibration of launched laser powers, an EDFA noise figure or an absolute electrical receiver budget.
 
-`arof.received_power.run` fits effective driver gain and noise using only the -22 and -17.5 dBm endpoints. `arof.received_power.sweep` freezes that fit and generates full noisy waveforms at all ten powers with fresh seeds. Eight intermediate power points are excluded from numerical fitting. The study profile uses 16,384 calibration payload symbols and five independent validation seeds with 65,536 payload symbols each. The conditional Gaussian calibration surrogate is checked by the actual waveform/noise runs. Read-off allowances and source provenance are in `reference_data/README.md`.
+`arof.match_received_power` fits effective driver gain and noise using only the -22 and -17.5 dBm endpoints. `arof.sweep_received_power` freezes that fit and generates full noisy waveforms at all ten powers with fresh seeds. Eight intermediate power points are excluded from numerical fitting. The study profile uses 16,384 calibration payload symbols and five independent validation seeds with 65,536 payload symbols each. The conditional Gaussian calibration surrogate is checked by the actual waveform/noise runs. Read-off allowances and source provenance are in `reference_data/README.md`.
 
 This is a separate Figure 13(c) calibration: the Figures 9/11 operating-point fit is not silently repurposed or overwritten. Fixed aggregate receiver noise gives noise-to-signal power proportional to ROP^-2 because beat current is proportional to optical watts. Whether this accounts for the paper's curve is a model test. Shot noise, ASE beat noise, RIN, saturation and other unmeasured components are not claimed to be identified by two fitted endpoints.
 
-`main.m` exposes the received-power comparison as stage 13, controlled by `received_power_comparison_enabled`. To run only this experiment, call `arof.received_power.run(arof.configuration())` after adding `matlab` to the path. Figures, per-seed counts and frozen calibration are saved under `datasets/physical_link/received_power/`; curated results are in `results/received_power/`.
+`main.m` exposes the received-power comparison as stage 13, controlled by `received_power_comparison_enabled`. To run only this experiment, call `arof.match_received_power(arof.configuration())` after adding `matlab` to the path. Figures, per-seed counts and frozen calibration are saved under `datasets/physical_link/received_power/`; curated results are in `results/received_power/`.
 
-## Minimal implementation
+## Implementation: one function per file
 
-The active package has seven files:
+`main.m` connects the physical stages explicitly. Every stage is an ordinary function in its own file under `+arof/`:
 
-| File | Responsibility |
+| Stage | File |
 |---|---|
-| `configuration.m` | Physical parameters, output paths, run profile and optional report switch. |
-| `transmitter.m` | QAM symbols, calibration prefix, transmit RRC, IF and driver. |
-| `optical_link.m` | Single-arm MZM, optical-field propagation, PD power/beat and wireless hop. |
-| `receiver.m` | Envelope detection, IF downconversion, matched RRC, prefix-only recovery and BER/EVM. |
-| `received_power.m` | Figure 13(c) settings, endpoint calibration, frozen sweep and plots. |
-| `simulate.m` | Compose the same physical functions for repeated simulations. |
-| `baseline_report.m` | Optional physical/numerical controls and diagnostic plots. |
+| Parameters and run controls | `configuration.m` |
+| QAM symbols and known prefix | `generate_symbols.m` |
+| Transmit RRC pulse shaping | `pulse_shape.m` |
+| IF modulation and analog reconstruction | `upconvert.m` |
+| Electrical driver | `driver.m` |
+| Single-arm MZM and second optical tone | `modulate.m` |
+| Fiber propagation and ideal amplification | `propagate.m` |
+| Received optical power and photodetection | `photodetect.m` |
+| Wireless hop | `wireless.m` |
+| Envelope detection and baseband conversion | `downconvert.m` |
+| Matched RRC, prefix timing/gain and sampling | `recover.m` |
+| Payload BER and EVM | `measure.m` |
 
-Related stage functions are grouped as static methods so `main.m` can show each physical stage explicitly without one file per function. There is no object state or additional signal-processing layer. Configuration is independent of the historical `mmw` scenario suite. Set `cfg.profile="smoke"` for a short end-to-end run; the default `"study"` retains the established symbol counts and seeds. `cfg.baseline_report_enabled=false` skips the optional diagnostic report by default.
+`transmit.m`, `receive.m` and `simulate.m` compose these same functions for repeated study runs. `main.m` calls the individual stages directly, including the driver between IF reconstruction and MZM modulation. `filter_envelope.m` is the shared numerical filter.
 
-The previous implementation and voltage-matching experiments are retained under `archive/+arof_history/`. They are excluded from the normal path and are not run by `main.m`. See [archive instructions](archive/README.md). The recorded Figures 9/11 and Figure 13(c) fits remain alternative effective parameterizations, not one jointly validated device model. This refactor preserves the physical equations, noise, calibration targets and result data.
+The received-power study also uses separate functions: `received_power_settings.m`, `calibrate_received_power.m`, `sweep_received_power.m`, `plot_received_power.m` and `match_received_power.m`. Calibration uses `paper_operating_point.m` and `gaussian_bit_error.m`. `baseline_report.m` remains optional. There are no grouped static classes in the active link.
+
+Configuration is independent of the historical `mmw` suite. Set `cfg.profile="smoke"` for a short study or enable `cfg.baseline_report_enabled` for physical/numerical diagnostics. The default study preserves the established symbol counts, seeds and calibration targets.
+
+The earlier voltage experiments remain under `archive/+arof_history/`, outside the normal path; see [archive instructions](archive/README.md). Recorded Figures 9/11 and Figure 13(c) fits remain alternative effective parameterizations, not one jointly validated device model. Splitting functions into files changes the organization, not the physical model or result data.
