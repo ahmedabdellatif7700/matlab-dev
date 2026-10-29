@@ -41,5 +41,7 @@ cfg.if_noise_psd = 0; % Two-sided PSD in normalized detector-output units^2/Hz.
 cfg.noise_seed = 904201;
 cfg.paper_comparison_enabled = true;
 cfg.paper_profile = "study";
+cfg.single_case_curve_enabled = true;
+cfg.single_case_curve_mv = 380:20:500;
 cfg.visible = "off";
 end

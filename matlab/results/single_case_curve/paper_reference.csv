@@ -1,0 +1,15 @@
+figure,modulation,input_vpp_mv,metric,value,read_uncertainty,uncertainty_units,role
+9,16,380,evm_percent,12.4,0.5,percentage points,prediction_comparison
+11,16,380,ber,0.0003019951720402016,0.06,log10(BER),prediction_comparison
+9,16,400,evm_percent,13.2,0.5,percentage points,calibration
+11,16,400,ber,0.0008128305161640995,0.06,log10(BER),calibration
+9,16,420,evm_percent,15.0,0.5,percentage points,prediction_comparison
+11,16,420,ber,0.0020892961308540386,0.06,log10(BER),prediction_comparison
+9,16,440,evm_percent,14.8,0.5,percentage points,prediction_comparison
+11,16,440,ber,0.0022908676527677724,0.06,log10(BER),prediction_comparison
+9,16,460,evm_percent,16.6,0.5,percentage points,prediction_comparison
+11,16,460,ber,0.003630780547701014,0.06,log10(BER),prediction_comparison
+9,16,480,evm_percent,17.0,0.5,percentage points,prediction_comparison
+11,16,480,ber,0.005623413251903491,0.06,log10(BER),prediction_comparison
+9,16,500,evm_percent,18.2,0.5,percentage points,prediction_comparison
+11,16,500,ber,0.01096478196143185,0.06,log10(BER),prediction_comparison

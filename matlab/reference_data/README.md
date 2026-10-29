@@ -1,6 +1,18 @@
 ## Active single case
 
-`main.m` now uses only `single_case_reference.csv`: 16-QAM, 400 mVpp before the driver, approximate EVM 13.2% from Figure 9 and unequalized BER 10^(-3.09) from Figure 11. Both values are calibration targets, not independent validation measurements. Their common received-power condition is an assumption. Simulation validation uses new random seeds after fitting is frozen.
+`main.m` fits `single_case_reference.csv`: 16-QAM, 400 mVpp before the driver, approximate EVM 13.2% from Figure 9 and unequalized BER 10^(-3.09) from Figure 11. Both values are calibration targets, not independent validation measurements. Their common received-power condition is an assumption. Simulation validation uses new random seeds after fitting is frozen.
+
+It then compares a frozen-parameter 380–500 mVpp sweep against `single_case_curve_reference.csv`. These are approximate visual readings of the same 16-QAM curves, with the same read-off allowances. Only 400 mVpp enters the fit. The six other voltages test extrapolation; no gain/noise refitting is performed. Five paired seeds and 65,536 payload symbols per seed give 1,310,720 bits per voltage in the study profile. The existing 400 mVpp validation samples are reused. `single_case_curve_enabled` controls this sweep independently of the point fit.
+
+To regenerate only this sweep from the saved fit, run from the repository root:
+
+```matlab
+addpath('matlab');
+cfg = arof.configuration();
+folder = arof.sweep_single_case('matlab/results/single_unequalized_case', cfg, 380:20:500);
+```
+
+This writes a new timestamped run under `datasets/physical_link/single_case_curve/`. The curated plots and CSV results are in `matlab/results/single_case_curve/`.
 
 The broader readings below remain exploratory reference material; they are not the active scope.
 

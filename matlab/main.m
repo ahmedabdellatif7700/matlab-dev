@@ -58,6 +58,11 @@ run_dir = arof.baseline_report(result);
 if cfg.paper_comparison_enabled
     paper_settings = arof.single_case_settings(cfg.paper_profile);
     paper_run_dir = arof.match_unequalized_case(cfg,paper_settings);
+    %% 13b. Unequalized voltage sweep with the 400 mVpp fit held fixed
+    % No per-voltage fitting: compare predictions with paper EVM/BER curves.
+    if cfg.single_case_curve_enabled
+        curve_run_dir = arof.sweep_single_case(paper_run_dir,cfg,cfg.single_case_curve_mv);
+    end
 end
 
 %% 14. Physical-baseline review checkpoint
