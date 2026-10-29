@@ -1,0 +1,37 @@
+function cfg = configuration()
+%CONFIGURATION One physical link; measured/assumed values: PHYSICAL_LINK.md.
+paths = mmw.scenario_config();
+cfg.root = paths.root;
+cfg.output_root = fullfile(cfg.root,"datasets","physical_link");
+cfg.run_id = string(datetime("now","Format","yyyyMMdd_HHmmss_SSS"));
+cfg.modulation_order = 16;
+cfg.symbol_rate_hz = 0.4e9;
+cfg.awg_sample_rate_hz = 4e9;
+cfg.internal_sample_rate_hz = 20e9; % Ideal analog reconstruction after AWG.
+cfg.if_hz = 0.8e9;
+cfg.rrc_rolloff = 0.75;
+cfg.rrc_span_symbols = 48; % Numerical choice, not a reported device parameter.
+cfg.guard_symbols = 96;
+cfg.training_symbols = 1024; % Used only for receiver timing/gain calibration.
+cfg.payload_symbols = 4096;
+cfg.seed = 4201;
+cfg.modulated_wavelength_m = 1552.90e-9;
+cfg.lo_wavelength_m = 1552.42e-9;
+cfg.rf_carrier_hz = 299792458/cfg.lo_wavelength_m-299792458/cfg.modulated_wavelength_m;
+cfg.mzm_vpi_v = 4.4;
+cfg.mzm_bias_v = 2.2;
+cfg.drive_rms_v = 0.1; % Assumed low-drive diagnostic; actual Vpp is reported.
+cfg.driver_voltage_gain = 1; % Unknown experimental gain, normalized here.
+cfg.mzm_bandwidth_hz = 10e9;
+cfg.fiber_length_km = 15;
+cfg.dispersion_ps_nm_km = 17; % Nominal engineering assumption.
+cfg.attenuation_db_km = 0.2; % Nominal engineering assumption.
+cfg.ideal_edfa_gain_db = cfg.attenuation_db_km*cfg.fiber_length_km;
+cfg.pd_bandwidth_hz = 60e9;
+cfg.wireless_distance_m = 1;
+cfg.tx_antenna_gain_dbi = 20;
+cfg.rx_antenna_gain_dbi = 20;
+cfg.filter_guard_samples = 8192;
+cfg.noise_enabled = false;
+cfg.visible = "off";
+end

@@ -1,72 +1,11 @@
-%% 60 GHz neural equalizer design: all experiment stages
-% Legacy hardware workflow: legacy_main.m. Existing five sweeps: mmw.run_suite.
+%% Single physical A-RoF link: establish the baseline before equalization
 clear; clc; close all;
 matlab_dir = fileparts(mfilename("fullpath")); addpath(matlab_dir);
-
-%% 1. Physical link and experiment configuration
-% Single carrier Gray QAM -> RRC -> RF PA or MZM -> optical/echo channel
-% -> independent AWGN -> matched RRC -> known delay/gain removal -> tap window.
-% Neural/training choices are centralized in python/config.py.
-cfg = mmw.design_config();
-% cfg.python_exe = "/path/to/environment/bin/python";
-candidates = mmw.design_candidates();
-disp(candidates);
-
-%% 2. Independent training and validation waveforms; no test data generated
-% design_burst exposes modulation, pulse shaping, nonlinearities, channel,
-% noise, receive filtering, synchronization and sampling in order.
-run_dir = mmw.prepare_design_data(cfg, candidates, "discovery");
-
-%% 3. Python architecture/activation search and strong classical controls
-% BCE bit heads; arbitrary hidden widths. FFE, full Volterra and RBF controls.
-% All hyperparameters and four conditions selected exclusively on validation.
-script = fullfile(cfg.root,"python","equalizer.py");
-command = sprintf('"%s" -B "%s" --run "%s" --phase discovery', ...
-    cfg.python_exe, script, run_dir);
-[status, output] = system(command, "-echo");
-assert(status == 0, "Discovery failed: %s", output);
-
-%% 3b. Focused 64-QAM bottleneck and small-activation ablation
-extension = script;
-command = sprintf('"%s" -B "%s" --run "%s" --phase extended-search',cfg.python_exe,extension,run_dir);
-[status, output] = system(command,"-echo");
-assert(status == 0,"Extended validation search failed: %s",output);
-command = sprintf('"%s" -B "%s" --run "%s" --phase discovery', ...
-    cfg.python_exe,script,run_dir);
-[status, output] = system(command,"-echo");
-assert(status == 0,"Final design locking failed: %s",output);
-
-%% 4. Lock conditions, network architectures and BER targets before testing
-selection = jsondecode(fileread(fullfile(run_dir,"selection.json")));
-assert(selection.complete, ...
-    "Not all four families qualified. Review discovery_models.csv; no success is assumed.");
-ids = string(arrayfun(@(s) string(s.condition.ID), selection.selected));
-selected = candidates(ismember(candidates.ID, ids), :);
-
-%% 5. Fresh independent training/validation/test realizations for confirmation
-% Every method receives identical inputs. Never choose models on test BER.
-mmw.prepare_design_data(cfg, selected, "confirmation", run_dir);
-command = sprintf('"%s" -B "%s" --run "%s" --phase confirmation', ...
-    cfg.python_exe, script, run_dir);
-[status, output] = system(command, "-echo");
-assert(status == 0, "Confirmation failed: %s", output);
-
-%% 6. BER, decision EVM and resource comparison, with paired uncertainty
-command = sprintf('"%s" -B "%s" --run "%s" --phase report', ...
-    cfg.python_exe, script, run_dir);
-[status, output] = system(command, "-echo");
-assert(status == 0, "Report generation failed: %s", output);
-metrics = readtable(fullfile(run_dir,"confirmation_metrics.csv"));
-disp(metrics(:,["case","seed","method","ber","multiplications"]));
-fprintf("Full metrics and frozen discovery design: %s\n", run_dir);
-% Multiplications are algorithmic counts, not measured FPGA power or latency.
-% A kernel or higher-order Volterra may match BER at greater arithmetic cost.
-
-%% 7. Paper-style BER/SNR curves with frozen receivers on fresh payloads
-% No retraining or parameter selection at sweep points. This measures SNR
-% generalization, and must not be described as per-point optimized reception.
-mmw.prepare_design_snr_sweep(cfg,selected,run_dir);
-command = sprintf('"%s" -B "%s" --run "%s" --phase snr-sweep', ...
-    cfg.python_exe,script,run_dir);
-[status,output] = system(command,"-echo");
-assert(status == 0,"SNR sweep evaluation failed: %s",output);
+cfg = arof.configuration();
+% The reported experiment uses IF modulation and optical beating near 60 GHz.
+% Review PHYSICAL_LINK.md before interpreting these diagnostic results.
+result = arof.simulate(cfg);
+disp(result.metrics);
+% Step 3 adds baseline reporting and physical/numerical controls.
+% Dataset export and FFE/Volterra/NN comparison follow baseline review.
+% NN development will use the supplied nn_training_model/ stages unchanged.

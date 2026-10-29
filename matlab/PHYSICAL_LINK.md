@@ -39,9 +39,10 @@ The paper reports approximately 200 mV peak-to-peak before the driver correspond
 - Model a balanced single-arm MZM with field transfer `(1 + exp(j*pi*(Vbias+v)/Vpi))/2`. It retains the phase associated with single-arm modulation. Exact device chirp, extinction ratio and insertion loss are unavailable.
 - Represent the two optical bands separately. Propagate each with its offset-dependent dispersion phase and analytically extract their photodetection beat term. Do not sample the optical carrier or place a 60 GHz tone on a 4 GSa/s grid.
 - Use nominal SMF dispersion 17 ps/(nm km) and attenuation 0.2 dB/km as declared engineering assumptions, not measurements from this experiment. They remain configurable and must be revisited for calibrated reproduction.
-- Start with normalized optical amplitudes, unit lumped RF/wireless gains, ideal timing and no stochastic noise. There is no claim of calibrated optical watts, received optical dBm, electrical SNR or BER sensitivity at this stage.
+- Start with normalized optical amplitudes, unit lumped RF-amplifier gains and an ideal Friis hop using the reported distance/antenna gains, ideal timing and no stochastic noise. There is no claim of calibrated optical watts, received optical dBm, electrical SNR or BER sensitivity at this stage.
 - Use a declared one-pole 10 GHz modulator response and one-pole 60 GHz PD response as provisional bandwidth approximations. These are not measured component transfer functions.
 - Use low electrical drive, specified in RMS volts, as a linear-limit diagnostic. Report actual waveform Vpp as well. It is not claimed to reproduce the paper's nonlinear optimum near 5 Vpp.
+- Reconstruct the 4 GSa/s AWG waveform on an internal 20 GSa/s numerical grid before optical modulation. This is an ideal DAC/reconstruction assumption, not the paper's oscilloscope model; sampling convergence must be checked.
 - RRC truncation, IF extraction bandwidth and burst guards are numerical design choices; validate their effect separately from physical distortion.
 - EDFA gain/noise, laser phase/frequency noise, PD saturation and driver compression remain disabled until justified parameters are supplied. Deterministic fiber attenuation may be compensated by an explicitly ideal noiseless gain for diagnostics; this is not an EDFA noise model.
 
