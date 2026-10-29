@@ -40,3 +40,5 @@ matlab -batch "addpath('matlab'); run_numerical_tests();"
 The staged 60 GHz design study is now the `matlab/main.m` entry point: physical link → discovery-only tuning → locked four-family selection → fresh confirmation → BER/resource tables. Read [the design protocol](matlab/DESIGN_STUDY.md) before interpreting NN efficiency claims. The existing five-scenario study and its historical results remain available.
 
 The completed [four-case bitwise equalizer study](matlab/results/design_study/README.md) includes physical-condition and NN-parameter tables, three-seed held-out results, and BER/SNR figures. It finds lower multiplication counts than the tested classical receivers at locked BER targets; activation costs and higher-cost classical matches remain visible.
+
+For a step-by-step explanation of what we study, why each stage is needed and how the comparisons are controlled, read [METHODOLOGY.md](METHODOLOGY.md).

@@ -23,3 +23,5 @@ Research datasets retain the familiar `X`/`Y` MAT arrays; `split_counts` declare
 There are no new standalone verification scripts in this workflow. Training/validation/test separation and receiver metrics remain part of the experiment itself. Validation-selected targets may use the reference grid or the midpoint between the NN and the best classical receiver below 1.5 times its arithmetic budget; the origin is recorded. Discovery NN BER must be at most 3.8e-3. Three training restarts are selected by validation BCE on each independent confirmation seed, without test-based selection. SNR curves use frozen receivers on fresh payloads and measure generalization, not per-SNR retraining.
 
 Completed results, including the four condition/network tables and BER/SNR figures: [four-case report](results/design_study/README.md). Larger classical models sometimes beat the NN; the demonstrated advantage is a bounded comparison of explicit multiplication counts at locked BER targets.
+
+For the full research rationale and step-by-step methodology, see [METHODOLOGY.md](../METHODOLOGY.md).
