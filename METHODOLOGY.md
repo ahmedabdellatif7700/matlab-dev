@@ -54,3 +54,5 @@ The superseded methodology is retained in [docs/HISTORICAL_METHODOLOGY.md](docs/
 ## Current checkpoint
 
 Steps 1–3 establish the single physical link and its unequalized numerical baseline. [Baseline figures and diagnostics](matlab/results/physical_baseline/README.md) are the review material. The noiseless diagnostic does not reproduce experimental noise or sensitivity. Review the detector law, component-response approximations and missing calibration before proceeding to step 4. No new FFE/Volterra/NN comparison has been run for this link.
+
+Before proceeding beyond step 3, compare the unequalized model against the supplied paper's EVM/BER curves. Explicitly identify calibration points, inferred parameters, comparison points and remaining discrepancies. This is a reproduction attempt, not permission to fit unexplained impairment terms or claim an exact experimental match.

@@ -1,0 +1,42 @@
+figure,modulation,input_vpp_mv,metric,value,read_uncertainty,uncertainty_units,role
+9,4,100,evm_percent,10.5,0.5,percentage points,calibration
+9,4,140,evm_percent,5.9,0.5,percentage points,comparison_not_fit
+9,4,180,evm_percent,5.6,0.5,percentage points,comparison_not_fit
+9,4,200,evm_percent,5.5,0.5,percentage points,comparison_not_fit
+9,4,260,evm_percent,6.6,0.5,percentage points,comparison_not_fit
+9,4,300,evm_percent,6.4,0.5,percentage points,comparison_not_fit
+9,4,380,evm_percent,7.4,0.5,percentage points,comparison_not_fit
+9,4,420,evm_percent,7.9,0.5,percentage points,comparison_not_fit
+9,4,500,evm_percent,8.1,0.5,percentage points,calibration
+9,16,100,evm_percent,14.3,0.5,percentage points,comparison_not_fit
+9,16,140,evm_percent,7.4,0.5,percentage points,comparison_not_fit
+9,16,180,evm_percent,7.3,0.5,percentage points,comparison_not_fit
+9,16,200,evm_percent,7.4,0.5,percentage points,comparison_not_fit
+9,16,260,evm_percent,7.5,0.5,percentage points,comparison_not_fit
+9,16,300,evm_percent,9.2,0.5,percentage points,comparison_not_fit
+9,16,380,evm_percent,12.4,0.5,percentage points,comparison_not_fit
+9,16,420,evm_percent,15.0,0.5,percentage points,comparison_not_fit
+9,16,500,evm_percent,18.2,0.5,percentage points,comparison_not_fit
+9,64,100,evm_percent,16.4,0.5,percentage points,comparison_not_fit
+9,64,140,evm_percent,8.4,0.5,percentage points,comparison_not_fit
+9,64,180,evm_percent,7.6,0.5,percentage points,comparison_not_fit
+9,64,200,evm_percent,7.4,0.5,percentage points,comparison_not_fit
+9,64,260,evm_percent,8.4,0.5,percentage points,comparison_not_fit
+9,64,300,evm_percent,9.5,0.5,percentage points,comparison_not_fit
+9,64,380,evm_percent,10.8,0.5,percentage points,comparison_not_fit
+9,64,420,evm_percent,14.8,0.5,percentage points,comparison_not_fit
+9,64,500,evm_percent,22.4,0.5,percentage points,comparison_not_fit
+11,16,380,ber,0.0003019951720402016,0.06,log10(BER),comparison_cross_figure
+11,16,400,ber,0.0008128305161640995,0.06,log10(BER),comparison_cross_figure
+11,16,420,ber,0.0020892961308540386,0.06,log10(BER),comparison_cross_figure
+11,16,440,ber,0.0022908676527677724,0.06,log10(BER),comparison_cross_figure
+11,16,460,ber,0.003630780547701014,0.06,log10(BER),comparison_cross_figure
+11,16,480,ber,0.005623413251903491,0.06,log10(BER),comparison_cross_figure
+11,16,500,ber,0.01096478196143185,0.06,log10(BER),comparison_cross_figure
+12,64,140,ber,0.009332543007969915,0.06,log10(BER),comparison_cross_figure
+12,64,160,ber,0.0008709635899560805,0.06,log10(BER),comparison_cross_figure
+12,64,180,ber,0.0006918309709189362,0.06,log10(BER),comparison_cross_figure
+12,64,200,ber,0.0010964781961431851,0.06,log10(BER),comparison_cross_figure
+12,64,220,ber,0.003890451449942805,0.06,log10(BER),comparison_cross_figure
+12,64,240,ber,0.004570881896148752,0.06,log10(BER),comparison_cross_figure
+12,64,260,ber,0.0199526231496888,0.06,log10(BER),comparison_cross_figure

@@ -51,7 +51,15 @@ result = struct("configuration",cfg,"tx",tx,"optical_tx",optical_tx, ...
     "optical_rx",optical_rx,"detected",detected,"rx",rx,"metrics",metrics);
 run_dir = arof.baseline_report(result);
 
-%% 13. Physical-baseline review checkpoint
+%% 13. Unequalized comparison against the paper (no equalizers)
+% Conditional identification: one reported voltage anchor and two 4-QAM
+% EVM calibration points. Remaining curves expose model discrepancies.
+if cfg.paper_comparison_enabled
+    paper_settings = arof.paper_settings(cfg.paper_profile);
+    paper_run_dir = arof.replicate_unequalized(cfg,paper_settings);
+end
+
+%% 14. Physical-baseline review checkpoint
 % After review: MATLAB dataset export -> FFE/Volterra -> supplied
 % nn_training_model/ (Q8.24 MSE/online SGD) -> activation comparisons.
 % No NN is invoked while establishing the physical baseline.

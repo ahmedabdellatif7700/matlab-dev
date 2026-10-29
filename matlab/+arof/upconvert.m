@@ -10,8 +10,9 @@ energy = mean(abs(qammod((0:cfg.modulation_order-1).',cfg.modulation_order,"gray
 nominal_rms = sqrt(energy/(2*sps));
 voltage_scale = cfg.drive_rms_v/nominal_rms;
 if_awg = voltage_scale*real(baseband.*exp(1j*2*pi*cfg.if_hz*t));
-if_voltage = resample(if_awg,ratio,1)*cfg.driver_voltage_gain;
+if_before_driver = resample(if_awg,ratio,1);
+if_voltage = arof.driver(cfg,if_before_driver);
 tx = struct("symbols",data.symbols,"indices",data.indices,"baseband_awg",baseband, ...
-    "if_awg",if_awg,"if_voltage",if_voltage,"voltage_scale",voltage_scale, ...
+    "if_awg",if_awg,"if_voltage",if_voltage,"if_before_driver",if_before_driver,"voltage_scale",voltage_scale, ...
     "awg_sps",sps,"internal_sps",sps*ratio);
 end

@@ -52,3 +52,23 @@ The paper reports approximately 200 mV peak-to-peak before the driver correspond
 Check symbol recovery with the nonlinear stage replaced by its local linear field response; optical beating frequency and RF band placement; correct single-arm field/intensity relation; zero-length and finite-length field propagation; amplitude/delay alignment; spectral guard behavior; and sensitivity to numerical filter truncation. Then report the actual nonlinear model's unequalized constellation, BER and continuous-output EVM at the same low drive.
 
 A low-drive, noiseless recovery result establishes implementation consistency only. It does not calibrate the apparatus, validate a practical noise floor or demonstrate a neural advantage. Before physical BER-versus-power claims, resolve or bound component gain/noise, optical powers, PD/RF frequency responses and synchronization assumptions.
+
+## Unequalized experimental-curve comparison
+
+`main.m` now optionally runs `arof.replicate_unequalized` after the deterministic checks. This remains step 3, before any equalizer comparison. The reference points are approximate manual readings of Figures 9, 11 and 12; provenance and read-off allowances are in `reference_data/README.md`.
+
+The comparison fixes physical topology and tests unresolved device assumptions explicitly:
+
+- Linear IF driver, amplitude-envelope RF detector.
+- Bandpass-envelope Rapp driver, amplitude-envelope RF detector.
+- The same compressed driver with a square-law RF detector.
+
+Only the approximately 200 mVpp → 5 Vpp voltage anchor and Figure 9 4-QAM EVM at 100/500 mV enter numerical calibration. Small-signal gain, saturation and aggregate IF-noise PSD are inferred parameters; they are not reported device measurements. Rapp smoothness is fixed at 2. The simulation never adds arbitrary AM/PM or echoes.
+
+The real post-detector noise PSD is fixed across drive and modulation and scales correctly with simulation sample rate. It represents unresolved aggregate receiver noise in normalized detector-output units, not independently identified ASE, thermal, shot or RIN contributions. Each detector hypothesis needs a noise calibration in its own output units. Per-waveform transmitter peak scaling establishes the pre-driver Vpp axis; normalization depends on the finite waveform's PAPR.
+
+The remaining reference points are excluded from numerical fitting, but they have been inspected during exploratory modeling. They are not blind validation. Figures 9, 11 and 12 do not establish identical optical received-power/noise settings, so a shared-noise cross-figure comparison is conditional. The paper's complete EVM normalization and RF detector response are unavailable.
+
+Report overlays, raw errors/counts, nominal BER intervals, EVM seed spread and numerical discrepancies. A fitted point or qualitative trend match is not successful quantitative replication. Model qualification and equalizer work remain pending this comparison and review. `paper_comparison_enabled` and `paper_profile` in `+arof/configuration.m` control this experiment; the noiseless diagnostic configuration remains unchanged.
+
+Figure 13 also varies received power separately, with different plotted power ranges for different drive settings. It does not establish a common operating power for Figures 9, 11 and 12. Therefore mismatches in a shared-noise cross-figure prediction cannot uniquely identify a faulty component or its missing transfer curve.
