@@ -1,6 +1,6 @@
-function cfg = configuration()
-%CONFIGURATION One physical link; measured/assumed values: PHYSICAL_LINK.md.
-cfg.root = fileparts(fileparts(fileparts(mfilename("fullpath"))));
+function cfg = link_configuration()
+%LINK_CONFIGURATION One physical link; measured/assumed values: PHYSICAL_LINK.md.
+cfg.root = fileparts(fileparts(mfilename("fullpath")));
 cfg.output_root = fullfile(cfg.root,"datasets","physical_link");
 cfg.run_id = string(datetime("now","Format","yyyyMMdd_HHmmss_SSS"));
 cfg.modulation_order = 16;
@@ -23,25 +23,28 @@ cfg.drive_rms_v = 0.1; % Assumed low-drive diagnostic; actual Vpp is reported.
 cfg.driver_model = "linear";
 cfg.driver_saturation_v = Inf;
 cfg.driver_smoothness = 2;
-cfg.driver_voltage_gain = 1; % Unknown experimental gain, normalized here.
+cfg.driver_voltage_gain = 17.097235738210383; % Frozen Figure 13(c) effective fit.
 cfg.mzm_bandwidth_hz = 10e9;
 cfg.fiber_length_km = 15;
 cfg.dispersion_ps_nm_km = 17; % Nominal engineering assumption.
 cfg.attenuation_db_km = 0.2; % Nominal engineering assumption.
 cfg.ideal_edfa_gain_db = cfg.attenuation_db_km*cfg.fiber_length_km;
 cfg.pd_bandwidth_hz = 60e9;
-cfg.received_optical_power_dbm = NaN; % Optional total two-tone power at PD.
+cfg.received_optical_power_dbm = -22; % Optional total two-tone power at PD.
 cfg.pd_responsivity_a_w = 1; % Effective reference; not a measured device value.
 cfg.wireless_distance_m = 1;
 cfg.tx_antenna_gain_dbi = 20;
 cfg.rx_antenna_gain_dbi = 20;
 cfg.filter_guard_samples = 8192;
 cfg.envelope_detector_model = "ideal_amplitude"; % Unmeasured transfer-law assumption.
-cfg.noise_enabled = false;
-cfg.if_noise_psd = 0; % Two-sided PSD in normalized detector-output units^2/Hz.
+cfg.noise_enabled = true;
+cfg.if_noise_psd = 1.996608740342124e-25; % Two-sided PSD in normalized detector-output units^2/Hz.
 cfg.noise_seed = 904201;
-cfg.profile = "study";
-cfg.baseline_report_enabled = false; % Optional physical/numerical controls.
-cfg.received_power_comparison_enabled = true;
+% Frozen parameters originate from results/received_power/frozen_calibration.json.
+% They are a conditional effective calibration, not measured device values.
+cfg.input_vpp_v = 0.4;
+cfg.rop_dbm = -22:0.5:-17.5;
+cfg.sweep_seeds = 8701:8705;
+cfg.sweep_payload_symbols = 65536;
 cfg.visible = "off";
 end

@@ -1,18 +1,18 @@
-The priority paper comparison is **unequalized 16-QAM BER versus received optical power at 400 mVpp**, using Figure 13(c). [Received-power results and assumptions](matlab/results/received_power/README.md). Two endpoint readings calibrate effective gain and receiver noise; eight intermediate powers test the frozen model. This is a separate effective fit from the earlier [single EVM/BER point](matlab/results/single_unequalized_case/README.md) and [voltage curves](matlab/results/single_case_curve/README.md), not a jointly validated apparatus reconstruction. No equalizer is used. `main.m` retains the separate low-drive physical diagnostic; its near-zero BER is not the impaired case.
+# Physical stages and BER versus received optical power
 
-To run only the received-power comparison from the repository root:
+Run `matlab/main.m`. It connects the physical stages in `matlab/+arof/` explicitly, then calls `ber_vs_rop.m` to simulate the unequalized BER curve using fixed link parameters. Set physical parameters and sweep lengths in `matlab/link_configuration.m`. [Saved simulation-only BER curve](matlab/results/ber_vs_rop/README.md).
 
 ```matlab
 addpath('matlab');
-cfg = arof.configuration();
-folder = arof.match_received_power(cfg);
+cfg = link_configuration();
+folder = ber_vs_rop(cfg);
 ```
 
-The active MATLAB link uses one ordinary function per file: symbol generation, pulse shaping, IF conversion, driver, MZM, fiber, photodetection, wireless hop, downconversion, recovery and metrics. `main.m` connects each stage explicitly. The received-power study also uses separate function files. Older voltage-matching experiments are in [the archive](matlab/archive/README.md). Set `cfg.profile="smoke"` for a short run.
+`+arof/` contains only physical-stage functions. The shared FFT filter is an implementation helper in `+arof/private/`. There are no active paper-comparison, parameter-fitting or verification runners. The received-power curve uses the previously fitted effective gain and noise values without refitting. The earlier partial-match limitations remain recorded in [the historical report](matlab/results/received_power/README.md).
 
 # Current work: one physical A-RoF link
 
-Run `matlab/main.m` to establish the modular physical baseline described in [METHODOLOGY.md](METHODOLOGY.md) and [matlab/PHYSICAL_LINK.md](matlab/PHYSICAL_LINK.md). This stage runs no equalizer. The agreed review checkpoint is the physical baseline before dataset export and comparison. See [baseline results and assumptions](matlab/results/physical_baseline/README.md).
+Run `matlab/main.m` to establish the modular physical baseline described in [METHODOLOGY.md](METHODOLOGY.md) and [matlab/PHYSICAL_LINK.md](matlab/PHYSICAL_LINK.md). This stage runs no equalizer. The agreed review checkpoint is the physical baseline before dataset export and comparison. See [historical baseline results and assumptions](matlab/results/physical_baseline/README.md).
 
 NN development will use the supplied `nn_training_model/` package, preserving its training stages and Q8.24 arithmetic; the separate draft integer engine is not used. Import/development of that package is step 6 of the agreed sequence.
 

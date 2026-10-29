@@ -4,9 +4,9 @@ matlab_dir = fileparts(mfilename("fullpath")); addpath(matlab_dir);
 
 %% 1. Configuration
 % Paper values and explicit assumptions: PHYSICAL_LINK.md.
-cfg = arof.configuration();
-% cfg.profile = "smoke";          % Short received-power run.
-% cfg.baseline_report_enabled = true; % Optional physical/numerical report.
+cfg = link_configuration();
+% cfg.sweep_payload_symbols = 4096; % Short BER-versus-ROP run.
+% cfg.sweep_seeds = 8701;
 % cfg.modulation_order = 16;       % Start with 16-QAM.
 % cfg.drive_rms_v = 0.1;           % Low-drive, noiseless diagnostic.
 % cfg.fiber_length_km = 15;
@@ -20,6 +20,9 @@ baseband_awg = arof.pulse_shape(cfg,tx_symbols);
 
 %% 4. Electrical IF modulation and analog reconstruction
 % IF = 0.8 GHz; AWG = 4 GSa/s; internal numerical grid = 20 GSa/s.
+tx = arof.upconvert(cfg,symbol_data,baseband_awg);
+% Set the pre-driver peak-to-peak voltage using only the transmitted waveform.
+cfg.drive_rms_v = cfg.drive_rms_v*cfg.input_vpp_v/(max(tx.if_before_driver)-min(tx.if_before_driver));
 tx = arof.upconvert(cfg,symbol_data,baseband_awg);
 
 %% 4b. Electrical driver before the MZM
@@ -48,27 +51,11 @@ receiver_baseband = arof.downconvert(cfg,wireless_link);
 rx = arof.recover(cfg,receiver_baseband,tx);
 rx_symbols = rx.sampled;
 
-%% 11. Noiseless low-drive control: unequalized payload BER and EVM
+%% 11. Unequalized payload BER and EVM
 metrics = arof.measure(cfg,optical_tx,rx);
-fprintf("Noiseless low-drive control (not the 400 mVpp case):\n");
+fprintf("Unequalized %d-QAM, %.0f mVpp, ROP %.1f dBm:\n", ...
+    cfg.modulation_order,1000*cfg.input_vpp_v,cfg.received_optical_power_dbm);
 disp(metrics);
 
-%% 12. Optional low-drive physical consistency report
-if cfg.baseline_report_enabled
-    result = struct("configuration",cfg,"tx",tx,"optical_tx",optical_tx, ...
-        "optical_rx",optical_rx,"detected",detected,"rx",rx,"metrics",metrics);
-    baseline_dir = arof.baseline_report(result);
-end
-
-%% 13. BER versus received optical power, fixed 16-QAM / 400 mVpp
-% Separate Fig. 13(c) two-endpoint calibration; predict intermediate powers.
-% Its frozen fit does not overwrite the earlier EVM/BER voltage calibration.
-if cfg.received_power_comparison_enabled
-    power_settings = arof.received_power_settings(cfg.profile);
-    power_run_dir = arof.match_received_power(cfg,power_settings);
-end
-
-%% 14. Physical-baseline review checkpoint
-% After review: MATLAB dataset export -> FFE/Volterra -> supplied
-% nn_training_model/ (Q8.24 MSE/online SGD) -> activation comparisons.
-% No NN is invoked while establishing the physical baseline.
+%% 12. BER versus received optical power with the same fixed link parameters
+power_run_dir = ber_vs_rop(cfg);

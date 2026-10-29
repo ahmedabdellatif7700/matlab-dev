@@ -55,23 +55,18 @@ A low-drive, noiseless recovery result establishes implementation consistency on
 
 ## Received optical power sweep
 
-Figure 13(c) is the priority unequalized comparison: fixed 16-QAM, 400 mVpp, received power -22 to -17.5 dBm. `photodetect` optionally normalizes the two incident optical bands to `received_optical_power_dbm`. The total average power is the sum of their individual band powers; the optical-frequency interference term averages out on a power meter. Both fields receive the same scale factor, preserving their relative powers and modulation. The reference plane is assumed to be the PD input, after fiber and amplification. Transmitter/MZM waveforms do not change across the sweep.
+The current link uses fixed 16-QAM at 400 mVpp, with ROP from -22 to -17.5 dBm. `photodetect.m` normalizes both optical bands to the total time-average power at the PD input, preserving their relative powers and modulation. `pd_responsivity_a_w=1` remains an effective reference convention. Fiber and amplification settings remain unchanged across powers.
 
-The power setting defaults to NaN, preserving the earlier normalized-field path. `pd_responsivity_a_w=1` is an effective reference value, not a measured detector parameter. Unreported RF amplification and receiver noise remain lumped into one aggregate real post-detector white-noise PSD. This optional power scaling is not a calibration of launched laser powers, an EDFA noise figure or an absolute electrical receiver budget.
+`link_configuration.m` retains the earlier effective gain 17.097235738210383 and aggregate post-detector IF-noise PSD 1.996608740342124e-25. Their provenance is `results/received_power/frozen_calibration.json`. They are conditional fitted values, not independently measured device parameters. The earlier curve was a partial quantitative match; removing the comparison tools does not change that qualification.
 
-`arof.match_received_power` fits effective driver gain and noise using only the -22 and -17.5 dBm endpoints. `arof.sweep_received_power` freezes that fit and generates full noisy waveforms at all ten powers with fresh seeds. Eight intermediate power points are excluded from numerical fitting. The study profile uses 16,384 calibration payload symbols and five independent validation seeds with 65,536 payload symbols each. The conditional Gaussian calibration surrogate is checked by the actual waveform/noise runs. Read-off allowances and source provenance are in `reference_data/README.md`.
+`ber_vs_rop.m` runs only the physical model and plots the simulated BER curve. It does not load paper targets, fit parameters, compute paper-match scores or run diagnostic experiments. The default uses five seeds, 65,536 payload symbols per seed and ten powers. Configure shorter runs through `cfg.sweep_seeds`, `cfg.sweep_payload_symbols` and `cfg.rop_dbm`. Outputs are per-seed counts, pooled BER/EVM, nominal Wilson bounds, run configuration and PNG/PDF curves under `datasets/physical_link/ber_vs_rop/`. Zero-error points are shown at their nominal upper bound. Bit dependence limits the interpretation of nominal intervals.
 
-This is a separate Figure 13(c) calibration: the Figures 9/11 operating-point fit is not silently repurposed or overwritten. Fixed aggregate receiver noise gives noise-to-signal power proportional to ROP^-2 because beat current is proportional to optical watts. Whether this accounts for the paper's curve is a model test. Shot noise, ASE beat noise, RIN, saturation and other unmeasured components are not claimed to be identified by two fitted endpoints.
+## Implementation: physical stages only
 
-`main.m` exposes the received-power comparison as stage 13, controlled by `received_power_comparison_enabled`. To run only this experiment, call `arof.match_received_power(arof.configuration())` after adding `matlab` to the path. Figures, per-seed counts and frozen calibration are saved under `datasets/physical_link/received_power/`; curated results are in `results/received_power/`.
-
-## Implementation: one function per file
-
-`main.m` connects the physical stages explicitly. Every stage is an ordinary function in its own file under `+arof/`:
+`main.m` connects these ordinary functions, each in its own file in `+arof/`:
 
 | Stage | File |
 |---|---|
-| Parameters and run controls | `configuration.m` |
 | QAM symbols and known prefix | `generate_symbols.m` |
 | Transmit RRC pulse shaping | `pulse_shape.m` |
 | IF modulation and analog reconstruction | `upconvert.m` |
@@ -84,10 +79,6 @@ This is a separate Figure 13(c) calibration: the Figures 9/11 operating-point fi
 | Matched RRC, prefix timing/gain and sampling | `recover.m` |
 | Payload BER and EVM | `measure.m` |
 
-`transmit.m`, `receive.m` and `simulate.m` compose these same functions for repeated study runs. `main.m` calls the individual stages directly, including the driver between IF reconstruction and MZM modulation. `filter_envelope.m` is the shared numerical filter.
+The shared FFT-filter implementation is in `+arof/private/filter_envelope.m`. Configuration and the BER-versus-ROP runner are outside the package, in `link_configuration.m` and `ber_vs_rop.m`. There are no active grouped classes, fitting functions, comparison tools, diagnostic reports or transmitter/receiver/simulation wrappers.
 
-The received-power study also uses separate functions: `received_power_settings.m`, `calibrate_received_power.m`, `sweep_received_power.m`, `plot_received_power.m` and `match_received_power.m`. Calibration uses `paper_operating_point.m` and `gaussian_bit_error.m`. `baseline_report.m` remains optional. There are no grouped static classes in the active link.
-
-Configuration is independent of the historical `mmw` suite. Set `cfg.profile="smoke"` for a short study or enable `cfg.baseline_report_enabled` for physical/numerical diagnostics. The default study preserves the established symbol counts, seeds and calibration targets.
-
-The earlier voltage experiments remain under `archive/+arof_history/`, outside the normal path; see [archive instructions](archive/README.md). Recorded Figures 9/11 and Figure 13(c) fits remain alternative effective parameterizations, not one jointly validated device model. Splitting functions into files changes the organization, not the physical model or result data.
+The earlier tools remain accessible in the existing `archive/+arof_history/` for provenance, outside the normal path. Stored figures and data are preserved. The current cleanup changes organization and removes refitting from normal execution; it does not claim additional experimental validation.
