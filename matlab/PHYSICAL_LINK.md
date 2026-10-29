@@ -81,4 +81,4 @@ The current link uses fixed 16-QAM at 400 mVpp, with ROP from -22 to -17.5 dBm. 
 
 The shared FFT-filter implementation is in `+arof/private/filter_envelope.m`. Configuration and the BER-versus-ROP runner are outside the package, in `link_configuration.m` and `ber_vs_rop.m`. There are no active grouped classes, fitting functions, comparison tools, diagnostic reports or transmitter/receiver/simulation wrappers.
 
-The earlier tools remain accessible in the existing `archive/+arof_history/` for provenance, outside the normal path. Stored figures and data are preserved. The current cleanup changes organization and removes refitting from normal execution; it does not claim additional experimental validation.
+The earlier tools and archived implementations have been removed from the working tree; their source remains in Git history. Stored figures and data are preserved. The current cleanup changes organization and removes refitting from normal execution; it does not claim additional experimental validation.
