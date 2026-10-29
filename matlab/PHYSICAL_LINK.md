@@ -55,7 +55,7 @@ A low-drive, noiseless recovery result establishes implementation consistency on
 
 ## Unequalized experimental-curve comparison
 
-`main.m` now optionally runs `arof.replicate_unequalized` after the deterministic checks. This remains step 3, before any equalizer comparison. The reference points are approximate manual readings of Figures 9, 11 and 12; provenance and read-off allowances are in `reference_data/README.md`.
+The earlier exploratory helper `arof.replicate_unequalized` covers multiple published curves; it is no longer the active main path. `main.m` now calls `arof.match_unequalized_case` for only 16-QAM at 400 mVpp. This remains step 3, before any equalizer comparison. The reference points are approximate manual readings of Figures 9, 11 and 12; provenance and read-off allowances are in `reference_data/README.md`.
 
 The comparison fixes physical topology and tests unresolved device assumptions explicitly:
 
@@ -72,3 +72,11 @@ The remaining reference points are excluded from numerical fitting, but they hav
 Report overlays, raw errors/counts, nominal BER intervals, EVM seed spread and numerical discrepancies. A fitted point or qualitative trend match is not successful quantitative replication. Model qualification and equalizer work remain pending this comparison and review. `paper_comparison_enabled` and `paper_profile` in `+arof/configuration.m` control this experiment; the noiseless diagnostic configuration remains unchanged.
 
 Figure 13 also varies received power separately, with different plotted power ranges for different drive settings. It does not establish a common operating power for Figures 9, 11 and 12. Therefore mismatches in a shared-noise cross-figure prediction cannot uniquely identify a faulty component or its missing transfer curve.
+
+## Current single operating point
+
+The active targets are approximately 13.2% continuous-output EVM (Figure 9) and BER 10^(-3.09) (Figure 11), both at 16-QAM and 400 mVpp before the driver. Both metrics identify an effective operating-point driver gain and lumped real IF-noise PSD. Gain is constrained to 12.5–25, corresponding approximately to 5–10 Vpp at the MZM, rather than extrapolating an unreported full driver curve. This gain is not claimed to reproduce amplifier behavior at other inputs.
+
+A Gaussian decision-cell surrogate is used only for smooth parameter identification, using noiseless recovered sample means and prefix-only receiver gain. The complete physical model then injects actual noise with five preselected fresh seeds. Calibration and validation symbol counts match. Parameter fitting never uses those validation errors. Report raw bit counts, nominal intervals and EVM read-off tolerance; do not select favorable seeds or silently change targets.
+
+A successful result establishes a conditional calibrated single-point match. It does not establish that Figures 9 and 11 used identical received optical power, uniquely identify the missing component parameters, or independently reproduce the full experiment. Earlier 16-QAM/200 mVpp results matched EVM only and do not provide a published same-point BER target.

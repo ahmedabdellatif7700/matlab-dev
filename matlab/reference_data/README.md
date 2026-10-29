@@ -1,3 +1,9 @@
+## Active single case
+
+`main.m` now uses only `single_case_reference.csv`: 16-QAM, 400 mVpp before the driver, approximate EVM 13.2% from Figure 9 and unequalized BER 10^(-3.09) from Figure 11. Both values are calibration targets, not independent validation measurements. Their common received-power condition is an assumption. Simulation validation uses new random seeds after fitting is frozen.
+
+The broader readings below remain exploratory reference material; they are not the active scope.
+
 # Approximate unequalized reference points
 
 Source: Liu et al., JLT 2017, DOI 10.1109/JLT.2017.2717778, Figures 9, 11 and 12 (PDF pages 7 and 8; journal pages 4412–4413).

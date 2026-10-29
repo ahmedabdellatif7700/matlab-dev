@@ -1,0 +1,7 @@
+{
+  "normalized_rms_difference": 0.00067541582786630791,
+  "tolerance": 0.001,
+  "passed": true,
+  "evm_base_percent": 6.2119635923154108,
+  "evm_double_rate_percent": 6.2105235329304147
+}

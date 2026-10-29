@@ -42,8 +42,9 @@ receiver_baseband = arof.downconvert(cfg,wireless_link);
 rx = arof.recover(cfg,receiver_baseband,tx);
 rx_symbols = rx.sampled;
 
-%% 11. Unequalized payload BER and continuous-output EVM
+%% 11. Noiseless low-drive control: unequalized payload BER and EVM
 metrics = arof.measure(cfg,optical_tx,rx);
+fprintf("Noiseless low-drive control (not the 400 mVpp case):\n");
 disp(metrics);
 
 %% 12. Physical consistency controls and baseline figures (no equalizer)
@@ -51,12 +52,12 @@ result = struct("configuration",cfg,"tx",tx,"optical_tx",optical_tx, ...
     "optical_rx",optical_rx,"detected",detected,"rx",rx,"metrics",metrics);
 run_dir = arof.baseline_report(result);
 
-%% 13. Unequalized comparison against the paper (no equalizers)
-% Conditional identification: one reported voltage anchor and two 4-QAM
-% EVM calibration points. Remaining curves expose model discrepancies.
+%% 13. One unequalized paper operating point (no equalizers)
+% 16-QAM, 400 mVpp. Effective gain and noise are fitted to BOTH approximate
+% paper readings; new random seeds then test the frozen simulation settings.
 if cfg.paper_comparison_enabled
-    paper_settings = arof.paper_settings(cfg.paper_profile);
-    paper_run_dir = arof.replicate_unequalized(cfg,paper_settings);
+    paper_settings = arof.single_case_settings(cfg.paper_profile);
+    paper_run_dir = arof.match_unequalized_case(cfg,paper_settings);
 end
 
 %% 14. Physical-baseline review checkpoint

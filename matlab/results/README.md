@@ -1,3 +1,5 @@
+The active [single unequalized case](single_unequalized_case/README.md) is 16-QAM at 400 mVpp. Both published metric targets were used in calibration; fresh-seed simulations give 13.193% EVM and BER 8.255e-4. This is a calibrated point match, not independent reconstruction of the experimental hardware or a result from an equalizer.
+
 The current single-link physical baseline is [here](physical_baseline/README.md). It establishes unequalized signal recovery and numerical consistency, not equalizer or NN performance. The studies below use earlier models and remain historical results.
 
 # Validated millimeter-wave equalizer studies

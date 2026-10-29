@@ -1,0 +1,12 @@
+{
+  "evm_percent": 13.192916179892791,
+  "ber": 0.00082550048828125,
+  "bit_errors": 1082,
+  "bits": 1.31072E+6,
+  "ber_lower": 0.00077777406595091331,
+  "ber_upper": 0.000876152971306391,
+  "target_evm_percent": 13.2,
+  "target_ber": 0.00081283051616409948,
+  "evm_within_read_allowance": true,
+  "ber_point_within_read_allowance": true
+}

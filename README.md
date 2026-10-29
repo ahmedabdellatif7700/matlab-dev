@@ -1,3 +1,5 @@
+The active paper comparison is now **one unequalized 16-QAM point at 400 mVpp**, matching both approximate EVM and BER readings through explicit operating-point calibration. [Results, parameters and caveats](matlab/results/single_unequalized_case/README.md). No equalizer is used. `main.m` retains the separate low-drive physical diagnostic; its older near-zero BER is not the impaired case.
+
 # Current work: one physical A-RoF link
 
 Run `matlab/main.m` to establish the modular physical baseline described in [METHODOLOGY.md](METHODOLOGY.md) and [matlab/PHYSICAL_LINK.md](matlab/PHYSICAL_LINK.md). This stage runs no equalizer. The agreed review checkpoint is the physical baseline before dataset export and comparison. See [baseline results and assumptions](matlab/results/physical_baseline/README.md).

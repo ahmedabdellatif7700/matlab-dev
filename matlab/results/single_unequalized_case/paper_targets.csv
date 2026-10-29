@@ -1,0 +1,3 @@
+figure,modulation,input_vpp_mv,metric,value,read_uncertainty,uncertainty_units
+9,16,400,evm_percent,13.2,0.5,percentage points
+11,16,400,ber,0.0008128305161640995,0.06,log10(BER)
