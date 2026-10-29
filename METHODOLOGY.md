@@ -1,5 +1,46 @@
 # Methodology: neural equalization of a 60 GHz link
 
+## Agreed research direction — 29 October 2026
+
+This section records the user's current decisions and takes precedence over the historical experiment description below. Sections 1–13 document the earlier completed benchmark; its bit-output/BCE/AdamW and multiplication-budget choices are not the agreed requirements for the next implementation.
+
+### Research part 1: communication performance
+
+- Identify physically justified millimeter-wave impairment conditions in which candidate NNs demonstrate a clear BER or EVM advantage over reasonable, well-tuned FFE and Volterra baselines.
+- Use FFE, Volterra and NN as the receiver families. Polynomial bit classifiers and RBF classifiers are not required in the new experiment.
+- Do not make a matched multiplication budget the main objective or success criterion. Report complexity as supporting information.
+- BER or EVM may be primary, according to the experiment. Continuous I/Q predictions support both symbol-domain EVM and constellation-based BER evaluation.
+- MATLAB generates the impaired link waveforms and exports the data used by Python for training, validation, testing and inference. Preserve the familiar MAT-file interface.
+- Candidate NNs must train successfully using sequential, sample-by-sample online SGD, matching the intended on-chip training process. Good performance under AdamW or LBFGS alone does not qualify a candidate for the hardware study.
+- The supplied reference dataset is 4-QAM. Extending MATLAB data generation and evaluation to 16-QAM and 64-QAM is permitted. BER must use constellation decisions and Gray-bit demapping, not sign decisions alone.
+- NN gains must be supported by results. A condition in which a baseline wins cannot be represented as an NN success.
+
+### Research part 2: on-chip training and live adaptation
+
+- Target platform: AMD Kria KV260.
+- The intended operating mode is live supervised adaptation using known transmitted training symbols, rather than only repeated offline training on stored datasets.
+- Hardware changes are allowed, including network dimensions/depth, RAM layout/capacity, activation functions and activation-parameter support. The existing 4–12–2 design is a reference, not a mandatory topology.
+- Use the supplied Python integer model as the reference for arithmetic order, quantization, rounding, saturation and pre-update-weight backpropagation. Q8.24 and the existing sigmoid implementation are the starting reference; alternative precision/activation choices must be evaluated explicitly.
+- Evaluate communication performance and training convergence alongside FPGA resources, training/inference throughput and latency, tool-estimated power, and measured board power where feasible.
+- Distinguish measured board-level power from tool-estimated FPGA power, including their different boundaries and operating conditions.
+- The supplied model's word-for-word RTL agreement is reported by its accompanying documentation; it has not been independently re-established in this project review.
+
+### Implementation boundary and open decisions
+
+Record these decisions now; do not treat them as approval to implement a new training pipeline. Agree on the implementation scope before changing model, dataset, or RTL behavior.
+
+Still to decide:
+
+1. Required streaming rate: full communication symbol rate, or a controlled-rate live FPGA demonstrator. Existing engine throughput must not be assumed to support a 1 Gbaud stream.
+2. Training-symbol framing: initial acquisition sequence, periodic training bursts/pilots, and behavior between training intervals.
+3. Time variation used to test adaptation: which channel/nonlinearity parameters change, their trajectories, and the rate of change.
+4. Final clock target, power measurement boundary and equipment, and how inference/training activity is controlled for power comparisons.
+
+A proposed next implementation is a continuous-I/Q MSE receiver trained with online SGD, compared with FFE and Volterra, followed by an explicitly matched fixed-point replay and training-symbol-based adaptation experiments. This proposal remains to be approved; the previous bitwise benchmark remains historical evidence.
+
+---
+
+
 ## 1. What we are studying
 
 We are studying whether a compact neural receiver can compensate nonlinear millimeter-wave link impairments more effectively than the tested conventional receivers within a limited inference budget.
