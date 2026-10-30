@@ -22,3 +22,7 @@ Independent jobs can use `--only reference`, `--only bias_offset` or `--only dri
 The older `legacy` and `research` dispatch modes, `tuning/`, ONNX and Q8.8 inference utilities remain for provenance. They are not part of the current experiment and their historical artifact files are not Q8.24 results. The removed MATLAB scenario runners cannot be used to launch them from the current physical baseline. Use the explicit `--workflow adaptive` command above.
 
 The adaptive workflow also writes side-by-side I/Q constellations in `constellations/` for every condition/power. `--phase report` regenerates these from the saved predictions and MATLAB test files without retraining. [Saved gallery](../matlab/results/adaptive_equalizers/constellations/README.md).
+
+## Equalizer tuning
+
+Use `--preset tuned` for the 32-pass, scheduled-learning-rate refinement in `config.py: ADAPTIVE_TUNED`. The eight-pass baseline remains available unchanged. [Tuning protocol and fresh-test commands](../matlab/EQUALIZER_TUNING.md). With `--phase report --baseline-run <original-run>`, previously frozen LMS/ANN weights are evaluated on the new test records to produce paired before/after metrics and curves.

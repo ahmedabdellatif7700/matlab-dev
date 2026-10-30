@@ -90,10 +90,15 @@ def write_csv(path,rows):
         writer=csv.DictWriter(f,fieldnames=list(rows[0])); writer.writeheader(); writer.writerows(rows)
 
 
-def fit(model,x,y,vx,vy,scale,modulation,epochs,tag,curves):
+def fit(model,x,y,vx,vy,scale,modulation,epochs,tag,curves,schedule=None):
     best=float('inf'); best_state=None; best_epoch=0; fp.stats.clear()
     started=time.monotonic()
     for epoch in range(1,epochs+1):
+        if schedule:
+            factor=next(factor for start,factor in reversed(schedule) if epoch>=start)
+            rate=fp.to_q(tag['learning_rate']*factor)
+            if isinstance(model,Q824ANN): model.engine.lr_q24=rate
+            else: model.lr_q24=rate
         if isinstance(model,Q824ANN): model.activate()
         for a,b in zip(x,y): model.step(a,b)
         score=metrics(model.predict(vx),vy,scale,modulation)
@@ -106,7 +111,7 @@ def fit(model,x,y,vx,vy,scale,modulation,epochs,tag,curves):
                 training_seconds=time.monotonic()-started,saturations=int(sum(fp.stats.values())))
 
 
-def compare(run,only=None):
+def compare(run,only=None,settings=None):
     run=Path(run).resolve()
     with (run/'conditions.csv').open() as f: conditions=list(csv.DictReader(f))
     if only:
@@ -114,7 +119,7 @@ def compare(run,only=None):
         if not set(only).issubset(available): raise ValueError('Unknown comparison condition')
         conditions=[c for c in conditions if c['condition'] in only]
     out=run/('python_results_'+'_'.join(c['condition'] for c in conditions) if only else 'python_results')
-    settings=copy.deepcopy(ADAPTIVE)
+    settings=copy.deepcopy(ADAPTIVE if settings is None else settings)
     if (out/'settings.json').exists():
         if json.loads((out/'settings.json').read_text())!=settings:
             raise ValueError('Existing experiment has different settings; use a new run directory')
@@ -135,7 +140,7 @@ def compare(run,only=None):
                 for rate in settings['lms_learning_rates']:
                     candidates.append(dict(receiver='LMS_FFE',taps=taps,hidden=0,activation='linear',learning_rate=rate))
             for a in settings['ann_candidates']:
-                candidates.append(dict(receiver='ANN',taps=2,**a))
+                candidates.append(dict(receiver='ANN',**{'taps':2,**a}))
             winners={}
             for index,spec in enumerate(candidates):
                 tag=dict(condition=condition['condition'],received_power_dbm=power,candidate=index,**spec)
@@ -158,7 +163,8 @@ def compare(run,only=None):
                     summary={k:row[k] for k in ('validation_evm_percent','best_epoch','updates','selected_updates','training_samples','training_seconds','saturations')}
                 else:
                     first_curve=len(curves)
-                    summary=fit(model,x,y,vx,vy,scale,modulation,settings['epochs'],tag,curves)
+                    summary=fit(model,x,y,vx,vy,scale,modulation,settings['epochs'],tag,curves,
+                                settings.get('learning_rate_schedule'))
                     row=dict(**tag,learning_rate_q8_24=rate,**summary)
                     state=model.state()
                     if group=='LMS_FFE': state=[v for weights in state[0] for v in weights]+state[1]
@@ -299,3 +305,52 @@ def combine_reports(run):
     report(out)
     report_constellations(out,conditions)
     return out
+
+
+def compare_previous(run, previous_run):
+    """Evaluate frozen pre-tuning models on the new, common test sequences."""
+    run=Path(run).resolve(); previous=Path(previous_run).resolve()/'python_results'
+    current=run/'python_results'; destination=current/'before_after'
+    destination.mkdir(exist_ok=True); (destination/'models').mkdir(exist_ok=True)
+    with (run/'conditions.csv').open() as f: conditions=list(csv.DictReader(f))
+    with (previous/'selected_parameters.csv').open() as f: parameters=list(csv.DictReader(f))
+    with (current/'test_metrics.csv').open() as f: tuned=list(csv.DictReader(f))
+    rows=[]
+    for condition in conditions:
+        name=condition['condition']; source=Path(condition['dataset_folder'])
+        with (source/'manifest.csv').open() as f:
+            tests=[r for r in csv.DictReader(f) if r['split']=='test']
+        for item in tests:
+            power=float(item['received_power_dbm']); test=dataset(source/item['file'])
+            tag=dict(condition=name,received_power_dbm=power,primary=True)
+            point=[r for r in tuned if r['condition']==name and float(r['received_power_dbm'])==power]
+            for row in point:
+                if row['receiver']=='unequalized' or row['primary']=='True':
+                    row=row.copy()
+                    if row['receiver']!='unequalized':
+                        row['receiver']='tuned_'+('LMS_FFE' if row['receiver']=='LMS_FFE' else 'ANN')
+                    rows.append(row)
+            old=[p for p in parameters if p['condition']==name and float(p['received_power_dbm'])==power and p['primary']=='True']
+            if len(old)!=2: raise ValueError('Expected frozen previous LMS and primary ANN')
+            for p in old:
+                group=p['receiver_group']; taps=int(p['taps']); rate=int(p['learning_rate_q8_24'])
+                with np.load(previous/'models'/f'{name}_{power:g}_{group}.npz',allow_pickle=False) as saved:
+                    state=saved['state_q8_24'].astype(np.int64).tolist()
+                if group=='LMS_FFE':
+                    model=Q824LMS(2*taps,rate); width=2*taps
+                    model.restore([[state[:width],state[width:2*width]],state[2*width:]])
+                    receiver='previous_LMS_FFE'
+                else:
+                    model=Q824ANN(2*taps,int(p['hidden']),p['activation'],rate,0)
+                    model.restore(state); receiver='previous_ANN'
+                prediction=model.predict(features(test,taps))
+                score=metrics(prediction,test['target'],test['scale'],test['modulation'])
+                rows.append(dict(**tag,receiver=receiver,**score))
+                np.savez_compressed(destination/'models'/f'{name}_{power:g}_{receiver}.npz',
+                                    predictions_q8_24=prediction)
+    write_csv(destination/'test_metrics.csv',rows)
+    (destination/'provenance.json').write_text(json.dumps(dict(
+        previous_run=str(previous_run),current_run=str(run),
+        previous_weights_retrained=False,test_sequences='Current run test splits for both versions'),indent=2)+'\n')
+    report(destination)
+    return destination

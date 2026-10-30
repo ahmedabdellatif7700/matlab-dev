@@ -1,7 +1,10 @@
-function folder = compare_adaptive_equalizers(profile,run_id)
+function folder = compare_adaptive_equalizers(profile,run_id,test_seed_offset)
 %COMPARE_ADAPTIVE_EQUALIZERS Export independent data for one A-RoF topology.
 % Python runs the Q8.24 LMS/ANN training stages after MATLAB export.
 if nargin<1, profile="study"; end
+if nargin<3, test_seed_offset=0; end
+assert(isscalar(test_seed_offset) && test_seed_offset>=0 && ...
+    mod(test_seed_offset,1)==0,'Invalid test seed offset.');
 cfg=link_configuration();
 % Numerical refinement for nonlinear/bias-offset conditions; AWG remains 4 GSa/s.
 cfg.internal_sample_rate_hz=40e9;
@@ -21,6 +24,7 @@ for k=1:numel(conditions)
     c.mzm_bias_v=condition.bias_v; c.driver_model=condition.driver;
     c.driver_saturation_v=condition.saturation_v; c.driver_smoothness=2;
     opts.seeds=[15101 15201 15301;15102 15202 15302;15103 15203 15303]+1000*(k-1);
+    opts.seeds(:,3)=opts.seeds(:,3)+test_seed_offset;
     data_folder=export_datasets(c,opts);
     rows=[rows; struct('condition',condition.name,'dataset_folder',string(data_folder), ...
         'mzm_bias_v',c.mzm_bias_v,'driver_model',c.driver_model, ...

@@ -1214,6 +1214,8 @@ def main():
     parser.add_argument('--run',type=Path,default=RESEARCH_RUN_DIR)
     parser.add_argument('--phase',choices=['discovery','extended-search','confirmation','report','snr-sweep'],default=RESEARCH_PHASE)
     parser.add_argument('--only',nargs='+')
+    parser.add_argument('--preset',choices=['baseline','tuned'],default='baseline')
+    parser.add_argument('--baseline-run',type=Path)
     args=parser.parse_args()
     if args.workflow=='adaptive':
         if args.run is None:
@@ -1221,8 +1223,12 @@ def main():
         from adaptive_comparison import compare, combine_reports
         if args.phase=='report':
             combine_reports(args.run)
+            if args.baseline_run:
+                from adaptive_comparison import compare_previous
+                compare_previous(args.run,args.baseline_run)
         else:
-            compare(args.run,args.only)
+            from config import ADAPTIVE, ADAPTIVE_TUNED
+            compare(args.run,args.only,ADAPTIVE_TUNED if args.preset=='tuned' else ADAPTIVE)
         return
     if args.workflow=='legacy' and args.run is None:
         legacy_main()

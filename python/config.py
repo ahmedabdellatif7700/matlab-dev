@@ -116,3 +116,23 @@ ADAPTIVE = dict(
     ],
     initialization_seed=42,
 )
+
+# Refinement of equalizers only: physical settings and loss remain unchanged.
+# All candidates retain one hidden layer and fit within 256 reference RAM words.
+ADAPTIVE_TUNED = dict(
+    epochs=32,
+    learning_rate_schedule=[[1,1.0],[17,0.5],[25,0.25]],
+    lms_taps=[2,5,9],
+    lms_learning_rates=[0.0000625,0.00025,0.001],
+    ann_candidates=[
+        dict(taps=2,hidden=12,activation="sigmoid",learning_rate=0.016),
+        dict(taps=2,hidden=16,activation="sigmoid",learning_rate=0.016),
+        dict(taps=2,hidden=12,activation="tanh",learning_rate=0.004),
+        dict(taps=2,hidden=12,activation="tanh",learning_rate=0.008),
+        dict(taps=2,hidden=16,activation="tanh",learning_rate=0.004),
+        dict(taps=2,hidden=16,activation="tanh",learning_rate=0.008),
+        dict(taps=3,hidden=16,activation="tanh",learning_rate=0.004),
+        dict(taps=3,hidden=16,activation="tanh",learning_rate=0.008),
+    ],
+    initialization_seed=42,
+)
