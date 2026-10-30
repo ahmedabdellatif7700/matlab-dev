@@ -1,0 +1,137 @@
+[
+  {
+    "condition": "reference",
+    "file": "rop_-22.0_dbm/train.mat",
+    "sha256": "20c9e1bfd370751d093c8a15e9b35d0d599dd55a1f8eb504919c59b20c683f2c"
+  },
+  {
+    "condition": "reference",
+    "file": "rop_-22.0_dbm/validation.mat",
+    "sha256": "a2c549b91713c91fdeca0c785a458617f639d02aec3908cf74d55ad7212b1f24"
+  },
+  {
+    "condition": "reference",
+    "file": "rop_-22.0_dbm/test.mat",
+    "sha256": "2957ccc4cd1f37dff33e70e4254b5580e9005fe510699f54c8c2c8e368d1f5c8"
+  },
+  {
+    "condition": "reference",
+    "file": "rop_-20.0_dbm/train.mat",
+    "sha256": "ccd62ff307c75b584366b67749ce29a7d3ffe04423a5e2c9556813472c221fec"
+  },
+  {
+    "condition": "reference",
+    "file": "rop_-20.0_dbm/validation.mat",
+    "sha256": "3e149d0f354c21de67ccb6e6d8479562e70503288f41a9a1279a216e0810ce2c"
+  },
+  {
+    "condition": "reference",
+    "file": "rop_-20.0_dbm/test.mat",
+    "sha256": "1665fbf4644b94e9abb53fd6a0ccc1de7eed18e4d31b9ceffaa2771008bc566d"
+  },
+  {
+    "condition": "reference",
+    "file": "rop_-17.5_dbm/train.mat",
+    "sha256": "bd63c54c4c771418a312846b443fd3e75c86d6743dd1661c0634bc6965f500d9"
+  },
+  {
+    "condition": "reference",
+    "file": "rop_-17.5_dbm/validation.mat",
+    "sha256": "5488e5ced7363b92ebe35d79db55f8eb6ce5adfac5a633820800cea435b98f08"
+  },
+  {
+    "condition": "reference",
+    "file": "rop_-17.5_dbm/test.mat",
+    "sha256": "b17617c8d8d03534b0cc1830f747c75e1a2bea9a20dbbb1ccc772806d8e91ebc"
+  },
+  {
+    "condition": "bias_offset",
+    "file": "rop_-22.0_dbm/train.mat",
+    "sha256": "1de36f74064debee5291ff6422b666db663933d86e0810300c2b93e3a2a8d8a1"
+  },
+  {
+    "condition": "bias_offset",
+    "file": "rop_-22.0_dbm/validation.mat",
+    "sha256": "61021d015d3006017efd0ceff11112665b445979bcaf016244e5fc91b8471d88"
+  },
+  {
+    "condition": "bias_offset",
+    "file": "rop_-22.0_dbm/test.mat",
+    "sha256": "5ca71b7b5e96e6c0f08a6c6d9f0eff785aa49566c47ef9d28208ce86a1b87d7a"
+  },
+  {
+    "condition": "bias_offset",
+    "file": "rop_-20.0_dbm/train.mat",
+    "sha256": "62227231ab76bdef808d0582df7a1ed37dc7b249bf1cca2e228b28f6ac9677ea"
+  },
+  {
+    "condition": "bias_offset",
+    "file": "rop_-20.0_dbm/validation.mat",
+    "sha256": "8aa9ceda73904e86f836a61a11c46a3c8802f73742119269948dc45b8d0d72bb"
+  },
+  {
+    "condition": "bias_offset",
+    "file": "rop_-20.0_dbm/test.mat",
+    "sha256": "e403b8825c07a9955884d427862526222157ed63969ceb21284116004490aeda"
+  },
+  {
+    "condition": "bias_offset",
+    "file": "rop_-17.5_dbm/train.mat",
+    "sha256": "3f754e069945da398cd52c38a99190b0f04ac8c00e070e677c80aae836eb8a8a"
+  },
+  {
+    "condition": "bias_offset",
+    "file": "rop_-17.5_dbm/validation.mat",
+    "sha256": "738cc5c476f2c20ca86bf8d6b376fd49378fb442c20e50005e65ce32f8795a97"
+  },
+  {
+    "condition": "bias_offset",
+    "file": "rop_-17.5_dbm/test.mat",
+    "sha256": "020aa3896c80a6173b407165c7d6c44719b28effbead1a87a0bb53eecf7a0e17"
+  },
+  {
+    "condition": "driver_compression",
+    "file": "rop_-22.0_dbm/train.mat",
+    "sha256": "bfa8e23e1e9680e373b09213ced0f59dce31fcdc422515d8334569d97ab36119"
+  },
+  {
+    "condition": "driver_compression",
+    "file": "rop_-22.0_dbm/validation.mat",
+    "sha256": "ed2a0715cb5d41b86edd8d6ade0d8ee8d85ee326ffc0474eb7bd7e1d3d96b93b"
+  },
+  {
+    "condition": "driver_compression",
+    "file": "rop_-22.0_dbm/test.mat",
+    "sha256": "fcd12625e216bfd6014d1475f52b249208000bd99ef7d29747a93ae333181c24"
+  },
+  {
+    "condition": "driver_compression",
+    "file": "rop_-20.0_dbm/train.mat",
+    "sha256": "9f60fd0d1fc4e1db6af81f8be6a14e60825d0a891783ccf4a85803e50053aac1"
+  },
+  {
+    "condition": "driver_compression",
+    "file": "rop_-20.0_dbm/validation.mat",
+    "sha256": "e4b7ad38f70a19c3057c4237eccba251b62a82e435f1f8cb419bc4eb5e69a040"
+  },
+  {
+    "condition": "driver_compression",
+    "file": "rop_-20.0_dbm/test.mat",
+    "sha256": "a01e7dae5f0a583e0d9821996c502a4d0c9c7aef0964cae0ebaef3a6fe9f92d0"
+  },
+  {
+    "condition": "driver_compression",
+    "file": "rop_-17.5_dbm/train.mat",
+    "sha256": "81feaf2da7489d9c89a1ab3aa3f96966587833af54415a5e4abb814feeabebfd"
+  },
+  {
+    "condition": "driver_compression",
+    "file": "rop_-17.5_dbm/validation.mat",
+    "sha256": "91bc24da1f0e9850902810af99e8035aabe0bea5eba3db1c78000cc308ad0de3"
+  },
+  {
+    "condition": "driver_compression",
+    "file": "rop_-17.5_dbm/test.mat",
+    "sha256": "902288d1d46b563b89b24cf491bbe5385be362b744c507f3b52c25107a7c75f6"
+  }
+]

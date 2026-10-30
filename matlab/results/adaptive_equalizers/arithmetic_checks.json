@@ -1,0 +1,21 @@
+{
+  "supplied_engine_phase_equivalence": {
+    "steps": 64,
+    "phases_per_step": 4,
+    "words_compared_per_phase": 256,
+    "passed": true
+  },
+  "extended_widths_tanh_smoke": {
+    "widths": [
+      12,
+      16
+    ],
+    "passed": true,
+    "rtl_verified": false
+  },
+  "lms_linear_system_identification": {
+    "initial_mse": 0.2551845236002164,
+    "final_mse": 1.1273802897348386e-10,
+    "passed": true
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "epochs": 8,
+  "lms_taps": [
+    2,
+    5,
+    9
+  ],
+  "lms_learning_rates": [
+    0.00025,
+    0.001,
+    0.004
+  ],
+  "ann_candidates": [
+    {
+      "hidden": 12,
+      "activation": "sigmoid",
+      "learning_rate": 0.004
+    },
+    {
+      "hidden": 12,
+      "activation": "sigmoid",
+      "learning_rate": 0.016
+    },
+    {
+      "hidden": 12,
+      "activation": "tanh",
+      "learning_rate": 0.001
+    },
+    {
+      "hidden": 12,
+      "activation": "tanh",
+      "learning_rate": 0.004
+    },
+    {
+      "hidden": 16,
+      "activation": "tanh",
+      "learning_rate": 0.001
+    },
+    {
+      "hidden": 16,
+      "activation": "tanh",
+      "learning_rate": 0.004
+    }
+  ],
+  "initialization_seed": 42
+}

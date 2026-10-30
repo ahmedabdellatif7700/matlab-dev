@@ -1,0 +1,17 @@
+{
+  "run": "adaptive_40g_01",
+  "workflow_code_commit": "d55126b",
+  "branch": "codex/development",
+  "model_states": "Ignored local run directories: python_results_<condition>/models/",
+  "sampling_check": {
+    "noise_enabled": false,
+    "payload_symbols": 4096,
+    "seed": 15101,
+    "received_power_dbm": -17.5,
+    "internal_sample_rates_hz": [
+      40000000000.0,
+      80000000000.0
+    ],
+    "threshold": 0.001
+  }
+}

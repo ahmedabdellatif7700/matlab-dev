@@ -1,0 +1,4 @@
+condition,normalized_rms_difference,tolerance,passed
+reference,0.000208138890927688,0.001,1
+bias_offset,0.000258841912797406,0.001,1
+driver_compression,0.000148459517159491,0.001,1

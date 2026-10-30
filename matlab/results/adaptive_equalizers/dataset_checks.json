@@ -1,0 +1,253 @@
+{
+  "passed": true,
+  "files_checked": 27,
+  "distinct_symbol_noise_seeds": 54,
+  "exact_q824_features_targets": true,
+  "matlab_python_ber_agreement": true,
+  "zero_import_saturations": true,
+  "records": [
+    {
+      "condition": "reference",
+      "split": "train",
+      "received_power_dbm": -22.0,
+      "samples": 8192,
+      "mzm_vpp_v": 6.8054738911411405,
+      "drive_rms_v": 0.07451902003394914,
+      "ber": 0.014373779296875
+    },
+    {
+      "condition": "reference",
+      "split": "validation",
+      "received_power_dbm": -22.0,
+      "samples": 4096,
+      "mzm_vpp_v": 6.808740993527952,
+      "drive_rms_v": 0.07426401173485737,
+      "ber": 0.0133056640625
+    },
+    {
+      "condition": "reference",
+      "split": "test",
+      "received_power_dbm": -22.0,
+      "samples": 65536,
+      "mzm_vpp_v": 6.809262266831183,
+      "drive_rms_v": 0.07394253545288723,
+      "ber": 0.0142364501953125
+    },
+    {
+      "condition": "reference",
+      "split": "train",
+      "received_power_dbm": -20.0,
+      "samples": 8192,
+      "mzm_vpp_v": 6.815113537616062,
+      "drive_rms_v": 0.07454180206745359,
+      "ber": 0.0035400390625
+    },
+    {
+      "condition": "reference",
+      "split": "validation",
+      "received_power_dbm": -20.0,
+      "samples": 4096,
+      "mzm_vpp_v": 6.806370938722229,
+      "drive_rms_v": 0.07571611353008739,
+      "ber": 0.002685546875
+    },
+    {
+      "condition": "reference",
+      "split": "test",
+      "received_power_dbm": -20.0,
+      "samples": 65536,
+      "mzm_vpp_v": 6.80635914563156,
+      "drive_rms_v": 0.0738176257431666,
+      "ber": 0.0027618408203125
+    },
+    {
+      "condition": "reference",
+      "split": "train",
+      "received_power_dbm": -17.5,
+      "samples": 8192,
+      "mzm_vpp_v": 6.808960362619901,
+      "drive_rms_v": 0.07490448983847328,
+      "ber": 0.000732421875
+    },
+    {
+      "condition": "reference",
+      "split": "validation",
+      "received_power_dbm": -17.5,
+      "samples": 4096,
+      "mzm_vpp_v": 6.809648404164122,
+      "drive_rms_v": 0.0750150160441463,
+      "ber": 0.0006103515625
+    },
+    {
+      "condition": "reference",
+      "split": "test",
+      "received_power_dbm": -17.5,
+      "samples": 65536,
+      "mzm_vpp_v": 6.803009895936223,
+      "drive_rms_v": 0.07383598632451217,
+      "ber": 0.0005340576171875
+    },
+    {
+      "condition": "bias_offset",
+      "split": "train",
+      "received_power_dbm": -22.0,
+      "samples": 8192,
+      "mzm_vpp_v": 6.812050907939309,
+      "drive_rms_v": 0.07477002261987821,
+      "ber": 0.0164794921875
+    },
+    {
+      "condition": "bias_offset",
+      "split": "validation",
+      "received_power_dbm": -22.0,
+      "samples": 4096,
+      "mzm_vpp_v": 6.810900400738072,
+      "drive_rms_v": 0.07484355373207764,
+      "ber": 0.0179443359375
+    },
+    {
+      "condition": "bias_offset",
+      "split": "test",
+      "received_power_dbm": -22.0,
+      "samples": 65536,
+      "mzm_vpp_v": 6.80792466512793,
+      "drive_rms_v": 0.07387534267141943,
+      "ber": 0.016819000244140625
+    },
+    {
+      "condition": "bias_offset",
+      "split": "train",
+      "received_power_dbm": -20.0,
+      "samples": 8192,
+      "mzm_vpp_v": 6.809022741900233,
+      "drive_rms_v": 0.07469297414948511,
+      "ber": 0.00518798828125
+    },
+    {
+      "condition": "bias_offset",
+      "split": "validation",
+      "received_power_dbm": -20.0,
+      "samples": 4096,
+      "mzm_vpp_v": 6.809694704338456,
+      "drive_rms_v": 0.07498721438926212,
+      "ber": 0.00457763671875
+    },
+    {
+      "condition": "bias_offset",
+      "split": "test",
+      "received_power_dbm": -20.0,
+      "samples": 65536,
+      "mzm_vpp_v": 6.813026637017678,
+      "drive_rms_v": 0.0742730206437005,
+      "ber": 0.004451751708984375
+    },
+    {
+      "condition": "bias_offset",
+      "split": "train",
+      "received_power_dbm": -17.5,
+      "samples": 8192,
+      "mzm_vpp_v": 6.8133738806538435,
+      "drive_rms_v": 0.07408919137089848,
+      "ber": 0.001556396484375
+    },
+    {
+      "condition": "bias_offset",
+      "split": "validation",
+      "received_power_dbm": -17.5,
+      "samples": 4096,
+      "mzm_vpp_v": 6.804650520402687,
+      "drive_rms_v": 0.07447780784294919,
+      "ber": 0.00189208984375
+    },
+    {
+      "condition": "bias_offset",
+      "split": "test",
+      "received_power_dbm": -17.5,
+      "samples": 65536,
+      "mzm_vpp_v": 6.806369096579,
+      "drive_rms_v": 0.0738775944908774,
+      "ber": 0.001277923583984375
+    },
+    {
+      "condition": "driver_compression",
+      "split": "train",
+      "received_power_dbm": -22.0,
+      "samples": 8192,
+      "mzm_vpp_v": 5.79252748241095,
+      "drive_rms_v": 0.07388627779813528,
+      "ber": 0.0125732421875
+    },
+    {
+      "condition": "driver_compression",
+      "split": "validation",
+      "received_power_dbm": -22.0,
+      "samples": 4096,
+      "mzm_vpp_v": 5.788363223977299,
+      "drive_rms_v": 0.07424600748348399,
+      "ber": 0.01104736328125
+    },
+    {
+      "condition": "driver_compression",
+      "split": "test",
+      "received_power_dbm": -22.0,
+      "samples": 65536,
+      "mzm_vpp_v": 5.788423642856417,
+      "drive_rms_v": 0.0736736081282597,
+      "ber": 0.012256622314453125
+    },
+    {
+      "condition": "driver_compression",
+      "split": "train",
+      "received_power_dbm": -20.0,
+      "samples": 8192,
+      "mzm_vpp_v": 5.791244801325827,
+      "drive_rms_v": 0.07423908703332915,
+      "ber": 0.00152587890625
+    },
+    {
+      "condition": "driver_compression",
+      "split": "validation",
+      "received_power_dbm": -20.0,
+      "samples": 4096,
+      "mzm_vpp_v": 5.7882279410895645,
+      "drive_rms_v": 0.07419204493475794,
+      "ber": 0.00103759765625
+    },
+    {
+      "condition": "driver_compression",
+      "split": "test",
+      "received_power_dbm": -20.0,
+      "samples": 65536,
+      "mzm_vpp_v": 5.791729058800209,
+      "drive_rms_v": 0.07381486897373322,
+      "ber": 0.00122833251953125
+    },
+    {
+      "condition": "driver_compression",
+      "split": "train",
+      "received_power_dbm": -17.5,
+      "samples": 8192,
+      "mzm_vpp_v": 5.788309851963673,
+      "drive_rms_v": 0.07442498037150143,
+      "ber": 6.103515625e-05
+    },
+    {
+      "condition": "driver_compression",
+      "split": "validation",
+      "received_power_dbm": -17.5,
+      "samples": 4096,
+      "mzm_vpp_v": 5.7871905861375605,
+      "drive_rms_v": 0.07495097856955109,
+      "ber": 0.0
+    },
+    {
+      "condition": "driver_compression",
+      "split": "test",
+      "received_power_dbm": -17.5,
+      "samples": 65536,
+      "mzm_vpp_v": 5.792631237891136,
+      "drive_rms_v": 0.07403562682636851,
+      "ber": 4.57763671875e-05
+    }
+  ]
+}

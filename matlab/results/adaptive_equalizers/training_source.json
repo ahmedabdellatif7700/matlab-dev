@@ -1,0 +1,21 @@
+{
+  "source": "user-supplied nn_training_model.zip",
+  "sha256": "64fae9aca183f7927684cca8d31aceae42116c1c4b3e1945ca8a843f45585226",
+  "source_identical": [
+    "__init__.py",
+    "act_sigmoid.py",
+    "fixedpoint.py"
+  ],
+  "extended_from_source": [
+    "activation.py",
+    "backward_atomic.py",
+    "controller.py",
+    "forward_atomic.py",
+    "loss_atomic.py",
+    "memory_map.py",
+    "update_atomic.py"
+  ],
+  "added": [
+    "act_tanh.py"
+  ]
+}
