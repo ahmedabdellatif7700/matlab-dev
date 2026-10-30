@@ -211,17 +211,27 @@ def report(out):
     with (out/'test_metrics.csv').open() as f: rows=list(csv.DictReader(f))
     conditions=list(dict.fromkeys(r['condition'] for r in rows))
     for metric,label,log in [('ber','BER',True),('evm_percent','EVM (%)',False)]:
+        zero_errors=False
         fig,axes=plt.subplots(1,len(conditions),figsize=(5*len(conditions),4),squeeze=False)
         for ax,condition in zip(axes[0],conditions):
             subset=[r for r in rows if r['condition']==condition]
             for receiver in dict.fromkeys(r['receiver'] for r in subset):
                 data=sorted([r for r in subset if r['receiver']==receiver],key=lambda r:float(r['received_power_dbm']))
                 x=[float(r['received_power_dbm']) for r in data]
-                y=[float(r[metric]) if float(r[metric])>0 or not log else float(r['ber_upper']) for r in data]
-                ax.plot(x,y,'o-',label=receiver)
+                y=[float(r[metric]) if float(r[metric])>0 or not log else np.nan for r in data]
+                line,=ax.plot(x,y,'o-',label=receiver)
+                limits=[r for r in data if log and float(r[metric])==0]
+                if limits:
+                    zero_errors=True
+                    ax.scatter([float(r['received_power_dbm']) for r in limits],
+                        [float(r['ber_upper']) for r in limits],marker='v',s=55,
+                        facecolors='none',edgecolors=line.get_color())
             if log: ax.set_yscale('log')
             ax.set_title(condition); ax.set_xlabel('ROP at PD (dBm)'); ax.set_ylabel(label); ax.grid(True,alpha=.3); ax.legend(fontsize=7)
-        fig.tight_layout(); fig.savefig(out/f'{metric}_comparison.png',dpi=180); fig.savefig(out/f'{metric}_comparison.pdf'); plt.close(fig)
+        if zero_errors:
+            fig.text(.5,.015,'Open triangles: zero observed errors; nominal 95% Wilson upper endpoint.',ha='center',fontsize=9)
+        fig.tight_layout(rect=(0,.07 if zero_errors else 0,1,1))
+        fig.savefig(out/f'{metric}_comparison.png',dpi=180); fig.savefig(out/f'{metric}_comparison.pdf'); plt.close(fig)
     report_learning_curves(out)
 
 
@@ -258,7 +268,7 @@ def report_learning_curves(out):
         plt.close(fig)
 
 
-def report_constellations(out, conditions):
+def report_constellations(out, conditions, receiver_names=None):
     """Plot aligned held-out samples from saved inference, without retraining."""
     import matplotlib
     matplotlib.use('Agg')
@@ -273,8 +283,11 @@ def report_constellations(out, conditions):
         for item in tests:
             power=float(item['received_power_dbm']); test=dataset(source/item['file'])
             point=[r for r in rows if r['condition']==name and float(r['received_power_dbm'])==power]
-            ann=next(r['receiver'] for r in point if r['receiver'].startswith('ANN') and r['primary']=='True')
-            receivers=['unequalized','LMS_FFE',ann]
+            if receiver_names is None:
+                ann=next(r['receiver'] for r in point if r['receiver'].startswith('ANN') and r['primary']=='True')
+                receivers=['unequalized','LMS_FFE',ann]
+            else:
+                receivers=list(receiver_names)
             predictions=[np.asarray(features(test,1),dtype=np.int32)]
             for receiver in receivers[1:]:
                 with np.load(out/'models'/f'{name}_{power:g}_{receiver}.npz',allow_pickle=False) as saved:
@@ -300,7 +313,8 @@ def report_constellations(out, conditions):
             for ax,receiver,p,score in zip(axes,receivers,iq,scores):
                 ax.scatter(p[:shown,0],p[:shown,1],s=2,alpha=.22,color='tab:blue',rasterized=True)
                 ax.scatter(ideal_i,ideal_q,s=40,marker='x',color='black',linewidths=1,label='Ideal QAM')
-                label={'unequalized':'Unequalized','LMS_FFE':'LMS FFE'}.get(receiver,receiver.replace('_',' '))
+                label={'unequalized':'Unequalized','LMS_FFE':'LMS FFE',
+                       'previous_ANN':'Previous ANN','tuned_ANN':'Tuned ANN'}.get(receiver,receiver.replace('_',' '))
                 ax.set_title(f"{label}\nBER {score['ber']:.3g} | EVM {score['evm_percent']:.2f}%")
                 ax.set(xlabel='In-phase (I)',ylabel='Quadrature (Q)',xlim=(-limit,limit),ylim=(-limit,limit))
                 ax.set_aspect('equal'); ax.grid(True,alpha=.2)
@@ -312,7 +326,7 @@ def report_constellations(out, conditions):
             stem=f'{name}_{power:g}_dbm'
             fig.savefig(destination/(stem+'.png'),dpi=180)
             fig.savefig(destination/(stem+'.pdf')); plt.close(fig)
-            records.append(dict(condition=name,received_power_dbm=power,ann_receiver=ann,
+            records.append(dict(condition=name,received_power_dbm=power,ann_receiver=receivers[-1],
                 displayed_symbols=shown,test_symbols=len(test['target']),first_test_row=1,
                 filename=stem+'.png'))
     write_csv(destination/'manifest.csv',records)
@@ -362,7 +376,11 @@ def compare_previous(run, previous_run):
                 if row['receiver']=='unequalized' or row['primary']=='True':
                     row=row.copy()
                     if row['receiver']!='unequalized':
+                        original=row['receiver']
                         row['receiver']='tuned_'+('LMS_FFE' if row['receiver']=='LMS_FFE' else 'ANN')
+                        with np.load(current/'models'/f'{name}_{power:g}_{original}.npz',allow_pickle=False) as saved:
+                            np.savez_compressed(destination/'models'/f"{name}_{power:g}_{row['receiver']}.npz",
+                                predictions_q8_24=saved['predictions_q8_24'])
                     rows.append(row)
             old=[p for p in parameters if p['condition']==name and float(p['received_power_dbm'])==power and p['primary']=='True']
             if len(old)!=2: raise ValueError('Expected frozen previous LMS and primary ANN')
@@ -387,4 +405,5 @@ def compare_previous(run, previous_run):
         previous_run=str(previous_run),current_run=str(run),
         previous_weights_retrained=False,test_sequences='Current run test splits for both versions'),indent=2)+'\n')
     report(destination)
+    report_constellations(destination,conditions,['unequalized','previous_ANN','tuned_ANN'])
     return destination

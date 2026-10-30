@@ -46,3 +46,5 @@ python python/equalizer.py --workflow adaptive \
 The `before_after/` subdirectory records old frozen and newly tuned receivers on the same fresh test symbols.
 
 Reports include epoch-wise validation-EVM curves for the selected LMS and ANN at each power, with stars marking the selected checkpoints. A best checkpoint at epoch 32 does not prove optimization has converged. The 256-word RAM statement concerns model working state; it excludes the full training record.
+
+Paired constellation panels additionally show unequalized, previous ANN and tuned ANN on the same fresh test samples under `before_after/constellations/`. They reuse prediction words; no new fitting or output snapping is applied.
