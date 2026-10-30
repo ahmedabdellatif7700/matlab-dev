@@ -26,3 +26,5 @@ The adaptive workflow also writes side-by-side I/Q constellations in `constellat
 ## Equalizer tuning
 
 Use `--preset tuned` for the 32-pass, scheduled-learning-rate refinement in `config.py: ADAPTIVE_TUNED`. The eight-pass baseline remains available unchanged. [Tuning protocol and fresh-test commands](../matlab/EQUALIZER_TUNING.md). With `--phase report --baseline-run <original-run>`, previously frozen LMS/ANN weights are evaluated on the new test records to produce paired before/after metrics and curves.
+
+Latest receiver refinement: [paired fresh-test results, tuned parameters and constellations](../matlab/results/equalizer_tuning/README.md). The selected 4-16-2 tanh model uses an initial rate of 0.008, reduced to 0.004 and 0.002, over 32 passes; the physical link remains unchanged.

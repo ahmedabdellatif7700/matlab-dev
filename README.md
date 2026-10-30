@@ -17,3 +17,5 @@ Older MATLAB scenario suites, archived implementations and their runners have be
 The next experiment compares LMS FFE and ANN using the supplied training model's stages and Q8.24 arithmetic. Run `compare_adaptive_equalizers('study')` in MATLAB, then `python python/equalizer.py --workflow adaptive --run <printed-directory>`. [Physical conditions, selection method and limitations](matlab/ADAPTIVE_COMPARISON.md); [Python entry point](python/README.md). The standalone physical-stage baseline remains available unchanged.
 
 Completed LMS/ANN comparison: [BER/EVM figures, parameter tables and limitations](matlab/results/adaptive_equalizers/README.md). The selected ANN lowers observed BER at all nine points; the compressed-driver high-power result has only two versus four errors and needs longer independent confirmation.
+
+Latest receiver refinement: [paired fresh-test results, tuned parameters and constellations](matlab/results/equalizer_tuning/README.md). The selected 4-16-2 tanh model uses an initial rate of 0.008, reduced to 0.004 and 0.002, over 32 passes; the physical link remains unchanged.

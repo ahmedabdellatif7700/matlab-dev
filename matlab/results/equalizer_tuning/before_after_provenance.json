@@ -1,0 +1,6 @@
+{
+  "previous_run": "datasets/physical_link/adaptive_equalizers/adaptive_40g_01",
+  "current_run": "/home/ahmedabdellatif/dev/matlab-dev/datasets/physical_link/adaptive_equalizers/adaptive_tuned_01",
+  "previous_weights_retrained": false,
+  "test_sequences": "Current run test splits for both versions"
+}

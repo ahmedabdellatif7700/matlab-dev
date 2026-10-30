@@ -1,0 +1,58 @@
+{
+  "workflow_code_commit": "7ad1e5a",
+  "original_engine_phase_equivalence": {
+    "samples": 64,
+    "phases_per_sample": 4,
+    "ram_words_compared": 256,
+    "passed": true
+  },
+  "original_frozen_model_restoration": {
+    "operating_points": 9,
+    "models_per_point": 2,
+    "bit_errors_and_evm_reproduced": true
+  },
+  "learning_rate_schedule": {
+    "test_initial_rate": 0.008,
+    "test_schedule": [
+      [
+        1,
+        1.0
+      ],
+      [
+        3,
+        0.5
+      ],
+      [
+        4,
+        0.25
+      ]
+    ],
+    "observed_q824_words": [
+      134218,
+      134218,
+      67109,
+      33554
+    ],
+    "passed": true
+  },
+  "extended_history_training_inference": {
+    "architecture": [
+      6,
+      16,
+      2
+    ],
+    "ram_words": 256,
+    "passed": true,
+    "rtl_verified": false
+  },
+  "matlab_code_analyzer_passed": true,
+  "python_syntax_passed": true,
+  "physical_parameters_changed": false,
+  "matching_first_eight_epochs": {
+    "matching_validation_rows": 648,
+    "passed": true,
+    "note": "Same candidates reproduce the original validation history before the new schedule changes"
+  },
+  "paired_constellation_metric_checks_passed": true,
+  "zero_error_plot_check_passed": true
+}

@@ -59,6 +59,12 @@ MATLAB exports independent training, validation and test records. Python uses th
 
 The physical-stage-only `main.m` remains unchanged. Export and receiver experiments have separate entry points outside `+arof/`. The earlier paper-curve agreement is partial and calibrated; it is not independent experimental validation of the added component conditions.
 
+## Receiver-parameter refinement
+
+The follow-up [tuning protocol](matlab/EQUALIZER_TUNING.md) expands training to 32 passes with scheduled learning rates and tests one extra causal symbol tap, while leaving the physical link fixed. Training/validation Q8.24 samples are unchanged; test symbol/noise seeds are fresh. Old frozen receivers are re-evaluated on those same fresh test records for a paired comparison. Validation selects 4-16-2 tanh at every point, with rates 0.008 / 0.004 / 0.002 across epochs 1–16 / 17–24 / 25–32. More input history does not win this search.
+
+[Results and constellation comparisons](matlab/results/equalizer_tuning/README.md) show lower observed EVM at all nine points and lower observed BER at eight relative to the original ANN on the same data. Low-power compression has a small BER regression. The selected checkpoints remain at epoch 32, so full convergence is not established. The study remains single-seed, offline and unqualified in RTL; hardware power/throughput and live adaptation are later steps.
+
 ## Historical baseline checkpoints
 
 Steps 1–3 establish the single physical link and its unequalized numerical baseline. [Baseline figures and diagnostics](matlab/results/physical_baseline/README.md) are the review material. The noiseless diagnostic does not reproduce experimental noise or sensitivity. Review the detector law, component-response approximations and missing calibration before proceeding to step 4. At that checkpoint, no new FFE/Volterra/NN comparison had been run for this link.

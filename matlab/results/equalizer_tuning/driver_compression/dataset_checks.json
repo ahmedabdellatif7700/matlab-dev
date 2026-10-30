@@ -1,0 +1,73 @@
+{
+  "condition": "driver_compression",
+  "passed": true,
+  "files": [
+    {
+      "file": "rop_-22.0_dbm/train.mat",
+      "split": "train",
+      "symbol_seed": 17101,
+      "noise_seed": 917101,
+      "sha256": "5ed565e6106673f3cd7c8173c6e6c6e9b498e5bec2c4baf55b08f35b7fcf6f97"
+    },
+    {
+      "file": "rop_-22.0_dbm/validation.mat",
+      "split": "validation",
+      "symbol_seed": 17201,
+      "noise_seed": 917201,
+      "sha256": "4f53c0bbedd29bfb183614818a346f50076b4fadf9d6715667c20ae38880675a"
+    },
+    {
+      "file": "rop_-22.0_dbm/test.mat",
+      "split": "test",
+      "symbol_seed": 57301,
+      "noise_seed": 957301,
+      "sha256": "d3b793816869cdea019e1edd6c6a779b000f09bcd10f098d8c5edeac7c15ce98"
+    },
+    {
+      "file": "rop_-20.0_dbm/train.mat",
+      "split": "train",
+      "symbol_seed": 17102,
+      "noise_seed": 917102,
+      "sha256": "66db39cd2a9597d1f3990d9f2e3046a6f32779d5a87feea87bb66975261cbea5"
+    },
+    {
+      "file": "rop_-20.0_dbm/validation.mat",
+      "split": "validation",
+      "symbol_seed": 17202,
+      "noise_seed": 917202,
+      "sha256": "abbcb5e1865b544d51f83747ab1bd30c480fc9618ae318c4a07f44cbc829bb9b"
+    },
+    {
+      "file": "rop_-20.0_dbm/test.mat",
+      "split": "test",
+      "symbol_seed": 57302,
+      "noise_seed": 957302,
+      "sha256": "d2c226d7b4a9e8cf70830387cc565037f578416e548a7108248dee69ebfae5de"
+    },
+    {
+      "file": "rop_-17.5_dbm/train.mat",
+      "split": "train",
+      "symbol_seed": 17103,
+      "noise_seed": 917103,
+      "sha256": "83f6da1470f4ad5d8301d163559e8907d8a4bae34784d37d13cbdb7315a08c45"
+    },
+    {
+      "file": "rop_-17.5_dbm/validation.mat",
+      "split": "validation",
+      "symbol_seed": 17203,
+      "noise_seed": 917203,
+      "sha256": "5b1bf11d8e92a04452ef0bfa66b6a77f27bcf25d4ba81043e4b6b3c6f4d3a0b8"
+    },
+    {
+      "file": "rop_-17.5_dbm/test.mat",
+      "split": "test",
+      "symbol_seed": 57303,
+      "noise_seed": 957303,
+      "sha256": "fdc6c682318d1ccc924ce0d5029939f0d19606fcd9bd1fe04932678d3a6c61db"
+    }
+  ],
+  "physical_parameters_unchanged": true,
+  "training_validation_q824_identical": true,
+  "test_seed_offset": 40000,
+  "zero_import_saturations": true
+}

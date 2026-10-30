@@ -1,0 +1,4 @@
+condition,received_power_dbm,ann_receiver,displayed_symbols,test_symbols,first_test_row,filename
+driver_compression,-22.0,ANN_tanh_16,8192,65536,1,driver_compression_-22_dbm.png
+driver_compression,-20.0,ANN_tanh_16,8192,65536,1,driver_compression_-20_dbm.png
+driver_compression,-17.5,ANN_tanh_16,8192,65536,1,driver_compression_-17.5_dbm.png

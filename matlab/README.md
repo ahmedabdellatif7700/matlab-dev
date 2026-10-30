@@ -32,3 +32,5 @@ Legacy scenario code, archived implementations and old runners have been removed
 `compare_adaptive_equalizers.m` reuses the physical stages for three declared component conditions. `dataset_configuration.m` and `export_datasets.m` write independent train/validation/test MAT files for Python. These are experiment/export functions outside `+arof/`; `main.m` remains the physical-stage runner. See [ADAPTIVE_COMPARISON.md](ADAPTIVE_COMPARISON.md) and [DATASETS.md](DATASETS.md).
 
 Completed LMS/ANN comparison: [BER/EVM figures, parameter tables and limitations](results/adaptive_equalizers/README.md). The selected ANN lowers observed BER at all nine points; the compressed-driver high-power result has only two versus four errors and needs longer independent confirmation.
+
+Latest receiver refinement: [paired fresh-test results, tuned parameters and constellations](results/equalizer_tuning/README.md). The selected 4-16-2 tanh model uses an initial rate of 0.008, reduced to 0.004 and 0.002, over 32 passes; the physical link remains unchanged.

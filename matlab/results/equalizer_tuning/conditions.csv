@@ -1,0 +1,4 @@
+condition,dataset_folder,mzm_bias_v,driver_model,driver_saturation_v,input_vpp_v,fiber_length_km
+reference,datasets/physical_link/equalizer_datasets/adaptive_tuned_01_reference,2.2,linear,Inf,0.4,15
+bias_offset,datasets/physical_link/equalizer_datasets/adaptive_tuned_01_bias_offset,2.42,linear,Inf,0.4,15
+driver_compression,datasets/physical_link/equalizer_datasets/adaptive_tuned_01_driver_compression,2.2,rapp_envelope,3.5,0.4,15
