@@ -1,0 +1,40 @@
+% Working journal-style draft. The target venue and author details are pending.
+\IfFileExists{IEEEtran.cls}{%
+  \documentclass[journal]{IEEEtran}
+}{%
+  \documentclass[10pt,twocolumn]{article}
+  \usepackage[a4paper,margin=18mm]{geometry}
+}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage[hidelinks]{hyperref}
+\title{A Q8.24 Framework for Online Neural Equalization in Millimeter-Wave Analog Radio-over-Fiber Links}
+\author{Author information to be added}
+\date{}
+\begin{document}
+\maketitle
+\noindent\textit{Working draft: provisional abstract and partial introduction. Quantitative equalizer results and FPGA/power claims are not yet included.}
+\begin{abstract}
+\input{abstract}
+\end{abstract}
+\noindent\textbf{Index terms---}Analog radio-over-fiber, millimeter-wave communications, neural equalization, online training, fixed-point arithmetic, FPGA.
+\section{Introduction}
+\input{introduction}
+\noindent\textit{To be completed: verified contribution statement, broader hardware-related literature review, and paper organization.}
+\section{Physical Link and Impairment Model}
+\textit{Planned: component models, parameters, calibration provenance, impairment assumptions, and numerical consistency.}
+\section{Adaptive Equalizers and Training Protocol}
+\textit{Planned: LMS baseline, neural configurations, supervised framing, independent datasets, and validation/test protocol.}
+\section{Q8.24 Training and Inference Architecture}
+\textit{Planned: arithmetic, activation/derivative, memory, phase control, and Python/RTL agreement.}
+\section{Communication Performance}
+\textit{Pending: independent-test BER/EVM, convergence, activation comparison, error counts, and limitations.}
+\section{FPGA Implementation and Live Adaptation}
+\textit{Pending: KV260 implementation, controlled-rate adaptation, resources, latency, throughput, and overload handling.}
+\section{Power and Energy Evaluation}
+\textit{Pending: tool estimates, measurement methodology, measured power, accepted-operation counts, and energy.}
+\section{Discussion and Conclusion}
+\textit{To be written from the completed evidence.}
+\IfFileExists{IEEEtran.bst}{\bibliographystyle{IEEEtran}}{\bibliographystyle{unsrt}}
+\bibliography{references}
+\end{document}
