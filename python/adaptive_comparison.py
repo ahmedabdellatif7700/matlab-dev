@@ -222,6 +222,40 @@ def report(out):
             if log: ax.set_yscale('log')
             ax.set_title(condition); ax.set_xlabel('ROP at PD (dBm)'); ax.set_ylabel(label); ax.grid(True,alpha=.3); ax.legend(fontsize=7)
         fig.tight_layout(); fig.savefig(out/f'{metric}_comparison.png',dpi=180); fig.savefig(out/f'{metric}_comparison.pdf'); plt.close(fig)
+    report_learning_curves(out)
+
+
+def report_learning_curves(out):
+    """Show validation convergence and selected checkpoints, never test tuning."""
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    out=Path(out)
+    if not (out/'selected_parameters.csv').exists(): return
+    with (out/'selected_parameters.csv').open() as f:
+        selected=[r for r in csv.DictReader(f) if r['primary']=='True']
+    with (out/'learning_curves.csv').open() as f: curves=list(csv.DictReader(f))
+    for condition in dict.fromkeys(r['condition'] for r in selected):
+        models=[r for r in selected if r['condition']==condition]
+        powers=sorted({float(r['received_power_dbm']) for r in models})
+        fig,axes=plt.subplots(1,len(powers),figsize=(5*len(powers),4),squeeze=False)
+        for ax,power in zip(axes[0],powers):
+            for model in (r for r in models if float(r['received_power_dbm'])==power):
+                history=sorted([r for r in curves if r['condition']==condition and
+                    float(r['received_power_dbm'])==power and r['candidate']==model['candidate']],
+                    key=lambda r:int(r['epoch']))
+                label='LMS FFE' if model['receiver']=='LMS_FFE' else f"ANN {2*int(model['taps'])}-{model['hidden']}-2 {model['activation']}"
+                line,=ax.plot([int(r['epoch']) for r in history],
+                    [float(r['validation_evm_percent']) for r in history],label=label)
+                ax.plot(int(model['best_epoch']),float(model['validation_evm_percent']),
+                        '*',color=line.get_color(),markersize=11)
+            ax.set(title=f'{power:g} dBm',xlabel='Training epoch',ylabel='Validation EVM (%)')
+            ax.grid(True,alpha=.3); ax.legend(fontsize=8)
+        fig.suptitle(condition.replace('_',' ')+' | stars: selected validation checkpoints')
+        fig.tight_layout()
+        for ext in ['png','pdf']:
+            fig.savefig(out/f'validation_convergence_{condition}.{ext}',dpi=180)
+        plt.close(fig)
 
 
 def report_constellations(out, conditions):
