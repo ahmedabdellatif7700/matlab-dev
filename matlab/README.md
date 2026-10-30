@@ -30,3 +30,5 @@ Legacy scenario code, archived implementations and old runners have been removed
 ## Adaptive equalizer experiment
 
 `compare_adaptive_equalizers.m` reuses the physical stages for three declared component conditions. `dataset_configuration.m` and `export_datasets.m` write independent train/validation/test MAT files for Python. These are experiment/export functions outside `+arof/`; `main.m` remains the physical-stage runner. See [ADAPTIVE_COMPARISON.md](ADAPTIVE_COMPARISON.md) and [DATASETS.md](DATASETS.md).
+
+Completed LMS/ANN comparison: [BER/EVM figures, parameter tables and limitations](results/adaptive_equalizers/README.md). The selected ANN lowers observed BER at all nine points; the compressed-driver high-power result has only two versus four errors and needs longer independent confirmation.

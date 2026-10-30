@@ -1,0 +1,13 @@
+condition,received_power_dbm,candidate,receiver,taps,hidden,activation,learning_rate,learning_rate_q8_24,validation_evm_percent,best_epoch,updates,selected_updates,training_samples,training_seconds,saturations,receiver_group,primary,parameter_count
+driver_compression,-22.0,0,LMS_FFE,2,0,linear,0.00025,4194,19.97632733675233,8,65536,65536,8192,1.4838580760006153,0,LMS_FFE,True,10
+driver_compression,-22.0,9,ANN,2,12,sigmoid,0.004,67109,19.720618700119243,8,65536,65536,8192,14.473575033000088,0,ANN_sigmoid_12,False,86
+driver_compression,-22.0,12,ANN,2,12,tanh,0.004,67109,19.41379846370552,8,65536,65536,8192,14.997143150998454,0,ANN_tanh_12,False,86
+driver_compression,-22.0,14,ANN,2,16,tanh,0.004,67109,19.40013508049862,8,65536,65536,8192,19.324972745002015,0,ANN_tanh_16,True,114
+driver_compression,-20.0,0,LMS_FFE,2,0,linear,0.00025,4194,14.099052399197872,8,65536,65536,8192,1.1903454909988795,0,LMS_FFE,True,10
+driver_compression,-20.0,10,ANN,2,12,sigmoid,0.016,268435,14.168391926496923,8,65536,65536,8192,11.164023730998451,0,ANN_sigmoid_12,False,86
+driver_compression,-20.0,12,ANN,2,12,tanh,0.004,67109,14.12524089439161,8,65536,65536,8192,8.659316435998335,0,ANN_tanh_12,False,86
+driver_compression,-20.0,14,ANN,2,16,tanh,0.004,67109,13.937246911943692,8,65536,65536,8192,13.898462338998797,0,ANN_tanh_16,True,114
+driver_compression,-17.5,0,LMS_FFE,2,0,linear,0.00025,4194,10.412069577416574,8,65536,65536,8192,1.0611111269972753,0,LMS_FFE,True,10
+driver_compression,-17.5,10,ANN,2,12,sigmoid,0.016,268435,10.645607946630667,8,65536,65536,8192,6.177950700002839,0,ANN_sigmoid_12,False,86
+driver_compression,-17.5,12,ANN,2,12,tanh,0.004,67109,10.688190405029145,8,65536,65536,8192,5.852820018000784,0,ANN_tanh_12,False,86
+driver_compression,-17.5,14,ANN,2,16,tanh,0.004,67109,10.450075687881073,8,65536,65536,8192,8.01186590799989,0,ANN_tanh_16,True,114
