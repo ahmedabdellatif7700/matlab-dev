@@ -1,0 +1,4 @@
+condition,received_power_dbm,ann_receiver,displayed_symbols,test_symbols,first_test_row,filename
+bias_offset,-22.0,ANN_tanh_16,8192,65536,1,bias_offset_-22_dbm.png
+bias_offset,-20.0,ANN_tanh_16,8192,65536,1,bias_offset_-20_dbm.png
+bias_offset,-17.5,ANN_tanh_16,8192,65536,1,bias_offset_-17.5_dbm.png

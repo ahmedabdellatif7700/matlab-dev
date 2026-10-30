@@ -1,0 +1,73 @@
+{
+  "condition": "bias_offset",
+  "passed": true,
+  "files": [
+    {
+      "file": "rop_-22.0_dbm/train.mat",
+      "split": "train",
+      "symbol_seed": 16101,
+      "noise_seed": 916101,
+      "sha256": "150bee7c67a991728155ee95f86d970e572a1c3e31b8464f77bb5406b55ff80f"
+    },
+    {
+      "file": "rop_-22.0_dbm/validation.mat",
+      "split": "validation",
+      "symbol_seed": 16201,
+      "noise_seed": 916201,
+      "sha256": "b43b68848483b84baf72bfd4f09a6d6c94fcbd022ace1b268013f0ab997e257b"
+    },
+    {
+      "file": "rop_-22.0_dbm/test.mat",
+      "split": "test",
+      "symbol_seed": 56301,
+      "noise_seed": 956301,
+      "sha256": "fc39c154f75801f5205b6dea0851646d4bec43ba598d1e639a33e4bea2b9009d"
+    },
+    {
+      "file": "rop_-20.0_dbm/train.mat",
+      "split": "train",
+      "symbol_seed": 16102,
+      "noise_seed": 916102,
+      "sha256": "af4dfacd78da93446801fbb53d094ad8f15600fc68773ac646777ef9789d0a0d"
+    },
+    {
+      "file": "rop_-20.0_dbm/validation.mat",
+      "split": "validation",
+      "symbol_seed": 16202,
+      "noise_seed": 916202,
+      "sha256": "366c1c65703d13995e2dd4885170bd77e949779634c6c653388ed25fb05a4e41"
+    },
+    {
+      "file": "rop_-20.0_dbm/test.mat",
+      "split": "test",
+      "symbol_seed": 56302,
+      "noise_seed": 956302,
+      "sha256": "deacc0eaced7e0d1dd5659d34fce650ab51f93edb55a08abe78c12f9d623dd25"
+    },
+    {
+      "file": "rop_-17.5_dbm/train.mat",
+      "split": "train",
+      "symbol_seed": 16103,
+      "noise_seed": 916103,
+      "sha256": "846d1d75debc74fc759526e407d3535a0603cb8d9374169948c0ddc9b40e87e6"
+    },
+    {
+      "file": "rop_-17.5_dbm/validation.mat",
+      "split": "validation",
+      "symbol_seed": 16203,
+      "noise_seed": 916203,
+      "sha256": "3806b4619a6f92e5610d5ea6c1cbe23d95cb3ae96c25483e6ab92bd7ea1489a5"
+    },
+    {
+      "file": "rop_-17.5_dbm/test.mat",
+      "split": "test",
+      "symbol_seed": 56303,
+      "noise_seed": 956303,
+      "sha256": "f618baa65fbc87d5c3301e58258f9867c85ceda9abaed41988a462db8f394d0e"
+    }
+  ],
+  "physical_parameters_unchanged": true,
+  "training_validation_q824_identical": true,
+  "test_seed_offset": 40000,
+  "zero_import_saturations": true
+}

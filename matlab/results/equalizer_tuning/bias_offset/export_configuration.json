@@ -1,0 +1,105 @@
+{
+  "link": {
+    "root": "/home/ahmedabdellatif/dev/matlab-dev",
+    "output_root": "/home/ahmedabdellatif/dev/matlab-dev/datasets/physical_link",
+    "run_id": "adaptive_tuned_01_bias_offset",
+    "modulation_order": 16,
+    "symbol_rate_hz": 4.0E+8,
+    "awg_sample_rate_hz": 4.0E+9,
+    "internal_sample_rate_hz": 4.0E+10,
+    "if_hz": 8.0E+8,
+    "rrc_rolloff": 0.75,
+    "rrc_span_symbols": 48,
+    "guard_symbols": 96,
+    "training_symbols": 1024,
+    "payload_symbols": 4096,
+    "seed": 4201,
+    "modulated_wavelength_m": 1.5529E-6,
+    "lo_wavelength_m": 1.55242E-6,
+    "rf_carrier_hz": 5.969105037534375E+10,
+    "mzm_vpi_v": 4.4,
+    "mzm_bias_v": 2.42,
+    "drive_rms_v": 0.1,
+    "driver_model": "linear",
+    "driver_saturation_v": null,
+    "driver_smoothness": 2,
+    "driver_voltage_gain": 17.097235738210383,
+    "mzm_bandwidth_hz": 1.0E+10,
+    "fiber_length_km": 15,
+    "dispersion_ps_nm_km": 17,
+    "attenuation_db_km": 0.2,
+    "ideal_edfa_gain_db": 3,
+    "pd_bandwidth_hz": 6.0E+10,
+    "received_optical_power_dbm": -22,
+    "pd_responsivity_a_w": 1,
+    "wireless_distance_m": 1,
+    "tx_antenna_gain_dbi": 20,
+    "rx_antenna_gain_dbi": 20,
+    "filter_guard_samples": 8192,
+    "envelope_detector_model": "ideal_amplitude",
+    "noise_enabled": true,
+    "if_noise_psd": 1.996608740342124E-25,
+    "noise_seed": 904201,
+    "input_vpp_v": 0.4,
+    "rop_dbm": [
+      -22,
+      -21.5,
+      -21,
+      -20.5,
+      -20,
+      -19.5,
+      -19,
+      -18.5,
+      -18,
+      -17.5
+    ],
+    "sweep_seeds": [
+      8701,
+      8702,
+      8703,
+      8704,
+      8705
+    ],
+    "sweep_payload_symbols": 65536,
+    "visible": "off"
+  },
+  "export": {
+    "profile": "study",
+    "rop_dbm": [
+      -22,
+      -20,
+      -17.5
+    ],
+    "split_names": [
+      "train",
+      "validation",
+      "test"
+    ],
+    "payload_symbols": [
+      8192,
+      4096,
+      65536
+    ],
+    "seeds": [
+      [
+        16101,
+        16201,
+        56301
+      ],
+      [
+        16102,
+        16202,
+        56302
+      ],
+      [
+        16103,
+        16203,
+        56303
+      ]
+    ],
+    "tap_offsets_symbols": [
+      0,
+      -1
+    ]
+  }
+}
