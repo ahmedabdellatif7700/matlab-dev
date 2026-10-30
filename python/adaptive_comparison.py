@@ -193,6 +193,7 @@ def compare(run,only=None):
             write_csv(out/'test_metrics.csv',results); write_csv(out/'selected_parameters.csv',selected)
             print(f"FINISHED {condition['condition']} {power:g} dBm",flush=True)
     report(out)
+    report_constellations(out,conditions)
     return out
 
 
@@ -217,6 +218,66 @@ def report(out):
         fig.tight_layout(); fig.savefig(out/f'{metric}_comparison.png',dpi=180); fig.savefig(out/f'{metric}_comparison.pdf'); plt.close(fig)
 
 
+def report_constellations(out, conditions):
+    """Plot aligned held-out samples from saved inference, without retraining."""
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    out=Path(out); destination=out/'constellations'; destination.mkdir(exist_ok=True)
+    with (out/'test_metrics.csv').open() as f: rows=list(csv.DictReader(f))
+    records=[]
+    for condition in conditions:
+        name=condition['condition']; source=Path(condition['dataset_folder'])
+        with (source/'manifest.csv').open() as f:
+            tests=[r for r in csv.DictReader(f) if r['split']=='test']
+        for item in tests:
+            power=float(item['received_power_dbm']); test=dataset(source/item['file'])
+            point=[r for r in rows if r['condition']==name and float(r['received_power_dbm'])==power]
+            ann=next(r['receiver'] for r in point if r['receiver'].startswith('ANN') and r['primary']=='True')
+            receivers=['unequalized','LMS_FFE',ann]
+            predictions=[np.asarray(features(test,1),dtype=np.int32)]
+            for receiver in receivers[1:]:
+                with np.load(out/'models'/f'{name}_{power:g}_{receiver}.npz',allow_pickle=False) as saved:
+                    predictions.append(saved['predictions_q8_24'].copy())
+            scores=[]
+            for receiver,prediction in zip(receivers,predictions):
+                if prediction.shape!=test['target'].shape:
+                    raise ValueError('Constellation inference/target lengths differ')
+                score=metrics(prediction,test['target'],test['scale'],test['modulation'])
+                recorded=next(r for r in point if r['receiver']==receiver)
+                if score['bit_errors']!=int(recorded['bit_errors']) or not np.isclose(
+                        score['evm_percent'],float(recorded['evm_percent']),rtol=1e-12,atol=1e-12):
+                    raise ValueError('Constellation predictions do not reproduce recorded test metrics')
+                scores.append(score)
+            # Use the same chronological subset and common axes for all receivers.
+            shown=min(8192,len(test['target']))
+            iq=[p.astype(np.float64)*test['scale']/fp.ONE for p in predictions]
+            levels=np.arange(1-int(np.sqrt(test['modulation'])),int(np.sqrt(test['modulation'])),2)
+            ideal_i,ideal_q=np.meshgrid(levels,levels)
+            limit=1.08*max(float(np.max(np.abs(p))) for p in iq)
+            limit=max(limit,1.15*float(np.max(np.abs(levels))))
+            fig,axes=plt.subplots(1,3,figsize=(12,5))
+            for ax,receiver,p,score in zip(axes,receivers,iq,scores):
+                ax.scatter(p[:shown,0],p[:shown,1],s=2,alpha=.22,color='tab:blue',rasterized=True)
+                ax.scatter(ideal_i,ideal_q,s=40,marker='x',color='black',linewidths=1,label='Ideal QAM')
+                label={'unequalized':'Unequalized','LMS_FFE':'LMS FFE'}.get(receiver,receiver.replace('_',' '))
+                ax.set_title(f"{label}\nBER {score['ber']:.3g} | EVM {score['evm_percent']:.2f}%")
+                ax.set(xlabel='In-phase (I)',ylabel='Quadrature (Q)',xlim=(-limit,limit),ylim=(-limit,limit))
+                ax.set_aspect('equal'); ax.grid(True,alpha=.2)
+            axes[0].legend(loc='upper left',fontsize=8)
+            fig.suptitle(f"{name.replace('_',' ')} | ROP {power:g} dBm | {test['modulation']}-QAM")
+            fig.text(.5,.025,f'First {shown:,} identical held-out symbols shown; metrics use all {len(test["target"]):,} test symbols. '
+                     'Common axes; no additional gain/phase fitting.',ha='center',fontsize=9)
+            fig.tight_layout(rect=(0,.15,1,.94))
+            stem=f'{name}_{power:g}_dbm'
+            fig.savefig(destination/(stem+'.png'),dpi=180)
+            fig.savefig(destination/(stem+'.pdf')); plt.close(fig)
+            records.append(dict(condition=name,received_power_dbm=power,ann_receiver=ann,
+                displayed_symbols=shown,test_symbols=len(test['target']),first_test_row=1,
+                filename=stem+'.png'))
+    write_csv(destination/'manifest.csv',records)
+
+
 def combine_reports(run):
     """Collect independently run conditions; no model selection uses test scores."""
     import shutil
@@ -236,4 +297,5 @@ def combine_reports(run):
     for key,rows in merged.items(): write_csv(out/(key+'.csv'),rows)
     (out/'settings.json').write_text(json.dumps(settings,indent=2)+'\n')
     report(out)
+    report_constellations(out,conditions)
     return out

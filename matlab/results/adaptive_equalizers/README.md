@@ -44,6 +44,10 @@ At -20 dBm, separately validation-tuned 4-12-2 receivers give:
 
 The 12-unit models share architecture, initialization seed, data order and update budget; each activation has its own validation-selected learning rate. Tanh is not uniformly better in test BER. The 16-unit tanh result adds a width change, so its advantage is not an isolated activation contribution. Selected ANN checkpoints reach the final allowed epoch; these are budget-limited results, not proof that training has converged.
 
+## Constellation diagrams
+
+[Side-by-side I/Q constellations at all nine operating points](constellations/README.md) show unequalized, LMS FFE and the validation-selected ANN with ideal 16-QAM markers and full-test BER/EVM annotations. The same first 8,192 held-out symbols are displayed in every receiver panel; common axes and no additional normalization preserve a direct visual comparison.
+
 ## Artifacts and validation
 
 - [Combined BER plot](ber_comparison.png), [PDF](ber_comparison.pdf); [combined EVM plot](evm_percent_comparison.png), [PDF](evm_percent_comparison.pdf).

@@ -54,3 +54,7 @@ All stored samples, weights, biases, activations, deltas, gradients, learning ra
 New widths/tanh are Python models, not verified RTL implementations. Existing user-reported FPGA throughput does not automatically apply to them. Final model states and predictions are saved as int32 words under the ignored run directory; compact results are curated separately.
 
 A result against LMS FFE does not establish superiority over Volterra or prove neural equalization uniquely necessary. The current question is whether the tested neural receivers improve on this tuned adaptive linear baseline under declared component assumptions.
+
+## Constellation output
+
+Completed runs and `--phase report` also generate `constellations/` with PNG/PDF panels for each condition/ROP: unequalized, LMS FFE and the validation-selected ANN. Each panel uses the same first 8,192 held-out symbols, ideal QAM crosses, common axes and full-test BER/EVM. Saved Q8.24 predictions must reproduce the recorded metrics before plotting. No retraining or additional gain/phase fitting is performed. [Saved constellation gallery](results/adaptive_equalizers/constellations/README.md).

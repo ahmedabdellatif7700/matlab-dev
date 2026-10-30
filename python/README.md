@@ -20,3 +20,5 @@ Independent jobs can use `--only reference`, `--only bias_offset` or `--only dri
 ## Historical workflows
 
 The older `legacy` and `research` dispatch modes, `tuning/`, ONNX and Q8.8 inference utilities remain for provenance. They are not part of the current experiment and their historical artifact files are not Q8.24 results. The removed MATLAB scenario runners cannot be used to launch them from the current physical baseline. Use the explicit `--workflow adaptive` command above.
+
+The adaptive workflow also writes side-by-side I/Q constellations in `constellations/` for every condition/power. `--phase report` regenerates these from the saved predictions and MATLAB test files without retraining. [Saved gallery](../matlab/results/adaptive_equalizers/constellations/README.md).

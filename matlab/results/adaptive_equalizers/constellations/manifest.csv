@@ -1,0 +1,10 @@
+condition,received_power_dbm,ann_receiver,displayed_symbols,test_symbols,first_test_row,filename
+reference,-22.0,ANN_tanh_16,8192,65536,1,reference_-22_dbm.png
+reference,-20.0,ANN_tanh_16,8192,65536,1,reference_-20_dbm.png
+reference,-17.5,ANN_tanh_16,8192,65536,1,reference_-17.5_dbm.png
+bias_offset,-22.0,ANN_tanh_16,8192,65536,1,bias_offset_-22_dbm.png
+bias_offset,-20.0,ANN_tanh_16,8192,65536,1,bias_offset_-20_dbm.png
+bias_offset,-17.5,ANN_tanh_16,8192,65536,1,bias_offset_-17.5_dbm.png
+driver_compression,-22.0,ANN_tanh_16,8192,65536,1,driver_compression_-22_dbm.png
+driver_compression,-20.0,ANN_tanh_16,8192,65536,1,driver_compression_-20_dbm.png
+driver_compression,-17.5,ANN_tanh_16,8192,65536,1,driver_compression_-17.5_dbm.png
