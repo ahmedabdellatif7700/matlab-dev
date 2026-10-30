@@ -52,3 +52,37 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+class Q824LMS:
+    """Two-output real/widely-linear LMS FFE, chronological batch-1 MSE.
+
+    The complex-linear FFE is a subset of this mapping. All stored samples,
+    weights, biases, deltas and learning rate are signed Q8.24 words.
+    """
+    def __init__(self, inputs, lr_q24):
+        from hardware.training.fixedpoint import ONE
+        self.inputs=inputs; self.lr_q24=int(lr_q24)
+        self.weights=[[0]*inputs for _ in range(2)]; self.bias=[0,0]
+        self.weights[0][0]=ONE; self.weights[1][1]=ONE
+
+    def forward(self, x):
+        from hardware.training import fixedpoint as fp
+        return [fp.sat32(fp.round_shift((self.bias[j]<<fp.FRAC)+sum(w*v for w,v in zip(self.weights[j],x)),fp.FRAC),'lms_z') for j in range(2)]
+
+    def step(self, x, target):
+        from hardware.training import fixedpoint as fp
+        output=self.forward(x)
+        delta=[fp.sat32(a-b,'lms_delta') for a,b in zip(output,target)]
+        for j,d in enumerate(delta):
+            self.weights[j]=[fp.sat32(w-fp.qmul(fp.qmul(d,v,'lms_grad'),self.lr_q24),'lms_weight') for w,v in zip(self.weights[j],x)]
+            self.bias[j]=fp.sat32(self.bias[j]-fp.qmul(d,self.lr_q24),'lms_bias')
+
+    def predict(self, x):
+        return np.asarray([self.forward(row) for row in x],dtype=np.int32)
+
+    def state(self):
+        return [row.copy() for row in self.weights],self.bias.copy()
+
+    def restore(self, state):
+        self.weights=[row.copy() for row in state[0]]; self.bias=state[1].copy()

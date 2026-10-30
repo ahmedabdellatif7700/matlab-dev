@@ -14,4 +14,4 @@ The physical model and assumptions are documented in [matlab/PHYSICAL_LINK.md](m
 
 Older MATLAB scenario suites, archived implementations and their runners have been removed from the working tree. Their source remains in Git history. Existing reference data and result records are retained for provenance; they are not dependencies of the current runner.
 
-NN development will use the supplied `nn_training_model/` package in the later research phase, preserving its training stages and Q8.24 arithmetic. No new equalizer comparison is included in this physical-link baseline.
+The next experiment compares LMS FFE and ANN using the supplied training model's stages and Q8.24 arithmetic. Run `compare_adaptive_equalizers('study')` in MATLAB, then `python python/equalizer.py --workflow adaptive --run <printed-directory>`. [Physical conditions, selection method and limitations](matlab/ADAPTIVE_COMPARISON.md); [Python entry point](python/README.md). The standalone physical-stage baseline remains available unchanged.

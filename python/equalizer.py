@@ -1210,11 +1210,20 @@ def main():
     import argparse
     from config import WORKFLOW, RESEARCH_RUN_DIR, RESEARCH_PHASE
     parser=argparse.ArgumentParser(description="MATLAB/Python neural equalizer")
-    parser.add_argument('--workflow',choices=['legacy','research'],default=WORKFLOW)
+    parser.add_argument('--workflow',choices=['legacy','research','adaptive'],default=WORKFLOW)
     parser.add_argument('--run',type=Path,default=RESEARCH_RUN_DIR)
     parser.add_argument('--phase',choices=['discovery','extended-search','confirmation','report','snr-sweep'],default=RESEARCH_PHASE)
     parser.add_argument('--only',nargs='+')
     args=parser.parse_args()
+    if args.workflow=='adaptive':
+        if args.run is None:
+            parser.error('Pass --run with the MATLAB comparison export directory')
+        from adaptive_comparison import compare, combine_reports
+        if args.phase=='report':
+            combine_reports(args.run)
+        else:
+            compare(args.run,args.only)
+        return
     if args.workflow=='legacy' and args.run is None:
         legacy_main()
         return

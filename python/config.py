@@ -99,3 +99,20 @@ NN_OPTIMIZER = "adamw"
 def network_catalog():
     return [dict(widths=list(widths),activation=activation,lr=NN_LEARNING_RATE,weight_decay=NN_WEIGHT_DECAY,batch_size=NN_BATCH_SIZE,optimizer=NN_OPTIMIZER)
             for widths,activation in NETWORKS]
+
+# Current A-RoF comparison: authoritative supplied Q8.24 training atomics.
+# Selected only on validation MSE/EVM. Test labels never update weights.
+ADAPTIVE = dict(
+    epochs=8,
+    lms_taps=[2,5,9],
+    lms_learning_rates=[0.00025,0.001,0.004],
+    ann_candidates=[
+        dict(hidden=12,activation="sigmoid",learning_rate=0.004),
+        dict(hidden=12,activation="sigmoid",learning_rate=0.016),
+        dict(hidden=12,activation="tanh",learning_rate=0.001),
+        dict(hidden=12,activation="tanh",learning_rate=0.004),
+        dict(hidden=16,activation="tanh",learning_rate=0.001),
+        dict(hidden=16,activation="tanh",learning_rate=0.004),
+    ],
+    initialization_seed=42,
+)
